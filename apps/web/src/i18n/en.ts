@@ -76,6 +76,11 @@ export const en = {
     noOverlapDivider: "More people to meet",
     empty: "Nobody here yet. Check back soon.",
     viewProfile: "View profile",
+    swipeHint: "swipe right to meet · left to skip",
+    meet: "Meet",
+    skip: "Skip",
+    noMore: "That's everyone for now. New people join every day.",
+    noShared: "No shared tags yet",
   },
 
   profile: {
