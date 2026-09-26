@@ -5,12 +5,13 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useApp } from "@/components/AppProvider";
 import { LangToggle } from "@/components/LangToggle";
+import { GenderPicker } from "@/components/GenderPicker";
 import { TagPicker } from "@/components/TagPicker";
 import { Button, Loading, cx } from "@/components/ui";
 import { api } from "@/lib/api";
-import type { Community, Lang, Me, Register } from "@/lib/contract";
+import type { Community, Gender, Lang, Me } from "@/lib/contract";
 
-type Step = "language" | "community" | "name" | "register" | "give" | "learn" | "interests";
+type Step = "language" | "community" | "name" | "gender" | "give" | "learn" | "interests";
 
 export default function Onboarding() {
   const { me, ready } = useApp();
@@ -31,16 +32,17 @@ function Wizard({ me }: { me: Me }) {
   const [step, setStep] = useState<Step>("language");
   const [community, setCommunity] = useState<Community | null>(me.community);
   const [name, setName] = useState(me.displayName);
-  const [register, setRegister] = useState<Register | null>(me.politenessRegister);
+  const [gender, setGender] = useState<Gender | null>(me.gender);
   const [give, setGive] = useState<string[]>(me.give);
   const [learn, setLearn] = useState<string[]>(me.learn);
   const [interests, setInterests] = useState(me.interestsText);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(false);
 
-  // Thai writers choose their own particles; only messages translated into Thai need the sender's register.
+  // Thai writers choose their own particles; only messages translated into Thai need the sender's
+  // gender, which picks ครับ or ค่ะ. Anyone can set or change it later in Edit profile.
   const steps = useMemo<Step[]>(
-    () => ["language", "community", "name", ...(lang === "en" ? (["register"] as const) : []), "give", "learn", "interests"],
+    () => ["language", "community", "name", ...(lang === "en" ? (["gender"] as const) : []), "give", "learn", "interests"],
     [lang],
   );
   const idx = steps.indexOf(step);
@@ -61,7 +63,7 @@ function Wizard({ me }: { me: Me }) {
         community,
         interfaceLanguage: lang,
         speaksLanguage: lang,
-        politenessRegister: lang === "en" ? (register ?? "neutral") : null,
+        ...(lang === "en" && gender ? { gender } : {}),
         interestsText: interests.trim(),
       });
       const m = await api.putMyTags({ give, learn });
@@ -78,7 +80,7 @@ function Wizard({ me }: { me: Me }) {
     language: true,
     community: !!community,
     name: name.trim().length > 0,
-    register: !!register,
+    gender: !!gender,
     give: true,
     learn: give.length + learn.length > 0,
     interests: true,
@@ -127,13 +129,9 @@ function Wizard({ me }: { me: Me }) {
           </Section>
         )}
 
-        {step === "register" && (
-          <Section title={o.registerTitle} hint={o.registerHint}>
-            <div className="flex flex-col gap-3">
-              <Choice selected={register === "male"} onClick={() => setRegister("male")} title={o.registerMale} hint={o.registerMaleHint} />
-              <Choice selected={register === "female"} onClick={() => setRegister("female")} title={o.registerFemale} hint={o.registerFemaleHint} />
-              <Choice selected={register === "neutral"} onClick={() => setRegister("neutral")} title={o.registerNeutral} hint={o.registerNeutralHint} />
-            </div>
+        {step === "gender" && (
+          <Section title={o.genderTitle} hint={o.genderHint}>
+            <GenderPicker value={gender} onChange={setGender} />
           </Section>
         )}
 

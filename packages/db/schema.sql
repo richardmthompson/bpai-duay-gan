@@ -38,6 +38,16 @@ create table if not exists profiles (
   created_at          timestamptz not null default now()
 );
 
+-- Gender (issue #22), added after the table so existing databases pick it up on the next deploy.
+-- People set gender; the api writes politeness_register from it on every save (other and
+-- undisclosed both mean neutral). Null means unknown. The backfill fills in only rows that have
+-- no gender yet, from a register that can only have come from one: male or female. Both
+-- statements are safe to re-run.
+alter table profiles add column if not exists gender text
+  check (gender in ('male', 'female', 'other', 'undisclosed'));
+update profiles set gender = politeness_register
+  where gender is null and politeness_register in ('male', 'female');
+
 -- ── Tags ────────────────────────────────────────────────────────────────────────────────────
 create table if not exists tags (
   id         text primary key,

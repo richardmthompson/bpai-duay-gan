@@ -6,13 +6,24 @@ import { one, q, tx } from "@bpai/db";
 
 export type Lang = "th" | "en";
 export type Community = "local" | "foreigner";
+export type Gender = "male" | "female" | "other" | "undisclosed";
+type Register = "male" | "female" | "neutral";
+
+/**
+ * Gender is what people set; politeness_register is what the translation prompt reads (ครับ / ค่ะ).
+ * Every save that carries a gender writes the register from this map, so the two never disagree.
+ */
+const REGISTER_FOR_GENDER: Record<Gender, Register> = {
+  male: "male", female: "female", other: "neutral", undisclosed: "neutral",
+};
+const isGender = (v: unknown): v is Gender => typeof v === "string" && Object.keys(REGISTER_FOR_GENDER).includes(v);
 
 export interface Tag { id: string; labelEn: string; labelTh: string; sortOrder: number }
 
 export interface Me {
   userId: string; email: string | null; displayName: string; community: Community | null;
   interfaceLanguage: Lang; speaksLanguage: Lang; politenessRegister: string | null;
-  interestsText: string; avatarUrl: string | null; onboardingComplete: boolean;
+  gender: Gender | null; interestsText: string; avatarUrl: string | null; onboardingComplete: boolean;
   give: string[]; learn: string[];
 }
 
@@ -171,10 +182,10 @@ export async function getMe(userId: string): Promise<Me | null> {
   const row = await one<{
     user_id: string; email: string | null; display_name: string; community: Community | null;
     interface_language: Lang; speaks_language: Lang; politeness_register: string | null;
-    interests_text: string; avatar_url: string | null; onboarding_complete: boolean;
+    gender: Gender | null; interests_text: string; avatar_url: string | null; onboarding_complete: boolean;
   }>(
     `select p.user_id, u.email, p.display_name, p.community, p.interface_language, p.speaks_language,
-            p.politeness_register, p.interests_text, p.avatar_url, p.onboarding_complete
+            p.politeness_register, p.gender, p.interests_text, p.avatar_url, p.onboarding_complete
      from profiles p join users u on u.id = p.user_id where p.user_id = $1`, [userId]);
 
   if (!row) {
@@ -186,7 +197,7 @@ export async function getMe(userId: string): Promise<Me | null> {
       userId, email: account.email,
       displayName: account.name ?? account.email?.split("@")[0] ?? "Someone",
       community: null, interfaceLanguage: "th", speaksLanguage: "th", politenessRegister: null,
-      interestsText: "", avatarUrl: account.image, onboardingComplete: false, give: [], learn: [],
+      gender: null, interestsText: "", avatarUrl: account.image, onboardingComplete: false, give: [], learn: [],
     };
   }
 
@@ -194,7 +205,7 @@ export async function getMe(userId: string): Promise<Me | null> {
   return {
     userId: row.user_id, email: row.email, displayName: row.display_name, community: row.community,
     interfaceLanguage: row.interface_language, speaksLanguage: row.speaks_language,
-    politenessRegister: row.politeness_register, interestsText: row.interests_text,
+    politenessRegister: row.politeness_register, gender: row.gender, interestsText: row.interests_text,
     avatarUrl: row.avatar_url, onboardingComplete: row.onboarding_complete,
     give: tags.give, learn: tags.learn,
   };
@@ -202,7 +213,7 @@ export async function getMe(userId: string): Promise<Me | null> {
 
 const ME_COLUMNS: Record<string, string> = {
   displayName: "display_name", community: "community", interfaceLanguage: "interface_language",
-  speaksLanguage: "speaks_language", politenessRegister: "politeness_register",
+  speaksLanguage: "speaks_language", gender: "gender", politenessRegister: "politeness_register",
   interestsText: "interests_text", avatarUrl: "avatar_url",
 };
 
@@ -212,21 +223,40 @@ export async function putMe(userId: string, update: Record<string, unknown>): Pr
     "select email, name from users where id = $1", [userId]);
   if (!account) throw httpError("not_found", "no such user");
 
-  const sets: string[] = [];
-  const values: unknown[] = [];
-  for (const [key, column] of Object.entries(ME_COLUMNS)) {
-    if (!(key in update) || update[key] === undefined || update[key] === null) continue;
-    values.push(update[key]);
-    sets.push(`${column} = $${values.length + 2}`);
+  // The register is never taken from the client: it follows gender, and only when gender is saved.
+  const fields: Record<string, unknown> = { ...update, politenessRegister: undefined };
+  if (fields.gender !== undefined && fields.gender !== null) {
+    if (!isGender(fields.gender)) throw httpError("invalid", "gender must be male, female, other or undisclosed");
+    fields.politenessRegister = REGISTER_FOR_GENDER[fields.gender];
   }
 
-  const fallbackName = account.name ?? account.email?.split("@")[0] ?? "Someone";
-  if (sets.length) {
-    await q(
-      `insert into profiles (user_id, display_name, onboarding_complete)
-       values ($1, $2, true)
-       on conflict (user_id) do update set ${sets.join(", ")}, onboarding_complete = true`,
-      [userId, (update.displayName as string) ?? fallbackName, ...values]);
+  const columns: string[] = [];
+  const values: unknown[] = [];
+  for (const [key, column] of Object.entries(ME_COLUMNS)) {
+    if (!(key in fields) || fields[key] === undefined || fields[key] === null) continue;
+    columns.push(column);
+    values.push(fields[key]);
+  }
+
+  if (columns.length) {
+    // Update first, insert only when there is no row. An upsert cannot do this: Postgres checks
+    // the proposed insert row's not-null columns (community) before it finds the conflict, so
+    // any save that did not carry every required column failed, even for an existing profile.
+    const sets = columns.map((c, i) => `${c} = $${i + 2}`);
+    const updated = await q(
+      `update profiles set ${sets.join(", ")}, onboarding_complete = true where user_id = $1 returning user_id`,
+      [userId, ...values]);
+    if (!updated.length) {
+      const fallbackName = account.name ?? account.email?.split("@")[0] ?? "Someone";
+      const named = columns.includes("display_name");
+      const cols = named ? columns : ["display_name", ...columns];
+      const vals = named ? values : [fallbackName, ...values];
+      await q(
+        `insert into profiles (user_id, ${cols.join(", ")}, onboarding_complete)
+         values ($1, ${cols.map((_, i) => `$${i + 2}`).join(", ")}, true)
+         on conflict (user_id) do nothing`,
+        [userId, ...vals]);
+    }
   } else if (!(await one("select 1 from profiles where user_id = $1", [userId]))) {
     throw httpError("invalid", "nothing to save");
   }
