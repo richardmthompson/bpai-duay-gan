@@ -36,6 +36,9 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
   // the card, not the link: a still tap on an event tag navigates from here instead.
   const pressedLink = useRef<string | null>(null);
   const asked = useRef(new Set<string>());
+  // A right swipe opens the request sheet and leaves the deck parked on the swiped card, veiled:
+  // the next profile may not show behind the sheet, so the deck only moves on when the sheet closes.
+  const parked = useRef(false);
 
   const current = items[index];
 
@@ -83,6 +86,13 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
     drag.current.dy = 0;
   };
 
+  // Bring the next card to the top: nothing left to hide, and it starts undragged and unlocked.
+  const advance = useCallback(() => {
+    drag.current = { x: 0, y: 0, dx: 0, dy: 0, down: false, locked: false };
+    setIndex((n) => n + 1);
+    veil(0);
+  }, []);
+
   const commit = useCallback(
     (dir: "left" | "right") => {
       const person = items[index];
@@ -94,16 +104,23 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
         el.style.transition = "transform 170ms ease-out";
         el.style.transform = `translate(${dir === "right" ? 560 : -560}px, ${dy}px) rotate(${dir === "right" ? 18 : -18}deg)`;
       }
-      if (dir === "right") setAskFor(person);
       veil(1);
-      window.setTimeout(() => {
-        drag.current = { x: 0, y: 0, dx: 0, dy: 0, down: false, locked: false };
-        setIndex((n) => n + 1);
-        veil(0); // the new card is on top now, so nothing to hide any more
-      }, 170);
+      if (dir === "right") {
+        // the veil stays up and the deck stays locked until the sheet closes (closeSheet)
+        parked.current = true;
+        setAskFor(person);
+      } else window.setTimeout(advance, 170);
     },
-    [items, index],
+    [items, index, advance],
   );
+
+  // Sent or cancelled, the swiped profile is done with: move on by exactly one, and only now.
+  const closeSheet = () => {
+    setAskFor(null);
+    if (!parked.current) return;
+    parked.current = false;
+    advance();
+  };
 
   // A gesture only counts as a swipe when it went sideways -- vertically the profile scrolls.
   const release = (canceled: boolean) => {
@@ -180,9 +197,11 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
               onPointerUp={top ? () => release(false) : undefined}
               onPointerCancel={top ? () => release(true) : undefined}
               style={top ? undefined : { transform: `translateY(${depth * 10}px) scale(${1 - depth * 0.04})`, transition: "transform 180ms ease" }}
+              // Only the top card is outlined: the cards behind carry no border or shadow, so no edge of
+              // another profile ever shows around it or through the veil.
               className={cx(
-                "absolute inset-0 flex flex-col overflow-hidden rounded-3xl border-2 border-line bg-surface shadow-hard",
-                top ? "z-10" : "z-0",
+                "absolute inset-0 flex flex-col overflow-hidden rounded-3xl bg-surface",
+                top ? "z-10 border-2 border-line shadow-hard" : "z-0",
               )}
             >
               <CardBody c={c} full={profiles[c.userId]} lang={lang} tagLabel={tagLabel} t={t} sent={sentTo.includes(c.userId)} />
@@ -208,11 +227,12 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
           );
         })}
 
-        {/* Veils the next profile for as long as the current card is on its way out. */}
+        {/* Veils the next profile for as long as the current card is on its way out, and while the
+            request sheet is open. Opaque at full strength: the outlined theme reads through any tint. */}
         <div
           ref={scrim}
           style={{ opacity: 0 }}
-          className="pointer-events-none absolute inset-0 z-[5] rounded-3xl bg-bg/80 backdrop-blur-sm"
+          className="pointer-events-none absolute inset-0 z-[5] rounded-3xl bg-bg"
         />
 
         {/* Floating over the card, and above the bottom nav (fixed, z-20), so neither hides them. */}
@@ -241,7 +261,7 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
 
       <Sheet
         open={askFor !== null}
-        onClose={() => setAskFor(null)}
+        onClose={closeSheet}
         title={askFor ? t.profile.requestTitle(askFor.displayName) : ""}
       >
         {askFor && (
@@ -251,10 +271,10 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
               ...askFor.sharedEvents,
               ...(profiles[askFor.userId]?.goingEvents ?? []).filter((e) => !askFor.sharedEvents.some((s) => s.id === e.id)),
             ]}
-            onCancel={() => setAskFor(null)}
+            onCancel={closeSheet}
             onSent={() => {
               setSentTo((s) => [...s, askFor.userId]);
-              setAskFor(null);
+              closeSheet();
             }}
           />
         )}
