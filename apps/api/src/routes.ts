@@ -11,6 +11,7 @@ import { deliverMessage, notifyUser } from "./realtime.ts";
 
 const STATUS: Record<string, number> = {
   unauthorized: 401, forbidden: 403, not_found: 404, conflict: 409, invalid: 422,
+  already_matched: 409, already_asked: 409,
   rate_limited: 429, internal: 500,
 };
 

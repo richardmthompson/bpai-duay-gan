@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useApp } from "./AppProvider";
 import { Button, cx, eventTitle, formatWhen } from "./ui";
-import { api } from "@/lib/api";
+import { ApiError, api } from "@/lib/api";
 
 /** Ask to match: pick the event that brings you together, add an optional note, send. */
 export function RequestForm({
@@ -21,16 +21,23 @@ export function RequestForm({
   const [eventId, setEventId] = useState<string | null>(events[0]?.id ?? null);
   const [note, setNote] = useState("");
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function send() {
     setBusy(true);
-    setError(false);
+    setError(null);
     try {
       await api.sendRequest({ toUserId: userId, eventId, note: note.trim() || null });
       onSent();
-    } catch {
-      setError(true);
+    } catch (e) {
+      // A conflict means this card is stale — a relationship already exists — so name it
+      // rather than showing the generic failure. Anything else is a real error.
+      const code = e instanceof ApiError ? e.code : "";
+      setError(
+        code === "already_matched" ? t.requests.accepted
+          : code === "already_asked" ? t.profile.requestSent
+            : t.common.somethingWrong,
+      );
     } finally {
       setBusy(false);
     }
@@ -75,7 +82,7 @@ export function RequestForm({
         placeholder={t.profile.notePlaceholder}
         className="mb-3 w-full rounded-xl border-2 border-line bg-bg p-3 text-base outline-none focus:border-brand"
       />
-      {error && <p className="mb-2 text-sm text-danger">{t.common.somethingWrong}</p>}
+      {error && <p className="mb-2 text-sm text-danger">{error}</p>}
       <div className="flex gap-2">
         <Button variant="secondary" className="flex-1" onClick={onCancel}>
           {t.common.cancel}
