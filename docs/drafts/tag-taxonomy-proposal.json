@@ -351,6 +351,87 @@
       "category": "outdoors-wellbeing",
       "emoji": "🌱",
       "typical_giver": "local"
+    },
+    {
+      "id": "class-project-feedback",
+      "label_en": "Feedback on a class project",
+      "label_th": "ขอคำแนะนำงานโปรเจกต์",
+      "sort_order": 400,
+      "category": "students-nomads",
+      "emoji": "📝",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "real-client-project",
+      "label_en": "Real brief for a class project",
+      "label_th": "โจทย์จริงสำหรับโปรเจกต์เรียน",
+      "sort_order": 410,
+      "category": "students-nomads",
+      "emoji": "🗂️",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "campus-language-exchange",
+      "label_en": "Campus language exchange",
+      "label_th": "แลกเปลี่ยนภาษาในมหาลัย",
+      "sort_order": 420,
+      "category": "students-nomads",
+      "emoji": "🔁",
+      "typical_giver": "either"
+    },
+    {
+      "id": "student-club-guest",
+      "label_en": "Guest at a student club",
+      "label_th": "แขกรับเชิญชมรมนักศึกษา",
+      "sort_order": 430,
+      "category": "students-nomads",
+      "emoji": "🎤",
+      "typical_giver": "either"
+    },
+    {
+      "id": "paid-micro-tasks",
+      "label_en": "Small paid tasks for students",
+      "label_th": "งานเล็ก ๆ มีค่าตอบแทนสำหรับนักศึกษา",
+      "sort_order": 440,
+      "category": "students-nomads",
+      "emoji": "💸",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "lecture-swap",
+      "label_en": "Explain your lecture in English",
+      "label_th": "เล่าเนื้อหาที่เรียนเป็นภาษาอังกฤษ",
+      "sort_order": 450,
+      "category": "students-nomads",
+      "emoji": "🧑‍🏫",
+      "typical_giver": "local"
+    },
+    {
+      "id": "student-guided-walks",
+      "label_en": "Student-guided city walks",
+      "label_th": "นักศึกษาพาเดินเที่ยวเมือง",
+      "sort_order": 460,
+      "category": "students-nomads",
+      "emoji": "🚶",
+      "typical_giver": "local"
+    },
+    {
+      "id": "home-town-visit",
+      "label_en": "Weekend at a student's home town",
+      "label_th": "ไปเที่ยวบ้านเกิดเพื่อนนักศึกษา",
+      "sort_order": 470,
+      "category": "students-nomads",
+      "emoji": "🏡",
+      "typical_giver": "local"
+    },
+    {
+      "id": "campus-sport-lunch",
+      "label_en": "Campus sport & canteen lunch",
+      "label_th": "เล่นกีฬาและกินข้าวโรงอาหาร",
+      "sort_order": 480,
+      "category": "students-nomads",
+      "emoji": "🏸",
+      "typical_giver": "either"
     }
   ]
 }
