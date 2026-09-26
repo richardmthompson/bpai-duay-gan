@@ -287,26 +287,26 @@ on conflict (source, external_id) where external_id is not null do update set
 -- event_tags
 insert into event_tags (event_id, tag_id)
 select e.id, v.tag_id from (values
-  ('claude-impact-lab', 'web-tech'),
-  ('ai-news-meetup', 'web-tech'),
-  ('ai-business', 'web-tech'),
-  ('conscious-tech', 'web-tech'),
-  ('temple-cleanup', 'temples-etiquette'),
-  ('temple-games', 'temples-etiquette'),
-  ('akha-songs-stories', 'music-jamming'),
-  ('akha-songs-stories', 'temples-etiquette'),
-  ('sunday-walking-street', 'street-food-spots'),
+  ('claude-impact-lab', 'tech'),
+  ('ai-news-meetup', 'tech'),
+  ('ai-business', 'tech'),
+  ('conscious-tech', 'tech'),
+  ('temple-cleanup', 'temples'),
+  ('temple-games', 'temples'),
+  ('akha-songs-stories', 'music'),
+  ('akha-songs-stories', 'temples'),
+  ('sunday-walking-street', 'street-food'),
   ('sunday-walking-street', 'design'),
-  ('ecstatic-dance', 'music-jamming'),
+  ('ecstatic-dance', 'music'),
   ('skate-create', 'design'),
   ('art-craft-circle', 'design'),
   ('sketch-club', 'design'),
   ('eco-printing-bua-bhat', 'design'),
-  ('sunday-brunch', 'english-conversation'),
-  ('new-in-town', 'english-conversation'),
-  ('questions-family', 'english-conversation'),
-  ('life-happened', 'english-conversation'),
-  ('be-real', 'english-conversation')
+  ('sunday-brunch', 'english'),
+  ('new-in-town', 'english'),
+  ('questions-family', 'english'),
+  ('life-happened', 'english'),
+  ('be-real', 'english')
 ) as v(external_id, tag_id)
 join events e on e.source = 'seed' and e.external_id = v.external_id
 on conflict do nothing;
