@@ -1,5 +1,52 @@
 {
-  "_note": "NON-AUTHORITATIVE merged list from role 5 (Marc): the 85-tag taxonomy on the tags/full-taxonomy branch combined with this draft, with duplicates and near-duplicates folded together. Where both lists had the concept, the branch's id is kept. core marks the branch's Core tags. category, emoji, typical_giver and core are not contract fields. Thai labels still need a native check.",
+  "_note": "The single upstream tag taxonomy: 85 tags, merged by role 5 (Marc) from the 85-row reference table and the 56-id draft, with duplicates folded together. scripts/seed/migrate-to-draft-taxonomy.py writes scripts/seed/tags/tags.json from it, and scripts/seed/build_sql.py generates reference/tag-taxonomy.md from it and fails if any seed id does not resolve. Edit tags here, never in those derived files. category, emoji, typical_giver and core are not contract fields and stay out of tags.json. Thai labels, including the dancing and students category labels, still need a native speaker's check.",
+  "categories": [
+    {
+      "id": "language",
+      "label_en": "Language",
+      "label_th": "ภาษา"
+    },
+    {
+      "id": "food",
+      "label_en": "Food and drink",
+      "label_th": "อาหารและเครื่องดื่ม"
+    },
+    {
+      "id": "sport-outdoors",
+      "label_en": "Sport and outdoors",
+      "label_th": "กีฬาและกิจกรรมกลางแจ้ง"
+    },
+    {
+      "id": "arts-crafts-music",
+      "label_en": "Arts, crafts and music",
+      "label_th": "ศิลปะ งานฝีมือ และดนตรี"
+    },
+    {
+      "id": "dancing",
+      "label_en": "Dancing",
+      "label_th": "การเต้นรำ"
+    },
+    {
+      "id": "culture",
+      "label_en": "Culture and everyday life",
+      "label_th": "วัฒนธรรมและชีวิตประจำวัน"
+    },
+    {
+      "id": "living-in-thailand",
+      "label_en": "Getting things done in Thailand",
+      "label_th": "ใช้ชีวิตในเมืองไทย"
+    },
+    {
+      "id": "business-digital",
+      "label_en": "Business and digital",
+      "label_th": "ธุรกิจและดิจิทัล"
+    },
+    {
+      "id": "students",
+      "label_en": "Students",
+      "label_th": "นักศึกษา"
+    }
+  ],
   "tags": [
     {
       "id": "thai-language",
