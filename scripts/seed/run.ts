@@ -58,7 +58,7 @@ const core = (await readJson("./tags/tags.json") as {
 }).tags;
 const coreIds = new Set(core.map((t) => t.id));
 
-const draft = (await readJson("../../../docs/drafts/tag-taxonomy-proposal.json") as {
+const draft = (await readJson("../../docs/drafts/tag-taxonomy-proposal.json") as {
   tags: Array<{ id: string; label_en: string; label_th: string; sort_order: number }>;
 }).tags;
 const draftById = new Map(draft.map((t) => [t.id, t]));
