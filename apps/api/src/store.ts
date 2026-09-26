@@ -361,6 +361,17 @@ export async function browse(viewerId: string, cursor: string | null): Promise<P
        and p.user_id not in (
          select blocked_id as uid from blocks where blocker_id = $1
          union select blocker_id as uid from blocks where blocked_id = $1
+       )
+       -- Someone already matched with you, or waiting on a request either way, is not a
+       -- candidate again: the deck must never offer a match you already have. A declined
+       -- request is deliberately absent from this list, so that person can come back.
+       and p.user_id not in (
+         select case when m.a_user = $1 then m.b_user else m.a_user end
+         from matches m where $1 in (m.a_user, m.b_user)
+         union
+         select case when r.from_user = $1 then r.to_user else r.from_user end
+         from match_requests r
+         where r.status = 'pending' and $1 in (r.from_user, r.to_user)
        )`,
     [viewerId, viewer.community]);
   if (!rows.length) return { items: [], nextCursor: null };
@@ -444,8 +455,9 @@ export async function sendRequest(
   if (input.toUserId === from) throw httpError("invalid", "you cannot ask yourself");
 
   const rel = await relationship(from, input.toUserId);
-  if (rel.kind === "matched") throw httpError("conflict", "you are already matched");
-  if (rel.kind === "requestSent") throw httpError("conflict", "you already asked them");
+  if (rel.kind === "matched") throw httpError("already_matched", "you are already matched");
+  if (rel.kind === "requestSent") throw httpError("already_asked", "you already asked them");
+  if (rel.kind === "requestReceived") throw httpError("already_asked", "they already asked you");
 
   const created = await one<{ id: string }>(
     `insert into match_requests (from_user, to_user, event_id, note) values ($1,$2,$3,$4) returning id`,
