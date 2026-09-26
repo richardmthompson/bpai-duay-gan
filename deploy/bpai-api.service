@@ -17,8 +17,9 @@ Environment=PORT=4000
 ExecStart=/usr/bin/node apps/api/src/server.ts
 Restart=always
 RestartSec=2
-# Shortcut, knowingly taken: this runs as root on a disposable hackathon box. Everything the app
-# touches is read-only except Postgres, but do not copy this to anything that outlives the weekend.
+# Shortcut, knowingly taken: this runs as root on a disposable hackathon box. All the app
+# writes is Postgres and the profile-photo folder ($UPLOAD_DIR, default /var/lib/bpai/uploads),
+# but do not copy this to anything that outlives the weekend.
 User=root
 NoNewPrivileges=true
 PrivateTmp=true

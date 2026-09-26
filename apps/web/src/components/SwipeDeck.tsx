@@ -7,7 +7,7 @@ import type { Candidate, PublicProfile } from "@/lib/contract";
 import { api } from "@/lib/api";
 import { RequestForm } from "./RequestForm";
 import { useApp } from "./AppProvider";
-import { cx, CommunityBadge, eventTitle, formatWhen, Sheet, TagChip } from "./ui";
+import { cx, CommunityBadge, eventTitle, formatWhen, mediaUrl, Sheet, TagChip } from "./ui";
 
 const SWIPE_PX = 80;
 const MAX_TILT = 12;
@@ -310,7 +310,7 @@ function CardBody({
       <div className="relative h-[40%] w-full shrink-0 bg-surface-2" style={{ touchAction: "none" }}>
         {c.avatarUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={c.avatarUrl} alt="" className="h-full w-full object-cover" draggable={false} />
+          <img src={mediaUrl(c.avatarUrl)} alt="" className="h-full w-full object-cover" draggable={false} />
         ) : (
           <div className="grid h-full place-items-center text-6xl font-semibold text-muted">{initials}</div>
         )}

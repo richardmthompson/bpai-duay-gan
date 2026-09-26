@@ -266,6 +266,20 @@ export async function putMe(userId: string, update: Record<string, unknown>): Pr
   return me;
 }
 
+/**
+ * Sets (or with null, clears) the profile photo and returns the url it replaced, read under a row
+ * lock so two quick uploads cannot both see the same "previous" and leave one file orphaned.
+ * PUT /me ignores null fields, so this is the only way avatar_url goes back to empty.
+ */
+export async function setAvatarUrl(userId: string, url: string | null): Promise<string | null> {
+  return tx(async (c) => {
+    const { rows } = await c.query("select avatar_url from profiles where user_id = $1 for update", [userId]);
+    if (!rows.length) throw httpError("not_found", "finish your profile before adding a photo");
+    await c.query("update profiles set avatar_url = $2 where user_id = $1", [userId, url]);
+    return (rows[0] as { avatar_url: string | null }).avatar_url;
+  });
+}
+
 export async function putMyTags(userId: string, sel: { give: string[]; learn: string[] }): Promise<Me> {
   const wanted = [...new Set([...sel.give, ...sel.learn])];
   if (wanted.length) {

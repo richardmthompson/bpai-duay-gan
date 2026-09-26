@@ -1,14 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useApp } from "@/components/AppProvider";
 import { GenderPicker } from "@/components/GenderPicker";
 import { LangToggle } from "@/components/LangToggle";
 import { TagPicker } from "@/components/TagPicker";
 import { Avatar, Button, CommunityBadge, PageHeader, TagChip } from "@/components/ui";
-import { api } from "@/lib/api";
+import { api, ApiError } from "@/lib/api";
 import { mockControls } from "@/lib/api/mock";
+import { PhotoDecodeError, resizePhoto } from "@/lib/photo";
 import { clearSession } from "@/lib/session";
 import type { Gender, Lang } from "@/lib/contract";
 
@@ -36,13 +37,7 @@ export default function MePage() {
     <>
       <PageHeader title={t.me.title} />
       <div className="flex flex-col gap-6 p-4">
-        <div className="flex items-center gap-4">
-          <Avatar name={me.displayName} community={me.community} url={me.avatarUrl} size={64} />
-          <div>
-            <p className="text-xl font-semibold">{me.displayName}</p>
-            {me.community && <CommunityBadge community={me.community} />}
-          </div>
-        </div>
+        <ProfileHeader />
 
         {editing ? (
           <EditProfile onDone={() => setEditing(false)} />
@@ -90,6 +85,136 @@ export default function MePage() {
         )}
       </div>
     </>
+  );
+}
+
+type PhotoPhase = "idle" | "preparing" | "uploading" | "removing";
+
+/** Name, community and the photo, which is tappable to add or change it. */
+function ProfileHeader() {
+  const { t, me, setMe } = useApp();
+  const input = useRef<HTMLInputElement>(null);
+  const [phase, setPhase] = useState<PhotoPhase>("idle");
+  const [progress, setProgress] = useState(0);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  if (!me) return null;
+  const busy = phase !== "idle";
+  const hasPhoto = Boolean(me.avatarUrl);
+
+  async function onPick(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = ""; // so picking the same file again still fires a change
+    if (!file) return;
+    setError(null);
+    setPhase("preparing");
+    let image: Blob;
+    try {
+      image = await resizePhoto(file);
+    } catch (err) {
+      setError(err instanceof PhotoDecodeError ? t.me.photoNotImage : t.me.photoUploadFailed);
+      setPhase("idle");
+      return;
+    }
+    const local = URL.createObjectURL(image);
+    setPreview(local);
+    setProgress(0);
+    setPhase("uploading");
+    try {
+      setMe(await api.uploadAvatar(image, setProgress));
+    } catch (err) {
+      const status = err instanceof ApiError ? err.status : 0;
+      setError(status === 415 ? t.me.photoNotImage : status === 413 ? t.me.photoTooLarge : t.me.photoUploadFailed);
+    } finally {
+      setPreview(null);
+      URL.revokeObjectURL(local);
+      setPhase("idle");
+    }
+  }
+
+  async function remove() {
+    setError(null);
+    setPhase("removing");
+    try {
+      setMe(await api.removeAvatar());
+    } catch {
+      setError(t.me.photoRemoveFailed);
+    } finally {
+      setPhase("idle");
+    }
+  }
+
+  const percent = Math.round(progress * 100);
+  const status =
+    phase === "preparing" ? t.me.photoPreparing
+    : phase === "uploading" ? t.me.photoUploading(percent)
+    : phase === "removing" ? t.me.photoRemoving
+    : null;
+
+  return (
+    <div className="flex flex-col gap-3">
+      <div className="flex items-center gap-4">
+        <button
+          type="button"
+          onClick={() => input.current?.click()}
+          disabled={busy}
+          aria-label={hasPhoto ? t.me.changePhoto : t.me.addPhoto}
+          className="relative shrink-0 rounded-full border-2 border-line bg-surface shadow-hard-sm transition active:scale-95 disabled:active:scale-100"
+        >
+          <Avatar name={me.displayName} community={me.community} url={preview ?? me.avatarUrl} size={76} />
+          {busy && <span aria-hidden className="absolute inset-0 rounded-full bg-ink/40" />}
+          <span
+            aria-hidden
+            className="absolute -bottom-1 -right-1 grid h-8 w-8 place-items-center rounded-full border-2 border-line bg-brand text-brand-ink"
+          >
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 8h3l2-3h6l2 3h3v11H4z" />
+              <circle cx="12" cy="13" r="3.5" />
+            </svg>
+          </span>
+        </button>
+        <div className="flex min-w-0 flex-col items-start gap-2">
+          <p className="max-w-full truncate text-xl font-semibold">{me.displayName}</p>
+          {me.community && <CommunityBadge community={me.community} />}
+        </div>
+      </div>
+
+      {/* Any image type, so phones offer the camera and the photo library; the resize decides what is readable. */}
+      <input ref={input} type="file" accept="image/*" className="hidden" onChange={onPick} />
+
+      <div className="flex flex-wrap gap-2">
+        <Button variant="secondary" className="min-h-10 px-3 text-sm" onClick={() => input.current?.click()} disabled={busy}>
+          {hasPhoto ? t.me.changePhoto : t.me.addPhoto}
+        </Button>
+        {hasPhoto && (
+          <Button variant="danger" className="min-h-10 px-3 text-sm" onClick={remove} disabled={busy}>
+            {t.me.removePhoto}
+          </Button>
+        )}
+      </div>
+
+      {status && (
+        <div role="status" className="flex flex-col gap-1.5">
+          <p className="text-sm font-medium">{status}</p>
+          {phase === "uploading" && (
+            <div
+              role="progressbar"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={percent}
+              className="h-3 overflow-hidden rounded-full border-2 border-line bg-surface"
+            >
+              <div className="h-full bg-brand transition-[width]" style={{ width: `${percent}%` }} />
+            </div>
+          )}
+        </div>
+      )}
+      {error && (
+        <p role="alert" className="rounded-xl border-2 border-line bg-surface px-3 py-2 text-sm font-medium text-danger shadow-hard-sm">
+          {error}
+        </p>
+      )}
+    </div>
   );
 }
 

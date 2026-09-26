@@ -13,6 +13,7 @@ everything is apt packages and systemd on the host.
 | Proxy | Caddy 2.6.2, TLS automatic |
 | Code | `/srv/bpai` (clone of `github.com/richardmthompson/bpai-duay-gan`) |
 | Secrets | `/srv/bpai/.env`, chmod 600 |
+| Uploads | `/var/lib/bpai/uploads` (profile photos), outside the checkout; `UPLOAD_DIR` in `.env` |
 | Service | `bpai-api` (systemd), `curl localhost:4000/v1/health` |
 
 `apache2` shipped with the image, held port 80, and is now disabled. If anything ever reinstalls
@@ -54,9 +55,30 @@ psql "$DATABASE_URL" -f scripts/seed/tags/tags.sql
 psql "$DATABASE_URL" -f scripts/seed/events/events.sql
 node scripts/seed/run.ts                              # demo people, after the events they attend
 
+install -d -m 755 /var/lib/bpai/uploads/avatars && echo 'UPLOAD_DIR=/var/lib/bpai/uploads' >> .env   # profile photos
 cp deploy/bpai-api.service /etc/systemd/system/ && systemctl daemon-reload && systemctl enable --now bpai-api
 cp deploy/Caddyfile /etc/caddy/Caddyfile && caddy validate --config /etc/caddy/Caddyfile && systemctl reload caddy
 ```
+
+## Profile photos: one-time setup
+
+People's profile photos (issue #24) are files, not database rows. The api writes them to
+`$UPLOAD_DIR/avatars/` and serves them back at `/v1/media/avatars/<file>`, which Caddy already
+sends to the api. The folder must sit **outside `/srv/bpai`**: `deploy.sh` pulls that checkout, and
+uploads inside it would show up as untracked files in the clone. `bpai-api` runs as `root` (see
+`deploy/bpai-api.service`), so root must be able to write the folder.
+
+```bash
+install -d -m 755 -o root -g root /var/lib/bpai/uploads/avatars   # the api also creates avatars/ if missing
+grep -q '^UPLOAD_DIR=' /srv/bpai/.env || echo 'UPLOAD_DIR=/var/lib/bpai/uploads' >> /srv/bpai/.env
+systemctl restart bpai-api
+```
+
+Check it after a test upload from the Me screen: `ls -l /var/lib/bpai/uploads/avatars` shows one
+`<user id>-<random>.jpg` per person with a photo. Without `UPLOAD_DIR` the api falls back to the
+same `/var/lib/bpai/uploads`, so the variable matters only if the folder moves. If the service is
+ever moved off root, `chown -R` the folder to that user. The folder is not in git or Postgres, so
+include it in any backup of the box.
 
 ## DNS
 

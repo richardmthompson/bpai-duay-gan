@@ -2,16 +2,17 @@
  * /v1 — the paths and shapes the web app calls (apps/web/src/lib/api/http.ts). Errors are flat
  * `{code, message}`; the client reads them at the top level, not nested.
  */
-import { Router } from "express";
+import express, { Router } from "express";
 import type { Request, Response, NextFunction } from "express";
 import { bearer, mintToken, verifyToken } from "./auth.ts";
+import * as avatars from "./avatars.ts";
 import { sendMagicLink } from "./mailer.ts";
 import * as store from "./store.ts";
 import { deliverMessage, notifyUser } from "./realtime.ts";
 
 const STATUS: Record<string, number> = {
   unauthorized: 401, forbidden: 403, not_found: 404, conflict: 409, invalid: 422,
-  already_matched: 409, already_asked: 409,
+  already_matched: 409, already_asked: 409, too_large: 413, unsupported_media: 415,
   rate_limited: 429, internal: 500,
 };
 
@@ -105,6 +106,57 @@ router.put("/me", requireAuth, async (req, res) => {
   try {
     res.json(await store.putMe((req as Authed).userId, req.body ?? {}));
   } catch (e) { fail(res, e); }
+});
+
+// ── Profile photo ────────────────────────────────────────────────────────────────────────────
+// The body is the raw image (the web app sends a JPEG it has already resized to 512px). The
+// Content-Type only decides whether the body is read at all; the bytes decide what it is.
+
+const readImage = express.raw({ type: avatars.AVATAR_TYPES, limit: avatars.AVATAR_MAX_BYTES });
+
+/** express.raw, but its errors come back in the {code, message} shape instead of an HTML page. */
+function imageBody(req: Request, res: Response, next: NextFunction): void {
+  readImage(req, res, (err?: unknown) => {
+    if (!err) { next(); return; }
+    const tooBig = (err as { type?: string }).type === "entity.too.large";
+    res.status(tooBig ? 413 : 400).json(tooBig
+      ? { code: "too_large", message: "photos must be 2 MB or smaller" }
+      : { code: "invalid", message: "could not read the upload" });
+  });
+}
+
+router.put("/me/avatar", requireAuth, imageBody, async (req, res) => {
+  try {
+    const userId = (req as Authed).userId;
+    if (!Buffer.isBuffer(req.body) || req.body.length === 0) {
+      res.status(415).json({ code: "unsupported_media", message: "send a JPEG, PNG or WebP image" });
+      return;
+    }
+    await avatars.replaceAvatar(userId, req.body, (url) => store.setAvatarUrl(userId, url));
+    res.json(await store.getMe(userId));
+  } catch (e) { fail(res, e); }
+});
+
+router.delete("/me/avatar", requireAuth, async (req, res) => {
+  try {
+    const userId = (req as Authed).userId;
+    await avatars.clearAvatar(userId, (url) => store.setAvatarUrl(userId, url));
+    res.json(await store.getMe(userId));
+  } catch (e) { fail(res, e); }
+});
+
+// Public, like any <img>: the name carries 128 random bits and a file never changes once written
+// (a new photo is a new name), so it can be cached for a year.
+router.get("/media/avatars/:file", (req, res) => {
+  const file = avatars.avatarFilePath(req.params.file);
+  if (!file) { res.status(404).json({ code: "not_found", message: "no such photo" }); return; }
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("Cache-Control", "public, max-age=31536000, immutable"); // sendFile keeps a set header
+  res.sendFile(file, (err) => {
+    if (!err || res.headersSent) return;
+    res.removeHeader("Cache-Control"); // a missing photo must not be cached for a year
+    res.status(404).json({ code: "not_found", message: "no such photo" });
+  });
 });
 
 router.put("/me/tags", requireAuth, async (req, res) => {

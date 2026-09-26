@@ -36,6 +36,15 @@ export function formatTime(iso: string, lang: Lang) {
   }).format(new Date(iso));
 }
 
+/**
+ * Photos uploaded through the api are stored as a path, "/v1/media/avatars/…". In production the
+ * web app and api share an origin, so the path works as is; this also covers an api on another
+ * origin in development. Google, seed and mock (data:) urls pass through untouched.
+ */
+export function mediaUrl(url: string) {
+  return url.startsWith("/v1/") ? `${process.env.NEXT_PUBLIC_API_BASE ?? ""}${url}` : url;
+}
+
 // ---- pieces ----
 
 export function Avatar({
@@ -53,7 +62,7 @@ export function Avatar({
   const tone = community === "local" ? "bg-local-soft text-local" : "bg-foreigner-soft text-foreigner";
   if (url) {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={url} alt="" width={size} height={size} className="rounded-full object-cover shrink-0" style={{ width: size, height: size }} />;
+    return <img src={mediaUrl(url)} alt="" width={size} height={size} className="rounded-full object-cover shrink-0" style={{ width: size, height: size }} />;
   }
   return (
     <div

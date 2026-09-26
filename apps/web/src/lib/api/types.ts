@@ -24,6 +24,12 @@ export interface Api {
   getMe(): Promise<Me | null>;
   putMe(update: ProfileUpdate): Promise<Me>;
   putMyTags(sel: { give: string[]; learn: string[] }): Promise<Me>;
+  /**
+   * Replaces the profile photo with an image the caller has already resized (see lib/photo.ts).
+   * `onProgress` gets the fraction sent, 0 to 1. Rejects with ApiError 415 when it is not an image.
+   */
+  uploadAvatar(image: Blob, onProgress?: (fraction: number) => void): Promise<Me>;
+  removeAvatar(): Promise<Me>;
 
   browse(cursor?: string | null): Promise<Page<Candidate>>;
   getUser(userId: string): Promise<PublicProfile>;
