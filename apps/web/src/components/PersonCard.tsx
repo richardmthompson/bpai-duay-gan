@@ -23,6 +23,12 @@ export function PersonCard({ c }: { c: Candidate }) {
 
       {hasReason ? (
         <div className="mt-3 flex flex-col gap-2 text-sm">
+          {c.sharedEvents.map((e) => (
+            <p key={e.id} className="rounded-xl bg-surface-2 px-3 py-2">
+              <span aria-hidden>📅 </span>
+              {t.browse.bothGoing}: <span className="font-medium">{eventTitle(e, lang)}</span>
+            </p>
+          ))}
           {theyGive.length > 0 && (
             <Reason label={t.browse.canTeachYou}>
               {theyGive.map((m) => (
@@ -37,12 +43,6 @@ export function PersonCard({ c }: { c: Candidate }) {
               ))}
             </Reason>
           )}
-          {c.sharedEvents.map((e) => (
-            <p key={e.id} className="rounded-xl bg-surface-2 px-3 py-2">
-              <span aria-hidden>📅 </span>
-              {t.browse.bothGoing}: <span className="font-medium">{eventTitle(e, lang)}</span>
-            </p>
-          ))}
         </div>
       ) : (
         c.give.length > 0 && (

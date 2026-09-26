@@ -46,15 +46,15 @@ export default function Person() {
           <section className="rounded-2xl bg-brand-soft p-4">
             <h2 className="mb-2 font-semibold text-brand">{t.profile.whyMatch}</h2>
             <ul className="flex flex-col gap-1 text-sm">
+              {u.sharedEvents.map((e) => (
+                <li key={e.id}>
+                  {t.browse.bothGoing}: <span className="font-medium">{eventTitle(e, lang)}</span>
+                </li>
+              ))}
               {u.matchedTags.map((m) => (
                 <li key={`${m.side}-${m.tagId}`}>
                   {m.side === "theyGive" ? t.browse.canTeachYou : t.browse.wantsToLearn}:{" "}
                   <span className="font-medium">{tagLabel(m.tagId)}</span>
-                </li>
-              ))}
-              {u.sharedEvents.map((e) => (
-                <li key={e.id}>
-                  {t.browse.bothGoing}: <span className="font-medium">{eventTitle(e, lang)}</span>
                 </li>
               ))}
             </ul>
