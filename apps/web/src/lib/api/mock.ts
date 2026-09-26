@@ -23,7 +23,8 @@ import type {
 import { ApiError, type Api, type Realtime, type SocketStatus } from "./types";
 
 // Same shape as the weights constant the contract puts in apps/api.
-const WEIGHTS = { tag: 10, sharedEvent: 5 };
+// A shared event outranks any number of matched tags (issue #3); the score is display-only.
+const WEIGHTS = { sharedEvent: 100, tag: 10 };
 
 interface MockUser extends Me {
   createdAt: string;
@@ -216,7 +217,7 @@ function candidate(s: State, me: MockUser, other: MockUser): Candidate {
     .filter((e): e is EventSummary => e !== null);
   return {
     ...summary(other),
-    score: matchedTags.length * WEIGHTS.tag + sharedEvents.length * WEIGHTS.sharedEvent,
+    score: sharedEvents.length * WEIGHTS.sharedEvent + matchedTags.length * WEIGHTS.tag,
     interestsText: other.interestsText,
     give: other.give,
     learn: other.learn,
@@ -480,7 +481,12 @@ export const mockApi: Api = {
           !blockedEitherWay(s, me.userId, u.userId),
       )
       .map((u) => ({ c: candidate(s, me, u), createdAt: u.createdAt }))
-      .sort((a, b) => b.c.score - a.c.score || b.createdAt.localeCompare(a.createdAt))
+      .sort(
+        (a, b) =>
+          b.c.sharedEvents.length - a.c.sharedEvents.length ||
+          b.c.matchedTags.length - a.c.matchedTags.length ||
+          b.createdAt.localeCompare(a.createdAt),
+      )
       .map((x) => x.c);
     return { items, nextCursor: null };
   },
