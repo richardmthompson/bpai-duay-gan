@@ -26,6 +26,13 @@ curl -fsS localhost:4000/v1/health && echo "  api ok"
 
 # The web app builds in http mode: with an empty NEXT_PUBLIC_API_BASE it silently runs its mock
 # backend instead of talking to the api, which looks like a working app with fake data.
+# The roster portraits live with the seed data; the web app serves them from its own public/.
+# They are not tracked under apps/web, so a fresh checkout (or a `git clean`) leaves every face
+# 404ing unless they are copied in here.
+echo "==> portraits for the web app"
+mkdir -p apps/web/public/portraits
+cp -f scripts/seed/demo-people/portraits/*.jpg apps/web/public/portraits/ 2>/dev/null || true
+
 echo "==> build web (http mode)"
 cd apps/web
 NEXT_PUBLIC_API_BASE="${PUBLIC_BASE_URL:-https://bpai.drdos.shivamsaluja.com}" \
