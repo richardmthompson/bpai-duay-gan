@@ -13,7 +13,7 @@ supersedes: /root/DESIGN-BRIEF-bpai-duay-gan.md.md (Richard's /grill-me brief)
 > - **No Docker** (`d94ca02`): the box runs apt packages and systemd. See `deploy/README.md`.
 > - Auth.js is not used; sign-in is a small magic-link flow plus a guarded one-click login for the
 >   seeded cast. See `CONTRACT.md`.
-> - Ranking is tag-overlap first with shared events second, computed in `apps/api/src/store.ts`.
+> - Ranking puts shared events first, then tag overlap, computed in `apps/api/src/store.ts` (issue #3).
 >   That order is the one §7 was corrected to; the seed data settles it.
 > - Translation also returns a **cultural note** per message, which the chat UI renders as its own
 >   card. That is Challenge 01's "cultural confidence" idea, made visible.
