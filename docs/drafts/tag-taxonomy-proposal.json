@@ -1,0 +1,356 @@
+{
+  "_note": "NON-AUTHORITATIVE SUGGESTION from role 5 (Marc) for the team. The real taxonomy is Richard's tag-taxonomy.md (12 tags), seeded by Lutz. This is a larger 39-tag list in the contract's tags shape, for use if the team wants more coverage later. category and typical_giver are not contract fields. Thai labels still need a native check.",
+  "tags": [
+    {
+      "id": "english-conversation",
+      "label_en": "English conversation",
+      "label_th": "สนทนาภาษาอังกฤษ",
+      "sort_order": 10,
+      "category": "language",
+      "emoji": "💬",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "thai-basics",
+      "label_en": "Thai basics",
+      "label_th": "ภาษาไทยเบื้องต้น",
+      "sort_order": 20,
+      "category": "language",
+      "emoji": "🇹🇭",
+      "typical_giver": "local"
+    },
+    {
+      "id": "kham-mueang",
+      "label_en": "Kham Mueang (northern Thai)",
+      "label_th": "คำเมือง",
+      "sort_order": 30,
+      "category": "language",
+      "emoji": "🗣️",
+      "typical_giver": "local"
+    },
+    {
+      "id": "thai-reading-writing",
+      "label_en": "Reading & writing Thai",
+      "label_th": "อ่านเขียนภาษาไทย",
+      "sort_order": 40,
+      "category": "language",
+      "emoji": "✍️",
+      "typical_giver": "local"
+    },
+    {
+      "id": "chinese-conversation",
+      "label_en": "Chinese conversation",
+      "label_th": "สนทนาภาษาจีน",
+      "sort_order": 50,
+      "category": "language",
+      "emoji": "🀄",
+      "typical_giver": "either"
+    },
+    {
+      "id": "other-languages",
+      "label_en": "Other languages",
+      "label_th": "ภาษาอื่น ๆ",
+      "sort_order": 60,
+      "category": "language",
+      "emoji": "🌍",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "northern-thai-cooking",
+      "label_en": "Northern Thai cooking",
+      "label_th": "ทำอาหารเหนือ",
+      "sort_order": 70,
+      "category": "food",
+      "emoji": "🍜",
+      "typical_giver": "local"
+    },
+    {
+      "id": "market-shopping",
+      "label_en": "Market shopping",
+      "label_th": "เดินตลาดสด",
+      "sort_order": 80,
+      "category": "food",
+      "emoji": "🧺",
+      "typical_giver": "local"
+    },
+    {
+      "id": "street-food-spots",
+      "label_en": "Street food spots",
+      "label_th": "ร้านอร่อยริมทาง",
+      "sort_order": 90,
+      "category": "food",
+      "emoji": "🍢",
+      "typical_giver": "local"
+    },
+    {
+      "id": "western-cooking-baking",
+      "label_en": "Western cooking & baking",
+      "label_th": "อาหารฝรั่งและเบเกอรี่",
+      "sort_order": 100,
+      "category": "food",
+      "emoji": "🥐",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "coffee-cafes",
+      "label_en": "Coffee & cafés",
+      "label_th": "กาแฟและคาเฟ่",
+      "sort_order": 110,
+      "category": "food",
+      "emoji": "☕",
+      "typical_giver": "either"
+    },
+    {
+      "id": "vegan-food",
+      "label_en": "Vegetarian & vegan",
+      "label_th": "อาหารมังสวิรัติ/วีแกน",
+      "sort_order": 120,
+      "category": "food",
+      "emoji": "🥗",
+      "typical_giver": "either"
+    },
+    {
+      "id": "visa-immigration",
+      "label_en": "Visa & 90-day report",
+      "label_th": "วีซ่า/รายงานตัว 90 วัน",
+      "sort_order": 130,
+      "category": "city-life",
+      "emoji": "🛂",
+      "typical_giver": "local"
+    },
+    {
+      "id": "renting-housing",
+      "label_en": "Renting a place",
+      "label_th": "เช่าบ้าน/ห้อง",
+      "sort_order": 140,
+      "category": "city-life",
+      "emoji": "🏠",
+      "typical_giver": "local"
+    },
+    {
+      "id": "scooter-driving-license",
+      "label_en": "Scooter & driving license",
+      "label_th": "มอไซค์และใบขับขี่",
+      "sort_order": 150,
+      "category": "city-life",
+      "emoji": "🛵",
+      "typical_giver": "local"
+    },
+    {
+      "id": "healthcare-clinics",
+      "label_en": "Doctors & clinics",
+      "label_th": "หาหมอ/คลินิก",
+      "sort_order": 160,
+      "category": "city-life",
+      "emoji": "🏥",
+      "typical_giver": "local"
+    },
+    {
+      "id": "banking-sim",
+      "label_en": "Bank account & SIM",
+      "label_th": "เปิดบัญชี/ซิมการ์ด",
+      "sort_order": 170,
+      "category": "city-life",
+      "emoji": "🏦",
+      "typical_giver": "local"
+    },
+    {
+      "id": "getting-around",
+      "label_en": "Getting around",
+      "label_th": "เดินทางในเมือง",
+      "sort_order": 180,
+      "category": "city-life",
+      "emoji": "🚌",
+      "typical_giver": "local"
+    },
+    {
+      "id": "web-tech",
+      "label_en": "Web & tech",
+      "label_th": "เว็บและไอที",
+      "sort_order": 190,
+      "category": "work-skills",
+      "emoji": "💻",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "design",
+      "label_en": "Design",
+      "label_th": "งานออกแบบ",
+      "sort_order": 200,
+      "category": "work-skills",
+      "emoji": "🎨",
+      "typical_giver": "either"
+    },
+    {
+      "id": "marketing-social-media",
+      "label_en": "Marketing & social media",
+      "label_th": "การตลาดและโซเชียล",
+      "sort_order": 210,
+      "category": "work-skills",
+      "emoji": "📱",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "google-business-profile",
+      "label_en": "Google Maps shop listing",
+      "label_th": "ลงร้านใน Google Maps",
+      "sort_order": 220,
+      "category": "work-skills",
+      "emoji": "📍",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "english-menu-signs",
+      "label_en": "English menus & signs",
+      "label_th": "เมนู/ป้ายภาษาอังกฤษ",
+      "sort_order": 230,
+      "category": "work-skills",
+      "emoji": "🧾",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "cv-interview-practice",
+      "label_en": "CV & interview practice",
+      "label_th": "เขียน CV/ซ้อมสัมภาษณ์",
+      "sort_order": 240,
+      "category": "work-skills",
+      "emoji": "📄",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "study-abroad-essays",
+      "label_en": "Study abroad & scholarship essays",
+      "label_th": "เรียนต่อนอก/เรียงความขอทุน",
+      "sort_order": 250,
+      "category": "work-skills",
+      "emoji": "🎓",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "remote-work-freelancing",
+      "label_en": "Remote work & freelancing",
+      "label_th": "ทำงานออนไลน์/ฟรีแลนซ์",
+      "sort_order": 260,
+      "category": "work-skills",
+      "emoji": "🌐",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "photo-video",
+      "label_en": "Photo & video",
+      "label_th": "ถ่ายรูปและวิดีโอ",
+      "sort_order": 270,
+      "category": "work-skills",
+      "emoji": "📷",
+      "typical_giver": "either"
+    },
+    {
+      "id": "temples-etiquette",
+      "label_en": "Temples & etiquette",
+      "label_th": "วัดและมารยาทไทย",
+      "sort_order": 280,
+      "category": "culture",
+      "emoji": "🛕",
+      "typical_giver": "local"
+    },
+    {
+      "id": "festivals",
+      "label_en": "Festivals (Yi Peng, Loy Krathong)",
+      "label_th": "งานประเพณี (ยี่เป็ง ลอยกระทง)",
+      "sort_order": 290,
+      "category": "culture",
+      "emoji": "🏮",
+      "typical_giver": "local"
+    },
+    {
+      "id": "crafts-textiles",
+      "label_en": "Crafts & textiles",
+      "label_th": "งานฝีมือและผ้าทอ",
+      "sort_order": 300,
+      "category": "culture",
+      "emoji": "🧵",
+      "typical_giver": "local"
+    },
+    {
+      "id": "lanna-history",
+      "label_en": "Lanna history",
+      "label_th": "ประวัติศาสตร์ล้านนา",
+      "sort_order": 310,
+      "category": "culture",
+      "emoji": "🏯",
+      "typical_giver": "local"
+    },
+    {
+      "id": "muay-thai",
+      "label_en": "Muay Thai",
+      "label_th": "มวยไทย",
+      "sort_order": 320,
+      "category": "culture",
+      "emoji": "🥊",
+      "typical_giver": "local"
+    },
+    {
+      "id": "music-jamming",
+      "label_en": "Music & jamming",
+      "label_th": "ดนตรีและแจมเพลง",
+      "sort_order": 330,
+      "category": "culture",
+      "emoji": "🎸",
+      "typical_giver": "either"
+    },
+    {
+      "id": "hiking",
+      "label_en": "Hiking (Doi Suthep & more)",
+      "label_th": "เดินป่า/ขึ้นดอย",
+      "sort_order": 340,
+      "category": "outdoors-wellbeing",
+      "emoji": "🥾",
+      "typical_giver": "either"
+    },
+    {
+      "id": "day-trips-waterfalls",
+      "label_en": "Day trips & waterfalls",
+      "label_th": "เที่ยวน้ำตก/ทริปวันเดียว",
+      "sort_order": 350,
+      "category": "outdoors-wellbeing",
+      "emoji": "🏞️",
+      "typical_giver": "local"
+    },
+    {
+      "id": "cycling",
+      "label_en": "Cycling",
+      "label_th": "ปั่นจักรยาน",
+      "sort_order": 360,
+      "category": "outdoors-wellbeing",
+      "emoji": "🚴",
+      "typical_giver": "either"
+    },
+    {
+      "id": "running",
+      "label_en": "Running",
+      "label_th": "วิ่ง",
+      "sort_order": 370,
+      "category": "outdoors-wellbeing",
+      "emoji": "🏃",
+      "typical_giver": "either"
+    },
+    {
+      "id": "yoga-meditation",
+      "label_en": "Yoga & meditation",
+      "label_th": "โยคะและนั่งสมาธิ",
+      "sort_order": 380,
+      "category": "outdoors-wellbeing",
+      "emoji": "🧘",
+      "typical_giver": "either"
+    },
+    {
+      "id": "farming-permaculture",
+      "label_en": "Farming & permaculture",
+      "label_th": "ทำเกษตร/เพอร์มาคัลเจอร์",
+      "sort_order": 390,
+      "category": "outdoors-wellbeing",
+      "emoji": "🌱",
+      "typical_giver": "local"
+    }
+  ]
+}
