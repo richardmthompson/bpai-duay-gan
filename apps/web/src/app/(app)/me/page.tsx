@@ -8,6 +8,7 @@ import { TagPicker } from "@/components/TagPicker";
 import { Avatar, Button, CommunityBadge, PageHeader, TagChip, cx } from "@/components/ui";
 import { api } from "@/lib/api";
 import { mockControls } from "@/lib/api/mock";
+import { clearSession } from "@/lib/session";
 import type { Lang, Register } from "@/lib/contract";
 
 export default function MePage() {
@@ -24,13 +25,10 @@ export default function MePage() {
 
   async function signOut() {
     api.realtime.disconnect();
-    if (api.mode === "mock") {
-      mockControls.signOut();
-      setMe(null);
-      router.replace("/sign-in");
-    } else {
-      window.location.href = "/api/auth/signout";
-    }
+    if (api.mode === "mock") mockControls.signOut();
+    else clearSession();
+    setMe(null);
+    router.replace("/sign-in");
   }
 
   return (

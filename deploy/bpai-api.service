@@ -1,0 +1,27 @@
+# Install:  cp deploy/bpai-api.service /etc/systemd/system/ && systemctl daemon-reload && systemctl enable --now bpai-api
+# Secrets live in /srv/bpai/.env (chmod 600). The unit never restarts into a missing env file:
+# systemd fails loudly instead, which is what we want on a demo box.
+[Unit]
+Description=Bpai Duay Gan api (HTTP + WebSocket)
+After=network-online.target postgresql.service
+Wants=network-online.target
+Requires=postgresql.service
+
+[Service]
+Type=simple
+WorkingDirectory=/srv/bpai
+EnvironmentFile=/srv/bpai/.env
+# Set here, never in .env: EnvironmentFile overrides Environment=, and both services read the
+# same file — a PORT in there would have the web app fight the api for the same socket.
+Environment=PORT=4000
+ExecStart=/usr/bin/node apps/api/src/server.ts
+Restart=always
+RestartSec=2
+# Shortcut, knowingly taken: this runs as root on a disposable hackathon box. Everything the app
+# touches is read-only except Postgres, but do not copy this to anything that outlives the weekend.
+User=root
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
