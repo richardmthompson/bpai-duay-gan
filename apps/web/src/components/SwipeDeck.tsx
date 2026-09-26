@@ -154,7 +154,7 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
   const firstZero = items.findIndex((c) => c.score === 0);
 
   return (
-    <div className="px-4 pb-4">
+    <div className="px-4 pb-4 pt-3">
       {firstZero >= 0 && index >= firstZero && (
         <p className="mb-2 text-center text-xs font-medium text-muted">— {t.browse.noOverlapDivider} —</p>
       )}

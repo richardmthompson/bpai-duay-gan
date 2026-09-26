@@ -132,7 +132,7 @@ export function Button({
 export function PageHeader({ title, subtitle, back }: { title: string; subtitle?: string; back?: string }) {
   const { t } = useApp();
   return (
-    <header className="sticky top-0 z-10 border-b border-line bg-bg/90 px-4 pb-3 pt-4 backdrop-blur">
+    <header className="sticky top-0 z-10 bg-bg/90 px-4 pb-3 pt-4 backdrop-blur">
       {back && (
         <Link href={back} className="mb-1 inline-block text-sm text-muted">
           ← {t.common.back}
