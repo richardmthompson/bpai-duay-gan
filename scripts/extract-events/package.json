@@ -1,0 +1,14 @@
+{
+  "name": "bpai-duay-gan-extract-events",
+  "private": true,
+  "type": "module",
+  "description": "Event extraction (Slice 14): Meetup -> Thai + English rows -> POST /v1/admin/events/upsert",
+  "scripts": {
+    "meetup": "node meetup.mjs",
+    "meetup:dry": "node meetup.mjs --no-translate --out meetup.out.json",
+    "seed": "node ../seed/events/push.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.128.0"
+  }
+}

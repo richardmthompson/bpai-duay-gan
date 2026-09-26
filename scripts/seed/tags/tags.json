@@ -1,0 +1,77 @@
+{
+  "_note": "The 12 tags the demo profiles use (scripts/seed/profiles tag_slugs). Thai labels need a native speaker's check.",
+  "tags": [
+    {
+      "id": "english",
+      "label_en": "English",
+      "label_th": "ภาษาอังกฤษ",
+      "sort_order": 10
+    },
+    {
+      "id": "thai-language",
+      "label_en": "Thai language",
+      "label_th": "ภาษาไทย",
+      "sort_order": 20
+    },
+    {
+      "id": "cooking",
+      "label_en": "Cooking",
+      "label_th": "ทำอาหาร",
+      "sort_order": 30
+    },
+    {
+      "id": "street-food",
+      "label_en": "Street food",
+      "label_th": "อาหารริมทาง",
+      "sort_order": 40
+    },
+    {
+      "id": "scooter",
+      "label_en": "Riding a scooter",
+      "label_th": "ขี่มอเตอร์ไซค์",
+      "sort_order": 50
+    },
+    {
+      "id": "bureaucracy",
+      "label_en": "Visas & paperwork",
+      "label_th": "วีซ่าและเอกสารราชการ",
+      "sort_order": 60
+    },
+    {
+      "id": "temples",
+      "label_en": "Temples & culture",
+      "label_th": "วัดและวัฒนธรรม",
+      "sort_order": 70
+    },
+    {
+      "id": "muay-thai",
+      "label_en": "Muay Thai",
+      "label_th": "มวยไทย",
+      "sort_order": 80
+    },
+    {
+      "id": "hiking",
+      "label_en": "Hiking",
+      "label_th": "เดินป่า",
+      "sort_order": 90
+    },
+    {
+      "id": "music",
+      "label_en": "Music",
+      "label_th": "ดนตรี",
+      "sort_order": 100
+    },
+    {
+      "id": "tech",
+      "label_en": "Tech & computers",
+      "label_th": "เทคโนโลยีและคอมพิวเตอร์",
+      "sort_order": 110
+    },
+    {
+      "id": "design",
+      "label_en": "Design & crafts",
+      "label_th": "งานออกแบบและงานฝีมือ",
+      "sort_order": 120
+    }
+  ]
+}
