@@ -146,6 +146,26 @@ function sessionUserId(): string | null {
   }
 }
 
+/** The same byte check the api makes: JPEG, PNG or WebP, whatever the Blob's type says. */
+async function isImage(blob: Blob) {
+  const b = new Uint8Array(await blob.slice(0, 12).arrayBuffer());
+  const ascii = (i: number, str: string) => [...str].every((c, j) => b[i + j] === c.charCodeAt(0));
+  return (
+    (b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff) ||
+    (b[0] === 0x89 && ascii(1, "PNG")) ||
+    (ascii(0, "RIFF") && ascii(8, "WEBP"))
+  );
+}
+
+function dataUrl(blob: Blob) {
+  return new Promise<string>((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result as string);
+    r.onerror = () => reject(r.error);
+    r.readAsDataURL(blob);
+  });
+}
+
 // ---- mock-only controls (sign-in screen, demo switcher) ----
 
 export const mockControls = {
@@ -480,6 +500,34 @@ export const mockApi: Api = {
     me.give = [...new Set(give)];
     me.learn = [...new Set(learn)];
     me.onboardingComplete = !!(me.community && me.displayName && me.give.length + me.learn.length > 0);
+    save(s);
+    return (await this.getMe())!;
+  },
+
+  async uploadAvatar(image, onProgress) {
+    if (image.size > 2 * 1024 * 1024) throw new ApiError(413, "too_large", "photos must be 2 MB or smaller");
+    if (!(await isImage(image))) throw new ApiError(415, "unsupported_media", "that file is not a JPEG, PNG or WebP image");
+    // A few steps of fake progress so the bar can be seen working without a server.
+    for (const f of [0.25, 0.5, 0.75, 1]) {
+      await sleep(90);
+      onProgress?.(f);
+    }
+    const url = await dataUrl(image);
+    const s = load();
+    const me = requireMe(s);
+    // Stored on the user, so every other tab (browse cards, profile, chats) sees it via summary().
+    me.avatarUrl = url;
+    save(s);
+    // save() swallows a full localStorage; say so rather than pretend the photo stuck.
+    if (load().users[me.userId]?.avatarUrl !== url) throw new ApiError(507, "storage_full", "mock storage is full");
+    return (await this.getMe())!;
+  },
+
+  async removeAvatar() {
+    await latency();
+    const s = load();
+    const me = requireMe(s);
+    me.avatarUrl = null;
     save(s);
     return (await this.getMe())!;
   },

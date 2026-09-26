@@ -38,6 +38,30 @@ async function call<T>(method: string, path: string, body?: unknown): Promise<T>
 
 const enc = encodeURIComponent;
 
+// fetch cannot report upload progress, and on slow mobile data the bar is the only sign of life.
+async function upload<T>(method: string, path: string, body: Blob, onProgress?: (f: number) => void): Promise<T> {
+  const t = await token();
+  return new Promise<T>((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open(method, `${API_BASE}/v1${path}`);
+    xhr.setRequestHeader("Content-Type", body.type || "application/octet-stream");
+    if (t) xhr.setRequestHeader("Authorization", `Bearer ${t}`);
+    xhr.upload.onprogress = (e) => {
+      if (e.lengthComputable) onProgress?.(e.loaded / e.total);
+    };
+    xhr.onload = () => {
+      let data: { code?: string; message?: string } = {};
+      try {
+        data = JSON.parse(xhr.responseText);
+      } catch {}
+      if (xhr.status >= 200 && xhr.status < 300) resolve(data as T);
+      else reject(new ApiError(xhr.status, data.code ?? "error", data.message ?? xhr.statusText));
+    };
+    xhr.onerror = () => reject(new ApiError(0, "network", "Network error"));
+    xhr.send(body);
+  });
+}
+
 // ---- realtime ----
 
 const listeners = new Set<(f: ServerFrame) => void>();
@@ -149,6 +173,8 @@ export const httpApi: Api = {
   },
   putMe: (update) => call("PUT", "/me", update),
   putMyTags: (sel) => call("PUT", "/me/tags", sel),
+  uploadAvatar: (image, onProgress) => upload("PUT", "/me/avatar", image, onProgress),
+  removeAvatar: () => call("DELETE", "/me/avatar"),
   browse: (cursor) => call("GET", `/browse${cursor ? `?cursor=${enc(cursor)}` : ""}`),
   getUser: (id) => call("GET", `/users/${enc(id)}`),
   sendRequest: (input) => call("POST", "/match-requests", input),

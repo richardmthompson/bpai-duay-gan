@@ -31,6 +31,21 @@ thing it must produce is the bearer token above.
 The browser writes the token to the `bpai_token` cookie (so `/api/ws-token` can hand it to the
 socket) and to `localStorage`.
 
+## Profile photo
+
+- `PUT /v1/me/avatar` — body is the raw image, `Content-Type: image/jpeg`, `image/png` or
+  `image/webp`, at most 2 MB. The bytes must be one of those formats (checked by magic bytes, not
+  the header); otherwise `415 unsupported_media`, and over the limit `413 too_large`. Returns the
+  updated `Me`, whose `avatarUrl` is a path, `/v1/media/avatars/<userId>-<32 hex>.<ext>`. The
+  caller's previous upload is deleted; Google and seed image urls are never touched.
+- `DELETE /v1/me/avatar` → the updated `Me` with `avatarUrl: null`, and the uploaded file removed.
+- `GET /v1/media/avatars/:file` — public, `Cache-Control: public, max-age=31536000, immutable`
+  (a new photo always gets a new name). Anything that is not a name the api could have written is 404.
+
+The web app resizes to 512px on the long side and re-encodes as JPEG before upload
+(`apps/web/src/lib/photo.ts`), which also strips EXIF and GPS data. Files live in `$UPLOAD_DIR/avatars`;
+see `deploy/README.md`.
+
 ## Admin ingest
 
 `POST /v1/admin/events/upsert` with header `x-admin-secret: <ADMIN_INGEST_SECRET>` and body
@@ -47,3 +62,4 @@ See [deploy/README.md](deploy/README.md) — apt packages and systemd, no Docker
 | Date | Change |
 |---|---|
 | 2026-09-26 | Replaced the drafted v1 with a pointer to the contract that actually shipped in code. |
+| 2026-09-27 | Profile photo upload, removal and serving (#24). |
