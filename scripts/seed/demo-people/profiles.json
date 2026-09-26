@@ -1,0 +1,2656 @@
+[
+ {
+  "id": "l01",
+  "display_name": "Ploy K.",
+  "community": "local",
+  "gender": "f",
+  "age": 27,
+  "occupation": "Café owner",
+  "occupation_th": "เจ้าของคาเฟ่",
+  "origin": "Thai",
+  "neighborhood": "Chang Phueak",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "เปิดคาเฟ่เล็ก ๆ ใกล้ประตูช้างเผือก ชอบทำอาหารเหนือให้เพื่อนกิน อยากพูดอังกฤษคล่องขึ้นค่ะ",
+  "intro_en": "I run a small café near Chang Phueak Gate and love cooking northern food for friends. I want my English to flow.",
+  "give": [
+   "northern-thai-cooking",
+   "coffee-cafes",
+   "market-shopping"
+  ],
+  "learn": [
+   "english-conversation",
+   "google-business-profile",
+   "english-menu-signs"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 27 years old and works as a café owner, photographed in Chang Phueak, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l01.jpg"
+ },
+ {
+  "id": "l02",
+  "display_name": "Nok S.",
+  "community": "local",
+  "gender": "f",
+  "age": 24,
+  "occupation": "Street food cook",
+  "occupation_th": "แม่ครัวร้านข้าวซอย",
+  "origin": "Thai",
+  "neighborhood": "Wua Lai",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "ช่วยแม่ขายข้าวซอยที่วัวลาย รู้จักร้านอร่อยทั่วเมือง อยากคุยกับลูกค้าต่างชาติรู้เรื่องค่ะ",
+  "intro_en": "I help my mum sell khao soi on Wua Lai and know every good stall in town. I want to chat with foreign customers.",
+  "give": [
+   "street-food-spots",
+   "northern-thai-cooking",
+   "scooter-driving-license"
+  ],
+  "learn": [
+   "english-conversation",
+   "marketing-social-media"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 24 years old and works as a street food cook, photographed in Wua Lai, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l02.jpg"
+ },
+ {
+  "id": "l03",
+  "display_name": "Beam T.",
+  "community": "local",
+  "gender": "m",
+  "age": 21,
+  "occupation": "Computer engineering student, CMU",
+  "occupation_th": "นักศึกษาวิศวกรรมคอมพิวเตอร์ มช.",
+  "origin": "Thai",
+  "neighborhood": "Suthep",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "เรียนวิศวะคอมฯ ปีสาม ชอบเขียนเว็บและเล่นแบดมินตัน อยากได้โจทย์จริงมาทำโปรเจกต์ครับ",
+  "intro_en": "Third-year computer engineering student. I code websites and play badminton, and I'd love a real brief for my project.",
+  "give": [
+   "thai-basics",
+   "campus-sport-lunch",
+   "student-guided-walks"
+  ],
+  "learn": [
+   "web-tech",
+   "real-client-project",
+   "class-project-feedback"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 21 years old and works as a computer engineering student, cmu, photographed in Suthep, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l03.jpg"
+ },
+ {
+  "id": "l04",
+  "display_name": "Fah W.",
+  "community": "local",
+  "gender": "f",
+  "age": 20,
+  "occupation": "Tourism student, Rajabhat",
+  "occupation_th": "นักศึกษาการท่องเที่ยว ราชภัฏเชียงใหม่",
+  "origin": "Thai",
+  "neighborhood": "Chang Phueak",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "เรียนการท่องเที่ยว อยากฝึกเป็นไกด์พาเดินในเมืองเก่า ชอบเต้นคัฟเวอร์เคป๊อปค่ะ",
+  "intro_en": "Tourism student practising to guide walks around the Old City. I also dance K-pop covers.",
+  "give": [
+   "student-guided-walks",
+   "kpop-dance",
+   "temples-etiquette"
+  ],
+  "learn": [
+   "english-conversation",
+   "cv-interview-practice"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 20 years old and works as a tourism student, rajabhat, photographed in Chang Phueak, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l04.jpg"
+ },
+ {
+  "id": "l05",
+  "display_name": "Arm P.",
+  "community": "local",
+  "gender": "m",
+  "age": 33,
+  "occupation": "Muay Thai trainer",
+  "occupation_th": "ครูมวยไทย",
+  "origin": "Thai",
+  "neighborhood": "Hai Ya",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "สอนมวยไทยมาสิบปี มีลูกศิษย์ทั่วโลก อยากเรียนการตลาดออนไลน์ให้ค่ายครับ",
+  "intro_en": "I've taught Muay Thai for ten years with students from everywhere. I want to learn online marketing for my gym.",
+  "give": [
+   "muay-thai",
+   "running",
+   "thai-basics"
+  ],
+  "learn": [
+   "marketing-social-media",
+   "photo-video",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 33 years old and works as a muay thai trainer, photographed in Hai Ya, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l05.jpg"
+ },
+ {
+  "id": "l06",
+  "display_name": "Mali J.",
+  "community": "local",
+  "gender": "f",
+  "age": 45,
+  "occupation": "Weaver",
+  "occupation_th": "ช่างทอผ้า",
+  "origin": "Thai",
+  "neighborhood": "San Kamphaeng",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "ทอผ้าฝ้ายมือที่สันกำแพงเหมือนยาย อยากขายผ้าทางออนไลน์ให้ได้ค่ะ",
+  "intro_en": "I hand-weave cotton in San Kamphaeng like my grandmother did. I want to sell my fabric online.",
+  "give": [
+   "crafts-textiles",
+   "lanna-history",
+   "kham-mueang"
+  ],
+  "learn": [
+   "photo-video",
+   "marketing-social-media",
+   "web-tech"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 45 years old and works as a weaver, photographed in San Kamphaeng, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l06.jpg"
+ },
+ {
+  "id": "l07",
+  "display_name": "Tee C.",
+  "community": "local",
+  "gender": "m",
+  "age": 38,
+  "occupation": "Songthaew driver",
+  "occupation_th": "คนขับรถแดง",
+  "origin": "Thai",
+  "neighborhood": "Warorot",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "ขับรถแดงรอบเมืองทุกวัน รู้ทางลัดทุกซอย อยากฟังภาษาอังกฤษให้เข้าใจครับ",
+  "intro_en": "I drive a red songthaew around town every day and know every shortcut. I want to understand English better.",
+  "give": [
+   "getting-around",
+   "scooter-driving-license",
+   "day-trips-waterfalls"
+  ],
+  "learn": [
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 38 years old and works as a songthaew driver, photographed in Warorot, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l07.jpg"
+ },
+ {
+  "id": "l08",
+  "display_name": "Mint R.",
+  "community": "local",
+  "gender": "f",
+  "age": 29,
+  "occupation": "Nurse",
+  "occupation_th": "พยาบาล",
+  "origin": "Thai",
+  "neighborhood": "Suan Dok",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "เป็นพยาบาลที่โรงพยาบาลสวนดอก ช่วยแนะนำคลินิกได้ อยากเรียนโยคะและเต้นซัลซ่าค่ะ",
+  "intro_en": "Nurse at Suan Dok hospital, happy to point you to the right clinic. I want to learn yoga and salsa.",
+  "give": [
+   "healthcare-clinics",
+   "thai-basics"
+  ],
+  "learn": [
+   "yoga-meditation",
+   "salsa-bachata",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 29 years old and works as a nurse, photographed in Suan Dok, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l08.jpg"
+ },
+ {
+  "id": "l09",
+  "display_name": "Golf N.",
+  "community": "local",
+  "gender": "m",
+  "age": 31,
+  "occupation": "Motorbike mechanic",
+  "occupation_th": "ช่างซ่อมมอไซค์",
+  "origin": "Thai",
+  "neighborhood": "Santitham",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "มีร้านซ่อมมอไซค์ที่สันติธรรม สอนขี่และดูแลรถได้ อยากทำเพจร้านเป็นภาษาอังกฤษครับ",
+  "intro_en": "I run a bike repair shop in Santitham and can teach riding and upkeep. I want an English page for my shop.",
+  "give": [
+   "scooter-driving-license",
+   "getting-around"
+  ],
+  "learn": [
+   "google-business-profile",
+   "english-menu-signs",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 31 years old and works as a motorbike mechanic, photographed in Santitham, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l09.jpg"
+ },
+ {
+  "id": "l10",
+  "display_name": "Noon K.",
+  "community": "local",
+  "gender": "f",
+  "age": 26,
+  "occupation": "Lanna dance teacher",
+  "occupation_th": "ครูสอนฟ้อนล้านนา",
+  "origin": "Thai",
+  "neighborhood": "Old City",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "สอนฟ้อนเล็บและรำวงให้เด็ก ๆ ที่วัด อยากลองเต้นแทงโก้ดูสักครั้งค่ะ",
+  "intro_en": "I teach fingernail dance and ramwong to kids at the temple. I'd love to try tango once.",
+  "give": [
+   "lanna-dance",
+   "ramwong",
+   "festivals"
+  ],
+  "learn": [
+   "tango",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 26 years old and works as a lanna dance teacher, photographed in Old City, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l10.jpg"
+ },
+ {
+  "id": "l11",
+  "display_name": "Pond A.",
+  "community": "local",
+  "gender": "m",
+  "age": 22,
+  "occupation": "Architecture student, CMU",
+  "occupation_th": "นักศึกษาสถาปัตย์ มช.",
+  "origin": "Thai",
+  "neighborhood": "Suthep",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "เรียนสถาปัตย์ ชอบวาดบ้านไม้ล้านนา อยากฝึกพรีเซนต์งานเป็นภาษาอังกฤษครับ",
+  "intro_en": "Architecture student who loves sketching old Lanna wooden houses. I want to present my work in English.",
+  "give": [
+   "lanna-history",
+   "lecture-swap",
+   "hiking"
+  ],
+  "learn": [
+   "class-project-feedback",
+   "study-abroad-essays",
+   "design"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 22 years old and works as a architecture student, cmu, photographed in Suthep, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l11.jpg"
+ },
+ {
+  "id": "l12",
+  "display_name": "Jaa M.",
+  "community": "local",
+  "gender": "f",
+  "age": 35,
+  "occupation": "Pharmacist",
+  "occupation_th": "เภสัชกร",
+  "origin": "Thai",
+  "neighborhood": "Nimman",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "มีร้านขายยาแถวนิมมาน ช่วยเรื่องยาและหาหมอได้ อยากฝึกทำขนมฝรั่งค่ะ",
+  "intro_en": "I own a pharmacy near Nimman and can help with medicines and finding a doctor. I want to bake Western cakes.",
+  "give": [
+   "healthcare-clinics",
+   "banking-sim"
+  ],
+  "learn": [
+   "western-cooking-baking",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 35 years old and works as a pharmacist, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l12.jpg"
+ },
+ {
+  "id": "l13",
+  "display_name": "Bank S.",
+  "community": "local",
+  "gender": "m",
+  "age": 28,
+  "occupation": "Bank officer",
+  "occupation_th": "พนักงานธนาคาร",
+  "origin": "Thai",
+  "neighborhood": "Chang Klan",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "ทำงานธนาคาร รู้ขั้นตอนเปิดบัญชีสำหรับชาวต่างชาติ ชอบปั่นจักรยานวันหยุดครับ",
+  "intro_en": "I work at a bank and know how foreigners open an account. Weekend cyclist.",
+  "give": [
+   "banking-sim",
+   "visa-immigration",
+   "cycling"
+  ],
+  "learn": [
+   "english-conversation",
+   "remote-work-freelancing"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 28 years old and works as a bank officer, photographed in Chang Klan, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l13.jpg"
+ },
+ {
+  "id": "l14",
+  "display_name": "Kwan L.",
+  "community": "local",
+  "gender": "f",
+  "age": 23,
+  "occupation": "Barista",
+  "occupation_th": "บาริสต้า",
+  "origin": "Thai",
+  "neighborhood": "Nimman",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "เป็นบาริสต้าที่นิมมาน ชอบเมล็ดกาแฟจากดอยในเชียงใหม่ อยากเรียนเต้นสวิงค่ะ",
+  "intro_en": "Barista in Nimman, obsessed with beans from Chiang Mai's hills. I want to learn swing dance.",
+  "give": [
+   "coffee-cafes",
+   "street-food-spots"
+  ],
+  "learn": [
+   "swing-dance",
+   "english-conversation",
+   "photo-video"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 23 years old and works as a barista, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l14.jpg"
+ },
+ {
+  "id": "l15",
+  "display_name": "Oat D.",
+  "community": "local",
+  "gender": "m",
+  "age": 30,
+  "occupation": "Tour guide",
+  "occupation_th": "ไกด์นำเที่ยว",
+  "origin": "Thai",
+  "neighborhood": "Tha Phae",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "เป็นไกด์พาเที่ยวดอยและน้ำตก อยากเรียนภาษาจีนเพิ่มครับ",
+  "intro_en": "I guide trips to the mountains and waterfalls. I want to add Chinese.",
+  "give": [
+   "day-trips-waterfalls",
+   "hiking",
+   "temples-etiquette"
+  ],
+  "learn": [
+   "chinese-conversation",
+   "marketing-social-media"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 30 years old and works as a tour guide, photographed in Tha Phae, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l15.jpg"
+ },
+ {
+  "id": "l16",
+  "display_name": "Pim T.",
+  "community": "local",
+  "gender": "f",
+  "age": 19,
+  "occupation": "Nursing student, Payap",
+  "occupation_th": "นักศึกษาพยาบาล พายัพ",
+  "origin": "Thai",
+  "neighborhood": "Mae Kuang",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "เรียนพยาบาลปีหนึ่ง ชอบเต้นฮิปฮอป อยากหาคนแลกเปลี่ยนภาษาในมหาลัยค่ะ",
+  "intro_en": "First-year nursing student who dances hip-hop. Looking for a campus language exchange.",
+  "give": [
+   "hip-hop-dance",
+   "thai-basics",
+   "campus-language-exchange"
+  ],
+  "learn": [
+   "english-conversation",
+   "campus-language-exchange"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 19 years old and works as a nursing student, payap, photographed in Mae Kuang, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l16.jpg"
+ },
+ {
+  "id": "l17",
+  "display_name": "Toon B.",
+  "community": "local",
+  "gender": "m",
+  "age": 41,
+  "occupation": "Organic farmer",
+  "occupation_th": "เกษตรกรอินทรีย์",
+  "origin": "Thai",
+  "neighborhood": "Mae Rim",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "ปลูกผักอินทรีย์ที่แม่ริม ยินดีให้มาช่วยงานไร่ อยากขายผักผ่านเว็บครับ",
+  "intro_en": "I grow organic vegetables in Mae Rim and welcome helpers on the farm. I want to sell online.",
+  "give": [
+   "farming-permaculture",
+   "northern-thai-cooking"
+  ],
+  "learn": [
+   "web-tech",
+   "marketing-social-media"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 41 years old and works as a organic farmer, photographed in Mae Rim, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l17.jpg"
+ },
+ {
+  "id": "l18",
+  "display_name": "Aom P.",
+  "community": "local",
+  "gender": "f",
+  "age": 34,
+  "occupation": "Massage therapist",
+  "occupation_th": "หมอนวดแผนไทย",
+  "origin": "Thai",
+  "neighborhood": "Old City",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "เป็นหมอนวดแผนไทยในเมืองเก่า ชอบนั่งสมาธิ อยากพูดอังกฤษกับลูกค้าได้ดีขึ้นค่ะ",
+  "intro_en": "Thai massage therapist in the Old City who loves meditation. I want better English with clients.",
+  "give": [
+   "yoga-meditation",
+   "temples-etiquette"
+  ],
+  "learn": [
+   "english-conversation",
+   "english-menu-signs"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 34 years old and works as a massage therapist, photographed in Old City, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l18.jpg"
+ },
+ {
+  "id": "l19",
+  "display_name": "Jet K.",
+  "community": "local",
+  "gender": "m",
+  "age": 25,
+  "occupation": "Web developer",
+  "occupation_th": "นักพัฒนาเว็บ",
+  "origin": "Thai",
+  "neighborhood": "Santitham",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "เป็นเว็บดีเวลอปเปอร์ อยากทำงานรีโมตกับบริษัทต่างประเทศครับ",
+  "intro_en": "Web developer who wants to work remotely for companies abroad.",
+  "give": [
+   "thai-basics",
+   "muay-thai"
+  ],
+  "learn": [
+   "remote-work-freelancing",
+   "cv-interview-practice",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 25 years old and works as a web developer, photographed in Santitham, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l19.jpg"
+ },
+ {
+  "id": "l20",
+  "display_name": "Namwan C.",
+  "community": "local",
+  "gender": "f",
+  "age": 22,
+  "occupation": "Fine arts student, CMU",
+  "occupation_th": "นักศึกษาวิจิตรศิลป์ มช.",
+  "origin": "Thai",
+  "neighborhood": "Suthep",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "เรียนวิจิตรศิลป์ วาดรูปวัดล้านนา อยากส่งพอร์ตเรียนต่อต่างประเทศค่ะ",
+  "intro_en": "Fine arts student painting Lanna temples. I want to apply to study abroad.",
+  "give": [
+   "lanna-history",
+   "crafts-textiles",
+   "student-guided-walks"
+  ],
+  "learn": [
+   "study-abroad-essays",
+   "design"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 22 years old and works as a fine arts student, cmu, photographed in Suthep, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l20.jpg"
+ },
+ {
+  "id": "l21",
+  "display_name": "Chai W.",
+  "community": "local",
+  "gender": "m",
+  "age": 52,
+  "occupation": "Noodle shop owner",
+  "occupation_th": "เจ้าของร้านก๋วยเตี๋ยว",
+  "origin": "Thai",
+  "neighborhood": "Chang Phueak",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "ขายก๋วยเตี๋ยวเรือมายี่สิบปี อยากมีเมนูภาษาอังกฤษครับ",
+  "intro_en": "Twenty years selling boat noodles. I'd like an English menu.",
+  "give": [
+   "street-food-spots",
+   "northern-thai-cooking",
+   "kham-mueang"
+  ],
+  "learn": [
+   "english-menu-signs",
+   "google-business-profile"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 52 years old and works as a noodle shop owner, photographed in Chang Phueak, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l21.jpg"
+ },
+ {
+  "id": "l22",
+  "display_name": "Praew S.",
+  "community": "local",
+  "gender": "f",
+  "age": 30,
+  "occupation": "Graphic designer",
+  "occupation_th": "นักออกแบบกราฟิก",
+  "origin": "Thai",
+  "neighborhood": "Nimman",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "ออกแบบโลโก้ให้ร้านในเชียงใหม่ อยากรับงานลูกค้าต่างชาติค่ะ",
+  "intro_en": "I design logos for Chiang Mai shops and want foreign clients.",
+  "give": [
+   "design",
+   "thai-basics",
+   "coffee-cafes"
+  ],
+  "learn": [
+   "remote-work-freelancing",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 30 years old and works as a graphic designer, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l22.jpg"
+ },
+ {
+  "id": "l23",
+  "display_name": "Big N.",
+  "community": "local",
+  "gender": "m",
+  "age": 27,
+  "occupation": "Grab driver",
+  "occupation_th": "คนขับแกร็บ",
+  "origin": "Thai",
+  "neighborhood": "Hang Dong",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "ขับแกร็บทั้งวัน รู้จักทุกย่าน อยากลองเต้นซัลซ่าครับ",
+  "intro_en": "I drive Grab all day and know every neighbourhood. I want to try salsa.",
+  "give": [
+   "getting-around",
+   "street-food-spots"
+  ],
+  "learn": [
+   "salsa-bachata",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 27 years old and works as a grab driver, photographed in Hang Dong, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l23.jpg"
+ },
+ {
+  "id": "l24",
+  "display_name": "Yui R.",
+  "community": "local",
+  "gender": "f",
+  "age": 24,
+  "occupation": "Hotel receptionist",
+  "occupation_th": "พนักงานต้อนรับโรงแรม",
+  "origin": "Thai",
+  "neighborhood": "Night Bazaar",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "ทำงานโรงแรมแถวไนท์บาซาร์ รู้เรื่องเช่าห้องและวีซ่าพอสมควร อยากเรียนเบเกอรี่ค่ะ",
+  "intro_en": "Hotel receptionist near the Night Bazaar who knows a fair bit about renting and visas. I want to learn baking.",
+  "give": [
+   "renting-housing",
+   "visa-immigration",
+   "thai-basics"
+  ],
+  "learn": [
+   "western-cooking-baking",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 24 years old and works as a hotel receptionist, photographed in Night Bazaar, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l24.jpg"
+ },
+ {
+  "id": "l25",
+  "display_name": "Man T.",
+  "community": "local",
+  "gender": "m",
+  "age": 36,
+  "occupation": "Silversmith",
+  "occupation_th": "ช่างเงิน",
+  "origin": "Thai",
+  "neighborhood": "Wua Lai",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "ทำเครื่องเงินที่วัวลายเป็นรุ่นที่สาม อยากถ่ายรูปงานให้สวยขึ้นครับ",
+  "intro_en": "Third-generation silversmith on Wua Lai. I want to photograph my work better.",
+  "give": [
+   "crafts-textiles",
+   "lanna-history"
+  ],
+  "learn": [
+   "photo-video",
+   "marketing-social-media"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 36 years old and works as a silversmith, photographed in Wua Lai, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l25.jpg"
+ },
+ {
+  "id": "l26",
+  "display_name": "Ice P.",
+  "community": "local",
+  "gender": "f",
+  "age": 21,
+  "occupation": "English major, CMU",
+  "occupation_th": "นักศึกษาเอกภาษาอังกฤษ มช.",
+  "origin": "Thai",
+  "neighborhood": "Suthep",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "เรียนเอกอังกฤษ ชอบเต้นเคป๊อป อยากฝึกสัมภาษณ์งานค่ะ",
+  "intro_en": "English major who dances K-pop. I want interview practice.",
+  "give": [
+   "kpop-dance",
+   "campus-sport-lunch",
+   "lecture-swap"
+  ],
+  "learn": [
+   "cv-interview-practice",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 21 years old and works as a english major, cmu, photographed in Suthep, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l26.jpg"
+ },
+ {
+  "id": "l27",
+  "display_name": "Tong A.",
+  "community": "local",
+  "gender": "m",
+  "age": 44,
+  "occupation": "Real estate agent",
+  "occupation_th": "นายหน้าอสังหาฯ",
+  "origin": "Thai",
+  "neighborhood": "Hang Dong",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "ช่วยหาบ้านเช่าและคอนโดให้คนต่างชาติ อยากทำเว็บให้ดูดีครับ",
+  "intro_en": "I find rentals and condos for foreigners. I want a better website.",
+  "give": [
+   "renting-housing",
+   "visa-immigration",
+   "getting-around"
+  ],
+  "learn": [
+   "web-tech",
+   "design"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 44 years old and works as a real estate agent, photographed in Hang Dong, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l27.jpg"
+ },
+ {
+  "id": "l28",
+  "display_name": "Sai M.",
+  "community": "local",
+  "gender": "f",
+  "age": 28,
+  "occupation": "Yoga instructor",
+  "occupation_th": "ครูโยคะ",
+  "origin": "Thai",
+  "neighborhood": "Nimman",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "สอนโยคะที่สตูดิโอเล็ก ๆ อยากลองเต้นบัลเลต์ค่ะ",
+  "intro_en": "Yoga instructor at a small studio. I'd like to try ballet.",
+  "give": [
+   "yoga-meditation",
+   "running"
+  ],
+  "learn": [
+   "ballet-contemporary",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 28 years old and works as a yoga instructor, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l28.jpg"
+ },
+ {
+  "id": "l29",
+  "display_name": "Earth K.",
+  "community": "local",
+  "gender": "m",
+  "age": 23,
+  "occupation": "Musician",
+  "occupation_th": "นักดนตรี",
+  "origin": "Thai",
+  "neighborhood": "Old City",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "เล่นกีตาร์ตามบาร์ในเมืองเก่า อยากแจมกับนักดนตรีต่างชาติครับ",
+  "intro_en": "I play guitar in Old City bars and want to jam with foreign musicians.",
+  "give": [
+   "music-jamming",
+   "kham-mueang"
+  ],
+  "learn": [
+   "music-jamming",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 23 years old and works as a musician, photographed in Old City, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l29.jpg"
+ },
+ {
+  "id": "l30",
+  "display_name": "Gift N.",
+  "community": "local",
+  "gender": "f",
+  "age": 26,
+  "occupation": "Accountant",
+  "occupation_th": "นักบัญชี",
+  "origin": "Thai",
+  "neighborhood": "Chang Klan",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "เป็นนักบัญชี ชอบวิ่งตอนเช้ารอบคูเมือง อยากหาเพื่อนวิ่งค่ะ",
+  "intro_en": "Accountant who runs around the moat in the mornings. Looking for running buddies.",
+  "give": [
+   "running",
+   "banking-sim"
+  ],
+  "learn": [
+   "english-conversation",
+   "swing-dance"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 26 years old and works as a accountant, photographed in Chang Klan, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l30.jpg"
+ },
+ {
+  "id": "l31",
+  "display_name": "Boy S.",
+  "community": "local",
+  "gender": "m",
+  "age": 32,
+  "occupation": "Chef",
+  "occupation_th": "เชฟ",
+  "origin": "Thai",
+  "neighborhood": "Tha Phae",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "เป็นเชฟร้านอาหารเหนือ สอนทำแกงฮังเลได้ อยากเรียนทำขนมปังครับ",
+  "intro_en": "Chef at a northern Thai restaurant. I can teach hang lay curry and want to learn bread.",
+  "give": [
+   "northern-thai-cooking",
+   "market-shopping"
+  ],
+  "learn": [
+   "western-cooking-baking",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 32 years old and works as a chef, photographed in Tha Phae, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l31.jpg"
+ },
+ {
+  "id": "l32",
+  "display_name": "Fern J.",
+  "community": "local",
+  "gender": "f",
+  "age": 20,
+  "occupation": "Business student, Payap",
+  "occupation_th": "นักศึกษาบริหาร พายัพ",
+  "origin": "Thai",
+  "neighborhood": "Mae Kuang",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "เรียนบริหาร อยากได้งานเล็ก ๆ ทำออนไลน์ มีเวลาช่วงเย็นค่ะ",
+  "intro_en": "Business student looking for small online jobs in the evenings.",
+  "give": [
+   "thai-basics",
+   "student-guided-walks",
+   "home-town-visit"
+  ],
+  "learn": [
+   "paid-micro-tasks",
+   "marketing-social-media"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 20 years old and works as a business student, payap, photographed in Mae Kuang, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l32.jpg"
+ },
+ {
+  "id": "l33",
+  "display_name": "Tum C.",
+  "community": "local",
+  "gender": "m",
+  "age": 48,
+  "occupation": "Coffee farmer",
+  "occupation_th": "ชาวไร่กาแฟ",
+  "origin": "Thai",
+  "neighborhood": "Mae Kampong",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "ปลูกกาแฟที่แม่กำปอง มีโฮมสเตย์ อยากทำโพสต์ภาษาอังกฤษครับ",
+  "intro_en": "Coffee farmer in Mae Kampong with a homestay. I want English posts.",
+  "give": [
+   "coffee-cafes",
+   "day-trips-waterfalls",
+   "farming-permaculture"
+  ],
+  "learn": [
+   "marketing-social-media",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 48 years old and works as a coffee farmer, photographed in Mae Kampong, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l33.jpg"
+ },
+ {
+  "id": "l34",
+  "display_name": "Ning P.",
+  "community": "local",
+  "gender": "f",
+  "age": 39,
+  "occupation": "Government officer",
+  "occupation_th": "ข้าราชการ",
+  "origin": "Thai",
+  "neighborhood": "Chang Phueak",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "ทำงานราชการ รู้เรื่องเอกสารพอสมควร ชอบรำวงงานวัดค่ะ",
+  "intro_en": "Civil servant who knows her way around paperwork. I love ramwong at temple fairs.",
+  "give": [
+   "visa-immigration",
+   "ramwong",
+   "festivals"
+  ],
+  "learn": [
+   "english-conversation",
+   "yoga-meditation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 39 years old and works as a government officer, photographed in Chang Phueak, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l34.jpg"
+ },
+ {
+  "id": "l35",
+  "display_name": "Ton W.",
+  "community": "local",
+  "gender": "m",
+  "age": 26,
+  "occupation": "Photographer",
+  "occupation_th": "ช่างภาพ",
+  "origin": "Thai",
+  "neighborhood": "Nimman",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "ถ่ายรูปงานแต่งและคาเฟ่ อยากรับงานกับลูกค้าต่างชาติครับ",
+  "intro_en": "Wedding and café photographer who wants foreign clients.",
+  "give": [
+   "photo-video",
+   "day-trips-waterfalls"
+  ],
+  "learn": [
+   "remote-work-freelancing",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 26 years old and works as a photographer, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l35.jpg"
+ },
+ {
+  "id": "l36",
+  "display_name": "May L.",
+  "community": "local",
+  "gender": "f",
+  "age": 25,
+  "occupation": "Florist",
+  "occupation_th": "เจ้าของร้านดอกไม้",
+  "origin": "Thai",
+  "neighborhood": "Warorot",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "ขายดอกไม้ที่ตลาดต้นลำไย ช่วงลอยกระทงยุ่งสุด ๆ อยากมีเพจภาษาอังกฤษค่ะ",
+  "intro_en": "I sell flowers at Ton Lamyai market and Loy Krathong is my busiest time. I want an English page.",
+  "give": [
+   "market-shopping",
+   "festivals",
+   "crafts-textiles"
+  ],
+  "learn": [
+   "marketing-social-media",
+   "google-business-profile"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 25 years old and works as a florist, photographed in Warorot, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l36.jpg"
+ },
+ {
+  "id": "l37",
+  "display_name": "Nat R.",
+  "community": "local",
+  "gender": "m",
+  "age": 22,
+  "occupation": "Medical student, CMU",
+  "occupation_th": "นักศึกษาแพทย์ มช.",
+  "origin": "Thai",
+  "neighborhood": "Suan Dok",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "เรียนหมอปีสี่ อยากฝึกอธิบายเนื้อหาเป็นภาษาอังกฤษ ชอบปั่นจักรยานขึ้นดอยครับ",
+  "intro_en": "Fourth-year medical student. I want to explain what I study in English. I cycle up Doi Suthep.",
+  "give": [
+   "lecture-swap",
+   "cycling",
+   "healthcare-clinics"
+  ],
+  "learn": [
+   "study-abroad-essays",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 22 years old and works as a medical student, cmu, photographed in Suan Dok, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l37.jpg"
+ },
+ {
+  "id": "l38",
+  "display_name": "Jum S.",
+  "community": "local",
+  "gender": "f",
+  "age": 55,
+  "occupation": "Market vendor",
+  "occupation_th": "แม่ค้าตลาด",
+  "origin": "Thai",
+  "neighborhood": "Muang Mai",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "ขายผักที่ตลาดเมืองใหม่ตั้งแต่ตีสี่ ยินดีสอนชื่อผักพื้นเมืองค่ะ",
+  "intro_en": "I sell vegetables at Muang Mai market from 4 a.m. Happy to teach local vegetable names.",
+  "give": [
+   "market-shopping",
+   "kham-mueang",
+   "northern-thai-cooking"
+  ],
+  "learn": [
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 55 years old and works as a market vendor, photographed in Muang Mai, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l38.jpg"
+ },
+ {
+  "id": "l39",
+  "display_name": "Kit T.",
+  "community": "local",
+  "gender": "m",
+  "age": 29,
+  "occupation": "Startup founder",
+  "occupation_th": "ผู้ก่อตั้งสตาร์ทอัพ",
+  "origin": "Thai",
+  "neighborhood": "Nimman",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "ทำแอปจองคิวร้านอาหาร อยากหาคนช่วยดูโปรดักต์ครับ",
+  "intro_en": "Building a restaurant queue app. Looking for product advice.",
+  "give": [
+   "thai-basics",
+   "coffee-cafes"
+  ],
+  "learn": [
+   "web-tech",
+   "design",
+   "remote-work-freelancing"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 29 years old and works as a startup founder, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l39.jpg"
+ },
+ {
+  "id": "l40",
+  "display_name": "Bua N.",
+  "community": "local",
+  "gender": "f",
+  "age": 31,
+  "occupation": "Thai language tutor",
+  "occupation_th": "ครูสอนภาษาไทย",
+  "origin": "Thai",
+  "neighborhood": "Santitham",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "สอนภาษาไทยให้ชาวต่างชาติ ชอบเต้นซัลซ่าวันศุกร์ค่ะ",
+  "intro_en": "I teach Thai to foreigners and dance salsa on Fridays.",
+  "give": [
+   "thai-basics",
+   "thai-reading-writing",
+   "kham-mueang"
+  ],
+  "learn": [
+   "salsa-bachata",
+   "marketing-social-media"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 31 years old and works as a thai language tutor, photographed in Santitham, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l40.jpg"
+ },
+ {
+  "id": "l41",
+  "display_name": "Pete K.",
+  "community": "local",
+  "gender": "m",
+  "age": 20,
+  "occupation": "Agriculture student, Maejo",
+  "occupation_th": "นักศึกษาเกษตร แม่โจ้",
+  "origin": "Thai",
+  "neighborhood": "San Sai",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "เรียนเกษตรที่แม่โจ้ ชวนไปเที่ยวบ้านที่ลำพูนได้ครับ",
+  "intro_en": "Agriculture student at Maejo. Happy to invite you to my home town in Lamphun.",
+  "give": [
+   "farming-permaculture",
+   "home-town-visit",
+   "campus-sport-lunch"
+  ],
+  "learn": [
+   "english-conversation",
+   "real-client-project"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 20 years old and works as a agriculture student, maejo, photographed in San Sai, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l41.jpg"
+ },
+ {
+  "id": "l42",
+  "display_name": "Dao S.",
+  "community": "local",
+  "gender": "f",
+  "age": 42,
+  "occupation": "Potter",
+  "occupation_th": "ช่างปั้นดินเผา",
+  "origin": "Thai",
+  "neighborhood": "Hang Dong",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "ปั้นเครื่องปั้นดินเผาที่หางดง เปิดคลาสเล็ก ๆ อยากมีเว็บจองคลาสค่ะ",
+  "intro_en": "Potter in Hang Dong running small classes. I want a booking website.",
+  "give": [
+   "crafts-textiles",
+   "day-trips-waterfalls"
+  ],
+  "learn": [
+   "web-tech",
+   "google-business-profile"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 42 years old and works as a potter, photographed in Hang Dong, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l42.jpg"
+ },
+ {
+  "id": "l43",
+  "display_name": "Film A.",
+  "community": "local",
+  "gender": "m",
+  "age": 24,
+  "occupation": "Content creator",
+  "occupation_th": "ครีเอเตอร์",
+  "origin": "Thai",
+  "neighborhood": "Nimman",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "ทำคลิปรีวิวของกินเชียงใหม่ อยากทำคลิปสองภาษาครับ",
+  "intro_en": "I make Chiang Mai food videos and want to go bilingual.",
+  "give": [
+   "street-food-spots",
+   "photo-video",
+   "hip-hop-dance"
+  ],
+  "learn": [
+   "english-conversation",
+   "marketing-social-media"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 24 years old and works as a content creator, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l43.jpg"
+ },
+ {
+  "id": "l44",
+  "display_name": "Pang W.",
+  "community": "local",
+  "gender": "f",
+  "age": 27,
+  "occupation": "Lawyer",
+  "occupation_th": "ทนายความ",
+  "origin": "Thai",
+  "neighborhood": "Chang Klan",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "เป็นทนาย ช่วยอธิบายสัญญาเช่าได้ ชอบเต้นแทงโก้ค่ะ",
+  "intro_en": "Lawyer who can explain a lease. I dance tango.",
+  "give": [
+   "renting-housing",
+   "visa-immigration"
+  ],
+  "learn": [
+   "tango",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 27 years old and works as a lawyer, photographed in Chang Klan, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l44.jpg"
+ },
+ {
+  "id": "l45",
+  "display_name": "Mek J.",
+  "community": "local",
+  "gender": "m",
+  "age": 34,
+  "occupation": "Elephant sanctuary keeper",
+  "occupation_th": "ควาญช้าง",
+  "origin": "Thai",
+  "neighborhood": "Mae Taeng",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "ดูแลช้างที่แม่แตง รักธรรมชาติ ชอบเดินป่าครับ",
+  "intro_en": "Elephant keeper in Mae Taeng who loves the forest and hiking.",
+  "give": [
+   "hiking",
+   "day-trips-waterfalls",
+   "kham-mueang"
+  ],
+  "learn": [
+   "english-conversation",
+   "photo-video"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 34 years old and works as a elephant sanctuary keeper, photographed in Mae Taeng, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l45.jpg"
+ },
+ {
+  "id": "l46",
+  "display_name": "Cream P.",
+  "community": "local",
+  "gender": "f",
+  "age": 23,
+  "occupation": "Translator",
+  "occupation_th": "นักแปล",
+  "origin": "Thai",
+  "neighborhood": "Faham",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "แปลเอกสารไทย-อังกฤษ-จีน อยากทำงานฟรีแลนซ์ให้มั่นคงค่ะ",
+  "intro_en": "Thai-English-Chinese translator hoping to freelance steadily.",
+  "give": [
+   "chinese-conversation",
+   "thai-reading-writing"
+  ],
+  "learn": [
+   "remote-work-freelancing",
+   "ballet-contemporary"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 23 years old and works as a translator, photographed in Faham, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l46.jpg"
+ },
+ {
+  "id": "l47",
+  "display_name": "Lek D.",
+  "community": "local",
+  "gender": "m",
+  "age": 60,
+  "occupation": "Retired teacher",
+  "occupation_th": "ครูเกษียณ",
+  "origin": "Thai",
+  "neighborhood": "Old City",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "เป็นครูเกษียณ ชอบเล่าประวัติศาสตร์ล้านนา ชวนไปวัดได้เสมอครับ",
+  "intro_en": "Retired teacher who loves Lanna history. Always happy to take you to a temple.",
+  "give": [
+   "lanna-history",
+   "temples-etiquette",
+   "kham-mueang"
+  ],
+  "learn": [
+   "english-conversation",
+   "music-jamming"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 60 years old and works as a retired teacher, photographed in Old City, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l47.jpg"
+ },
+ {
+  "id": "l48",
+  "display_name": "Jane M.",
+  "community": "local",
+  "gender": "f",
+  "age": 21,
+  "occupation": "Dance student, CMU",
+  "occupation_th": "นักศึกษานาฏศิลป์ มช.",
+  "origin": "Thai",
+  "neighborhood": "Suthep",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "เรียนนาฏศิลป์ ฟ้อนล้านนาได้ อยากลองเต้นร่วมสมัยค่ะ",
+  "intro_en": "Dance student who performs Lanna dance. I want to try contemporary.",
+  "give": [
+   "lanna-dance",
+   "ramwong",
+   "student-club-guest"
+  ],
+  "learn": [
+   "ballet-contemporary",
+   "english-conversation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 21 years old and works as a dance student, cmu, photographed in Suthep, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l48.jpg"
+ },
+ {
+  "id": "l49",
+  "display_name": "Joy T.",
+  "community": "local",
+  "gender": "f",
+  "age": 33,
+  "occupation": "Vegan restaurant owner",
+  "occupation_th": "เจ้าของร้านอาหารวีแกน",
+  "origin": "Thai",
+  "neighborhood": "Old City",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "female",
+  "intro": "เปิดร้านอาหารมังสวิรัติในเมืองเก่า ทำแกงเหนือแบบไม่มีเนื้อสัตว์ อยากเรียนเต้นบาชาต้าค่ะ",
+  "intro_en": "I run a vegetarian restaurant in the Old City making meat-free northern curries. I want to learn bachata.",
+  "give": [
+   "vegan-food",
+   "northern-thai-cooking",
+   "market-shopping"
+  ],
+  "learn": [
+   "salsa-bachata",
+   "english-menu-signs"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) woman who clearly looks 33 years old and works as a vegan restaurant owner, photographed in Old City, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l49.jpg"
+ },
+ {
+  "id": "l50",
+  "display_name": "Art S.",
+  "community": "local",
+  "gender": "m",
+  "age": 37,
+  "occupation": "Landlord",
+  "occupation_th": "เจ้าของหอพัก",
+  "origin": "Thai",
+  "neighborhood": "Santitham",
+  "stay": null,
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "มีหอพักที่สันติธรรม ช่วยเรื่องซิมและเปิดบัญชีได้ครับ",
+  "intro_en": "I own an apartment block in Santitham and can help with SIM cards and bank accounts.",
+  "give": [
+   "renting-housing",
+   "banking-sim",
+   "getting-around"
+  ],
+  "learn": [
+   "english-conversation",
+   "google-business-profile"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Thai (Southeast Asian, northern Thai) man who clearly looks 37 years old and works as a landlord, photographed in Santitham, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/l50.jpg"
+ },
+ {
+  "id": "f01",
+  "display_name": "Sam W.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 31,
+  "occupation": "Remote English teacher",
+  "occupation_th": null,
+  "origin": "white British",
+  "neighborhood": "Nimman",
+  "stay": "4 months",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Teaching English online from Nimman. I want to ride a scooter properly and order food without pointing.",
+  "intro_en": "Teaching English online from Nimman. I want to ride a scooter properly and order food without pointing.",
+  "give": [
+   "english-conversation",
+   "cv-interview-practice"
+  ],
+  "learn": [
+   "scooter-driving-license",
+   "street-food-spots",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a white British man who clearly looks 31 years old and works as a remote english teacher, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f01.jpg"
+ },
+ {
+  "id": "f02",
+  "display_name": "Maya L.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 29,
+  "occupation": "UX designer",
+  "occupation_th": null,
+  "origin": "Dutch",
+  "neighborhood": "Santitham",
+  "stay": "6 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Freelance UX designer. I'd love to learn northern Thai cooking and help a café with its menu.",
+  "intro_en": "Freelance UX designer. I'd love to learn northern Thai cooking and help a café with its menu.",
+  "give": [
+   "design",
+   "english-menu-signs",
+   "web-tech"
+  ],
+  "learn": [
+   "northern-thai-cooking",
+   "market-shopping"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Dutch woman who clearly looks 29 years old and works as a ux designer, photographed in Santitham, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f02.jpg"
+ },
+ {
+  "id": "f03",
+  "display_name": "Diego R.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 34,
+  "occupation": "Software engineer",
+  "occupation_th": null,
+  "origin": "Mexican",
+  "neighborhood": "Hai Ya",
+  "stay": "1 year",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Backend engineer and salsa dancer. Looking for Thai lessons and a Muay Thai buddy.",
+  "intro_en": "Backend engineer and salsa dancer. Looking for Thai lessons and a Muay Thai buddy.",
+  "give": [
+   "web-tech",
+   "salsa-bachata",
+   "remote-work-freelancing"
+  ],
+  "learn": [
+   "thai-basics",
+   "muay-thai"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Mexican man who clearly looks 34 years old and works as a software engineer, photographed in Hai Ya, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f03.jpg"
+ },
+ {
+  "id": "f04",
+  "display_name": "Aisha K.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 27,
+  "occupation": "Content creator",
+  "occupation_th": null,
+  "origin": "Nigerian-British",
+  "neighborhood": "Nimman",
+  "stay": "3 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Travel creator making short videos. I want to learn temple etiquette and Lanna dance.",
+  "intro_en": "Travel creator making short videos. I want to learn temple etiquette and Lanna dance.",
+  "give": [
+   "photo-video",
+   "marketing-social-media"
+  ],
+  "learn": [
+   "temples-etiquette",
+   "lanna-dance",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Nigerian-British woman who clearly looks 27 years old and works as a content creator, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f04.jpg"
+ },
+ {
+  "id": "f05",
+  "display_name": "Kenji T.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 38,
+  "occupation": "Ceramicist",
+  "occupation_th": null,
+  "origin": "Japanese",
+  "neighborhood": "Hang Dong",
+  "stay": "2 years",
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "Ceramicist from Kyoto with a studio in Hang Dong. I speak some Thai and want to learn Kham Mueang.",
+  "intro_en": "Ceramicist from Kyoto with a studio in Hang Dong. I speak some Thai and want to learn Kham Mueang.",
+  "give": [
+   "crafts-textiles",
+   "design"
+  ],
+  "learn": [
+   "kham-mueang",
+   "thai-reading-writing"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Japanese man who clearly looks 38 years old and works as a ceramicist, photographed in Hang Dong, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f05.jpg"
+ },
+ {
+  "id": "f06",
+  "display_name": "Priya S.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 32,
+  "occupation": "DevOps engineer",
+  "occupation_th": null,
+  "origin": "Indian",
+  "neighborhood": "Chang Klan",
+  "stay": "8 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "DevOps engineer who loves hiking. I can mentor students on tech careers.",
+  "intro_en": "DevOps engineer who loves hiking. I can mentor students on tech careers.",
+  "give": [
+   "web-tech",
+   "cv-interview-practice",
+   "class-project-feedback"
+  ],
+  "learn": [
+   "hiking",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Indian woman who clearly looks 32 years old and works as a devops engineer, photographed in Chang Klan, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f06.jpg"
+ },
+ {
+  "id": "f07",
+  "display_name": "Lukas B.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 36,
+  "occupation": "Mechanical engineer on sabbatical",
+  "occupation_th": null,
+  "origin": "German",
+  "neighborhood": "Suthep",
+  "stay": "5 months",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Taking a year off to cycle northern Thailand. Happy to talk engineering with students.",
+  "intro_en": "Taking a year off to cycle northern Thailand. Happy to talk engineering with students.",
+  "give": [
+   "lecture-swap",
+   "class-project-feedback",
+   "cycling"
+  ],
+  "learn": [
+   "day-trips-waterfalls",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a German man who clearly looks 36 years old and works as a mechanical engineer on sabbatical, photographed in Suthep, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f07.jpg"
+ },
+ {
+  "id": "f08",
+  "display_name": "Chloé M.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 30,
+  "occupation": "Pastry chef",
+  "occupation_th": null,
+  "origin": "French",
+  "neighborhood": "Old City",
+  "stay": "1 year",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Pastry chef baking croissants for a café. I want to learn market shopping and khao soi.",
+  "intro_en": "Pastry chef baking croissants for a café. I want to learn market shopping and khao soi.",
+  "give": [
+   "western-cooking-baking",
+   "coffee-cafes"
+  ],
+  "learn": [
+   "northern-thai-cooking",
+   "market-shopping",
+   "street-food-spots"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a French woman who clearly looks 30 years old and works as a pastry chef, photographed in Old City, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f08.jpg"
+ },
+ {
+  "id": "f09",
+  "display_name": "Tunde A.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 33,
+  "occupation": "Fintech product manager",
+  "occupation_th": null,
+  "origin": "Nigerian",
+  "neighborhood": "Nimman",
+  "stay": "6 months",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Product manager at a fintech. I can help startups and want to learn Thai basics.",
+  "intro_en": "Product manager at a fintech. I can help startups and want to learn Thai basics.",
+  "give": [
+   "real-client-project",
+   "remote-work-freelancing",
+   "web-tech"
+  ],
+  "learn": [
+   "thai-basics",
+   "muay-thai"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Nigerian man who clearly looks 33 years old and works as a fintech product manager, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f09.jpg"
+ },
+ {
+  "id": "f10",
+  "display_name": "Hana P.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 26,
+  "occupation": "Illustrator",
+  "occupation_th": null,
+  "origin": "Korean",
+  "neighborhood": "Nimman",
+  "stay": "3 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Digital illustrator and K-pop dance fan. Looking for weaving and craft workshops.",
+  "intro_en": "Digital illustrator and K-pop dance fan. Looking for weaving and craft workshops.",
+  "give": [
+   "design",
+   "kpop-dance"
+  ],
+  "learn": [
+   "crafts-textiles",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Korean woman who clearly looks 26 years old and works as a illustrator, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f10.jpg"
+ },
+ {
+  "id": "f11",
+  "display_name": "Mateo G.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 40,
+  "occupation": "Tango teacher and developer",
+  "occupation_th": null,
+  "origin": "Argentinian",
+  "neighborhood": "Old City",
+  "stay": "2 years",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Developer by day, tango teacher by night. I'd love help with Thai paperwork.",
+  "intro_en": "Developer by day, tango teacher by night. I'd love help with Thai paperwork.",
+  "give": [
+   "tango",
+   "web-tech"
+  ],
+  "learn": [
+   "visa-immigration",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Argentinian man who clearly looks 40 years old and works as a tango teacher and developer, photographed in Old City, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f11.jpg"
+ },
+ {
+  "id": "f12",
+  "display_name": "Grace O.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 28,
+  "occupation": "Nurse on sabbatical",
+  "occupation_th": null,
+  "origin": "Filipino-Canadian",
+  "neighborhood": "Suan Dok",
+  "stay": "4 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Nurse taking a break to travel. I want to understand Thai clinics and learn cooking.",
+  "intro_en": "Nurse taking a break to travel. I want to understand Thai clinics and learn cooking.",
+  "give": [
+   "english-conversation",
+   "healthcare-clinics"
+  ],
+  "learn": [
+   "northern-thai-cooking",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Filipino-Canadian woman who clearly looks 28 years old and works as a nurse on sabbatical, photographed in Suan Dok, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f12.jpg"
+ },
+ {
+  "id": "f13",
+  "display_name": "Jack T.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 45,
+  "occupation": "Copywriter",
+  "occupation_th": null,
+  "origin": "white American",
+  "neighborhood": "Santitham",
+  "stay": "3 years",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Copywriter living here for three years. I help small shops with English signs.",
+  "intro_en": "Copywriter living here for three years. I help small shops with English signs.",
+  "give": [
+   "english-menu-signs",
+   "english-conversation",
+   "marketing-social-media"
+  ],
+  "learn": [
+   "kham-mueang",
+   "lanna-history"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a white American man who clearly looks 45 years old and works as a copywriter, photographed in Santitham, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f13.jpg"
+ },
+ {
+  "id": "f14",
+  "display_name": "Amara N.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 31,
+  "occupation": "Running coach",
+  "occupation_th": null,
+  "origin": "Kenyan",
+  "neighborhood": "Chang Phueak",
+  "stay": "6 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Running coach training for a trail race on Doi Suthep. Looking for local running buddies.",
+  "intro_en": "Running coach training for a trail race on Doi Suthep. Looking for local running buddies.",
+  "give": [
+   "running",
+   "english-conversation"
+  ],
+  "learn": [
+   "hiking",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Kenyan woman who clearly looks 31 years old and works as a running coach, photographed in Chang Phueak, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f14.jpg"
+ },
+ {
+  "id": "f15",
+  "display_name": "Ethan V.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 29,
+  "occupation": "Frontend developer",
+  "occupation_th": null,
+  "origin": "Vietnamese-American",
+  "neighborhood": "Nimman",
+  "stay": "5 months",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Frontend developer and hip-hop dancer. I'd love a language exchange.",
+  "intro_en": "Frontend developer and hip-hop dancer. I'd love a language exchange.",
+  "give": [
+   "web-tech",
+   "hip-hop-dance"
+  ],
+  "learn": [
+   "thai-basics",
+   "campus-language-exchange"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Vietnamese-American man who clearly looks 29 years old and works as a frontend developer, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f15.jpg"
+ },
+ {
+  "id": "f16",
+  "display_name": "Sofia C.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 35,
+  "occupation": "Architect",
+  "occupation_th": null,
+  "origin": "Italian",
+  "neighborhood": "Old City",
+  "stay": "1 year",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Architect fascinated by Lanna wooden houses. I review student portfolios.",
+  "intro_en": "Architect fascinated by Lanna wooden houses. I review student portfolios.",
+  "give": [
+   "design",
+   "class-project-feedback",
+   "study-abroad-essays"
+  ],
+  "learn": [
+   "lanna-history",
+   "crafts-textiles"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Italian woman who clearly looks 35 years old and works as a architect, photographed in Old City, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f16.jpg"
+ },
+ {
+  "id": "f17",
+  "display_name": "Oliver H.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 27,
+  "occupation": "Video editor",
+  "occupation_th": null,
+  "origin": "Australian",
+  "neighborhood": "Nimman",
+  "stay": "3 months",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Video editor and swing dancer. I want to find the best street food.",
+  "intro_en": "Video editor and swing dancer. I want to find the best street food.",
+  "give": [
+   "photo-video",
+   "swing-dance"
+  ],
+  "learn": [
+   "street-food-spots",
+   "scooter-driving-license"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Australian man who clearly looks 27 years old and works as a video editor, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f17.jpg"
+ },
+ {
+  "id": "f18",
+  "display_name": "Leila H.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 33,
+  "occupation": "Marketing lead",
+  "occupation_th": null,
+  "origin": "Lebanese-Australian",
+  "neighborhood": "Chang Klan",
+  "stay": "8 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Marketing lead for a travel brand. I help local shops get found online.",
+  "intro_en": "Marketing lead for a travel brand. I help local shops get found online.",
+  "give": [
+   "marketing-social-media",
+   "google-business-profile"
+  ],
+  "learn": [
+   "northern-thai-cooking",
+   "yoga-meditation"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Lebanese-Australian woman who clearly looks 33 years old and works as a marketing lead, photographed in Chang Klan, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f18.jpg"
+ },
+ {
+  "id": "f19",
+  "display_name": "Wei Z.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 37,
+  "occupation": "Entrepreneur",
+  "occupation_th": null,
+  "origin": "Chinese",
+  "neighborhood": "Faham",
+  "stay": "4 years",
+  "interface_language": "th",
+  "politeness_register": "male",
+  "intro": "Tea trader who has lived here four years and speaks Thai. Happy to teach Chinese.",
+  "intro_en": "Tea trader who has lived here four years and speaks Thai. Happy to teach Chinese.",
+  "give": [
+   "chinese-conversation",
+   "remote-work-freelancing"
+  ],
+  "learn": [
+   "lanna-history",
+   "kham-mueang"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Chinese man who clearly looks 37 years old and works as a entrepreneur, photographed in Faham, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f19.jpg"
+ },
+ {
+  "id": "f20",
+  "display_name": "Emma J.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 24,
+  "occupation": "PhD researcher",
+  "occupation_th": null,
+  "origin": "Swedish",
+  "neighborhood": "Suthep",
+  "stay": "6 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Researching sustainable farming at CMU. I want to volunteer on a farm.",
+  "intro_en": "Researching sustainable farming at CMU. I want to volunteer on a farm.",
+  "give": [
+   "english-conversation",
+   "study-abroad-essays",
+   "lecture-swap"
+  ],
+  "learn": [
+   "farming-permaculture",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Swedish woman who clearly looks 24 years old and works as a phd researcher, photographed in Suthep, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f20.jpg"
+ },
+ {
+  "id": "f21",
+  "display_name": "Rafael S.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 32,
+  "occupation": "Dancer and yoga teacher",
+  "occupation_th": null,
+  "origin": "Brazilian",
+  "neighborhood": "Nimman",
+  "stay": "1 year",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Dancer and yoga teacher. I run a Friday salsa night and want to learn Muay Thai.",
+  "intro_en": "Dancer and yoga teacher. I run a Friday salsa night and want to learn Muay Thai.",
+  "give": [
+   "salsa-bachata",
+   "yoga-meditation"
+  ],
+  "learn": [
+   "muay-thai",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Brazilian man who clearly looks 32 years old and works as a dancer and yoga teacher, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f21.jpg"
+ },
+ {
+  "id": "f22",
+  "display_name": "Nadia F.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 30,
+  "occupation": "Data scientist",
+  "occupation_th": null,
+  "origin": "Egyptian",
+  "neighborhood": "Santitham",
+  "stay": "5 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Data scientist who loves waterfalls. I can help students with data projects.",
+  "intro_en": "Data scientist who loves waterfalls. I can help students with data projects.",
+  "give": [
+   "web-tech",
+   "class-project-feedback"
+  ],
+  "learn": [
+   "day-trips-waterfalls",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Egyptian woman who clearly looks 30 years old and works as a data scientist, photographed in Santitham, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f22.jpg"
+ },
+ {
+  "id": "f23",
+  "display_name": "Connor M.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 28,
+  "occupation": "Writer",
+  "occupation_th": null,
+  "origin": "Irish",
+  "neighborhood": "Old City",
+  "stay": "3 months",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Writing a novel in coffee shops. I help with English essays.",
+  "intro_en": "Writing a novel in coffee shops. I help with English essays.",
+  "give": [
+   "study-abroad-essays",
+   "english-conversation"
+  ],
+  "learn": [
+   "coffee-cafes",
+   "temples-etiquette"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Irish man who clearly looks 28 years old and works as a writer, photographed in Old City, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f23.jpg"
+ },
+ {
+  "id": "f24",
+  "display_name": "Zanele D.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 34,
+  "occupation": "Remote sales manager",
+  "occupation_th": null,
+  "origin": "South African",
+  "neighborhood": "Hang Dong",
+  "stay": "7 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Sales manager working remotely. I coach interviews and want to learn Lanna dance.",
+  "intro_en": "Sales manager working remotely. I coach interviews and want to learn Lanna dance.",
+  "give": [
+   "cv-interview-practice",
+   "english-conversation"
+  ],
+  "learn": [
+   "lanna-dance",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a South African woman who clearly looks 34 years old and works as a remote sales manager, photographed in Hang Dong, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f24.jpg"
+ },
+ {
+  "id": "f25",
+  "display_name": "Arjun P.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 26,
+  "occupation": "Game developer",
+  "occupation_th": null,
+  "origin": "Indian",
+  "neighborhood": "Nimman",
+  "stay": "4 months",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Indie game developer. I can mentor student coders and want to learn Thai.",
+  "intro_en": "Indie game developer. I can mentor student coders and want to learn Thai.",
+  "give": [
+   "web-tech",
+   "class-project-feedback",
+   "paid-micro-tasks"
+  ],
+  "learn": [
+   "thai-basics",
+   "street-food-spots"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Indian man who clearly looks 26 years old and works as a game developer, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f25.jpg"
+ },
+ {
+  "id": "f26",
+  "display_name": "Isabel R.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 38,
+  "occupation": "Spanish teacher",
+  "occupation_th": null,
+  "origin": "Spanish",
+  "neighborhood": "Chang Phueak",
+  "stay": "2 years",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Spanish teacher and flamenco lover. I'd like to learn Thai reading.",
+  "intro_en": "Spanish teacher and flamenco lover. I'd like to learn Thai reading.",
+  "give": [
+   "other-languages",
+   "english-conversation"
+  ],
+  "learn": [
+   "thai-reading-writing",
+   "northern-thai-cooking"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Spanish woman who clearly looks 38 years old and works as a spanish teacher, photographed in Chang Phueak, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f26.jpg"
+ },
+ {
+  "id": "f27",
+  "display_name": "Tom K.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 62,
+  "occupation": "Retired engineer",
+  "occupation_th": null,
+  "origin": "white Canadian",
+  "neighborhood": "Mae Rim",
+  "stay": "6 years",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Retired engineer growing mangoes in Mae Rim. Happy to talk English with anyone.",
+  "intro_en": "Retired engineer growing mangoes in Mae Rim. Happy to talk English with anyone.",
+  "give": [
+   "english-conversation",
+   "farming-permaculture"
+  ],
+  "learn": [
+   "kham-mueang",
+   "temples-etiquette"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a white Canadian man who clearly looks 62 years old and works as a retired engineer, photographed in Mae Rim, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f27.jpg"
+ },
+ {
+  "id": "f28",
+  "display_name": "Yuki S.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 29,
+  "occupation": "Barista",
+  "occupation_th": null,
+  "origin": "Japanese",
+  "neighborhood": "Nimman",
+  "stay": "1 year",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Barista from Osaka working in a Nimman café. I want to learn Thai and dance.",
+  "intro_en": "Barista from Osaka working in a Nimman café. I want to learn Thai and dance.",
+  "give": [
+   "coffee-cafes",
+   "other-languages"
+  ],
+  "learn": [
+   "thai-basics",
+   "lanna-dance"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Japanese woman who clearly looks 29 years old and works as a barista, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f28.jpg"
+ },
+ {
+  "id": "f29",
+  "display_name": "Marcus J.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 35,
+  "occupation": "Music producer",
+  "occupation_th": null,
+  "origin": "Jamaican-British",
+  "neighborhood": "Old City",
+  "stay": "5 months",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Music producer recording local musicians. Let's jam.",
+  "intro_en": "Music producer recording local musicians. Let's jam.",
+  "give": [
+   "music-jamming",
+   "photo-video"
+  ],
+  "learn": [
+   "kham-mueang",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Jamaican-British man who clearly looks 35 years old and works as a music producer, photographed in Old City, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f29.jpg"
+ },
+ {
+  "id": "f30",
+  "display_name": "Elena P.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 27,
+  "occupation": "QA engineer",
+  "occupation_th": null,
+  "origin": "Polish",
+  "neighborhood": "Santitham",
+  "stay": "4 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "QA engineer and ballet dancer. Looking for a language exchange.",
+  "intro_en": "QA engineer and ballet dancer. Looking for a language exchange.",
+  "give": [
+   "web-tech",
+   "ballet-contemporary"
+  ],
+  "learn": [
+   "thai-basics",
+   "campus-language-exchange"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Polish woman who clearly looks 27 years old and works as a qa engineer, photographed in Santitham, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f30.jpg"
+ },
+ {
+  "id": "f31",
+  "display_name": "Kwame O.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 31,
+  "occupation": "Lawyer on sabbatical",
+  "occupation_th": null,
+  "origin": "Ghanaian-British",
+  "neighborhood": "Nimman",
+  "stay": "3 months",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Lawyer on sabbatical. I help students with scholarship essays.",
+  "intro_en": "Lawyer on sabbatical. I help students with scholarship essays.",
+  "give": [
+   "study-abroad-essays",
+   "cv-interview-practice"
+  ],
+  "learn": [
+   "muay-thai",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Ghanaian-British man who clearly looks 31 years old and works as a lawyer on sabbatical, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f31.jpg"
+ },
+ {
+  "id": "f32",
+  "display_name": "Lucy W.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 26,
+  "occupation": "Social media manager",
+  "occupation_th": null,
+  "origin": "New Zealander",
+  "neighborhood": "Nimman",
+  "stay": "6 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Social media manager and hiker. I can help shops with Instagram.",
+  "intro_en": "Social media manager and hiker. I can help shops with Instagram.",
+  "give": [
+   "marketing-social-media",
+   "photo-video"
+  ],
+  "learn": [
+   "hiking",
+   "street-food-spots"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a New Zealander woman who clearly looks 26 years old and works as a social media manager, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f32.jpg"
+ },
+ {
+  "id": "f33",
+  "display_name": "Omar B.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 33,
+  "occupation": "Photographer",
+  "occupation_th": null,
+  "origin": "Moroccan",
+  "neighborhood": "Old City",
+  "stay": "4 months",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Street photographer shooting temples at dawn. I'd love a local guide.",
+  "intro_en": "Street photographer shooting temples at dawn. I'd love a local guide.",
+  "give": [
+   "photo-video",
+   "other-languages"
+  ],
+  "learn": [
+   "temples-etiquette",
+   "student-guided-walks"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Moroccan man who clearly looks 33 years old and works as a photographer, photographed in Old City, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f33.jpg"
+ },
+ {
+  "id": "f34",
+  "display_name": "Mei T.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 30,
+  "occupation": "Illustrator",
+  "occupation_th": null,
+  "origin": "Taiwanese",
+  "neighborhood": "Chang Phueak",
+  "stay": "9 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Illustrator drawing Chiang Mai markets. I can teach Mandarin.",
+  "intro_en": "Illustrator drawing Chiang Mai markets. I can teach Mandarin.",
+  "give": [
+   "chinese-conversation",
+   "design"
+  ],
+  "learn": [
+   "market-shopping",
+   "kham-mueang"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Taiwanese woman who clearly looks 30 years old and works as a illustrator, photographed in Chang Phueak, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f34.jpg"
+ },
+ {
+  "id": "f35",
+  "display_name": "Ben A.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 29,
+  "occupation": "SEO consultant",
+  "occupation_th": null,
+  "origin": "white American",
+  "neighborhood": "Nimman",
+  "stay": "1 year",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "SEO consultant helping businesses show up on Google Maps.",
+  "intro_en": "SEO consultant helping businesses show up on Google Maps.",
+  "give": [
+   "google-business-profile",
+   "marketing-social-media"
+  ],
+  "learn": [
+   "scooter-driving-license",
+   "muay-thai"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a white American man who clearly looks 29 years old and works as a seo consultant, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f35.jpg"
+ },
+ {
+  "id": "f36",
+  "display_name": "Ayesha R.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 28,
+  "occupation": "Software engineer",
+  "occupation_th": null,
+  "origin": "Pakistani",
+  "neighborhood": "Santitham",
+  "stay": "5 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Software engineer who wants to learn cooking and hike Doi Inthanon.",
+  "intro_en": "Software engineer who wants to learn cooking and hike Doi Inthanon.",
+  "give": [
+   "web-tech",
+   "paid-micro-tasks"
+  ],
+  "learn": [
+   "northern-thai-cooking",
+   "hiking"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Pakistani woman who clearly looks 28 years old and works as a software engineer, photographed in Santitham, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f36.jpg"
+ },
+ {
+  "id": "f37",
+  "display_name": "Finn L.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 25,
+  "occupation": "Climbing instructor",
+  "occupation_th": null,
+  "origin": "Scottish",
+  "neighborhood": "Mae On",
+  "stay": "3 months",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Climbing instructor at Crazy Horse. Looking for waterfall trips and Thai lessons.",
+  "intro_en": "Climbing instructor at Crazy Horse. Looking for waterfall trips and Thai lessons.",
+  "give": [
+   "english-conversation",
+   "running"
+  ],
+  "learn": [
+   "day-trips-waterfalls",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Scottish man who clearly looks 25 years old and works as a climbing instructor, photographed in Mae On, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f37.jpg"
+ },
+ {
+  "id": "f38",
+  "display_name": "Camila V.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 31,
+  "occupation": "Graphic designer",
+  "occupation_th": null,
+  "origin": "Colombian",
+  "neighborhood": "Nimman",
+  "stay": "6 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Designer and salsa dancer. I help small brands with logos.",
+  "intro_en": "Designer and salsa dancer. I help small brands with logos.",
+  "give": [
+   "design",
+   "salsa-bachata"
+  ],
+  "learn": [
+   "crafts-textiles",
+   "northern-thai-cooking"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Colombian woman who clearly looks 31 years old and works as a graphic designer, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f38.jpg"
+ },
+ {
+  "id": "f39",
+  "display_name": "Rahim H.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 34,
+  "occupation": "Researcher",
+  "occupation_th": null,
+  "origin": "Bangladeshi",
+  "neighborhood": "Suthep",
+  "stay": "1 year",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Public health researcher at CMU. I mentor students on research writing.",
+  "intro_en": "Public health researcher at CMU. I mentor students on research writing.",
+  "give": [
+   "study-abroad-essays",
+   "lecture-swap"
+  ],
+  "learn": [
+   "healthcare-clinics",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Bangladeshi man who clearly looks 34 years old and works as a researcher, photographed in Suthep, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f39.jpg"
+ },
+ {
+  "id": "f40",
+  "display_name": "Anna K.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 36,
+  "occupation": "Sustainability consultant",
+  "occupation_th": null,
+  "origin": "Swedish",
+  "neighborhood": "Mae Rim",
+  "stay": "8 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Sustainability consultant. I want to learn permaculture from local farmers.",
+  "intro_en": "Sustainability consultant. I want to learn permaculture from local farmers.",
+  "give": [
+   "remote-work-freelancing",
+   "english-conversation"
+  ],
+  "learn": [
+   "farming-permaculture",
+   "market-shopping"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Swedish woman who clearly looks 36 years old and works as a sustainability consultant, photographed in Mae Rim, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f40.jpg"
+ },
+ {
+  "id": "f41",
+  "display_name": "Deniz Y.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 32,
+  "occupation": "Filmmaker",
+  "occupation_th": null,
+  "origin": "Turkish",
+  "neighborhood": "Old City",
+  "stay": "4 months",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Documentary filmmaker making a film about Lanna crafts.",
+  "intro_en": "Documentary filmmaker making a film about Lanna crafts.",
+  "give": [
+   "photo-video",
+   "real-client-project"
+  ],
+  "learn": [
+   "crafts-textiles",
+   "lanna-history"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Turkish man who clearly looks 32 years old and works as a filmmaker, photographed in Old City, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f41.jpg"
+ },
+ {
+  "id": "f42",
+  "display_name": "Jasmine L.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 27,
+  "occupation": "Food blogger",
+  "occupation_th": null,
+  "origin": "Singaporean",
+  "neighborhood": "Nimman",
+  "stay": "3 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Food blogger hunting the best khao soi. Let's eat together.",
+  "intro_en": "Food blogger hunting the best khao soi. Let's eat together.",
+  "give": [
+   "marketing-social-media",
+   "photo-video"
+  ],
+  "learn": [
+   "street-food-spots",
+   "northern-thai-cooking"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Singaporean woman who clearly looks 27 years old and works as a food blogger, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f42.jpg"
+ },
+ {
+  "id": "f43",
+  "display_name": "Hamid N.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 39,
+  "occupation": "Carpet trader and chef",
+  "occupation_th": null,
+  "origin": "Iranian",
+  "neighborhood": "Chang Klan",
+  "stay": "2 years",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "I cook Persian food for friends and want to learn Thai markets.",
+  "intro_en": "I cook Persian food for friends and want to learn Thai markets.",
+  "give": [
+   "western-cooking-baking",
+   "other-languages"
+  ],
+  "learn": [
+   "market-shopping",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Iranian man who clearly looks 39 years old and works as a carpet trader and chef, photographed in Chang Klan, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f43.jpg"
+ },
+ {
+  "id": "f44",
+  "display_name": "Rosa M.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 42,
+  "occupation": "Yoga retreat host",
+  "occupation_th": null,
+  "origin": "Mexican",
+  "neighborhood": "Mae Rim",
+  "stay": "3 years",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "I host yoga retreats and want to learn more about temple culture.",
+  "intro_en": "I host yoga retreats and want to learn more about temple culture.",
+  "give": [
+   "yoga-meditation",
+   "english-conversation"
+  ],
+  "learn": [
+   "temples-etiquette",
+   "kham-mueang"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Mexican woman who clearly looks 42 years old and works as a yoga retreat host, photographed in Mae Rim, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f44.jpg"
+ },
+ {
+  "id": "f45",
+  "display_name": "Dev S.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 30,
+  "occupation": "Product designer",
+  "occupation_th": null,
+  "origin": "Indian-British",
+  "neighborhood": "Nimman",
+  "stay": "5 months",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Product designer happy to give feedback on student projects.",
+  "intro_en": "Product designer happy to give feedback on student projects.",
+  "give": [
+   "design",
+   "class-project-feedback",
+   "real-client-project"
+  ],
+  "learn": [
+   "muay-thai",
+   "street-food-spots"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Indian-British man who clearly looks 30 years old and works as a product designer, photographed in Nimman, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f45.jpg"
+ },
+ {
+  "id": "f46",
+  "display_name": "Olga V.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 33,
+  "occupation": "Ballet teacher",
+  "occupation_th": null,
+  "origin": "Ukrainian",
+  "neighborhood": "Santitham",
+  "stay": "1 year",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Ballet teacher starting a small class. I want to learn Thai and ramwong.",
+  "intro_en": "Ballet teacher starting a small class. I want to learn Thai and ramwong.",
+  "give": [
+   "ballet-contemporary",
+   "english-conversation"
+  ],
+  "learn": [
+   "thai-basics",
+   "ramwong"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Ukrainian woman who clearly looks 33 years old and works as a ballet teacher, photographed in Santitham, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f46.jpg"
+ },
+ {
+  "id": "f47",
+  "display_name": "Noah C.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 23,
+  "occupation": "Exchange student",
+  "occupation_th": null,
+  "origin": "white American",
+  "neighborhood": "Suthep",
+  "stay": "5 months",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Exchange student at CMU. Looking for a campus language exchange and badminton.",
+  "intro_en": "Exchange student at CMU. Looking for a campus language exchange and badminton.",
+  "give": [
+   "english-conversation",
+   "campus-language-exchange"
+  ],
+  "learn": [
+   "campus-sport-lunch",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a white American man who clearly looks 23 years old and works as a exchange student, photographed in Suthep, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f47.jpg"
+ },
+ {
+  "id": "f48",
+  "display_name": "Lina S.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 29,
+  "occupation": "Coffee trader",
+  "occupation_th": null,
+  "origin": "Ethiopian",
+  "neighborhood": "Mae Kampong",
+  "stay": "6 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Coffee trader sourcing beans from Thai hills. Let's talk coffee.",
+  "intro_en": "Coffee trader sourcing beans from Thai hills. Let's talk coffee.",
+  "give": [
+   "coffee-cafes",
+   "other-languages"
+  ],
+  "learn": [
+   "farming-permaculture",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Ethiopian woman who clearly looks 29 years old and works as a coffee trader, photographed in Mae Kampong, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f48.jpg"
+ },
+ {
+  "id": "f49",
+  "display_name": "Ryan P.",
+  "community": "foreigner",
+  "gender": "m",
+  "age": 37,
+  "occupation": "Customer support lead",
+  "occupation_th": null,
+  "origin": "Filipino",
+  "neighborhood": "Chang Phueak",
+  "stay": "2 years",
+  "interface_language": "en",
+  "politeness_register": "male",
+  "intro": "Support lead working remotely. I can help students with interview English.",
+  "intro_en": "Support lead working remotely. I can help students with interview English.",
+  "give": [
+   "cv-interview-practice",
+   "english-conversation",
+   "paid-micro-tasks"
+  ],
+  "learn": [
+   "swing-dance",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Filipino man who clearly looks 37 years old and works as a customer support lead, photographed in Chang Phueak, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f49.jpg"
+ },
+ {
+  "id": "f50",
+  "display_name": "Ines D.",
+  "community": "foreigner",
+  "gender": "f",
+  "age": 26,
+  "occupation": "Hip-hop dancer and teacher",
+  "occupation_th": null,
+  "origin": "Portuguese",
+  "neighborhood": "Old City",
+  "stay": "4 months",
+  "interface_language": "en",
+  "politeness_register": "female",
+  "intro": "Hip-hop dancer teaching street dance. I want to learn Lanna dance.",
+  "intro_en": "Hip-hop dancer teaching street dance. I want to learn Lanna dance.",
+  "give": [
+   "hip-hop-dance",
+   "other-languages"
+  ],
+  "learn": [
+   "lanna-dance",
+   "thai-basics"
+  ],
+  "image_prompt": "Realistic smartphone portrait photo, head and shoulders, of a Portuguese woman who clearly looks 26 years old and works as a hip-hop dancer and teacher, photographed in Old City, Chiang Mai, Thailand. Hot tropical weather, light short-sleeved everyday clothes, natural daylight, relaxed friendly expression, softly blurred background, candid photo. No text, no watermark.",
+  "photo": "portraits/f50.jpg"
+ }
+]
