@@ -91,21 +91,31 @@ export function TagChip({
   selected?: boolean;
   onClick?: () => void;
 }) {
+  // Selectable chips (the tag picker) are pills: a light outline when off, filled with a hard shadow when on.
+  // The 20px radius is fully round at the 40px minimum height and stays soft if a long label wraps.
+  if (onClick)
+    return (
+      <button
+        type="button"
+        aria-pressed={selected}
+        onClick={onClick}
+        className={cx(
+          "inline-flex min-h-10 max-w-full items-center gap-1.5 rounded-[20px] px-3.5 py-1.5 text-left text-sm transition-colors active:scale-95",
+          selected
+            ? "border-2 border-line bg-brand font-medium text-brand-ink shadow-hard-sm"
+            : "border-[1.5px] border-muted/50 bg-surface text-ink",
+        )}
+      >
+        {selected && <span aria-hidden>✓</span>}
+        <span>{label}</span>
+      </button>
+    );
   const cls = cx(
     "inline-flex items-center gap-1 rounded-[10px] border-2 px-3 py-1 text-sm transition-colors",
     tone === "match" && "border-line bg-match text-match-ink font-medium",
     tone === "brand" && "border-line bg-brand text-brand-ink",
-    tone === "plain" && !selected && "border-line bg-surface text-ink",
-    selected && "border-line bg-brand text-brand-ink",
-    onClick && "min-h-10 active:scale-95",
+    tone === "plain" && "border-line bg-surface text-ink",
   );
-  if (onClick)
-    return (
-      <button type="button" aria-pressed={selected} onClick={onClick} className={cls}>
-        {selected && <span aria-hidden>✓</span>}
-        {label}
-      </button>
-    );
   return <span className={cls}>{label}</span>;
 }
 

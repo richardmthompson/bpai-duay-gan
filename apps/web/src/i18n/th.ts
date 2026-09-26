@@ -172,6 +172,22 @@ export const th: Strings = {
     english: "English",
   },
 
+  tagPicker: {
+    groups: {
+      language: "ภาษา",
+      food: "อาหารและเครื่องดื่ม",
+      sport: "กีฬาและกิจกรรมกลางแจ้ง",
+      arts: "ศิลปะ งานฝีมือ และดนตรี",
+      dancing: "การเต้นรำ",
+      culture: "วัฒนธรรมและชีวิตประจำวัน",
+      gettingThingsDone: "ใช้ชีวิตในเมืองไทย",
+      business: "ธุรกิจและดิจิทัล",
+      students: "นักศึกษา",
+      other: "อื่น ๆ",
+    },
+    selected: (n: number) => `เลือกแล้ว ${n}`,
+  },
+
   notifications: {
     matchRequest: (name: string) => `${name} อยากจับคู่กับคุณ`,
     matchAccepted: (name: string) => `${name} ตอบรับแล้ว ทักทายกันเลย!`,

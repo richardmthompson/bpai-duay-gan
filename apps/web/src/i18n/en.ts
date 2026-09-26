@@ -170,6 +170,22 @@ export const en = {
     english: "English",
   },
 
+  tagPicker: {
+    groups: {
+      language: "Language",
+      food: "Food and drink",
+      sport: "Sport and outdoors",
+      arts: "Arts, crafts and music",
+      dancing: "Dancing",
+      culture: "Culture and everyday life",
+      gettingThingsDone: "Getting things done in Thailand",
+      business: "Business and digital",
+      students: "Students",
+      other: "Other",
+    },
+    selected: (n: number) => `${n} selected`,
+  },
+
   notifications: {
     matchRequest: (name: string) => `${name} wants to match with you`,
     matchAccepted: (name: string) => `${name} accepted. Say hello!`,
