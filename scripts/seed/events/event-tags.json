@@ -2,33 +2,33 @@
   "_note": "event external_id (source = seed) -> tag ids",
   "event_tags": {
     "claude-impact-lab": [
-      "tech"
+      "web-tech"
     ],
     "ai-news-meetup": [
-      "tech"
+      "web-tech"
     ],
     "ai-business": [
-      "tech"
+      "web-tech"
     ],
     "conscious-tech": [
-      "tech"
+      "web-tech"
     ],
     "temple-cleanup": [
-      "temples"
+      "temples-etiquette"
     ],
     "temple-games": [
-      "temples"
+      "temples-etiquette"
     ],
     "akha-songs-stories": [
-      "music",
-      "temples"
+      "music-jamming",
+      "temples-etiquette"
     ],
     "sunday-walking-street": [
-      "street-food",
+      "street-food-spots",
       "design"
     ],
     "ecstatic-dance": [
-      "music"
+      "music-jamming"
     ],
     "skate-create": [
       "design"
@@ -43,19 +43,19 @@
       "design"
     ],
     "sunday-brunch": [
-      "english"
+      "english-conversation"
     ],
     "new-in-town": [
-      "english"
+      "english-conversation"
     ],
     "questions-family": [
-      "english"
+      "english-conversation"
     ],
     "life-happened": [
-      "english"
+      "english-conversation"
     ],
     "be-real": [
-      "english"
+      "english-conversation"
     ]
   }
 }
