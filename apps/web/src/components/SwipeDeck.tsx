@@ -27,6 +27,7 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
   const card = useRef<HTMLElement | null>(null);
   const meet = useRef<HTMLDivElement | null>(null);
   const skip = useRef<HTMLDivElement | null>(null);
+  const scrim = useRef<HTMLDivElement | null>(null);
   const drag = useRef({ x: 0, y: 0, dx: 0, dy: 0, down: false, locked: false });
   const asked = useRef(new Set<string>());
 
@@ -48,13 +49,19 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
     }
   }, [index, items]);
 
+  const veil = (value: number) => {
+    if (scrim.current) scrim.current.style.opacity = String(value);
+  };
+
   const paint = (dx: number, dy: number) => {
     const el = card.current;
     if (!el) return;
     el.style.transform = `translate(${dx}px, ${dy}px) rotate(${Math.max(-MAX_TILT, Math.min(MAX_TILT, dx / 14))}deg)`;
-    const strength = String(Math.min(1, Math.abs(dx) / SWIPE_PX));
-    if (meet.current) meet.current.style.opacity = dx > 0 ? strength : "0";
-    if (skip.current) skip.current.style.opacity = dx < 0 ? strength : "0";
+    const strength = Math.min(1, Math.abs(dx) / SWIPE_PX);
+    if (meet.current) meet.current.style.opacity = dx > 0 ? String(strength) : "0";
+    if (skip.current) skip.current.style.opacity = dx < 0 ? String(strength) : "0";
+    // the next profile stays veiled for as long as this one is on its way out
+    veil(strength);
   };
 
   const springBack = () => {
@@ -65,6 +72,7 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
     }
     if (meet.current) meet.current.style.opacity = "0";
     if (skip.current) skip.current.style.opacity = "0";
+    veil(0);
     drag.current.dx = 0;
     drag.current.dy = 0;
   };
@@ -81,9 +89,11 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
         el.style.transform = `translate(${dir === "right" ? 560 : -560}px, ${dy}px) rotate(${dir === "right" ? 18 : -18}deg)`;
       }
       if (dir === "right") setAskFor(person);
+      veil(1);
       window.setTimeout(() => {
         drag.current = { x: 0, y: 0, dx: 0, dy: 0, down: false, locked: false };
         setIndex((n) => n + 1);
+        veil(0); // the new card is on top now, so nothing to hide any more
       }, 170);
     },
     [items, index],
@@ -193,8 +203,15 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
           );
         })}
 
-        {/* Floating over the card, so the whole screen belongs to the profile. */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-5 z-20 flex items-center justify-center gap-8">
+        {/* Veils the next profile for as long as the current card is on its way out. */}
+        <div
+          ref={scrim}
+          style={{ opacity: 0 }}
+          className="pointer-events-none absolute inset-0 z-[5] rounded-3xl bg-bg/80 backdrop-blur-sm"
+        />
+
+        {/* Floating over the card, and above the bottom nav (fixed, z-20), so neither hides them. */}
+        <div className="pointer-events-none fixed inset-x-0 bottom-[calc(4.5rem+1.25rem+env(safe-area-inset-bottom))] z-30 flex items-center justify-center gap-8">
           <button
             type="button"
             aria-label={t.browse.skip}
