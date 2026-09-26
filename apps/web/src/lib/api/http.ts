@@ -9,9 +9,14 @@ const WS_URL = process.env.NEXT_PUBLIC_WS_URL ?? "";
 // token the socket uses. CONTRACT.md only specifies it for /ws; confirm with role 1.
 let cached: { token: string; until: number } | null = null;
 
+/** Signing out must empty this too, or the next account keeps being served the last one's token. */
+export function resetTokenCache(): void {
+  cached = null;
+}
+
 async function token(): Promise<string | null> {
   if (cached && cached.until > Date.now()) return cached.token;
-  const res = await fetch("/api/ws-token", { credentials: "same-origin" });
+  const res = await fetch("/api/ws-token", { credentials: "same-origin", cache: "no-store" });
   if (res.status === 401) return null;
   if (!res.ok) throw new ApiError(res.status, "ws_token_failed", "Could not get a session token");
   const body = (await res.json()) as { token: string; expiresIn?: number };
@@ -24,6 +29,9 @@ async function call<T>(method: string, path: string, body?: unknown): Promise<T>
   const t = await token();
   const res = await fetch(`${API_BASE}/v1${path}`, {
     method,
+    // The response depends on who is asking; letting the browser reuse one would show the
+    // previous session's people and notifications.
+    cache: "no-store",
     headers: {
       ...(body !== undefined ? { "Content-Type": "application/json" } : {}),
       ...(t ? { Authorization: `Bearer ${t}` } : {}),

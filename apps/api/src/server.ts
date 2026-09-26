@@ -5,6 +5,8 @@ import { attachRealtime } from "./realtime.ts";
 
 const app = express();
 app.disable("x-powered-by");
+// ETags invite conditional requests for bodies that are always per-user and always changing.
+app.disable("etag");
 app.use(express.json({ limit: "1mb" }));
 
 // Auth is a bearer token, never a cookie, so a permissive origin policy leaks nothing and keeps
@@ -13,6 +15,10 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "authorization, content-type, x-admin-secret");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  // Every /v1 response is one person's data behind a bearer token. Without this, a browser or a
+  // proxy may serve a previous account's /me or /notifications back after a sign-out — the app
+  // looks like it is still signed in as them, and notifications outlive what they point at.
+  res.setHeader("Cache-Control", "no-store");
   if (req.method === "OPTIONS") { res.sendStatus(204); return; }
   next();
 });

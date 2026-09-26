@@ -34,6 +34,22 @@ export default function Chat() {
       .catch(() => setHistoryError(true));
   }, [matchId]);
   useEffect(loadHistory, [loadHistory]);
+
+  // Opening a conversation is reading it. Without this the Chats badge counts messages you have
+  // already seen, and nothing ever clears it.
+  useEffect(() => {
+    (async () => {
+      const n = await api.getNotifications();
+      const ids = n.items
+        .filter((x) => !x.readAt && x.kind === "message" && x.data.matchId === matchId)
+        .map((x) => x.id);
+      if (ids.length) {
+        await api.markNotificationsRead(ids);
+        await refreshUnread();
+      }
+    })().catch(() => {});
+  }, [matchId, refreshUnread]);
+
   const [draft, setDraft] = useState("");
   const [typing, setTyping] = useState(false);
   const [status, setStatus] = useState<SocketStatus>("idle");
