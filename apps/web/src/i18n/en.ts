@@ -33,7 +33,7 @@ export const en = {
     line: "Continue with LINE",
     checkEmail: "Check your email for a sign-in link.",
     demoTitle: "Demo accounts",
-    demoHint: "Mock mode: pick a person. Each browser tab can be a different person.",
+    demoHint: "Pick a person to sign in. Each browser tab can be a different person.",
     or: "or",
   },
 
