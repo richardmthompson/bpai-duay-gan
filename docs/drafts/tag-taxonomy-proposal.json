@@ -432,6 +432,78 @@
       "category": "students-nomads",
       "emoji": "🏸",
       "typical_giver": "either"
+    },
+    {
+      "id": "lanna-dance",
+      "label_en": "Northern Thai (Lanna) dance",
+      "label_th": "ฟ้อนล้านนา",
+      "sort_order": 500,
+      "category": "dancing",
+      "emoji": "🪷",
+      "typical_giver": "local"
+    },
+    {
+      "id": "ramwong",
+      "label_en": "Ramwong (Thai circle dance)",
+      "label_th": "รำวง",
+      "sort_order": 510,
+      "category": "dancing",
+      "emoji": "🪘",
+      "typical_giver": "local"
+    },
+    {
+      "id": "kpop-dance",
+      "label_en": "K-pop dance covers",
+      "label_th": "เต้นคัฟเวอร์เคป๊อป",
+      "sort_order": 520,
+      "category": "dancing",
+      "emoji": "🎶",
+      "typical_giver": "local"
+    },
+    {
+      "id": "hip-hop-dance",
+      "label_en": "Hip-hop & street dance",
+      "label_th": "ฮิปฮอปและสตรีทแดนซ์",
+      "sort_order": 530,
+      "category": "dancing",
+      "emoji": "🧢",
+      "typical_giver": "either"
+    },
+    {
+      "id": "salsa-bachata",
+      "label_en": "Salsa & bachata",
+      "label_th": "ซัลซ่าและบาชาต้า",
+      "sort_order": 540,
+      "category": "dancing",
+      "emoji": "💃",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "tango",
+      "label_en": "Tango",
+      "label_th": "แทงโก้",
+      "sort_order": 550,
+      "category": "dancing",
+      "emoji": "🕺",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "swing-dance",
+      "label_en": "Swing & lindy hop",
+      "label_th": "สวิงแดนซ์",
+      "sort_order": 560,
+      "category": "dancing",
+      "emoji": "🎷",
+      "typical_giver": "foreigner"
+    },
+    {
+      "id": "ballet-contemporary",
+      "label_en": "Ballet & contemporary",
+      "label_th": "บัลเลต์และร่วมสมัย",
+      "sort_order": 570,
+      "category": "dancing",
+      "emoji": "🩰",
+      "typical_giver": "either"
     }
   ]
 }
