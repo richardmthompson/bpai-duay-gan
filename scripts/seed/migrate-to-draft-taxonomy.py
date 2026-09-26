@@ -10,14 +10,18 @@ This script:
   1. rewrites scripts/seed/tags/tags.json from the proposal, in the database's four-column shape,
      renumbering sort_order 10, 20, 30... in the proposal's own order (the proposal's hundreds
      collide across categories);
-  2. repoints the cast's give/learn ids through MAP below, and regenerates the cast's tag_slugs
-     from the result;
+  2. repoints the cast's give/learn ids through the retired-id map, and regenerates the cast's
+     tag_slugs from the result;
   3. repoints the event -> tag links the same way.
 
-MAP is the previous migration's map read backwards, because that map came from the reference
-table's ids. It must be one-to-one: ranking counts matched tags, so two source ids collapsing onto
-one target would quietly drop a person's tag and change the stage demo's order. The script asserts
-that before writing anything. Rerunning it is a no-op once the ids are repointed.
+The map lives in scripts/seed/tag-id-map.json, beside this script, and is the only one: build_sql.py
+and run.ts apply the same map to a live database. It covers every id the seed has shipped that the
+merged list dropped; for the cast it is the previous migration's map read backwards. Several retired
+ids fold into one merged tag, so the map as a whole is many-to-one, but on the ids a person or event
+actually holds it must be one-to-one: ranking counts matched tags, so two of a person's ids
+collapsing onto one target would quietly drop a tag and change the stage demo's order. The script
+asserts that, and that no id it must repoint maps to null, before writing anything. Rerunning it is
+a no-op once the ids are repointed.
 
 It only touches tag ids and the notes that describe them: names, intros, photos, events and
 orderings are untouched. Run scripts/seed/build_sql.py afterwards; it regenerates tags.sql,
@@ -32,22 +36,9 @@ TAGS = HERE / "tags/tags.json"
 CAST = HERE / "profiles/demo-profiles.json"
 EVENT_TAGS = HERE / "events/event-tags.json"
 
-# Every id the cast and the event links used -> its merged equivalent.
-MAP = {
-    "english-conversation": "english",
-    "thai-basics": "thai-language",
-    "northern-thai-cooking": "cooking",
-    "street-food-spots": "street-food",
-    "scooter-driving-license": "scooter",
-    "visa-immigration": "bureaucracy",
-    "temples-etiquette": "temples",
-    "music-jamming": "music",
-    "web-tech": "tech",
-    # unchanged, listed so the mapping is complete and auditable
-    "design": "design",
-    "hiking": "hiking",
-    "muay-thai": "muay-thai",
-}
+ID_MAP = HERE / "tag-id-map.json"
+# Retired id -> merged equivalent, or None where no honest equivalent exists.
+MAP = json.loads(ID_MAP.read_text())["map"]
 
 CAST_NOTE = ("Every give/learn id resolves against scripts/seed/tags/tags.json, the merged 85-tag "
              "taxonomy; scripts/seed/build_sql.py fails if one does not. tag_slugs lists the ids the "
@@ -61,6 +52,9 @@ def dump(path, data):
 
 
 def repoint(ids, where):
+    dropped = [t for t in ids if t in MAP and MAP[t] is None]
+    if dropped:
+        raise SystemExit(f"✗ {where}: {dropped} have no merged equivalent; choose a tag by hand")
     mapped = [MAP.get(tag_id, tag_id) for tag_id in ids]
     if len(set(mapped)) != len(mapped):
         raise SystemExit(f"✗ {where}: repointing {ids} would merge two tags into one: {mapped}")
@@ -68,21 +62,28 @@ def repoint(ids, where):
 
 
 def main() -> None:
-    if len(set(MAP.values())) != len(MAP):
-        raise SystemExit("✗ MAP is not one-to-one: two source ids share a target")
-
     proposal_tags = json.loads(PROPOSAL.read_text())["tags"]
     proposal_ids = {t["id"] for t in proposal_tags}
-    unknown_targets = sorted(set(MAP.values()) - proposal_ids)
+    unknown_targets = sorted({t for t in MAP.values() if t is not None} - proposal_ids)
     if unknown_targets:
-        raise SystemExit(f"✗ MAP targets missing from the taxonomy proposal: {unknown_targets}")
+        raise SystemExit(f"✗ map targets missing from the taxonomy proposal: {unknown_targets}")
+    still_live = sorted(set(MAP) & proposal_ids)
+    if still_live:
+        raise SystemExit(f"✗ map retires ids the taxonomy proposal still holds: {still_live}")
+
+    cast = json.loads(CAST.read_text())
+    links = json.loads(EVENT_TAGS.read_text())
+    held = {t for p in cast["profiles"] for t in p["give"] + p["learn"]}
+    held |= {t for ids in links["event_tags"].values() for t in ids}
+    to_repoint = {k: v for k, v in MAP.items() if k in held}
+    if len(set(to_repoint.values())) != len(to_repoint):
+        raise SystemExit(f"✗ map is not one-to-one on the ids the seed holds: two source ids share a target: {to_repoint}")
 
     # 1. tags.json becomes the proposal, in its own order, renumbered.
     out = [{"id": t["id"], "label_en": t["label_en"], "label_th": t["label_th"], "sort_order": (i + 1) * 10}
            for i, t in enumerate(proposal_tags)]
 
     # 2. the cast's ids.
-    cast = json.loads(CAST.read_text())
     changed = 0
     for person in cast["profiles"]:
         for key in ("give", "learn"):
@@ -99,7 +100,6 @@ def main() -> None:
     cast["_note"] = CAST_NOTE
 
     # 3. the event links.
-    links = json.loads(EVENT_TAGS.read_text())
     relinked = 0
     for slug, ids in links["event_tags"].items():
         links["event_tags"][slug], n = repoint(ids, f"event {slug}")
