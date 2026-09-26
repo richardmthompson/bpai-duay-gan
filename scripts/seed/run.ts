@@ -13,6 +13,11 @@
  * docs/drafts/tag-taxonomy-proposal.json. This runner inserts exactly those tags. A profile naming
  * an id that tags.json lacks stops the run before anything is written, naming the id and the
  * profile; fix the data (scripts/seed/build_sql.py runs the same check) rather than adding tags.
+ *
+ * It replaces the vocabulary rather than adding to it, in one transaction: selections and event
+ * links on a retired id move to the tag scripts/seed/tag-id-map.json names (a null mapping drops
+ * them), then every selection, event link and tag outside tags.json is deleted. tags.sql does the
+ * same for a psql load.
  */
 import { readFile } from "node:fs/promises";
 import { q, tx } from "@bpai/db";
@@ -69,14 +74,52 @@ if (unresolved.length) {
   process.exit(1);
 }
 
-for (const t of allTags) {
-  await q(
-    `insert into tags (id, label_en, label_th, sort_order) values ($1,$2,$3,$4)
-     on conflict (id) do update set label_en = excluded.label_en, label_th = excluded.label_th,
-       sort_order = excluded.sort_order`,
-    [t.id, t.label_en, t.label_th, t.sort_order]);
+const idMap = (await readJson("./tag-id-map.json") as { map: Record<string, string | null> }).map;
+const badMap = Object.entries(idMap)
+  .filter(([old, next]) => knownTagIds.has(old) || (next !== null && !knownTagIds.has(next)))
+  .map(([old, next]) => `${old} -> ${next}`);
+if (badMap.length) {
+  console.error(`✗ tag-id-map.json must map retired ids onto tags.json ids: ${badMap.join(", ")}`);
+  process.exit(1);
 }
-console.log(`✓ tags: ${allTags.length}`);
+const moves = Object.entries(idMap).filter((e): e is [string, string] => e[1] !== null);
+const oldIds = moves.map(([old]) => old);
+const newIds = moves.map(([, next]) => next);
+const keepIds = allTags.map((t) => t.id);
+
+const pruned = await tx(async (c) => {
+  for (const t of allTags) {
+    await c.query(
+      `insert into tags (id, label_en, label_th, sort_order) values ($1,$2,$3,$4)
+       on conflict (id) do update set label_en = excluded.label_en, label_th = excluded.label_th,
+         sort_order = excluded.sort_order`,
+      [t.id, t.label_en, t.label_th, t.sort_order]);
+  }
+  const n = async (sql: string, params: unknown[]) => Number((await c.query(sql, params)).rows[0].n);
+  const selectionsMoved = await n("select count(*)::int as n from profile_tags where tag_id = any($1::text[])", [oldIds]);
+  const linksMoved = await n("select count(*)::int as n from event_tags where tag_id = any($1::text[])", [oldIds]);
+  await c.query(
+    `insert into profile_tags (user_id, tag_id, direction)
+     select p.user_id, m.new_id, p.direction from profile_tags p
+     join unnest($1::text[], $2::text[]) as m(old_id, new_id) on m.old_id = p.tag_id
+     on conflict do nothing`, [oldIds, newIds]);
+  await c.query(
+    `insert into event_tags (event_id, tag_id)
+     select e.event_id, m.new_id from event_tags e
+     join unnest($1::text[], $2::text[]) as m(old_id, new_id) on m.old_id = e.tag_id
+     on conflict do nothing`, [oldIds, newIds]);
+  // Selections and links go before tags, so no foreign key is violated.
+  const selectionsDeleted = (await c.query("delete from profile_tags where not (tag_id = any($1::text[]))", [keepIds])).rowCount ?? 0;
+  const linksDeleted = (await c.query("delete from event_tags where not (tag_id = any($1::text[]))", [keepIds])).rowCount ?? 0;
+  const tagsRemoved = (await c.query("delete from tags where not (id = any($1::text[]))", [keepIds])).rowCount ?? 0;
+  return {
+    tagsRemoved, selectionsMoved, selectionsDropped: selectionsDeleted - selectionsMoved,
+    linksMoved, linksDropped: linksDeleted - linksMoved,
+  };
+});
+console.log(`✓ tags: ${allTags.length}; ${pruned.tagsRemoved} retired tag(s) removed`);
+console.log(`  selections: ${pruned.selectionsMoved} remapped, ${pruned.selectionsDropped} dropped; ` +
+  `event links: ${pruned.linksMoved} remapped, ${pruned.linksDropped} dropped`);
 
 // ── events referenced by the cast ─────────────────────────────────────────────────────────────
 
