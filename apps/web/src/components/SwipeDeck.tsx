@@ -69,8 +69,9 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
     const strength = Math.min(1, Math.abs(dx) / SWIPE_PX);
     if (meet.current) meet.current.style.opacity = dx > 0 ? String(strength) : "0";
     if (skip.current) skip.current.style.opacity = dx < 0 ? String(strength) : "0";
-    // the next profile stays veiled for as long as this one is on its way out
-    veil(strength);
+    // The next profile may never show while this one is displaced, so the veil is all or nothing;
+    // only the stamps fade in with distance.
+    veil(dx !== 0 ? 1 : 0);
   };
 
   const springBack = () => {
