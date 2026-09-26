@@ -15,6 +15,8 @@ Built at the Claude Community Hackathon, Chiang Mai, 26–27 September 2026.
 
 Hackathon build in progress. Architecture and setup instructions land here as the team agrees them.
 
+Deploy (docker compose + Caddy): see [infra/compose/README.md](infra/compose/README.md).
+
 ## Team
 
 Antoinette, Lutz, Marc, Ollie, Richard, Shavab.
