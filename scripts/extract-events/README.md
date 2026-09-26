@@ -14,11 +14,11 @@ node ../seed/events/push.mjs --out /tmp/events.json      # no API: write the pay
 
 ## Tags: `scripts/seed/tags/`
 
-`tags.json` holds the 12 tags the demo profiles use (`scripts/seed/profiles` `tag_slugs`), with Thai and English labels. The Thai labels still need a native speaker's check. `scripts/seed/events/event-tags.json` links 18 of the events to those tags (20 links), for the ranking's shared-interest signal later.
+`tags.json` is the app's single tag list, with Thai and English labels; every profile and event tag must be one of its ids, and `scripts/seed/build_sql.py` fails if one is not. The Thai labels still need a native speaker's check. `scripts/seed/events/event-tags.json` links events to those tags for the ranking's shared-interest signal. An extractor that tags events must use ids from `tags.json`.
 
 ## Loading without the API
 
-If `POST /v1/admin/events/upsert` isn't up yet, load everything straight into Postgres. Both files are idempotent and were tested twice in a row against the contract's tables (12 tags, 24 events, 20 event-tag links, all four demo-profile event refs resolve):
+If `POST /v1/admin/events/upsert` isn't up yet, load everything straight into Postgres. Both files are idempotent; `build_sql.py` prints the current tag, event and link counts when it regenerates them:
 
 ```bash
 psql "$DATABASE_URL" -f scripts/seed/tags/tags.sql
