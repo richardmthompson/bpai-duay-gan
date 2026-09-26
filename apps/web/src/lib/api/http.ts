@@ -7,16 +7,31 @@ const WS_URL = process.env.NEXT_PUBLIC_WS_URL ?? "";
 
 // The Node API cannot read the Auth.js cookie, so every /v1 call carries the same short-lived
 // token the socket uses. CONTRACT.md only specifies it for /ws; confirm with role 1.
-let cached: { token: string; until: number } | null = null;
+//
+// The cache is keyed on the cookie it came from: a cache that only expires would keep serving the
+// previous session's bearer token for its full hour, so signing in as someone else on the same
+// browser showed the previous person — and the app could not see a new session at all.
+let cached: { token: string; source: string; until: number } | null = null;
+
+function sessionCookie(): string {
+  const match = document.cookie.match(/(?:^|;\s*)bpai_token=([^;]*)/);
+  return match ? decodeURIComponent(match[1]) : "";
+}
+
+/** Signing out must empty this too; see clearSession(). */
+export function resetTokenCache(): void {
+  cached = null;
+}
 
 async function token(): Promise<string | null> {
-  if (cached && cached.until > Date.now()) return cached.token;
-  const res = await fetch("/api/ws-token", { credentials: "same-origin" });
+  const source = sessionCookie();
+  if (cached && cached.source === source && cached.until > Date.now()) return cached.token;
+  const res = await fetch("/api/ws-token", { credentials: "same-origin", cache: "no-store" });
   if (res.status === 401) return null;
   if (!res.ok) throw new ApiError(res.status, "ws_token_failed", "Could not get a session token");
   const body = (await res.json()) as { token: string; expiresIn?: number };
   const ttl = (body.expiresIn ?? 60) * 1000;
-  cached = { token: body.token, until: Date.now() + ttl - 5_000 };
+  cached = { token: body.token, source, until: Date.now() + ttl - 5_000 };
   return body.token;
 }
 
@@ -24,6 +39,9 @@ async function call<T>(method: string, path: string, body?: unknown): Promise<T>
   const t = await token();
   const res = await fetch(`${API_BASE}/v1${path}`, {
     method,
+    // The response depends on who is asking; letting the browser reuse one would show the
+    // previous session's people and notifications.
+    cache: "no-store",
     headers: {
       ...(body !== undefined ? { "Content-Type": "application/json" } : {}),
       ...(t ? { Authorization: `Bearer ${t}` } : {}),

@@ -5,6 +5,7 @@
  * The token is written to both a cookie (so the /api/ws-token route can hand it to the socket) and
  * localStorage (so a reload keeps the session without a round trip).
  */
+import { resetTokenCache } from "./api/http";
 import { TOKEN_COOKIE } from "./cookie";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "";
@@ -32,6 +33,9 @@ export function clearSession(): void {
     localStorage.removeItem("bpai.token");
     localStorage.removeItem("bpai.isDemo");
   } catch { /* ignore */ }
+  // The api client holds the bearer token in memory for an hour; leaving it there meant the next
+  // person to sign in on this browser was still served as the last one.
+  resetTokenCache();
 }
 
 export function isDemoSession(): boolean {
