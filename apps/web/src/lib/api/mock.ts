@@ -219,6 +219,13 @@ function goingIds(s: State, userId: string) {
   return s.attendance.filter((a) => a.userId === userId).map((a) => a.eventId);
 }
 
+/** Tags both people give, plus tags both want to learn: the API's third ranking key. */
+function sameSideOverlap(me: MockUser, other: MockUser): number {
+  return (
+    other.give.filter((t) => me.give.includes(t)).length + other.learn.filter((t) => me.learn.includes(t)).length
+  );
+}
+
 function candidate(s: State, me: MockUser, other: MockUser): Candidate {
   const matchedTags: MatchedTag[] = [
     ...other.give.filter((t) => me.learn.includes(t)).map((tagId) => ({ tagId, side: "theyGive" as const })),
@@ -496,11 +503,13 @@ export const mockApi: Api = {
           u.community !== me.community &&
           !blockedEitherWay(s, me.userId, u.userId),
       )
-      .map((u) => ({ c: candidate(s, me, u), createdAt: u.createdAt }))
+      .map((u) => ({ c: candidate(s, me, u), sameSide: sameSideOverlap(me, u), createdAt: u.createdAt }))
+      // Same order as the API's byRank: shared events, complementary tags, same-side overlap, newest.
       .sort(
         (a, b) =>
           b.c.sharedEvents.length - a.c.sharedEvents.length ||
           b.c.matchedTags.length - a.c.matchedTags.length ||
+          b.sameSide - a.sameSide ||
           b.createdAt.localeCompare(a.createdAt),
       )
       .map((x) => x.c);
