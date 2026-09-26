@@ -87,8 +87,8 @@ export default function SignIn() {
       </div>
 
       <div className="flex flex-col items-center text-center">
-        {/* The wordmark is dark green on transparent, so it sits on a light plate in dark mode. */}
-        <div className="rounded-3xl p-2 dark:bg-white/95">
+        {/* The wordmark is dark green on transparent; a white plate in the theme's outline-and-hard-shadow style frames it. */}
+        <div className="rounded-3xl border-2 border-line bg-surface p-4 shadow-hard">
           <Image src="/logo.png" alt="Bpai Duay Gan · ไปด้วยกัน" width={640} height={563} priority className="h-auto w-64" />
         </div>
         <p className="mt-4 text-muted">{t.tagline}</p>
