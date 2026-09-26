@@ -1,18 +1,5 @@
 # Tag Taxonomy
 
-A tag is one shared concept with a Thai and an English label. One list serves both communities. Each person ticks any tag as **Give** (I can share this) or **Learn** (I want this), and a match forms when one side's Give meets the other side's Learn on the same tag. The `tags` table in `CONTRACT.md` stores `id`, `label_en`, `label_th` and `sort_order`; the Category column below is a grouping for the picker and can be carried by `sort_order` alone, or by an additive `category` column if the picker wants headings.
-
-This list started from the team's handwritten page (`tag-taxonomy.jpg`) and grew from research into what people actually do around Chiang Mai and what the two communities ask each other for. The strongest demand on both sides is language: Thais want spoken English with native speakers, and foreigners want spoken Thai, help with paperwork, and Thai friends. The activity tags give a match a concrete thing to do together.
-
-## How to read the table
-
-- **Core** marks the tags the onboarding picker should show first. They cover the demand the research found most often. Everything else sits behind a "more" control or lower in `sort_order`.
-- **Usual direction** is who typically gives. It is a hint for demo data and for the ranking's sanity checks, not a rule. Every tag stays open in both directions.
-- **Source**: *seed* = one of the twelve ids already live in `scripts/seed/tags/tags.json`, which the demo profiles, event tags and web mock reference; its label is kept verbatim from the seed. *page* = on the team's handwritten sheet; *research* = backed by a cited source in the research notes below; *local* = well known in Chiang Mai but not confirmed by a source this session.
-- **Ids are the contract.** The twelve *seed* ids are canonical because data already references them. Everything else here is additive, which the team agreed needs no ceremony. Where this list and the seed named the same concept differently, the seed's id won: `thai-language`, `street-food`, `bureaucracy`, `temples` and `design` replaced this file's earlier slugs. The seed's umbrella tags `music` and `tech` stay alongside the finer tags beneath them.
-- Of the handwritten page's ids, `tech-amazon` is relabelled as selling on Amazon, Etsy and Shopify (coding and tech have their own tags) and `business` as "Starting and running a business".
-- Thai labels are a draft by a non-native writer. A Thai speaker should check register and wording before the seed runs.
-
 ## Language · ภาษา
 
 | Tag id | English | Thai | Core | Usual direction | Source |
@@ -132,37 +119,3 @@ This list started from the team's handwritten page (`tag-taxonomy.jpg`) and grew
 | design | Design & crafts | งานออกแบบและงานฝีมือ | ✓ | Either | seed |
 | tourism-hospitality | Tourism and hospitality business | ธุรกิจท่องเที่ยวและโรงแรม |  | Either | local |
 | cafe-restaurant | Running a café or restaurant | เปิดคาเฟ่หรือร้านอาหาร |  | Either | research |
-
-## Counts
-
-| | Tags | Core |
-|---|---|---|
-| Language | 12 | 4 |
-| Food and drink | 9 | 5 |
-| Sport and outdoors | 14 | 4 |
-| Arts, crafts and music | 15 | 5 |
-| Culture and everyday life | 11 | 4 |
-| Getting things done in Thailand | 8 | 4 |
-| Business and digital | 16 | 9 |
-| **Total** | **85** | **35** |
-
-## Research notes
-
-Two research passes fed this list. Evidence is strong for language and weak-to-moderate for everything else; no survey ranks what the two communities want from each other, so the Core column is a judgement call from how often a topic recurred.
-
-**What Thais ask foreigners for.** Spoken English dominates. Pantip threads repeatedly ask where to practise speaking with foreigners in Chiang Mai (pantip.com/topic/32242380, /31013751, /38499397). Online selling for extra income is growing; the Revenue Department reports 56,091 small online traders newly registered (Thai Examiner, 15 Sep 2026). AI tools and digital skills are rising among young Thais (Bangkok Post, "How young Thais are learning to live and work with AI"). Other languages, freelancing, studying abroad and Western cooking appear but are not sourced.
-
-**What foreigners ask Thais for.** Spoken Thai first: Tandem lists 471 users in Chiang Mai, and an Airbnb experience sells Kham Mueang lessons from a local. Paperwork second: 90-day reporting and TM30 carry 2,000 to 5,000 baht fines and agents charge 500 to 800 baht to file (Chiang Mai Ambassador; CMLocals). Making Thai friends is a recurring theme in nomad guides (Indie Traveller). Etiquette, festivals, cooking, licences, renting and healthcare are common newcomer questions but not sourced this session.
-
-**Activities confirmed with a venue or schedule.** Crazy Horse Buttress climbing with CMRCA and Progression Vertical; Doi Suthep-Pui downhill trails; North Gate Jazz Co-op's free Tuesday jam; Wat Suan Dok monk chat Mon/Wed/Fri 5 to 7pm and its retreats; Old Medicine Hospital and ITM massage schools; Bo Sang umbrella and saa paper workshops; San Kamphaeng Road silk, silver, lacquer and celadon; Maled, Graph and Ministry of Roasters for coffee; Mug Craft for homebrew; Chiang Mai Board Games and the Friday Social Thai Language Exchange on Meetup; Punspace, Yellow and Alt_ChiangMai coworking.
-
-**Existing exchange groups.** Language Exchange Chiang Mai (Facebook), Chiang Mai Social and Language Exchange at Bodhi Terrace (Eventbrite), Free Language Exchange Chiang Mai on Wednesdays and Saturdays, and a past Draper Startup House Saturday exchange. All swap Thai for English. None matches on other skills, which is the gap this app fills.
-
-**Seasonal note.** Burning season, roughly February to April, cuts outdoor activity. Not modelled in the tags; worth a flag on events later.
-
-## Open questions for the team
-
-- The seed (`scripts/seed/tags/tags.json`) carries only the 35 Core rows, because the picker is a flat chip list with no headings or "more" control. The remaining rows wait here until the picker can group or fold them.
-- `bureaucracy` and `licence-bank` must read as guidance from a friend, not agent services. The label says "guidance"; the picker copy should say it too.
-- Thai labels need a native check, especially the practical and business rows.
-- If the team wants category headings in the picker, add a `category` column to `tags`. That is additive under the contract's rules, so Shivam only needs telling.
