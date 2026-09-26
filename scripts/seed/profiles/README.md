@@ -33,7 +33,7 @@ If Lutz picks other ids, rename the refs here.
 ## Demo design
 
 - **Stage pair.** Nok (local, Thai UI, `female`) runs a khao soi shop in Chang Phueak. She gives cooking, street food and scooter, and learns English. Sam (foreigner, English UI, `male`) has been in Chiang Mai four months and teaches English. He learns scooter and street food. That's three complementary matches, and both are going to `seed:akha-songs-stories`. Each ranks first in the other's list.
-- **Nok's list** (complementary matches, shared events): Sam 3+1, then a tie of Emma, Lukas and Aisha at 2, then a medium tie of Hana and Olivia at 1, then Marco (event only), then five people with no overlap (Kenji, Chloé, Dev, Tom, Mei).
-- **Sam's list**: Nok 3+1, then a tie of Beam, Fah and Lek at 2, then a medium tie of Golf and Pim at 1, then Ton (event only), then no overlap (Mild, Arm, Kwan, Som, Nam).
+- **Nok's list** (complementary matches, shared events; shared events rank first): Sam 3+1, then Marco (event only), then a tie of Emma, Lukas and Aisha at 2, then a medium tie of Hana and Olivia at 1, then five people with no overlap (Kenji, Chloé, Dev, Tom, Mei).
+- **Sam's list**: Nok 3+1, then Ton (event only), then a tie of Beam, Fah and Lek at 2, then a medium tie of Golf and Pim at 1, then no overlap (Mild, Arm, Kwan, Som, Nam).
 - **Edge cases**: Mild is a local who chose an English UI. Kenji is a foreigner who chose a Thai UI and writes in Thai. Kwan and Dev use the `neutral` register.
 - Logging in as a demo user depends on role 1's auth choice. Seeded users have no Google account linked; to use one on stage, sign in with Google using the seeded email or change the email here.

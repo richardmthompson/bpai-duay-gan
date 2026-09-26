@@ -22,8 +22,9 @@ import type {
 } from "@/lib/contract";
 import { ApiError, type Api, type Realtime, type SocketStatus } from "./types";
 
-// Same shape as the weights constant the contract puts in apps/api.
-const WEIGHTS = { tag: 10, sharedEvent: 5 };
+// Mirrors apps/api's ranking: any shared event outweighs every tag total a profile can reach,
+// so people going to the same event rank first even with no tags in common (issue #3).
+const WEIGHTS = { tag: 10, sharedEvent: 1000 };
 
 interface MockUser extends Me {
   createdAt: string;
@@ -480,7 +481,12 @@ export const mockApi: Api = {
           !blockedEitherWay(s, me.userId, u.userId),
       )
       .map((u) => ({ c: candidate(s, me, u), createdAt: u.createdAt }))
-      .sort((a, b) => b.c.score - a.c.score || b.createdAt.localeCompare(a.createdAt))
+      .sort(
+        (a, b) =>
+          b.c.sharedEvents.length - a.c.sharedEvents.length ||
+          b.c.matchedTags.length - a.c.matchedTags.length ||
+          b.createdAt.localeCompare(a.createdAt),
+      )
       .map((x) => x.c);
     return { items, nextCursor: null };
   },

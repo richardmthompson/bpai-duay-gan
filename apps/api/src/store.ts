@@ -324,7 +324,8 @@ async function scoreCandidates(viewerId: string, rows: CandidateRow[]): Promise<
 
     const candidate: Candidate = {
       ...toPerson(row),
-      score: matchedTags.length * 100 + sharedEvents.length * 10,
+      // Mirrors byRank: any shared event outweighs every tag total a profile can reach.
+      score: sharedEvents.length * 1000 + matchedTags.length * 100,
       interestsText: row.interests_text,
       give, learn, matchedTags, sharedEvents,
     };
@@ -338,9 +339,13 @@ async function scoreCandidates(viewerId: string, rows: CandidateRow[]): Promise<
   });
 }
 
-/** Complementary overlap, then a shared event, then same-side overlap; ties newest first. */
+/**
+ * Shared events first: two people going to the same event already have a time, a place and a
+ * reason to meet, so that outranks any tag match, even with no tags in common (issue #3).
+ * Then complementary overlap, then same-side overlap; ties newest first.
+ */
 function byRank(a: Scored, b: Scored): number {
-  return b.complementary - a.complementary || b.shared - a.shared || b.sameSide - a.sameSide ||
+  return b.shared - a.shared || b.complementary - a.complementary || b.sameSide - a.sameSide ||
     b.created - a.created;
 }
 
