@@ -92,11 +92,17 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     void refreshMe();
-    api.getTags().then(setTags).catch(() => {});
   }, [refreshMe]);
 
   // One socket for the whole signed-in session.
   const userId = me?.userId;
+
+  // The API serves tags only to a signed-in user, and signing in does not reload the page, so
+  // fetch them whenever the signed-in user changes rather than once on first load (#25).
+  useEffect(() => {
+    if (!userId) return;
+    api.getTags().then(setTags).catch(() => {});
+  }, [userId]);
   useEffect(() => {
     if (!userId) return;
     api.realtime.connect();
