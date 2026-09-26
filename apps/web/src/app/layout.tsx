@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Kanit, Sora, Unbounded } from "next/font/google";
 import { AppProvider } from "@/components/AppProvider";
+import { ServiceWorker } from "@/components/ServiceWorker";
 import { Toasts } from "@/components/Toasts";
 import "./globals.css";
 
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
           <Toasts />
         </AppProvider>
+        <ServiceWorker />
       </body>
     </html>
   );

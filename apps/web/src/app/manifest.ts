@@ -6,7 +6,11 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "ไปด้วยกัน",
     description: "Thai locals and foreigners in Chiang Mai, trading what they know and chatting in their own languages.",
     start_url: "/",
+    // The QR code points at /install; this is the identity of the installed app on the device.
+    id: "/",
+    scope: "/",
     display: "standalone",
+    orientation: "portrait",
     background_color: "#f7faf8",
     theme_color: "#0b5a44",
     icons: [

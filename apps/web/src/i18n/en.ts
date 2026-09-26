@@ -189,6 +189,25 @@ export const en = {
     matchAccepted: (name: string) => `${name} accepted. Say hello!`,
     message: (name: string) => `New message from ${name}`,
   },
+
+  install: {
+    title: "Install the app",
+    lead: "Put Bpai Duay Gan on your home screen. It opens full screen and is there when you want it — no app store, nothing to download.",
+    cta: "Install the app",
+    promptPending: "If nothing happens, your browser is not offering the install prompt yet. Use the steps below.",
+    installedTitle: "It is installed",
+    installedBody: "Open it from your home screen whenever you like.",
+    openApp: "Open the app",
+    inAppTitle: "You are already using the installed app",
+    stepsTitle: "Or install it by hand",
+    iosTitle: "iPhone or iPad — in Safari",
+    iosSteps: "Tap the Share button at the bottom, then choose “Add to Home Screen”.",
+    androidTitle: "Android — in Chrome",
+    androidSteps: "Tap the ⋮ menu, then “Install app” (or “Add to Home screen”).",
+    desktopTitle: "Desktop — Chrome or Edge",
+    desktopSteps: "Click the install icon at the right-hand end of the address bar.",
+    signInHint: "Once it is installed, sign in and start meeting people.",
+  },
 };
 
 export type Strings = typeof en;
