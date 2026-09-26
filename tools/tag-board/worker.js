@@ -1,5 +1,4 @@
 const TAGS_URLS = [
-  "https://raw.githubusercontent.com/richardmthompson/bpai-duay-gan/tags/merged-taxonomy/docs/drafts/tag-taxonomy-proposal.json",
   "https://raw.githubusercontent.com/richardmthompson/bpai-duay-gan/main/docs/drafts/tag-taxonomy-proposal.json",
 ];
 
