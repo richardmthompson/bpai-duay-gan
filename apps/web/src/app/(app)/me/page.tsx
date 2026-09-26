@@ -3,13 +3,14 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useApp } from "@/components/AppProvider";
+import { GenderPicker } from "@/components/GenderPicker";
 import { LangToggle } from "@/components/LangToggle";
 import { TagPicker } from "@/components/TagPicker";
-import { Avatar, Button, CommunityBadge, PageHeader, TagChip, cx } from "@/components/ui";
+import { Avatar, Button, CommunityBadge, PageHeader, TagChip } from "@/components/ui";
 import { api } from "@/lib/api";
 import { mockControls } from "@/lib/api/mock";
 import { clearSession } from "@/lib/session";
-import type { Lang, Register } from "@/lib/contract";
+import type { Gender, Lang } from "@/lib/contract";
 
 export default function MePage() {
   const { t, me, setMe, tagLabel } = useApp();
@@ -63,29 +64,6 @@ export default function MePage() {
           <Row label={t.me.speaks}>
             <LangToggle value={me.speaksLanguage} onChange={(l: Lang) => update({ speaksLanguage: l })} />
           </Row>
-          {me.speaksLanguage === "en" && (
-            <Row label={t.me.register}>
-              <div className="inline-flex rounded-full border-2 border-line bg-surface p-1 text-sm shadow-hard-sm">
-                {(
-                  [
-                    ["male", "ครับ"],
-                    ["female", "ค่ะ"],
-                    ["neutral", "–"],
-                  ] as [Register, string][]
-                ).map(([r, label]) => (
-                  <button
-                    key={r}
-                    type="button"
-                    aria-pressed={me.politenessRegister === r}
-                    onClick={() => update({ politenessRegister: r })}
-                    className={cx("min-h-9 rounded-full px-4", me.politenessRegister === r ? "bg-ink text-bg" : "text-muted")}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-            </Row>
-          )}
         </section>
 
         <Button variant="secondary" onClick={signOut}>
@@ -141,12 +119,14 @@ function EditProfile({ onDone }: { onDone: () => void }) {
   const [give, setGive] = useState(me!.give);
   const [learn, setLearn] = useState(me!.learn);
   const [interests, setInterests] = useState(me!.interestsText);
+  const [gender, setGender] = useState<Gender | null>(me!.gender);
   const [busy, setBusy] = useState(false);
 
   async function save() {
     setBusy(true);
     try {
-      await api.putMe({ displayName: name.trim(), interestsText: interests.trim() });
+      // Gender also sets the Thai politeness register the translation uses (the api keeps them in step).
+      await api.putMe({ displayName: name.trim(), interestsText: interests.trim(), ...(gender ? { gender } : {}) });
       setMe(await api.putMyTags({ give, learn }));
       onDone();
     } finally {
@@ -162,6 +142,10 @@ function EditProfile({ onDone }: { onDone: () => void }) {
         onChange={(e) => setName(e.target.value)}
         className="min-h-11 rounded-xl border-2 border-line bg-bg px-3 text-base outline-none focus:border-brand"
       />
+      <div>
+        <p className="mb-2 font-medium">{t.me.gender}</p>
+        <GenderPicker value={gender} onChange={setGender} />
+      </div>
       <div>
         <p className="mb-2 font-medium">{t.onboarding.giveTitle}</p>
         <TagPicker value={give} onChange={setGive} />

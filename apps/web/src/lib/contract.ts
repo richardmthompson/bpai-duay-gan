@@ -5,6 +5,15 @@
 export type Lang = "th" | "en";
 export type Community = "local" | "foreigner";
 export type Register = "male" | "female" | "neutral";
+export type Gender = "male" | "female" | "other" | "undisclosed";
+export const GENDERS: readonly Gender[] = ["male", "female", "other", "undisclosed"];
+/** People set gender; the translation reads the register. The api applies the same map on save. */
+export const REGISTER_FOR_GENDER: Record<Gender, Register> = {
+  male: "male",
+  female: "female",
+  other: "neutral",
+  undisclosed: "neutral",
+};
 export type Direction = "give" | "learn";
 
 export interface Tag {
@@ -22,6 +31,7 @@ export interface Me {
   interfaceLanguage: Lang;
   speaksLanguage: Lang;
   politenessRegister: Register | null;
+  gender: Gender | null;
   interestsText: string;
   avatarUrl: string | null;
   onboardingComplete: boolean;
@@ -36,7 +46,7 @@ export type ProfileUpdate = Partial<
     | "community"
     | "interfaceLanguage"
     | "speaksLanguage"
-    | "politenessRegister"
+    | "gender"
     | "interestsText"
     | "avatarUrl"
   >

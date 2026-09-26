@@ -7,6 +7,7 @@ import type {
   Community,
   Event,
   EventSummary,
+  Gender,
   Lang,
   MatchRequest,
   MatchSummary,
@@ -20,6 +21,7 @@ import type {
   Register,
   ServerFrame,
 } from "@/lib/contract";
+import { REGISTER_FOR_GENDER } from "@/lib/contract";
 import { ApiError, type Api, type Realtime, type SocketStatus } from "./types";
 
 // Same shape as the weights constant the contract puts in apps/api.
@@ -71,6 +73,11 @@ const uid = () => crypto.randomUUID();
 const now = () => new Date().toISOString();
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
+/** The schema's backfill: a male or female register implies that gender; anything else stays unknown. */
+function genderFromRegister(r: Register | null): Gender | null {
+  return r === "male" || r === "female" ? r : null;
+}
+
 function seedState(): State {
   const users: State["users"] = {};
   const attendance: State["attendance"] = [];
@@ -86,6 +93,7 @@ function seedState(): State {
       interfaceLanguage: p.interface_language as Lang,
       speaksLanguage: p.speaks_language as Lang,
       politenessRegister: p.politeness_register as Register,
+      gender: genderFromRegister(p.politeness_register as Register),
       interestsText: p.interests_text,
       avatarUrl: p.avatar_url,
       onboardingComplete: true,
@@ -113,7 +121,12 @@ function seedState(): State {
 function load(): State {
   try {
     const raw = localStorage.getItem(STATE_KEY);
-    if (raw) return JSON.parse(raw) as State;
+    if (raw) {
+      const s = JSON.parse(raw) as State;
+      // State saved before gender existed gets the same backfill the database gets on deploy.
+      for (const u of Object.values(s.users)) u.gender ??= genderFromRegister(u.politenessRegister);
+      return s;
+    }
   } catch {}
   const s = seedState();
   save(s);
@@ -159,6 +172,7 @@ export const mockControls = {
       interfaceLanguage,
       speaksLanguage: interfaceLanguage,
       politenessRegister: null,
+      gender: null,
       interestsText: "",
       avatarUrl: null,
       onboardingComplete: false,
@@ -452,6 +466,8 @@ export const mockApi: Api = {
     const s = load();
     const me = requireMe(s);
     Object.assign(me, update);
+    // Like the api: the register follows gender on every save that carries one.
+    if (update.gender) me.politenessRegister = REGISTER_FOR_GENDER[update.gender];
     me.onboardingComplete = !!(me.community && me.displayName && me.give.length + me.learn.length > 0);
     save(s);
     return (await this.getMe())!;
