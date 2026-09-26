@@ -44,7 +44,7 @@ export default function Person() {
         </div>
 
         {u.matchedTags.length + u.sharedEvents.length > 0 && (
-          <section className="rounded-2xl bg-brand-soft p-4">
+          <section className="rounded-2xl border-2 border-line bg-brand-soft p-4 shadow-hard-sm">
             <h2 className="mb-2 font-semibold text-accent">{t.profile.whyMatch}</h2>
             <ul className="flex flex-col gap-1 text-sm">
               {u.sharedEvents.map((e) => (
@@ -78,7 +78,7 @@ export default function Person() {
             <ul className="flex flex-col gap-2">
               {u.goingEvents.map((e) => (
                 <li key={e.id}>
-                  <Link href={`/events/${e.id}`} className="block rounded-xl border border-line bg-surface p-3">
+                  <Link href={`/events/${e.id}`} className="block rounded-xl border-2 border-line bg-surface p-3 shadow-hard-sm">
                     <p className="font-medium">{eventTitle(e, lang)}</p>
                     <p className="text-sm text-muted">{formatWhen(e.startsAt, lang)}</p>
                   </Link>

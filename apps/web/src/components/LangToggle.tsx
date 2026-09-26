@@ -5,7 +5,7 @@ import { cx } from "./ui";
 
 export function LangToggle({ value, onChange }: { value: Lang; onChange: (l: Lang) => void }) {
   return (
-    <div role="radiogroup" className="inline-flex rounded-full border border-line bg-surface p-1 text-sm">
+    <div role="radiogroup" className="inline-flex rounded-full border-2 border-line bg-surface p-1 text-sm shadow-hard-sm">
       {(["th", "en"] as const).map((l) => (
         <button
           key={l}

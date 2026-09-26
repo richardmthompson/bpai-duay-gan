@@ -33,10 +33,10 @@ export default function Chats() {
       {list.loading && <Loading />}
       {list.error ? <ErrorState onRetry={list.reload} /> : null}
       {list.data?.length === 0 && <Empty text={t.chats.empty} />}
-      <ul className="divide-y divide-line">
+      <ul className="flex flex-col gap-3 p-4">
         {list.data?.map((m) => (
           <li key={m.id}>
-            <Link href={`/chats/${m.id}`} className="flex items-center gap-3 px-4 py-3 active:bg-surface-2">
+            <Link href={`/chats/${m.id}`} className="flex items-center gap-3 rounded-2xl border-2 border-line bg-surface p-3 shadow-hard-sm active:bg-surface-2">
               <Avatar name={m.other.displayName} community={m.other.community} url={m.other.avatarUrl} />
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline justify-between gap-2">
@@ -46,7 +46,7 @@ export default function Chats() {
                 <p className="truncate text-sm text-muted">{m.lastMessage ? preview(m.lastMessage) : t.chats.noMessages}</p>
               </div>
               {m.unreadCount > 0 && (
-                <span className="min-w-6 rounded-full bg-brand px-1.5 text-center text-xs font-semibold leading-6 text-brand-ink">
+                <span className="min-w-6 rounded-full border-2 border-line bg-brand px-1.5 text-center text-xs font-semibold leading-5 text-brand-ink">
                   {m.unreadCount}
                 </span>
               )}

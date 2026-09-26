@@ -30,8 +30,8 @@ export function GoingButton({ eventId, going, onChange }: { eventId: string; goi
       disabled={busy}
       onClick={toggle}
       className={cx(
-        "inline-flex min-h-10 items-center gap-1.5 rounded-full px-4 text-sm font-medium transition active:scale-95",
-        going ? "border-2 border-line bg-ok text-white" : "border-2 border-line bg-surface text-ink",
+        "inline-flex min-h-10 items-center gap-1.5 rounded-full border-2 border-line px-4 text-sm font-medium shadow-hard-sm transition active:scale-95",
+        going ? "bg-ok text-white" : "bg-surface text-ink",
       )}
     >
       {going ? `✓ ${t.events.going}` : t.events.imGoing}

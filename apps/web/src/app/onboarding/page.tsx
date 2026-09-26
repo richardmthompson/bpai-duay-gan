@@ -122,7 +122,7 @@ function Wizard({ me }: { me: Me }) {
               maxLength={40}
               onChange={(e) => setName(e.target.value)}
               placeholder={o.namePlaceholder}
-              className="min-h-12 w-full rounded-xl border border-line bg-surface px-4 text-base outline-none focus:border-brand"
+              className="min-h-12 w-full rounded-xl border-2 border-line bg-surface px-4 text-base outline-none focus:border-brand"
             />
           </Section>
         )}
@@ -159,7 +159,7 @@ function Wizard({ me }: { me: Me }) {
               value={interests}
               onChange={(e) => setInterests(e.target.value)}
               placeholder={o.interestsPlaceholder}
-              className="w-full rounded-xl border border-line bg-surface p-4 text-base outline-none focus:border-brand"
+              className="w-full rounded-xl border-2 border-line bg-surface p-4 text-base outline-none focus:border-brand"
             />
             {error && <p className="mt-2 text-sm text-danger">{t.common.somethingWrong}</p>}
           </Section>
@@ -204,8 +204,8 @@ function Choice({ selected, onClick, title, hint }: { selected: boolean; onClick
       aria-checked={selected}
       onClick={onClick}
       className={cx(
-        "rounded-2xl border-2 p-4 text-left transition-colors",
-        selected ? "border-brand bg-brand-soft" : "border-line bg-surface",
+        "rounded-2xl border-2 border-line p-4 text-left shadow-hard-sm transition-colors",
+        selected ? "bg-brand-soft" : "bg-surface",
       )}
     >
       <span className="block font-semibold">{title}</span>

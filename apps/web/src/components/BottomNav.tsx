@@ -24,7 +24,7 @@ export function BottomNav() {
     { href: "/me", key: "me", label: t.nav.me },
   ];
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur">
+    <nav className="fixed inset-x-0 bottom-0 z-20 border-t-2 border-line bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur">
       <ul className="mx-auto flex max-w-md">
         {items.map((it) => {
           const active = path === it.href || path.startsWith(`${it.href}/`) || (it.href === "/browse" && path.startsWith("/people"));

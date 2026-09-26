@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Candidate, PublicProfile } from "@/lib/contract";
 import { api } from "@/lib/api";
@@ -20,6 +22,7 @@ const MAX_TILT = 12;
  */
 export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMore: () => void }) {
   const { t, lang, tagLabel } = useApp();
+  const router = useRouter();
   const [index, setIndex] = useState(0);
   const [askFor, setAskFor] = useState<Candidate | null>(null);
   const [sentTo, setSentTo] = useState<string[]>([]);
@@ -29,6 +32,9 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
   const skip = useRef<HTMLDivElement | null>(null);
   const scrim = useRef<HTMLDivElement | null>(null);
   const drag = useRef({ x: 0, y: 0, dx: 0, dy: 0, down: false, locked: false });
+  // The link a gesture started on. The card captures the pointer, so the browser's click lands on
+  // the card, not the link: a still tap on an event tag navigates from here instead.
+  const pressedLink = useRef<string | null>(null);
   const asked = useRef(new Set<string>());
 
   const current = items[index];
@@ -106,9 +112,10 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
     d.down = false;
     const horizontal = Math.abs(d.dx) > Math.abs(d.dy);
     if (horizontal && Math.abs(d.dx) > SWIPE_PX) commit(d.dx > 0 ? "right" : "left");
-    else if (!canceled && !horizontal && Math.abs(d.dx) < 8 && Math.abs(d.dy) < 8) {
-      // a still tap does nothing; the profile is already on the card
+    else if (!canceled && Math.abs(d.dx) < 8 && Math.abs(d.dy) < 8) {
+      // a still tap does nothing, unless it landed on an event tag; the profile is already on the card
       springBack();
+      if (pressedLink.current) router.push(pressedLink.current);
     } else springBack();
   };
 
@@ -154,6 +161,7 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
                       }
                       (e.currentTarget as HTMLElement).style.transition = "none";
                       drag.current = { x: e.clientX, y: e.clientY, dx: 0, dy: 0, down: true, locked: false };
+                      pressedLink.current = (e.target as Element).closest("a[data-tap-link]")?.getAttribute("href") ?? null;
                     }
                   : undefined
               }
@@ -213,7 +221,7 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
             type="button"
             aria-label={t.browse.skip}
             onClick={() => commit("left")}
-            className="pointer-events-auto grid h-14 w-14 place-items-center rounded-full border-2 border-line bg-surface text-2xl text-ink shadow-hard active:scale-95"
+            className="pointer-events-auto grid h-14 w-14 place-items-center rounded-full border-2 border-line bg-surface/95 text-2xl text-muted shadow-hard backdrop-blur active:scale-95"
           >
             ✕
           </button>
@@ -301,24 +309,39 @@ function CardBody({
 
       {/* the rest of the card scrolls, so the floating buttons never hide anything for good */}
       <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto overscroll-contain px-4 pb-24 pt-2" style={{ touchAction: "pan-y" }}>
-        {c.matchedTags.length + c.sharedEvents.length > 0 && (
-          <section className="rounded-2xl border-2 border-line bg-brand-soft p-3">
-            <h3 className="mb-1 text-sm font-semibold text-accent">{t.profile.whyMatch}</h3>
-            <ul className="flex flex-col gap-1 text-sm">
-              {c.matchedTags.map((m) => (
-                <li key={`${m.side}-${m.tagId}`}>
-                  {m.side === "theyGive" ? t.browse.canTeachYou : t.browse.wantsToLearn}:{" "}
-                  <span className="font-medium">{tagLabel(m.tagId)}</span>
-                </li>
-              ))}
+        {c.sharedEvents.length > 0 && (
+          <section>
+            <MatchLabel>{t.browse.bothGoing}</MatchLabel>
+            <ul className="flex flex-col gap-2">
               {c.sharedEvents.map((e) => (
                 <li key={e.id}>
-                  {t.browse.bothGoing}: <span className="font-medium">{eventTitle(e, lang)}</span>
+                  <Link
+                    href={`/events/${e.id}`}
+                    data-tap-link
+                    draggable={false}
+                    // Pointer taps navigate from the card's release handler (see pressedLink); a
+                    // keyboard Enter (detail 0) still follows the link, and never reaches the deck's
+                    // Enter-to-meet shortcut.
+                    onClick={(ev) => ev.detail > 0 && ev.preventDefault()}
+                    onKeyDown={(ev) => ev.stopPropagation()}
+                    className="flex items-center gap-2.5 rounded-xl border-2 border-line bg-event px-3 py-2 text-event-ink"
+                  >
+                    <span aria-hidden>📅</span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-sm font-semibold leading-snug">{eventTitle(e, lang)}</span>
+                      <span className="block text-xs text-event-ink/80">{formatWhen(e.startsAt, lang)}</span>
+                    </span>
+                    <span aria-hidden className="text-lg leading-none">
+                      ›
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>
           </section>
         )}
+        <MatchChips label={t.browse.canTeachYou} ids={c.matchedTags.filter((m) => m.side === "theyGive").map((m) => m.tagId)} tagLabel={tagLabel} />
+        <MatchChips label={t.browse.wantsToLearn} ids={c.matchedTags.filter((m) => m.side === "youGive").map((m) => m.tagId)} tagLabel={tagLabel} />
 
         <TagSection title={t.profile.gives} ids={c.give} matched={matched} label={tagLabel} />
         <TagSection title={t.profile.learns} ids={c.learn} matched={matched} label={tagLabel} />
@@ -355,6 +378,24 @@ function TagSection({ title, ids, matched, label }: { title: string; ids: string
       <div className="flex flex-wrap gap-1.5">
         {ids.map((id) => (
           <TagChip key={id} label={label(id)} tone={matched.has(id) ? "match" : "plain"} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function MatchLabel({ children }: { children: React.ReactNode }) {
+  return <h3 className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-muted">{children}</h3>;
+}
+
+function MatchChips({ label, ids, tagLabel }: { label: string; ids: string[]; tagLabel: (id: string) => string }) {
+  if (ids.length === 0) return null;
+  return (
+    <section>
+      <MatchLabel>{label}</MatchLabel>
+      <div className="flex flex-wrap gap-1.5">
+        {ids.map((id) => (
+          <TagChip key={id} tone="match" label={tagLabel(id)} />
         ))}
       </div>
     </section>

@@ -122,7 +122,7 @@ export function Button({
         variant === "primary" && "border-2 border-line bg-brand font-semibold text-brand-ink shadow-hard-sm",
         variant === "secondary" && "border-2 border-line bg-surface text-ink shadow-hard-sm",
         variant === "ghost" && "text-muted",
-        variant === "danger" && "border border-danger/40 text-danger",
+        variant === "danger" && "border-2 border-line bg-surface text-danger shadow-hard-sm",
         className,
       )}
     />
@@ -186,7 +186,7 @@ export function Sheet({ open, onClose, title, children }: { open: boolean; onClo
         role="dialog"
         aria-modal
         aria-label={title}
-        className="w-full max-w-md rounded-t-2xl bg-surface p-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:rounded-2xl"
+        className="w-full max-w-md rounded-t-2xl border-2 border-line bg-surface p-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:rounded-2xl sm:shadow-hard"
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="mb-3 text-lg font-semibold">{title}</h2>
