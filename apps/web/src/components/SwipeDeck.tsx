@@ -173,7 +173,7 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
               onPointerCancel={top ? () => release(true) : undefined}
               style={top ? undefined : { transform: `translateY(${depth * 10}px) scale(${1 - depth * 0.04})`, transition: "transform 180ms ease" }}
               className={cx(
-                "absolute inset-0 flex flex-col overflow-hidden rounded-3xl border border-line bg-surface shadow-sm",
+                "absolute inset-0 flex flex-col overflow-hidden rounded-3xl border-2 border-line bg-surface shadow-hard",
                 top ? "z-10" : "z-0",
               )}
             >
@@ -213,7 +213,7 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
             type="button"
             aria-label={t.browse.skip}
             onClick={() => commit("left")}
-            className="pointer-events-auto grid h-14 w-14 place-items-center rounded-full bg-surface/95 text-2xl text-muted shadow-lg ring-1 ring-line backdrop-blur active:scale-95"
+            className="pointer-events-auto grid h-14 w-14 place-items-center rounded-full border-2 border-line bg-surface text-2xl text-ink shadow-hard active:scale-95"
           >
             ✕
           </button>
@@ -221,9 +221,12 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
             type="button"
             aria-label={t.browse.meet}
             onClick={() => commit("right")}
-            className="pointer-events-auto grid h-16 w-16 place-items-center rounded-full bg-brand text-3xl text-brand-ink shadow-xl active:scale-95"
+            className="pointer-events-auto grid h-16 w-16 place-items-center rounded-full border-2 border-line bg-brand text-brand-ink shadow-hard active:scale-95"
           >
-            🤝
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M7 10v12" />
+              <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
+            </svg>
           </button>
         </div>
       </div>
@@ -299,8 +302,8 @@ function CardBody({
       {/* the rest of the card scrolls, so the floating buttons never hide anything for good */}
       <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto overscroll-contain px-4 pb-24 pt-2" style={{ touchAction: "pan-y" }}>
         {c.matchedTags.length + c.sharedEvents.length > 0 && (
-          <section className="rounded-2xl bg-brand-soft p-3">
-            <h3 className="mb-1 text-sm font-semibold text-brand">{t.profile.whyMatch}</h3>
+          <section className="rounded-2xl border-2 border-line bg-brand-soft p-3">
+            <h3 className="mb-1 text-sm font-semibold text-accent">{t.profile.whyMatch}</h3>
             <ul className="flex flex-col gap-1 text-sm">
               {c.matchedTags.map((m) => (
                 <li key={`${m.side}-${m.tagId}`}>

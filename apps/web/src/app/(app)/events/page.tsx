@@ -33,7 +33,7 @@ export default function Events() {
                 <img src={e.imageUrl} alt="" className="h-36 w-full object-cover" />
               )}
               <div className="p-4">
-                <p className="text-sm font-medium text-brand">{formatWhen(e.startsAt, lang)}</p>
+                <p className="text-sm font-medium text-accent">{formatWhen(e.startsAt, lang)}</p>
                 <p className="mt-0.5 text-lg font-semibold leading-snug">{eventTitle(e, lang)}</p>
                 <p className="text-sm text-muted">{e.venueName}</p>
               </div>

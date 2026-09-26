@@ -27,7 +27,7 @@ export default function EventDetail() {
       )}
       <div className="flex flex-col gap-5 px-4 pb-6 pt-2">
         <div>
-          <p className="text-sm font-medium text-brand">
+          <p className="text-sm font-medium text-accent">
             {formatWhen(e.startsAt, lang)}
             {e.endsAt && ` – ${formatWhen(e.endsAt, lang, { weekday: undefined, day: undefined, month: undefined })}`}
           </p>
@@ -52,7 +52,7 @@ export default function EventDetail() {
 
         {description && <p className="whitespace-pre-line">{description}</p>}
         {e.sourceUrl && (
-          <a href={e.sourceUrl} target="_blank" rel="noreferrer" className="text-sm text-brand underline">
+          <a href={e.sourceUrl} target="_blank" rel="noreferrer" className="text-sm text-accent underline">
             {t.events.details} ↗
           </a>
         )}
@@ -68,7 +68,7 @@ export default function EventDetail() {
                   <Link href={`/people/${p.userId}`} className="flex items-center gap-3 rounded-xl border border-line bg-surface p-3">
                     <Avatar name={p.displayName} community={p.community} url={p.avatarUrl} size={40} />
                     <span className="flex-1 font-medium">{p.displayName}</span>
-                    <span className="text-sm text-brand">{t.browse.viewProfile} →</span>
+                    <span className="text-sm text-accent">{t.browse.viewProfile} →</span>
                   </Link>
                 </li>
               ))}

@@ -71,8 +71,8 @@ export function CommunityBadge({ community }: { community: Community }) {
   return (
     <span
       className={cx(
-        "inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium",
-        community === "local" ? "bg-local-soft text-local" : "bg-foreigner-soft text-foreigner",
+        "inline-flex items-center rounded-full border-2 border-line px-2 py-0.5 text-xs font-semibold",
+        community === "local" ? "bg-local text-local-ink" : "bg-foreigner text-foreigner-ink",
       )}
     >
       {community === "local" ? t.common.local : t.common.foreigner}
@@ -92,11 +92,11 @@ export function TagChip({
   onClick?: () => void;
 }) {
   const cls = cx(
-    "inline-flex items-center gap-1 rounded-full border px-3 py-1 text-sm transition-colors",
-    tone === "match" && "border-transparent bg-brand-soft text-brand font-medium",
-    tone === "brand" && "border-transparent bg-brand text-brand-ink",
+    "inline-flex items-center gap-1 rounded-[10px] border-2 px-3 py-1 text-sm transition-colors",
+    tone === "match" && "border-line bg-match text-match-ink font-medium",
+    tone === "brand" && "border-line bg-brand text-brand-ink",
     tone === "plain" && !selected && "border-line bg-surface text-ink",
-    selected && "border-brand bg-brand text-brand-ink",
+    selected && "border-line bg-brand text-brand-ink",
     onClick && "min-h-10 active:scale-95",
   );
   if (onClick)
@@ -119,8 +119,8 @@ export function Button({
       {...props}
       className={cx(
         "inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 font-medium transition active:scale-[0.98] disabled:opacity-50 disabled:active:scale-100",
-        variant === "primary" && "bg-brand text-brand-ink",
-        variant === "secondary" && "border border-line bg-surface text-ink",
+        variant === "primary" && "border-2 border-line bg-brand font-semibold text-brand-ink shadow-hard-sm",
+        variant === "secondary" && "border-2 border-line bg-surface text-ink shadow-hard-sm",
         variant === "ghost" && "text-muted",
         variant === "danger" && "border border-danger/40 text-danger",
         className,

@@ -53,7 +53,7 @@ export default function Requests() {
               className={cx("min-h-10 rounded-lg text-sm font-medium", tab === k ? "bg-surface shadow-sm" : "text-muted")}
             >
               {k === "incoming" ? t.requests.incoming : t.requests.outgoing}
-              {pending > 0 && <span className="ml-1 text-brand">({pending})</span>}
+              {pending > 0 && <span className="ml-1 text-accent">({pending})</span>}
             </button>
           );
         })}

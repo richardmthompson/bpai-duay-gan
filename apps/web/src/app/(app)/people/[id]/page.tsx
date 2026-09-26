@@ -45,7 +45,7 @@ export default function Person() {
 
         {u.matchedTags.length + u.sharedEvents.length > 0 && (
           <section className="rounded-2xl bg-brand-soft p-4">
-            <h2 className="mb-2 font-semibold text-brand">{t.profile.whyMatch}</h2>
+            <h2 className="mb-2 font-semibold text-accent">{t.profile.whyMatch}</h2>
             <ul className="flex flex-col gap-1 text-sm">
               {u.sharedEvents.map((e) => (
                 <li key={e.id}>

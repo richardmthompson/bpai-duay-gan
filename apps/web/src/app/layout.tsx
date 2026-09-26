@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Noto_Sans_Thai } from "next/font/google";
+import { Kanit, Sora, Unbounded } from "next/font/google";
 import { AppProvider } from "@/components/AppProvider";
 import { Toasts } from "@/components/Toasts";
 import "./globals.css";
 
-const latin = Inter({ variable: "--font-sans-latin", subsets: ["latin"] });
-const thai = Noto_Sans_Thai({ variable: "--font-sans-thai", subsets: ["thai"] });
+const latin = Sora({ variable: "--font-sans-latin", subsets: ["latin"] });
+const display = Unbounded({ variable: "--font-display-latin", subsets: ["latin"], weight: ["600", "700", "800"] });
+const thai = Kanit({ variable: "--font-sans-thai", subsets: ["thai", "latin"], weight: ["400", "500", "600", "700"] });
 
 export const metadata: Metadata = {
   title: "ไปด้วยกัน Bpai Duay Gan",
@@ -19,15 +20,12 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f7faf8" },
-    { media: "(prefers-color-scheme: dark)", color: "#0d1714" },
-  ],
+  themeColor: "#efdfc9",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="th" className={`${latin.variable} ${thai.variable} h-full antialiased`}>
+    <html lang="th" className={`${latin.variable} ${display.variable} ${thai.variable} h-full antialiased`}>
       <body className="min-h-full">
         <AppProvider>
           {children}
