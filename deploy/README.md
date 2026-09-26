@@ -49,9 +49,10 @@ sudo -u postgres psql -d bpai -c "create extension if not exists pgcrypto"
 git clone https://github.com/richardmthompson/bpai-duay-gan.git /srv/bpai
 cd /srv/bpai && npm install
 psql "$DATABASE_URL" -f packages/db/schema.sql
-node scripts/seed/run.ts                              # 24 demo profiles
+# Order matters: event links need the tags, and people's event attendance needs the events.
 psql "$DATABASE_URL" -f scripts/seed/tags/tags.sql
 psql "$DATABASE_URL" -f scripts/seed/events/events.sql
+node scripts/seed/run.ts                              # demo people, after the events they attend
 
 cp deploy/bpai-api.service /etc/systemd/system/ && systemctl daemon-reload && systemctl enable --now bpai-api
 cp deploy/Caddyfile /etc/caddy/Caddyfile && caddy validate --config /etc/caddy/Caddyfile && systemctl reload caddy
@@ -79,6 +80,10 @@ API_BASE=https://bpai.drdos.shivamsaluja.com ADMIN_INGEST_SECRET=... npm run see
 `ADMIN_INGEST_SECRET` is in `/srv/bpai/.env`. The same payload can be loaded straight into
 Postgres with `psql -f scripts/seed/events/events.sql` if the api is down — both paths are
 idempotent on `(source, external_id)`.
+
+Events loaded this way arrive after the people. Rerun `node scripts/seed/run.ts` afterwards so the
+demo people's event attendance links to them; it is idempotent. Without that rerun the cast has no
+shared events, and the Nok and Sam stage pair loses the reason they rank first for each other.
 
 ## Known shortcuts
 
