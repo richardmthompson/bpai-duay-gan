@@ -1,0 +1,116 @@
+"use client";
+
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useApp } from "@/components/AppProvider";
+import { LangToggle } from "@/components/LangToggle";
+import { Avatar, Button, CommunityBadge } from "@/components/ui";
+import { api } from "@/lib/api";
+import { mockControls } from "@/lib/api/mock";
+import type { Community } from "@/lib/contract";
+
+export default function SignIn() {
+  const { t, lang, me, ready, setPreSignInLang, refreshMe } = useApp();
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  useEffect(() => {
+    if (ready && me) router.replace(me.onboardingComplete ? "/browse" : "/onboarding");
+  }, [ready, me, router]);
+
+  async function after() {
+    const m = await refreshMe();
+    router.replace(m?.onboardingComplete ? "/browse" : "/onboarding");
+  }
+
+  async function submitEmail(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email.includes("@")) return;
+    setBusy(true);
+    if (api.mode === "mock") {
+      mockControls.signInWithEmail(email, lang);
+      await after();
+    } else {
+      // Auth.js email provider. Wired in with the auth slice.
+      window.location.href = `/api/auth/signin?email=${encodeURIComponent(email)}`;
+      setSent(true);
+    }
+    setBusy(false);
+  }
+
+  const demo = api.mode === "mock" ? mockControls.demoUsers() : [];
+
+  return (
+    <main className="mx-auto flex min-h-dvh max-w-md flex-col gap-8 px-5 py-10">
+      <div className="flex justify-end">
+        <LangToggle value={lang} onChange={setPreSignInLang} />
+      </div>
+
+      <div className="flex flex-col items-center text-center">
+        {/* The wordmark is dark green on transparent, so it sits on a light plate in dark mode. */}
+        <div className="rounded-3xl p-2 dark:bg-white/95">
+          <Image src="/logo.png" alt="Bpai Duay Gan · ไปด้วยกัน" width={640} height={563} priority className="h-auto w-64" />
+        </div>
+        <p className="mt-4 text-muted">{t.tagline}</p>
+      </div>
+
+      <form onSubmit={submitEmail} className="flex flex-col gap-3">
+        <label className="text-sm font-medium" htmlFor="email">
+          {t.signIn.emailLabel}
+        </label>
+        <input
+          id="email"
+          type="email"
+          inputMode="email"
+          autoComplete="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder={t.signIn.emailPlaceholder}
+          className="min-h-12 rounded-xl border border-line bg-surface px-4 text-base outline-none focus:border-brand"
+        />
+        <Button type="submit" disabled={busy}>
+          {t.signIn.submit}
+        </Button>
+        {sent && <p className="text-sm text-muted">{t.signIn.checkEmail}</p>}
+      </form>
+
+      {api.mode === "http" && (
+        <div className="flex flex-col gap-3">
+          <p className="text-center text-sm text-muted">{t.signIn.or}</p>
+          <Button variant="secondary" onClick={() => (window.location.href = "/api/auth/signin/google")}>
+            {t.signIn.google}
+          </Button>
+        </div>
+      )}
+
+      {demo.length > 0 && (
+        <section className="rounded-2xl border border-dashed border-line p-4">
+          <h2 className="font-semibold">{t.signIn.demoTitle}</h2>
+          <p className="mb-3 text-sm text-muted">{t.signIn.demoHint}</p>
+          <ul className="flex flex-col gap-2">
+            {demo.map((u) => (
+              <li key={u.userId}>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    mockControls.signInAs(u.userId);
+                    await after();
+                  }}
+                  className="flex w-full items-center gap-3 rounded-xl bg-surface p-3 text-left"
+                >
+                  <Avatar name={u.displayName} community={u.community} size={40} />
+                  <span className="flex-1 font-medium">{u.displayName}</span>
+                  <CommunityBadge community={u.community as Community} />
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </main>
+  );
+}

@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f7faf8;
+  --surface: #ffffff;
+  --surface-2: #ecf3ef;
+  --ink: #0f2a22;
+  --muted: #5b6f67;
+  --line: #d9e5df;
+  /* From logo.png: dark green ring, amber and teal speech bubbles. */
+  --brand: #0b5a44;
+  --brand-ink: #ffffff;
+  --brand-soft: #dcefe6;
+  --local: #9a5b00;
+  --local-soft: #fdefd2;
+  --foreigner: #13766f;
+  --foreigner-soft: #d5efec;
+  --ok: #2f7d3e;
+  --danger: #b91c1c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1714;
+    --surface: #14211d;
+    --surface-2: #1b2b26;
+    --ink: #e9f2ee;
+    --muted: #9bb1a8;
+    --line: #28392f;
+    --brand: #5cc59f;
+    --brand-ink: #062119;
+    --brand-soft: #173a2f;
+    --local: #f9b233;
+    --local-soft: #3a2a0c;
+    --foreigner: #5fc7bd;
+    --foreigner-soft: #11332f;
+    --ok: #6fcf7f;
+    --danger: #f87171;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-local: var(--local);
+  --color-local-soft: var(--local-soft);
+  --color-foreigner: var(--foreigner);
+  --color-foreigner-soft: var(--foreigner-soft);
+  --color-ok: var(--ok);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-sans-latin), var(--font-sans-thai), system-ui, sans-serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-sans-latin), var(--font-sans-thai), system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Thai glyphs need taller lines than Latin to keep vowel marks clear of the line above. */
+:lang(th) {
+  line-height: 1.7;
+}
