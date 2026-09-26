@@ -22,7 +22,7 @@ const { translate } = await import(process.env.TRANSLATE_MODULE ?? "../../apps/a
 
 const MODEL = process.env.TRANSLATE_MODEL ?? "(api default)";
 const JUDGE = process.env.JUDGE_MODEL ?? "claude-opus-5";
-const STAMP = MODEL.replace(/[^\w.-]+/g, "_");
+const STAMP = (process.env.RUN_LABEL ? process.env.RUN_LABEL.replace(/[^\w.-]+/g, "_") + "-" : "") + MODEL.replace(/[^\w.-]+/g, "_");
 const anthropic = new Anthropic();
 
 /** en→th is Sam (male) writing to Nok; th→en is Nok (female) writing to Sam. */
@@ -87,18 +87,27 @@ for (const c of CASES) {
     const want = c.register === "male" ? /ครับ/ : /(ค่ะ|คะ)/;
     checks.push([`particle(${c.register})`, want.test(out)]);
   }
-  for (const n of c.text.match(/\d+/g) ?? []) checks.push([`number ${n}`, out.includes(n)]);
+  // Thai writes digits as words (6 is หก), so a single digit counts as kept if either form is there.
+  const TH_DIGIT = { 0: "ศูนย์", 1: "หนึ่ง", 2: "สอง", 3: "สาม", 4: "สี่", 5: "ห้า", 6: "หก", 7: "เจ็ด", 8: "แปด", 9: "เก้า" };
+  for (const n of c.text.match(/\d+/g) ?? []) {
+    const ok = out.includes(n) || (c.dir === "en→th" && n.length === 1 && out.includes(TH_DIGIT[n]));
+    checks.push([`number ${n}`, ok]);
+  }
   if (c.need) checks.push(["expected term", c.need.test(out)]);
   if (/\p{Extended_Pictographic}/u.test(c.text)) checks.push(["emoji kept", /\p{Extended_Pictographic}/u.test(out)]);
 
   let verdict = { verdict: "ERROR", reason: "translation failed", better: "", meaning: 0, natural: 0, register: 0 };
   if (out) {
-    const res = await anthropic.messages.create(
-      { model: JUDGE, max_tokens: 700, messages: [{ role: "user", content: JUDGE_PROMPT(c, out) }] },
-      { timeout: 60_000 },
-    );
-    const text = res.content.filter((b) => b.type === "text").map((b) => b.text).join("");
-    verdict = json(text) ?? { verdict: "UNPARSED", reason: text.slice(0, 120), meaning: 0, natural: 0, register: 0, better: "" };
+    // One retry: a judge that rambles past its JSON must not read as a bad translation.
+    for (let attempt = 0; attempt < 2 && verdict.verdict === "UNPARSED"; attempt++) {
+      const res = await anthropic.messages.create(
+        { model: JUDGE, max_tokens: 700, messages: [{ role: "user", content: JUDGE_PROMPT(c, out) + (attempt ? "\n\nJSON only, no prose, no code fences." : "") }] },
+        { timeout: 60_000 },
+      );
+      const text = res.content.filter((b) => b.type === "text").map((b) => b.text).join("");
+      verdict = json(text) ?? { verdict: "UNPARSED", reason: text.slice(0, 120), meaning: 0, natural: 0, register: 0, better: "" };
+    }
+    if (verdict.verdict === "UNPARSED") verdict = { ...verdict, verdict: "JUDGE-ERROR", reason: "judge output unparseable twice" };
   }
   const failed = checks.filter(([, ok]) => !ok).map(([n]) => n);
   rows.push({ ...c, out, note, verdict: verdict.verdict, scores: [verdict.meaning, verdict.natural, verdict.register],
