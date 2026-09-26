@@ -14,7 +14,7 @@
  * Writes /tmp/translation-report-<model>.md and .json. Judge model: JUDGE_MODEL (default
  * claude-opus-5). Needs ANTHROPIC_API_KEY in the environment (the api's .env has it).
  */
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import Anthropic from "@anthropic-ai/sdk";
 
 // Imported dynamically so the suite can also run from outside the checkout (TRANSLATE_MODULE).
@@ -25,8 +25,13 @@ const JUDGE = process.env.JUDGE_MODEL ?? "claude-opus-5";
 const STAMP = (process.env.RUN_LABEL ? process.env.RUN_LABEL.replace(/[^\w.-]+/g, "_") + "-" : "") + MODEL.replace(/[^\w.-]+/g, "_");
 const anthropic = new Anthropic();
 
-/** en→th is Sam (male) writing to Nok; th→en is Nok (female) writing to Sam. */
-const CASES = [
+/**
+ * en→th is Sam (male) writing to Nok; th→en is Nok (female) writing to Sam.
+ * CASES_FILE=lines.json replaces this list, so the lines someone actually plans to type on stage can
+ * be run through the same harness:
+ *   [{"id":"demo-1","dir":"en→th","register":"male","reader":"Nok","text":"..."}]
+ */
+const CASES = process.env.CASES_FILE ? JSON.parse(readFileSync(process.env.CASES_FILE, "utf8")) : [
   { id: "greeting", dir: "en→th", register: "male", reader: "Nok", text: "Hi!",
     watch: "a greeting must come out as an idiomatic greeting, never a question word" },
   { id: "weekend", dir: "en→th", register: "male", reader: "Nok", text: "Are you free this weekend?",
@@ -78,8 +83,15 @@ function json(text) {
 }
 
 const rows = [];
-for (const c of CASES) {
-  const { translated, note } = await translate(c.text, c.dir === "en→th" ? "en" : "th", c.dir === "en→th" ? "th" : "en", c.register, c.reader);
+const CASES_TO_RUN = process.env.LIMIT ? CASES.slice(0, Number(process.env.LIMIT)) : CASES;
+for (const c of CASES_TO_RUN) {
+  let translated = null, note = null;
+  try {
+    ({ translated, note } = await translate(c.text, c.dir === "en→th" ? "en" : "th", c.dir === "en→th" ? "th" : "en", c.register, c.reader));
+  } catch (err) {
+    console.error(`translate threw on ${c.id}:`, err?.message ?? err);
+  }
+  if (!translated) console.error(`no translation for ${c.id} (module ${process.env.TRANSLATE_MODULE ?? "default"}, model ${MODEL})`);
   const out = translated ?? "";
 
   const checks = [];
@@ -96,8 +108,9 @@ for (const c of CASES) {
   if (c.need) checks.push(["expected term", c.need.test(out)]);
   if (/\p{Extended_Pictographic}/u.test(c.text)) checks.push(["emoji kept", /\p{Extended_Pictographic}/u.test(out)]);
 
-  let verdict = { verdict: "ERROR", reason: "translation failed", better: "", meaning: 0, natural: 0, register: 0 };
+  let verdict = { verdict: "ERROR", reason: "no translation returned", better: "", meaning: 0, natural: 0, register: 0 };
   if (out) {
+    verdict = { verdict: "UNPARSED", reason: "", better: "", meaning: 0, natural: 0, register: 0 };
     // One retry: a judge that rambles past its JSON must not read as a bad translation.
     for (let attempt = 0; attempt < 2 && verdict.verdict === "UNPARSED"; attempt++) {
       const res = await anthropic.messages.create(
