@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import type { Community, EventSummary, Lang } from "@/lib/contract";
@@ -137,8 +138,13 @@ export function PageHeader({ title, subtitle, back }: { title: string; subtitle?
           ← {t.common.back}
         </Link>
       )}
-      <h1 className="text-xl font-semibold">{title}</h1>
-      {subtitle && <p className="text-sm text-muted">{subtitle}</p>}
+      <div className="flex items-center gap-3">
+        {!back && <Image src="/emblem.png" alt="" width={36} height={36} className="shrink-0" />}
+        <div className="min-w-0">
+          <h1 className="text-xl font-semibold">{title}</h1>
+          {subtitle && <p className="text-sm text-muted">{subtitle}</p>}
+        </div>
+      </div>
     </header>
   );
 }
