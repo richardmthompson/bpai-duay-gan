@@ -230,21 +230,33 @@ export async function putMe(userId: string, update: Record<string, unknown>): Pr
     fields.politenessRegister = REGISTER_FOR_GENDER[fields.gender];
   }
 
-  const sets: string[] = [];
+  const columns: string[] = [];
   const values: unknown[] = [];
   for (const [key, column] of Object.entries(ME_COLUMNS)) {
     if (!(key in fields) || fields[key] === undefined || fields[key] === null) continue;
+    columns.push(column);
     values.push(fields[key]);
-    sets.push(`${column} = $${values.length + 2}`);
   }
 
-  const fallbackName = account.name ?? account.email?.split("@")[0] ?? "Someone";
-  if (sets.length) {
-    await q(
-      `insert into profiles (user_id, display_name, onboarding_complete)
-       values ($1, $2, true)
-       on conflict (user_id) do update set ${sets.join(", ")}, onboarding_complete = true`,
-      [userId, (update.displayName as string) ?? fallbackName, ...values]);
+  if (columns.length) {
+    // Update first, insert only when there is no row. An upsert cannot do this: Postgres checks
+    // the proposed insert row's not-null columns (community) before it finds the conflict, so
+    // any save that did not carry every required column failed, even for an existing profile.
+    const sets = columns.map((c, i) => `${c} = $${i + 2}`);
+    const updated = await q(
+      `update profiles set ${sets.join(", ")}, onboarding_complete = true where user_id = $1 returning user_id`,
+      [userId, ...values]);
+    if (!updated.length) {
+      const fallbackName = account.name ?? account.email?.split("@")[0] ?? "Someone";
+      const named = columns.includes("display_name");
+      const cols = named ? columns : ["display_name", ...columns];
+      const vals = named ? values : [fallbackName, ...values];
+      await q(
+        `insert into profiles (user_id, ${cols.join(", ")}, onboarding_complete)
+         values ($1, ${cols.map((_, i) => `$${i + 2}`).join(", ")}, true)
+         on conflict (user_id) do nothing`,
+        [userId, ...vals]);
+    }
   } else if (!(await one("select 1 from profiles where user_id = $1", [userId]))) {
     throw httpError("invalid", "nothing to save");
   }
