@@ -7,6 +7,16 @@ const taxonomy = JSON.parse(
 const known = new Set(taxonomy.tags.map((t) => t.id));
 const errors = [];
 
+// Which portrait each person gets. Generated images drift from their prompt, so a face is matched
+// to a person by how it actually reads (tools/vision: apparent age, gender, region) rather than by
+// the order the prompts were written in. Absent the file, fall back to the id-based name.
+let photoMap = {};
+try {
+  photoMap = JSON.parse(readFileSync(new URL("./photo-map.json", import.meta.url), "utf8"));
+} catch {
+  console.warn("no photo-map.json — portraits fall back to <id>.jpg");
+}
+
 function tags(list, who) {
   const ids = list.split(/\s+/).filter(Boolean);
   for (const id of ids) if (!known.has(id)) errors.push(`${who}: unknown tag ${id}`);
@@ -79,6 +89,6 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-for (const p of profiles) p.photo = `portraits/${p.id}.jpg`;
+for (const p of profiles) p.photo = `portraits/${photoMap[p.id] ?? `${p.id}.jpg`}`;
 writeFileSync(new URL("./profiles.json", import.meta.url), JSON.stringify(profiles, null, 1));
 console.log("profiles", profiles.length, counts, "tags unused:", unused.join(", ") || "none");
