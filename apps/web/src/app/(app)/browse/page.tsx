@@ -30,8 +30,10 @@ export default function Browse() {
     }
   }, [nextCursor]);
 
+  // Browse is exactly one screen tall: the header, then the deck filling everything down to the
+  // space the layout reserves for the bottom nav. The page never scrolls; only the card does.
   return (
-    <>
+    <div className="flex h-[calc(100dvh_-_4.5rem_-_env(safe-area-inset-bottom))] flex-col">
       <PageHeader
         title={t.browse.title}
         subtitle={me?.community === "local" ? t.browse.subtitleLocal : t.browse.subtitleForeigner}
@@ -40,6 +42,6 @@ export default function Browse() {
       {first.error ? <ErrorState onRetry={first.reload} /> : null}
       {first.data && items.length === 0 && <Empty text={t.browse.empty} />}
       {items.length > 0 && <SwipeDeck items={items} onNeedMore={loadMore} />}
-    </>
+    </div>
   );
 }

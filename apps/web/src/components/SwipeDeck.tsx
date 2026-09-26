@@ -154,12 +154,14 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
   const firstZero = items.findIndex((c) => c.score === 0);
 
   return (
-    <div className="px-4 pb-4 pt-3">
+    // Fills the rest of Browse's column (see the browse page): the card runs down behind the floating
+    // buttons and stops just above the bottom nav.
+    <div className="flex min-h-0 flex-1 flex-col px-4 pt-3">
       {firstZero >= 0 && index >= firstZero && (
         <p className="mb-2 text-center text-xs font-medium text-muted">— {t.browse.noOverlapDivider} —</p>
       )}
 
-      <div className="relative h-[68vh] max-h-[620px] select-none">
+      <div className="relative min-h-0 flex-1 select-none">
         {[2, 1, 0].map((depth) => {
           const c = items[index + depth];
           if (!c) return null;
@@ -236,7 +238,8 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
           className="pointer-events-none absolute inset-0 z-[5] rounded-3xl bg-bg"
         />
 
-        {/* Floating over the card, and above the bottom nav (fixed, z-20), so neither hides them. */}
+        {/* Floating over the lower part of the card, and above the bottom nav (fixed, z-20), so neither
+            hides them. */}
         <div className="pointer-events-none fixed inset-x-0 bottom-[calc(4.5rem+1.25rem+env(safe-area-inset-bottom))] z-30 flex items-center justify-center gap-8">
           <button
             type="button"
@@ -328,8 +331,9 @@ function CardBody({
         <h2 className="truncate text-2xl font-semibold">{c.displayName}</h2>
       </div>
 
-      {/* the rest of the card scrolls, so the floating buttons never hide anything for good */}
-      <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto overscroll-contain px-4 pb-24 pt-2" style={{ touchAction: "pan-y" }}>
+      {/* The rest of the card scrolls, so the floating buttons never hide anything for good: the card
+          runs down behind them, and the bottom padding lets the last line scroll clear above them. */}
+      <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto overscroll-contain px-4 pb-28 pt-2" style={{ touchAction: "pan-y" }}>
         {c.sharedEvents.length > 0 && (
           <section>
             <MatchLabel>{t.browse.bothGoing}</MatchLabel>
