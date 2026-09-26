@@ -1,341 +1,515 @@
 {
-  "_note": "The draft taxonomy, promoted to the single tag source (operator decision 2026-09-27). Supersedes the 35 Core tags; scripts/seed/migrate-to-draft-taxonomy.py repointed the cast and the event links through its MAP. Regenerate tags.sql with scripts/seed/build_sql.py. Thai labels still need a native speaker's check.",
+  "_note": "Generated from docs/drafts/tag-taxonomy-proposal.json by scripts/seed/migrate-to-draft-taxonomy.py; edit tags there, not here. The database's column shape only: id, label_en, label_th, sort_order. Regenerate tags.sql with scripts/seed/build_sql.py.",
   "tags": [
     {
-      "id": "english-conversation",
-      "label_en": "English conversation",
-      "label_th": "สนทนาภาษาอังกฤษ",
+      "id": "thai-language",
+      "label_en": "Thai language",
+      "label_th": "ภาษาไทย",
       "sort_order": 10
     },
     {
-      "id": "thai-basics",
-      "label_en": "Thai basics",
-      "label_th": "ภาษาไทยเบื้องต้น",
+      "id": "thai-reading",
+      "label_en": "Reading and writing Thai",
+      "label_th": "อ่านและเขียนภาษาไทย",
       "sort_order": 20
     },
     {
       "id": "kham-mueang",
-      "label_en": "Kham Mueang (northern Thai)",
-      "label_th": "คำเมือง",
+      "label_en": "Northern Thai (Kham Mueang)",
+      "label_th": "คำเมือง (ภาษาเหนือ)",
       "sort_order": 30
     },
     {
-      "id": "thai-reading-writing",
-      "label_en": "Reading & writing Thai",
-      "label_th": "อ่านเขียนภาษาไทย",
+      "id": "english",
+      "label_en": "English conversation",
+      "label_th": "สนทนาภาษาอังกฤษ",
       "sort_order": 40
     },
     {
-      "id": "chinese-conversation",
-      "label_en": "Chinese conversation",
-      "label_th": "สนทนาภาษาจีน",
+      "id": "english-exams",
+      "label_en": "English for IELTS / TOEIC",
+      "label_th": "ภาษาอังกฤษสำหรับสอบ IELTS / TOEIC",
       "sort_order": 50
     },
     {
-      "id": "other-languages",
-      "label_en": "Other languages",
-      "label_th": "ภาษาอื่น ๆ",
+      "id": "business-english",
+      "label_en": "Business English, menus and signs",
+      "label_th": "ภาษาอังกฤษเพื่อธุรกิจ เมนูและป้าย",
       "sort_order": 60
     },
     {
-      "id": "northern-thai-cooking",
-      "label_en": "Northern Thai cooking",
-      "label_th": "ทำอาหารเหนือ",
+      "id": "chinese",
+      "label_en": "Chinese",
+      "label_th": "ภาษาจีน",
       "sort_order": 70
     },
     {
-      "id": "market-shopping",
-      "label_en": "Market shopping",
-      "label_th": "เดินตลาดสด",
+      "id": "japanese",
+      "label_en": "Japanese",
+      "label_th": "ภาษาญี่ปุ่น",
       "sort_order": 80
     },
     {
-      "id": "street-food-spots",
-      "label_en": "Street food spots",
-      "label_th": "ร้านอร่อยริมทาง",
+      "id": "korean",
+      "label_en": "Korean",
+      "label_th": "ภาษาเกาหลี",
       "sort_order": 90
     },
     {
-      "id": "western-cooking-baking",
-      "label_en": "Western cooking & baking",
-      "label_th": "อาหารฝรั่งและเบเกอรี่",
+      "id": "german",
+      "label_en": "German",
+      "label_th": "ภาษาเยอรมัน",
       "sort_order": 100
     },
     {
-      "id": "coffee-cafes",
-      "label_en": "Coffee & cafés",
-      "label_th": "กาแฟและคาเฟ่",
+      "id": "french",
+      "label_en": "French",
+      "label_th": "ภาษาฝรั่งเศส",
       "sort_order": 110
     },
     {
-      "id": "vegan-food",
-      "label_en": "Vegetarian & vegan",
-      "label_th": "อาหารมังสวิรัติ/วีแกน",
+      "id": "spanish",
+      "label_en": "Spanish",
+      "label_th": "ภาษาสเปน",
       "sort_order": 120
     },
     {
-      "id": "visa-immigration",
-      "label_en": "Visa & 90-day report",
-      "label_th": "วีซ่า/รายงานตัว 90 วัน",
+      "id": "cooking",
+      "label_en": "Thai and northern Thai cooking (khao soi, sai ua)",
+      "label_th": "ทำอาหารไทยและอาหารเหนือ (ข้าวซอย ไส้อั่ว)",
       "sort_order": 130
     },
     {
-      "id": "renting-housing",
-      "label_en": "Renting a place",
-      "label_th": "เช่าบ้าน/ห้อง",
+      "id": "street-food",
+      "label_en": "Street food",
+      "label_th": "อาหารริมทาง",
       "sort_order": 140
     },
     {
-      "id": "scooter-driving-license",
-      "label_en": "Scooter & driving license",
-      "label_th": "มอไซค์และใบขับขี่",
+      "id": "markets",
+      "label_en": "Local markets and Thai fruit",
+      "label_th": "ตลาดท้องถิ่นและผลไม้ไทย",
       "sort_order": 150
     },
     {
-      "id": "healthcare-clinics",
-      "label_en": "Doctors & clinics",
-      "label_th": "หาหมอ/คลินิก",
+      "id": "western-cooking",
+      "label_en": "Western cooking and baking",
+      "label_th": "ทำอาหารฝรั่งและเบเกอรี่",
       "sort_order": 160
     },
     {
-      "id": "banking-sim",
-      "label_en": "Bank account & SIM",
-      "label_th": "เปิดบัญชี/ซิมการ์ด",
+      "id": "coffee",
+      "label_en": "Specialty coffee and cafés",
+      "label_th": "กาแฟพิเศษและคาเฟ่",
       "sort_order": 170
     },
     {
-      "id": "getting-around",
-      "label_en": "Getting around",
-      "label_th": "เดินทางในเมือง",
+      "id": "craft-beer",
+      "label_en": "Craft beer and homebrewing",
+      "label_th": "คราฟต์เบียร์และการต้มเบียร์เอง",
       "sort_order": 180
     },
     {
-      "id": "web-tech",
-      "label_en": "Web & tech",
-      "label_th": "เว็บและไอที",
+      "id": "vegetarian-vegan",
+      "label_en": "Vegetarian and vegan food",
+      "label_th": "อาหารมังสวิรัติและวีแกน",
       "sort_order": 190
-    },
-    {
-      "id": "design",
-      "label_en": "Design",
-      "label_th": "งานออกแบบ",
-      "sort_order": 200
-    },
-    {
-      "id": "marketing-social-media",
-      "label_en": "Marketing & social media",
-      "label_th": "การตลาดและโซเชียล",
-      "sort_order": 210
-    },
-    {
-      "id": "google-business-profile",
-      "label_en": "Google Maps shop listing",
-      "label_th": "ลงร้านใน Google Maps",
-      "sort_order": 220
-    },
-    {
-      "id": "english-menu-signs",
-      "label_en": "English menus & signs",
-      "label_th": "เมนู/ป้ายภาษาอังกฤษ",
-      "sort_order": 230
-    },
-    {
-      "id": "cv-interview-practice",
-      "label_en": "CV & interview practice",
-      "label_th": "เขียน CV/ซ้อมสัมภาษณ์",
-      "sort_order": 240
-    },
-    {
-      "id": "study-abroad-essays",
-      "label_en": "Study abroad & scholarship essays",
-      "label_th": "เรียนต่อนอก/เรียงความขอทุน",
-      "sort_order": 250
-    },
-    {
-      "id": "remote-work-freelancing",
-      "label_en": "Remote work & freelancing",
-      "label_th": "ทำงานออนไลน์/ฟรีแลนซ์",
-      "sort_order": 260
-    },
-    {
-      "id": "photo-video",
-      "label_en": "Photo & video",
-      "label_th": "ถ่ายรูปและวิดีโอ",
-      "sort_order": 270
-    },
-    {
-      "id": "temples-etiquette",
-      "label_en": "Temples & etiquette",
-      "label_th": "วัดและมารยาทไทย",
-      "sort_order": 280
-    },
-    {
-      "id": "festivals",
-      "label_en": "Festivals (Yi Peng, Loy Krathong)",
-      "label_th": "งานประเพณี (ยี่เป็ง ลอยกระทง)",
-      "sort_order": 290
-    },
-    {
-      "id": "crafts-textiles",
-      "label_en": "Crafts & textiles",
-      "label_th": "งานฝีมือและผ้าทอ",
-      "sort_order": 300
-    },
-    {
-      "id": "lanna-history",
-      "label_en": "Lanna history",
-      "label_th": "ประวัติศาสตร์ล้านนา",
-      "sort_order": 310
     },
     {
       "id": "muay-thai",
       "label_en": "Muay Thai",
       "label_th": "มวยไทย",
-      "sort_order": 320
+      "sort_order": 200
     },
     {
-      "id": "music-jamming",
-      "label_en": "Music & jamming",
-      "label_th": "ดนตรีและแจมเพลง",
-      "sort_order": 330
+      "id": "sepak-takraw",
+      "label_en": "Sepak takraw",
+      "label_th": "ตะกร้อ",
+      "sort_order": 210
     },
     {
       "id": "hiking",
-      "label_en": "Hiking (Doi Suthep & more)",
-      "label_th": "เดินป่า/ขึ้นดอย",
-      "sort_order": 340
-    },
-    {
-      "id": "day-trips-waterfalls",
-      "label_en": "Day trips & waterfalls",
-      "label_th": "เที่ยวน้ำตก/ทริปวันเดียว",
-      "sort_order": 350
-    },
-    {
-      "id": "cycling",
-      "label_en": "Cycling",
-      "label_th": "ปั่นจักรยาน",
-      "sort_order": 360
+      "label_en": "Hiking (Doi Suthep and more)",
+      "label_th": "เดินป่า (ดอยสุเทพและที่อื่น ๆ)",
+      "sort_order": 220
     },
     {
       "id": "running",
-      "label_en": "Running",
-      "label_th": "วิ่ง",
+      "label_en": "Running and trail running",
+      "label_th": "วิ่งและวิ่งเทรล",
+      "sort_order": 230
+    },
+    {
+      "id": "cycling",
+      "label_en": "Cycling and mountain biking",
+      "label_th": "ปั่นจักรยานและจักรยานเสือภูเขา",
+      "sort_order": 240
+    },
+    {
+      "id": "rock-climbing",
+      "label_en": "Rock climbing",
+      "label_th": "ปีนหน้าผา",
+      "sort_order": 250
+    },
+    {
+      "id": "scooter",
+      "label_en": "Riding a scooter",
+      "label_th": "ขี่มอเตอร์ไซค์",
+      "sort_order": 260
+    },
+    {
+      "id": "motorbike-touring",
+      "label_en": "Motorbike touring (Mae Hong Son loop)",
+      "label_th": "ทัวร์มอเตอร์ไซค์ (ลูปแม่ฮ่องสอน)",
+      "sort_order": 270
+    },
+    {
+      "id": "day-trips",
+      "label_en": "Day trips and waterfalls",
+      "label_th": "เที่ยวน้ำตกและทริปวันเดียว",
+      "sort_order": 280
+    },
+    {
+      "id": "football",
+      "label_en": "Football and futsal",
+      "label_th": "ฟุตบอลและฟุตซอล",
+      "sort_order": 290
+    },
+    {
+      "id": "badminton",
+      "label_en": "Badminton",
+      "label_th": "แบดมินตัน",
+      "sort_order": 300
+    },
+    {
+      "id": "swimming",
+      "label_en": "Swimming",
+      "label_th": "ว่ายน้ำ",
+      "sort_order": 310
+    },
+    {
+      "id": "golf",
+      "label_en": "Golf",
+      "label_th": "กอล์ฟ",
+      "sort_order": 320
+    },
+    {
+      "id": "gym-fitness",
+      "label_en": "Gym and fitness training",
+      "label_th": "ฟิตเนสและการออกกำลังกาย",
+      "sort_order": 330
+    },
+    {
+      "id": "yoga",
+      "label_en": "Yoga",
+      "label_th": "โยคะ",
+      "sort_order": 340
+    },
+    {
+      "id": "umbrella-painting",
+      "label_en": "Bo Sang umbrellas and saa paper",
+      "label_th": "ร่มบ่อสร้างและกระดาษสา",
+      "sort_order": 350
+    },
+    {
+      "id": "woodcarving",
+      "label_en": "Woodcarving and lacquerware",
+      "label_th": "แกะสลักไม้และเครื่องเขิน",
+      "sort_order": 360
+    },
+    {
+      "id": "silverwork",
+      "label_en": "Silverwork (Wualai)",
+      "label_th": "เครื่องเงินวัวลาย",
       "sort_order": 370
     },
     {
-      "id": "yoga-meditation",
-      "label_en": "Yoga & meditation",
-      "label_th": "โยคะและนั่งสมาธิ",
+      "id": "ceramics",
+      "label_en": "Ceramics and celadon",
+      "label_th": "เซรามิกและศิลาดล",
       "sort_order": 380
     },
     {
-      "id": "farming-permaculture",
-      "label_en": "Farming & permaculture",
-      "label_th": "ทำเกษตร/เพอร์มาคัลเจอร์",
+      "id": "textiles-dye",
+      "label_en": "Weaving and natural dyeing",
+      "label_th": "ทอผ้าและย้อมสีธรรมชาติ",
       "sort_order": 390
     },
     {
-      "id": "class-project-feedback",
-      "label_en": "Feedback on a class project",
-      "label_th": "ขอคำแนะนำงานโปรเจกต์",
+      "id": "lanterns-krathong",
+      "label_en": "Making lanterns, krathong and tung",
+      "label_th": "ทำโคม กระทง และตุง",
       "sort_order": 400
     },
     {
-      "id": "real-client-project",
-      "label_en": "Real brief for a class project",
-      "label_th": "โจทย์จริงสำหรับโปรเจกต์เรียน",
+      "id": "thai-music",
+      "label_en": "Northern Thai instruments (salo, saw, sueng)",
+      "label_th": "ดนตรีพื้นเมืองล้านนา (สะล้อ ซอ ซึง)",
       "sort_order": 410
     },
     {
-      "id": "campus-language-exchange",
-      "label_en": "Campus language exchange",
-      "label_th": "แลกเปลี่ยนภาษาในมหาลัย",
+      "id": "music",
+      "label_en": "Music, instruments and jam sessions",
+      "label_th": "ดนตรี เครื่องดนตรี และแจมดนตรี",
       "sort_order": 420
     },
     {
-      "id": "student-club-guest",
-      "label_en": "Guest at a student club",
-      "label_th": "แขกรับเชิญชมรมนักศึกษา",
+      "id": "karaoke",
+      "label_en": "Karaoke",
+      "label_th": "คาราโอเกะ",
       "sort_order": 430
     },
     {
-      "id": "paid-micro-tasks",
-      "label_en": "Small paid tasks for students",
-      "label_th": "งานเล็ก ๆ มีค่าตอบแทนสำหรับนักศึกษา",
+      "id": "photography",
+      "label_en": "Photography and video",
+      "label_th": "ถ่ายภาพและวิดีโอ",
       "sort_order": 440
     },
     {
-      "id": "lecture-swap",
-      "label_en": "Explain your lecture in English",
-      "label_th": "เล่าเนื้อหาที่เรียนเป็นภาษาอังกฤษ",
+      "id": "drawing-painting",
+      "label_en": "Drawing and painting",
+      "label_th": "วาดรูปและระบายสี",
       "sort_order": 450
     },
     {
-      "id": "student-guided-walks",
-      "label_en": "Student-guided city walks",
-      "label_th": "นักศึกษาพาเดินเที่ยวเมือง",
+      "id": "design",
+      "label_en": "Design (graphic, UX)",
+      "label_th": "งานออกแบบ (กราฟิก, UX)",
       "sort_order": 460
     },
     {
-      "id": "home-town-visit",
-      "label_en": "Weekend at a student's home town",
-      "label_th": "ไปเที่ยวบ้านเกิดเพื่อนนักศึกษา",
+      "id": "thai-dance",
+      "label_en": "Northern Thai dance and ramwong",
+      "label_th": "ฟ้อนล้านนาและรำวง",
       "sort_order": 470
     },
     {
-      "id": "campus-sport-lunch",
-      "label_en": "Campus sport & canteen lunch",
-      "label_th": "เล่นกีฬาและกินข้าวโรงอาหาร",
+      "id": "hip-hop-dance",
+      "label_en": "Hip-hop, street and K-pop dance",
+      "label_th": "ฮิปฮอป สตรีทแดนซ์ และเคป๊อป",
       "sort_order": 480
     },
     {
-      "id": "lanna-dance",
-      "label_en": "Northern Thai (Lanna) dance",
-      "label_th": "ฟ้อนล้านนา",
-      "sort_order": 500
-    },
-    {
-      "id": "ramwong",
-      "label_en": "Ramwong (Thai circle dance)",
-      "label_th": "รำวง",
-      "sort_order": 510
-    },
-    {
-      "id": "kpop-dance",
-      "label_en": "K-pop dance covers",
-      "label_th": "เต้นคัฟเวอร์เคป๊อป",
-      "sort_order": 520
-    },
-    {
-      "id": "hip-hop-dance",
-      "label_en": "Hip-hop & street dance",
-      "label_th": "ฮิปฮอปและสตรีทแดนซ์",
-      "sort_order": 530
-    },
-    {
       "id": "salsa-bachata",
-      "label_en": "Salsa & bachata",
+      "label_en": "Salsa and bachata",
       "label_th": "ซัลซ่าและบาชาต้า",
-      "sort_order": 540
+      "sort_order": 490
     },
     {
       "id": "tango",
       "label_en": "Tango",
       "label_th": "แทงโก้",
-      "sort_order": 550
+      "sort_order": 500
     },
     {
       "id": "swing-dance",
-      "label_en": "Swing & lindy hop",
+      "label_en": "Swing and lindy hop",
       "label_th": "สวิงแดนซ์",
-      "sort_order": 560
+      "sort_order": 510
     },
     {
       "id": "ballet-contemporary",
-      "label_en": "Ballet & contemporary",
+      "label_en": "Ballet and contemporary",
       "label_th": "บัลเลต์และร่วมสมัย",
+      "sort_order": 520
+    },
+    {
+      "id": "temples",
+      "label_en": "Temples and Thai etiquette",
+      "label_th": "วัดและมารยาทไทย",
+      "sort_order": 530
+    },
+    {
+      "id": "meditation",
+      "label_en": "Meditation",
+      "label_th": "นั่งสมาธิ",
+      "sort_order": 540
+    },
+    {
+      "id": "festivals",
+      "label_en": "Festivals (Yi Peng, Loy Krathong, Songkran)",
+      "label_th": "เทศกาล (ยี่เป็ง ลอยกระทง สงกรานต์)",
+      "sort_order": 550
+    },
+    {
+      "id": "lanna-history",
+      "label_en": "Lanna history and Chiang Mai stories",
+      "label_th": "ประวัติศาสตร์ล้านนาและเรื่องเล่าเชียงใหม่",
+      "sort_order": 560
+    },
+    {
+      "id": "western-culture",
+      "label_en": "Western customs and culture",
+      "label_th": "วัฒนธรรมและธรรมเนียมตะวันตก",
       "sort_order": 570
+    },
+    {
+      "id": "thai-massage",
+      "label_en": "Thai massage and herbal compress",
+      "label_th": "นวดไทยและลูกประคบ",
+      "sort_order": 580
+    },
+    {
+      "id": "gardening",
+      "label_en": "Gardening, farming and Thai herbs",
+      "label_th": "ปลูกต้นไม้ ทำเกษตร และสมุนไพร",
+      "sort_order": 590
+    },
+    {
+      "id": "pets-animals",
+      "label_en": "Pets and animal rescue",
+      "label_th": "สัตว์เลี้ยงและการช่วยเหลือสัตว์",
+      "sort_order": 600
+    },
+    {
+      "id": "kids-family",
+      "label_en": "Kids' activities and family life",
+      "label_th": "กิจกรรมสำหรับเด็กและครอบครัว",
+      "sort_order": 610
+    },
+    {
+      "id": "board-games",
+      "label_en": "Board games",
+      "label_th": "บอร์ดเกม",
+      "sort_order": 620
+    },
+    {
+      "id": "bureaucracy",
+      "label_en": "Visas and paperwork",
+      "label_th": "วีซ่าและเอกสารราชการ",
+      "sort_order": 630
+    },
+    {
+      "id": "licence-bank",
+      "label_en": "Driving licence, bank account and SIM",
+      "label_th": "ใบขับขี่ บัญชีธนาคาร และซิมการ์ด",
+      "sort_order": 640
+    },
+    {
+      "id": "renting",
+      "label_en": "Renting a home and negotiating",
+      "label_th": "เช่าบ้านและการต่อรองราคา",
+      "sort_order": 650
+    },
+    {
+      "id": "healthcare",
+      "label_en": "Finding doctors and dentists",
+      "label_th": "หาหมอและหมอฟัน",
+      "sort_order": 660
+    },
+    {
+      "id": "thai-apps",
+      "label_en": "Thai apps and getting around (LINE, Grab, PromptPay)",
+      "label_th": "แอปไทยและการเดินทาง (LINE, Grab, พร้อมเพย์)",
+      "sort_order": 670
+    },
+    {
+      "id": "thai-work-culture",
+      "label_en": "Thai workplace culture",
+      "label_th": "วัฒนธรรมการทำงานแบบไทย",
+      "sort_order": 680
+    },
+    {
+      "id": "study-work-abroad",
+      "label_en": "Studying, working or visas abroad",
+      "label_th": "เรียนต่อ ทำงาน หรือขอวีซ่าต่างประเทศ",
+      "sort_order": 690
+    },
+    {
+      "id": "cv-interviews",
+      "label_en": "CV and job interview practice",
+      "label_th": "ฝึกเขียน CV และสัมภาษณ์งาน",
+      "sort_order": 700
+    },
+    {
+      "id": "business",
+      "label_en": "Starting and running a business",
+      "label_th": "ทำธุรกิจ",
+      "sort_order": 710
+    },
+    {
+      "id": "shopee-lazada",
+      "label_en": "Selling on Shopee / Lazada / TikTok Shop, live selling",
+      "label_th": "ขายของบน Shopee / Lazada / TikTok Shop และไลฟ์ขายของ",
+      "sort_order": 720
+    },
+    {
+      "id": "tech-amazon",
+      "label_en": "Selling on Amazon / Etsy / Shopify",
+      "label_th": "ขายของบน Amazon / Etsy / Shopify",
+      "sort_order": 730
+    },
+    {
+      "id": "digital-marketing",
+      "label_en": "Digital marketing, social media and Google Maps",
+      "label_th": "การตลาดออนไลน์ โซเชียลมีเดีย และ Google Maps",
+      "sort_order": 740
+    },
+    {
+      "id": "tech",
+      "label_en": "Tech, coding and web development",
+      "label_th": "เทคโนโลยี เขียนโปรแกรม และทำเว็บไซต์",
+      "sort_order": 750
+    },
+    {
+      "id": "ai-tools",
+      "label_en": "AI tools for work (ChatGPT, Claude)",
+      "label_th": "ใช้ AI ช่วยทำงาน (ChatGPT, Claude)",
+      "sort_order": 760
+    },
+    {
+      "id": "freelancing-remote",
+      "label_en": "Freelancing and remote work",
+      "label_th": "ฟรีแลนซ์และทำงานทางไกล",
+      "sort_order": 770
+    },
+    {
+      "id": "investing",
+      "label_en": "Investing and personal finance",
+      "label_th": "การลงทุนและการเงินส่วนตัว",
+      "sort_order": 780
+    },
+    {
+      "id": "tourism-hospitality",
+      "label_en": "Tourism and hospitality business",
+      "label_th": "ธุรกิจท่องเที่ยวและโรงแรม",
+      "sort_order": 790
+    },
+    {
+      "id": "cafe-restaurant",
+      "label_en": "Running a café or restaurant",
+      "label_th": "เปิดคาเฟ่หรือร้านอาหาร",
+      "sort_order": 800
+    },
+    {
+      "id": "student-guided-walks",
+      "label_en": "Student-guided city walks",
+      "label_th": "นักศึกษาพาเดินเที่ยวเมือง",
+      "sort_order": 810
+    },
+    {
+      "id": "lecture-swap",
+      "label_en": "Explain your lecture in English",
+      "label_th": "เล่าเนื้อหาที่เรียนเป็นภาษาอังกฤษ",
+      "sort_order": 820
+    },
+    {
+      "id": "project-feedback",
+      "label_en": "Real project or feedback for students",
+      "label_th": "โปรเจกต์จริงหรือฟีดแบ็กสำหรับนักศึกษา",
+      "sort_order": 830
+    },
+    {
+      "id": "home-town-visit",
+      "label_en": "Weekend at a student's home town",
+      "label_th": "ไปเที่ยวบ้านเกิดเพื่อนนักศึกษา",
+      "sort_order": 840
+    },
+    {
+      "id": "student-club-guest",
+      "label_en": "Guest at a student club",
+      "label_th": "แขกรับเชิญชมรมนักศึกษา",
+      "sort_order": 850
     }
   ]
 }

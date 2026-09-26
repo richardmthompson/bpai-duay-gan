@@ -1,111 +1,131 @@
 #!/usr/bin/env python3
-"""Move the seed data onto one taxonomy: the draft.
+"""Move the seed data onto one taxonomy: the merged 85-tag list.
 
-Decision (operator, 2026-09-27): the draft taxonomy wins. Until now the 24-profile cast and the
-event/tag links used the 35 Core ids while the 100-person roster used the 56 draft ids, so the two
-sets shared no tag ids and never matched each other — a hundred photographed people read as
-"nothing shared yet" and sat below the cast everywhere.
+docs/drafts/tag-taxonomy-proposal.json is the merged list (role 5, Marc): the 85-row reference
+table and the 56-id draft folded into one, keeping the reference table's id wherever both lists
+held the same concept. The 100-person roster already uses it. The 24-person cast and the event ->
+tag links still used the 56-id draft ids, so they could not match the roster.
 
 This script:
-  1. rewrites scripts/seed/tags/tags.json from the draft, so it is the single tag source;
-  2. repoints the cast's give/learn ids through MAP below;
+  1. rewrites scripts/seed/tags/tags.json from the proposal, in the database's four-column shape,
+     renumbering sort_order 10, 20, 30... in the proposal's own order (the proposal's hundreds
+     collide across categories);
+  2. repoints the cast's give/learn ids through the retired-id map, and regenerates the cast's
+     tag_slugs from the result;
   3. repoints the event -> tag links the same way.
 
-It only touches tag ids: names, intros, photos, events and orderings are untouched. Run
-scripts/seed/build_sql.py afterwards to regenerate tags.sql and events.sql.
+The map lives in scripts/seed/tag-id-map.json, beside this script, and is the only one: build_sql.py
+and run.ts apply the same map to a live database. It covers every id the seed has shipped that the
+merged list dropped; for the cast it is the previous migration's map read backwards. Several retired
+ids fold into one merged tag, so the map as a whole is many-to-one, but on the ids a person or event
+actually holds it must be one-to-one: ranking counts matched tags, so two of a person's ids
+collapsing onto one target would quietly drop a tag and change the stage demo's order. The script
+asserts that, and that no id it must repoint maps to null, before writing anything. Rerunning it is
+a no-op once the ids are repointed.
+
+It only touches tag ids and the notes that describe them: names, intros, photos, events and
+orderings are untouched. Run scripts/seed/build_sql.py afterwards; it regenerates tags.sql,
+events.sql and reference/tag-taxonomy.md and fails if any id does not resolve.
 """
 import json
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-DRAFT = HERE.parent.parent / "docs/drafts/tag-taxonomy-proposal.json"
+PROPOSAL = HERE.parent.parent / "docs/drafts/tag-taxonomy-proposal.json"
 TAGS = HERE / "tags/tags.json"
 CAST = HERE / "profiles/demo-profiles.json"
 EVENT_TAGS = HERE / "events/event-tags.json"
 
-# Every id the cast and the event links use -> its draft equivalent. Semantic, not mechanical:
-# `cooking` becomes northern-thai-cooking because the roster offers that, and so on.
-MAP = {
-    "english": "english-conversation",
-    "thai-language": "thai-basics",
-    "cooking": "northern-thai-cooking",
-    "street-food": "street-food-spots",
-    "scooter": "scooter-driving-license",
-    "bureaucracy": "visa-immigration",
-    "temples": "temples-etiquette",
-    "music": "music-jamming",
-    "tech": "web-tech",
-    # unchanged, listed so the mapping is complete and auditable
-    "design": "design",
-    "hiking": "hiking",
-    "muay-thai": "muay-thai",
-}
+ID_MAP = HERE / "tag-id-map.json"
+# Retired id -> merged equivalent, or None where no honest equivalent exists.
+MAP = json.loads(ID_MAP.read_text())["map"]
+
+CAST_NOTE = ("Every give/learn id resolves against scripts/seed/tags/tags.json, the merged 85-tag "
+             "taxonomy; scripts/seed/build_sql.py fails if one does not. tag_slugs lists the ids the "
+             "profiles use. Event refs are 'seed:<external_id>' and must match events seeded with "
+             "source='seed'. All people and emails are fictional.")
+
+
+def dump(path, data):
+    # Same layout as the files already on disk, so the diff touches only the changed lines.
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+
+
+def repoint(ids, where):
+    dropped = [t for t in ids if t in MAP and MAP[t] is None]
+    if dropped:
+        raise SystemExit(f"✗ {where}: {dropped} have no merged equivalent; choose a tag by hand")
+    mapped = [MAP.get(tag_id, tag_id) for tag_id in ids]
+    if len(set(mapped)) != len(mapped):
+        raise SystemExit(f"✗ {where}: repointing {ids} would merge two tags into one: {mapped}")
+    return mapped, sum(a != b for a, b in zip(ids, mapped))
 
 
 def main() -> None:
-    draft = json.loads(DRAFT.read_text())
-    draft_tags = draft["tags"]
-    draft_ids = {t["id"] for t in draft_tags}
+    proposal_tags = json.loads(PROPOSAL.read_text())["tags"]
+    proposal_ids = {t["id"] for t in proposal_tags}
+    unknown_targets = sorted({t for t in MAP.values() if t is not None} - proposal_ids)
+    if unknown_targets:
+        raise SystemExit(f"✗ map targets missing from the taxonomy proposal: {unknown_targets}")
+    still_live = sorted(set(MAP) & proposal_ids)
+    if still_live:
+        raise SystemExit(f"✗ map retires ids the taxonomy proposal still holds: {still_live}")
 
-    # 1. tags.json becomes the draft, in its own order.
-    out = []
-    for index, tag in enumerate(draft_tags):
-        out.append({
-            "id": tag["id"],
-            "label_en": tag["label_en"],
-            "label_th": tag["label_th"],
-            "sort_order": tag.get("sort_order", (index + 1) * 10),
-        })
-    TAGS.write_text(json.dumps({
-        "_note": ("The draft taxonomy, promoted to the single tag source (operator decision "
-                  "2026-09-27). Supersedes the 35 Core tags; scripts/seed/migrate-to-draft-"
-                  "taxonomy.py repointed the cast and the event links through its MAP. "
-                  "Regenerate tags.sql with scripts/seed/build_sql.py. Thai labels still need a "
-                  "native speaker's check."),
-        "tags": out,
-    }, ensure_ascii=False, indent=2) + "\n")
-    print(f"tags.json  : {len(out)} tags written from the draft")
+    cast = json.loads(CAST.read_text())
+    links = json.loads(EVENT_TAGS.read_text())
+    held = {t for p in cast["profiles"] for t in p["give"] + p["learn"]}
+    held |= {t for ids in links["event_tags"].values() for t in ids}
+    to_repoint = {k: v for k, v in MAP.items() if k in held}
+    if len(set(to_repoint.values())) != len(to_repoint):
+        raise SystemExit(f"✗ map is not one-to-one on the ids the seed holds: two source ids share a target: {to_repoint}")
+
+    # 1. tags.json becomes the proposal, in its own order, renumbered.
+    out = [{"id": t["id"], "label_en": t["label_en"], "label_th": t["label_th"], "sort_order": (i + 1) * 10}
+           for i, t in enumerate(proposal_tags)]
 
     # 2. the cast's ids.
-    cast = json.loads(CAST.read_text())
     changed = 0
     for person in cast["profiles"]:
         for key in ("give", "learn"):
-            mapped = []
-            for tag_id in person[key]:
-                new = MAP.get(tag_id, tag_id)
-                if new != tag_id:
-                    changed += 1
-                if new not in mapped:
-                    mapped.append(new)
-            person[key] = mapped
-    CAST.write_text(json.dumps(cast, ensure_ascii=False, indent=2) + "\n")
-    print(f"cast       : {changed} tag references repointed")
+            person[key], n = repoint(person[key], f"{person['ref']} {key}")
+            changed += n
+    used = []
+    for person in cast["profiles"]:
+        for tag_id in person["give"] + person["learn"]:
+            if tag_id not in used:
+                used.append(tag_id)
+    # Keep the existing order for ids still used, so the list only changes where the ids do.
+    cast["tag_slugs"] = ([t for t in cast["tag_slugs"] if t in used]
+                         + [t for t in used if t not in cast["tag_slugs"]])
+    cast["_note"] = CAST_NOTE
 
     # 3. the event links.
-    links = json.loads(EVENT_TAGS.read_text())
     relinked = 0
     for slug, ids in links["event_tags"].items():
-        mapped = []
-        for tag_id in ids:
-            new = MAP.get(tag_id, tag_id)
-            if new != tag_id:
-                relinked += 1
-            if new not in mapped:
-                mapped.append(new)
-        links["event_tags"][slug] = mapped
-    EVENT_TAGS.write_text(json.dumps(links, ensure_ascii=False, indent=2) + "\n")
-    print(f"event links: {relinked} tag references repointed")
+        links["event_tags"][slug], n = repoint(ids, f"event {slug}")
+        relinked += n
 
-    # Everything left over must exist in the draft, or the seed will not load.
+    # Everything left over must exist in the proposal, or the seed will not load.
     stragglers = set()
     for person in cast["profiles"]:
-        stragglers |= {t for t in person["give"] + person["learn"] if t not in draft_ids}
+        stragglers |= {t for t in person["give"] + person["learn"] if t not in proposal_ids}
     for ids in links["event_tags"].values():
-        stragglers |= {t for t in ids if t not in draft_ids}
+        stragglers |= {t for t in ids if t not in proposal_ids}
     if stragglers:
-        raise SystemExit(f"✗ ids still outside the draft taxonomy: {sorted(stragglers)}")
-    print("✓ every id now resolves against the draft taxonomy")
+        raise SystemExit(f"✗ ids still outside the merged taxonomy: {sorted(stragglers)}")
+
+    dump(TAGS, {
+        "_note": ("Generated from docs/drafts/tag-taxonomy-proposal.json by scripts/seed/migrate-to-"
+                  "draft-taxonomy.py; edit tags there, not here. The database's column shape only: "
+                  "id, label_en, label_th, sort_order. Regenerate tags.sql with scripts/seed/build_sql.py."),
+        "tags": out,
+    })
+    dump(CAST, cast)
+    dump(EVENT_TAGS, links)
+    print(f"tags.json  : {len(out)} tags written from the taxonomy proposal")
+    print(f"cast       : {changed} tag references repointed")
+    print(f"event links: {relinked} tag references repointed")
+    print("✓ every id now resolves against the merged taxonomy")
 
 
 if __name__ == "__main__":

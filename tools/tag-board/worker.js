@@ -1,9 +1,5 @@
-const TAGS_URL =
-  "https://raw.githubusercontent.com/richardmthompson/bpai-duay-gan/main/docs/drafts/tag-taxonomy-proposal.json";
-
-const FULL_TAGS_URLS = [
-  "https://raw.githubusercontent.com/richardmthompson/bpai-duay-gan/tags/full-taxonomy/reference/tag-taxonomy.md",
-  "https://raw.githubusercontent.com/richardmthompson/bpai-duay-gan/main/reference/tag-taxonomy.md",
+const TAGS_URLS = [
+  "https://raw.githubusercontent.com/richardmthompson/bpai-duay-gan/main/docs/drafts/tag-taxonomy-proposal.json",
 ];
 
 const KINDS = ["comment", "thai", "rename", "remove", "merge", "new"];
@@ -28,7 +24,6 @@ export default {
         if (gen && request.method === "PUT") return uploadImage(request, env, gen[1]);
       }
       if (url.pathname === "/api/tags" && request.method === "GET") return tags();
-      if (url.pathname === "/api/tags-full" && request.method === "GET") return fullTags();
       if (url.pathname === "/api/comments" && request.method === "GET") return list(env);
       if (url.pathname === "/api/comments" && request.method === "POST") return create(request, env);
       const m = url.pathname.match(/^\/api\/comments\/(\d+)$/);
@@ -45,48 +40,15 @@ export default {
 };
 
 async function tags() {
-  const res = await fetch(TAGS_URL, { cf: { cacheTtl: 60, cacheEverything: true } });
-  if (!res.ok) return json({ error: "could not load tags from GitHub" }, 502);
-  return new Response(await res.text(), {
-    headers: { "content-type": "application/json; charset=utf-8", "cache-control": "max-age=30" },
-  });
-}
-
-async function fullTags() {
-  for (const src of FULL_TAGS_URLS) {
+  for (const src of TAGS_URLS) {
     const res = await fetch(src, { cf: { cacheTtl: 60, cacheEverything: true } });
-    if (res.ok) return json({ source: src, tags: parseTaxonomy(await res.text()) });
-  }
-  return json({ tags: [] });
-}
-
-function parseTaxonomy(md) {
-  const givers = { "local gives": "local", "foreigner gives": "foreigner", either: "either" };
-  const out = [];
-  let category = "";
-  let categoryTh = "";
-  for (const line of md.split("\n")) {
-    const h = line.match(/^##\s+(.+?)(?:\s+·\s+(.+?))?\s*$/);
-    if (h) {
-      category = h[1];
-      categoryTh = h[2] || "";
-      continue;
+    if (res.ok) {
+      return new Response(await res.text(), {
+        headers: { "content-type": "application/json; charset=utf-8", "cache-control": "max-age=30" },
+      });
     }
-    if (!line.startsWith("|")) continue;
-    const cells = line.split("|").slice(1, -1).map((c) => c.trim());
-    if (cells.length < 5 || cells[0] === "Tag id" || /^-+$/.test(cells[0])) continue;
-    out.push({
-      id: cells[0],
-      label_en: cells[1],
-      label_th: cells[2],
-      core: cells[3] === "✓",
-      typical_giver: givers[cells[4].toLowerCase()] || "either",
-      category,
-      category_th: categoryTh,
-      sort_order: out.length * 10,
-    });
   }
-  return out;
+  return json({ error: "could not load tags from GitHub" }, 502);
 }
 
 async function list(env) {
@@ -333,7 +295,7 @@ const PAGE = `<!doctype html>
 <nav class="nav"><a href="/" class="on">🏷️ Tags</a><a href="/profiles">🙂 Profiles</a></nav>
 <header>
   <h1>ไปด้วยกัน · Bpai Duay Gan — tag board</h1>
-  <p>Our draft Give / Learn tags, the full 85-tag taxonomy from the tags/full-taxonomy branch, and tag ideas from anyone. Click a tag to leave a note: a comment, a Thai label fix, a rename, a merge, or a vote to remove it.</p>
+  <p>Every Give / Learn tag in the merged list (our draft plus the 85-tag taxonomy, deduplicated), plus tag ideas from anyone. Click a tag to leave a note: a comment, a Thai label fix, a rename, a merge, or a vote to remove it.</p>
 </header>
 <div class="bar">
   <input type="search" id="q" placeholder="Search tags in English or Thai">
@@ -342,11 +304,6 @@ const PAGE = `<!doctype html>
     <option value="local">Usually locals give</option>
     <option value="foreigner">Usually foreigners give</option>
     <option value="either">Either</option>
-  </select>
-  <select id="list">
-    <option value="">All lists</option>
-    <option value="draft">Our draft + ideas</option>
-    <option value="85">Full 85-tag taxonomy</option>
   </select>
   <label class="stats"><input type="checkbox" id="onlyNotes"> Only tags with notes</label>
   <span class="stats" id="stats"></span>
@@ -420,8 +377,7 @@ function load() {
   return Promise.all([
     fetch("/api/tags").then(function (r) { return r.json(); }),
     fetch("/api/comments").then(function (r) { return r.json(); }),
-    fetch("/api/ideas").then(function (r) { return r.json(); }),
-    fetch("/api/tags-full").then(function (r) { return r.json(); }).catch(function () { return { tags: [] }; })
+    fetch("/api/ideas").then(function (r) { return r.json(); })
   ]).then(function (res) {
     var data = res[0];
     comments = res[1].comments || [];
@@ -429,7 +385,6 @@ function load() {
     var byCat = {};
     categories = [];
     function add(t) {
-      if (!t.list) t.list = "draft";
       tagsById[t.id] = t;
       var c = t.category || "other";
       if (!byCat[c]) { byCat[c] = []; categories.push(c); }
@@ -441,13 +396,6 @@ function load() {
         id: "idea-" + i.id, ideaId: i.id, idea: true, author: i.author,
         label_en: i.label_en, label_th: i.label_th, emoji: i.emoji,
         category: i.category, typical_giver: i.typical_giver, sort_order: 100000 + i.id
-      });
-    });
-    (res[3].tags || []).forEach(function (t) {
-      add({
-        id: "tx-" + t.id, realId: t.id, list: "85", core: t.core,
-        label_en: t.label_en, label_th: t.label_th, emoji: "",
-        category: t.category + " · 85 list", typical_giver: t.typical_giver, sort_order: t.sort_order
       });
     });
     categories = categories.map(function (c) {
@@ -468,7 +416,6 @@ function countFor(id) {
 function render() {
   var q = $("q").value.trim().toLowerCase();
   var giver = $("giver").value;
-  var listF = $("list").value;
   var onlyNotes = $("onlyNotes").checked;
   var main = $("main");
   main.textContent = "";
@@ -477,7 +424,6 @@ function render() {
   categories.forEach(function (cat) {
     var tags = cat.tags.filter(function (t) {
       total++;
-      if (listF && t.list !== listF) return false;
       if (giver && t.typical_giver !== giver) return false;
       if (onlyNotes && !countFor(t.id)) return false;
       if (q && (t.label_en + " " + t.label_th + " " + t.id).toLowerCase().indexOf(q) === -1) return false;
@@ -492,7 +438,6 @@ function render() {
       var top = el("div", "top");
       top.appendChild(el("span", "emoji", t.emoji || "🏷️"));
       if (t.idea) top.appendChild(el("span", "ideabadge", "idea · " + t.author));
-      if (t.list === "85") top.appendChild(el("span", "ideabadge", t.core ? "85 list · core" : "85 list"));
       b.appendChild(top);
       b.appendChild(el("div", "en", t.label_en));
       b.appendChild(el("div", "th", t.label_th));
@@ -521,7 +466,7 @@ function openPanel(id) {
   current = id;
   var t = tagsById[id];
   $("pTitle").textContent = t ? (t.emoji || "") + " " + t.label_en : id;
-  $("pSub").textContent = t ? (t.idea ? (t.label_th || "no Thai name yet") + " · idea by " + t.author : t.label_th + " · " + (t.realId ? t.realId + " · from the 85-tag list" : id)) : "";
+  $("pSub").textContent = t ? (t.idea ? (t.label_th || "no Thai name yet") + " · idea by " + t.author : t.label_th + " · " + id) : "";
   $("form").hidden = false;
   $("ideaForm").hidden = true;
   $("delIdea").hidden = !(t && t.idea && mineIdeas[t.ideaId]);
@@ -556,7 +501,7 @@ function fillCategories() {
   var sel = $("iCat");
   var keep = sel.value;
   sel.textContent = "";
-  var ids = categories.filter(function (c) { return !/ · 85 list$/.test(c.id); }).map(function (c) { return c.id; });
+  var ids = categories.map(function (c) { return c.id; });
   if (ids.indexOf("other") === -1) ids.push("other");
   ids.forEach(function (c) {
     var o = el("option", null, c.replace(/-/g, " "));
@@ -659,7 +604,7 @@ $("form").onsubmit = function (e) {
     });
 };
 
-["q", "giver", "list", "onlyNotes"].forEach(function (id) { $(id).addEventListener("input", render); });
+["q", "giver", "onlyNotes"].forEach(function (id) { $(id).addEventListener("input", render); });
 load();
 setInterval(load, 20000);
 </script>

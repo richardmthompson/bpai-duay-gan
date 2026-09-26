@@ -1,5 +1,5 @@
 {
-  "_note": "PLACEHOLDER TAG SLUGS. No tag seed existed when this was written. Every slug in give/learn must be reconciled with Lutz's tag seed (from Richard's tag-taxonomy.md) before seeding. Event refs are 'seed:<external_id>' and must match events Lutz seeds with source='seed'. All people and emails are fictional.",
+  "_note": "Every give/learn id resolves against scripts/seed/tags/tags.json, the merged 85-tag taxonomy; scripts/seed/build_sql.py fails if one does not. tag_slugs lists the ids the profiles use. Event refs are 'seed:<external_id>' and must match events seeded with source='seed'. All people and emails are fictional.",
   "version": 1,
   "tag_slugs": [
     "cooking",
@@ -33,12 +33,12 @@
       "interests_text": "เปิดร้านข้าวซอยเล็ก ๆ กับแม่แถวช้างเผือก อยากพูดภาษาอังกฤษให้คล่องขึ้น จะได้คุยกับลูกค้าต่างชาติรู้เรื่อง ยินดีพาไปเดินตลาดวโรรสแล้วสอนทำน้ำพริกหนุ่มค่ะ",
       "avatar_url": "/portraits/l08.jpg",
       "give": [
-        "northern-thai-cooking",
-        "street-food-spots",
-        "scooter-driving-license"
+        "cooking",
+        "street-food",
+        "scooter"
       ],
       "learn": [
-        "english-conversation"
+        "english"
       ],
       "going_event_refs": [
         "seed:akha-songs-stories",
@@ -57,11 +57,11 @@
       "interests_text": "Four months into Chiang Mai, renting a room near Chang Phueak Gate. I teach English online. I'd love to ride a scooter with confidence and order at the market without just pointing.",
       "avatar_url": "/portraits/f35.jpg",
       "give": [
-        "english-conversation"
+        "english"
       ],
       "learn": [
-        "scooter-driving-license",
-        "street-food-spots"
+        "scooter",
+        "street-food"
       ],
       "going_event_refs": [
         "seed:akha-songs-stories"
@@ -79,12 +79,12 @@
       "interests_text": "ทำงานร้านซ่อมมอไซค์แถวสันติธรรม เคยพาเพื่อนต่างชาติไปสอบใบขับขี่มาหลายคนแล้ว อยากฝึกภาษาอังกฤษไว้คุยกับลูกค้า แล้วก็อยากลองเขียนเว็บดูครับ",
       "avatar_url": "/portraits/l13.jpg",
       "give": [
-        "scooter-driving-license",
-        "visa-immigration"
+        "scooter",
+        "bureaucracy"
       ],
       "learn": [
-        "english-conversation",
-        "web-tech"
+        "english",
+        "tech"
       ],
       "going_event_refs": [],
       "demo_role": "tie"
@@ -100,12 +100,12 @@
       "interests_text": "เรียน มช. ปีสาม ชอบตระเวนกินร้านริมทางแถวประตูช้างเผือก รู้จักวัดในเมืองเก่าเยอะ อยากหาเพื่อนคุยภาษาอังกฤษ และอยากหัดเล่นกีตาร์ค่ะ",
       "avatar_url": "/portraits/l10.jpg",
       "give": [
-        "street-food-spots",
-        "temples-etiquette"
+        "street-food",
+        "temples"
       ],
       "learn": [
-        "english-conversation",
-        "music-jamming"
+        "english",
+        "music"
       ],
       "going_event_refs": [
         "seed:eco-printing-bua-bhat"
@@ -123,11 +123,11 @@
       "interests_text": "ขายข้าวเหนียวหมูปิ้งหน้าตลาดต้นพยอมตอนเช้า ลูกค้าฝรั่งเยอะขึ้นทุกปี อยากพูดภาษาอังกฤษกับลูกค้าได้บ้างครับ",
       "avatar_url": "/portraits/l05.jpg",
       "give": [
-        "street-food-spots",
-        "northern-thai-cooking"
+        "street-food",
+        "cooking"
       ],
       "learn": [
-        "english-conversation"
+        "english"
       ],
       "going_event_refs": [],
       "demo_role": "tie"
@@ -143,12 +143,12 @@
       "interests_text": "ทำงานเอเจนซี่วีซ่าแถวนิมมาน ช่วยดูเรื่องเอกสาร ตม. กับรายงานตัว 90 วันได้ อยากฝึกภาษาอังกฤษไว้ใช้ทำงาน และอยากเรียนเขียนโค้ดครับ",
       "avatar_url": "/portraits/l23.jpg",
       "give": [
-        "visa-immigration",
-        "thai-basics"
+        "bureaucracy",
+        "thai-language"
       ],
       "learn": [
-        "english-conversation",
-        "web-tech"
+        "english",
+        "tech"
       ],
       "going_event_refs": [
         "seed:ai-news-meetup"
@@ -166,10 +166,10 @@
       "interests_text": "เป็นไกด์อาสาที่วัดเจดีย์หลวงช่วงเสาร์อาทิตย์ อยากพูดภาษาอังกฤษให้เป็นธรรมชาติกว่านี้ค่ะ",
       "avatar_url": "/portraits/l01.jpg",
       "give": [
-        "temples-etiquette"
+        "temples"
       ],
       "learn": [
-        "english-conversation"
+        "english"
       ],
       "going_event_refs": [],
       "demo_role": "medium"
@@ -206,12 +206,12 @@
       "interests_text": "Just moved back to Chiang Mai after studying in Melbourne. I teach Thai to friends for fun and want to get into UX design and coding.",
       "avatar_url": "/portraits/l14.jpg",
       "give": [
-        "thai-basics",
-        "northern-thai-cooking"
+        "thai-language",
+        "cooking"
       ],
       "learn": [
         "design",
-        "web-tech"
+        "tech"
       ],
       "going_event_refs": [],
       "demo_role": "edge-local-english-ui"
@@ -246,10 +246,10 @@
       "interests_text": "เล่นซึงกับวงดนตรีพื้นเมืองล้านนา อยากเรียนทำเว็บไซต์ให้วง จะได้มีที่ลงตารางงานแสดง",
       "avatar_url": "/portraits/l28.jpg",
       "give": [
-        "music-jamming"
+        "music"
       ],
       "learn": [
-        "web-tech"
+        "tech"
       ],
       "going_event_refs": [],
       "demo_role": "no-overlap"
@@ -265,8 +265,8 @@
       "interests_text": "ทำขนมไทยขายที่ตลาดจริงใจทุกเสาร์ ยินดีสอนภาษาไทยง่าย ๆ ให้ อยากได้คนช่วยออกแบบฉลากขนมค่ะ",
       "avatar_url": "/portraits/l18.jpg",
       "give": [
-        "northern-thai-cooking",
-        "thai-basics"
+        "cooking",
+        "thai-language"
       ],
       "learn": [
         "design"
@@ -285,11 +285,11 @@
       "interests_text": "ชอบเดินขึ้นวัดผาลาดตอนเช้า อยากหัดเล่นอูคูเลเล่ค่ะ",
       "avatar_url": "/portraits/l46.jpg",
       "give": [
-        "temples-etiquette",
+        "temples",
         "hiking"
       ],
       "learn": [
-        "music-jamming"
+        "music"
       ],
       "going_event_refs": [],
       "demo_role": "no-overlap"
@@ -305,11 +305,11 @@
       "interests_text": "Illustrator from Bristol, three months in Nimman. Happy to help with English or a logo. I want to learn to cook khao soi from someone's family recipe.",
       "avatar_url": "/portraits/f20.jpg",
       "give": [
-        "english-conversation",
+        "english",
         "design"
       ],
       "learn": [
-        "northern-thai-cooking"
+        "cooking"
       ],
       "going_event_refs": [
         "seed:eco-printing-bua-bhat"
@@ -327,10 +327,10 @@
       "interests_text": "Software tester from Leipzig, here until March. Glad to practise English with anyone. Show me the street food nobody posts on Instagram.",
       "avatar_url": "/portraits/f23.jpg",
       "give": [
-        "english-conversation"
+        "english"
       ],
       "learn": [
-        "street-food-spots"
+        "street-food"
       ],
       "going_event_refs": [],
       "demo_role": "tie"
@@ -346,11 +346,11 @@
       "interests_text": "Data analyst working remotely for a London startup. I can help with English or spreadsheets and simple websites. Still scared of Chiang Mai traffic on a scooter.",
       "avatar_url": "/portraits/f18.jpg",
       "give": [
-        "english-conversation",
-        "web-tech"
+        "english",
+        "tech"
       ],
       "learn": [
-        "scooter-driving-license"
+        "scooter"
       ],
       "going_event_refs": [
         "seed:ai-news-meetup"
@@ -368,10 +368,10 @@
       "interests_text": "Nurse from Vancouver on a sabbatical. I'd like to understand what I'm looking at in the old city temples and how to behave there.",
       "avatar_url": "/portraits/f28.jpg",
       "give": [
-        "english-conversation"
+        "english"
       ],
       "learn": [
-        "temples-etiquette"
+        "temples"
       ],
       "going_event_refs": [],
       "demo_role": "medium"
@@ -387,10 +387,10 @@
       "interests_text": "Former primary teacher from Auckland, now writing a novel. I'd love to join a local band or just learn some Lanna songs.",
       "avatar_url": "/portraits/f08.jpg",
       "give": [
-        "english-conversation"
+        "english"
       ],
       "learn": [
-        "music-jamming"
+        "music"
       ],
       "going_event_refs": [],
       "demo_role": "medium"
@@ -406,11 +406,11 @@
       "interests_text": "อยู่เชียงใหม่มาห้าปีแล้ว ทำงานเป็นโปรแกรมเมอร์ฟรีแลนซ์ อยากซ้อมมวยไทยจริงจัง และอยากต่อวีซ่าเองได้โดยไม่ต้องจ้างเอเจนซี่ครับ",
       "avatar_url": "/portraits/f19.jpg",
       "give": [
-        "web-tech"
+        "tech"
       ],
       "learn": [
         "muay-thai",
-        "visa-immigration"
+        "bureaucracy"
       ],
       "going_event_refs": [],
       "demo_role": "edge-foreigner-thai-ui"
@@ -426,7 +426,7 @@
       "interests_text": "Jazz guitarist from Bologna. I play a café in the old city on Fridays and want hiking buddies for Doi Suthep and Doi Pui.",
       "avatar_url": "/portraits/f07.jpg",
       "give": [
-        "music-jamming"
+        "music"
       ],
       "learn": [
         "hiking"
@@ -466,11 +466,11 @@
       "interests_text": "Backend developer from Pune, six months in Santitham. I want to read Thai signs and learn the story behind the temples I walk past every day.",
       "avatar_url": "/portraits/f21.jpg",
       "give": [
-        "web-tech"
+        "tech"
       ],
       "learn": [
-        "thai-basics",
-        "temples-etiquette"
+        "thai-language",
+        "temples"
       ],
       "going_event_refs": [],
       "demo_role": "no-overlap"
@@ -489,7 +489,7 @@
         "hiking"
       ],
       "learn": [
-        "web-tech"
+        "tech"
       ],
       "going_event_refs": [],
       "demo_role": "no-overlap"
@@ -508,8 +508,8 @@
         "design"
       ],
       "learn": [
-        "thai-basics",
-        "temples-etiquette"
+        "thai-language",
+        "temples"
       ],
       "going_event_refs": [],
       "demo_role": "no-overlap"

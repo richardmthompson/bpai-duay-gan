@@ -2,7 +2,7 @@
 
 `demo-profiles.json` holds 24 fictional profiles (12 `local`, 12 `foreigner`) for the demo and for ranking tests. Owner: role 5 (Marc). Consumer: whoever writes the seed runner (Shivam, role 1, unless reassigned). There is no runner here yet because `packages/db` didn't exist when this was written.
 
-**Tag slugs are placeholders.** `tag_slugs` lists the 12 slugs used. Reconcile them with Lutz's tag seed (from Richard's `tag-taxonomy.md`) before running. Renaming a slug means a find-and-replace in this file.
+**Tag ids resolve against `scripts/seed/tags/tags.json`**, the merged 85-tag taxonomy, and `scripts/seed/build_sql.py` fails if one does not. `tag_slugs` lists the ids the profiles use. Renaming a tag is not a find-and-replace: change `docs/drafts/tag-taxonomy-proposal.json`, add the old-to-new pair to `scripts/seed/tag-id-map.json`, run `scripts/seed/migrate-to-draft-taxonomy.py`, then run `build_sql.py`.
 
 ## Format
 

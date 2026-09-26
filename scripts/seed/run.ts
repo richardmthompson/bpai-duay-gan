@@ -9,11 +9,15 @@
  *   - demo-people/profiles.json   — the 100-person roster with portraits, which is what makes
  *     Browse look like a real community.
  *
- * ⚠ The two files use different tag ids. The 24 use the 35 Core tags in tags/tags.json; the 100
- * use ids from the older draft taxonomy (docs/drafts/tag-taxonomy-proposal.json) — market-shopping,
- * coffee-cafes, english-conversation and friends. Seeding the 100 without those ids would leave
- * their tags unresolvable and every match score at zero, so this runner inserts the union and
- * says out loud which ids it had to add. The team should decide which taxonomy wins.
+ * Both files use one tag vocabulary: tags/tags.json, generated from the merged 85-tag taxonomy in
+ * docs/drafts/tag-taxonomy-proposal.json. This runner inserts exactly those tags. A profile naming
+ * an id that tags.json lacks stops the run before anything is written, naming the id and the
+ * profile; fix the data (scripts/seed/build_sql.py runs the same check) rather than adding tags.
+ *
+ * It replaces the vocabulary rather than adding to it, in one transaction: selections and event
+ * links on a retired id move to the tag scripts/seed/tag-id-map.json names (a null mapping drops
+ * them), then every selection, event link and tag outside tags.json is deleted. tags.sql does the
+ * same for a psql load.
  */
 import { readFile } from "node:fs/promises";
 import { q, tx } from "@bpai/db";
@@ -51,48 +55,71 @@ const roster = (await readJson("./demo-people/profiles.json") as SeedProfile[]).
   avatar_url: p.photo ? `/${p.photo.replace(/^.*?(portraits\/)/, "$1")}` : null,
 }));
 
-// ── tags: the 35 Core tags, plus any id a profile needs that they do not cover ────────────────
+// ── tags: tags.json alone; an id it does not hold is fatal ───────────────────────────────────
 
-const core = (await readJson("./tags/tags.json") as {
+const allTags = (await readJson("./tags/tags.json") as {
   tags: Array<{ id: string; label_en: string; label_th: string; sort_order: number }>;
 }).tags;
-const coreIds = new Set(core.map((t) => t.id));
+const knownTagIds = new Set(allTags.map((t) => t.id));
 
-const draft = (await readJson("../../docs/drafts/tag-taxonomy-proposal.json") as {
-  tags: Array<{ id: string; label_en: string; label_th: string; sort_order: number }>;
-}).tags;
-const draftById = new Map(draft.map((t) => [t.id, t]));
+const unresolved: string[] = [];
+for (const p of [...cast, ...roster]) {
+  for (const [direction, list] of [["give", p.give], ["learn", p.learn]] as const) {
+    for (const t of list) if (!knownTagIds.has(t)) unresolved.push(`${p.ref ?? p.id}: ${direction} '${t}'`);
+  }
+}
+if (unresolved.length) {
+  console.error(`✗ ${unresolved.length} tag id(s) used by demo profiles are not in tags/tags.json:`);
+  for (const u of unresolved) console.error(`    ${u}`);
+  process.exit(1);
+}
 
-const used = new Set<string>();
-for (const p of [...cast, ...roster]) for (const t of [...p.give, ...p.learn]) used.add(t);
+const idMap = (await readJson("./tag-id-map.json") as { map: Record<string, string | null> }).map;
+const badMap = Object.entries(idMap)
+  .filter(([old, next]) => knownTagIds.has(old) || (next !== null && !knownTagIds.has(next)))
+  .map(([old, next]) => `${old} -> ${next}`);
+if (badMap.length) {
+  console.error(`✗ tag-id-map.json must map retired ids onto tags.json ids: ${badMap.join(", ")}`);
+  process.exit(1);
+}
+const moves = Object.entries(idMap).filter((e): e is [string, string] => e[1] !== null);
+const oldIds = moves.map(([old]) => old);
+const newIds = moves.map(([, next]) => next);
+const keepIds = allTags.map((t) => t.id);
 
-const missing = [...used].filter((id) => !coreIds.has(id));
-const additions = missing.map((id, i) => {
-  const known = draftById.get(id);
+const pruned = await tx(async (c) => {
+  for (const t of allTags) {
+    await c.query(
+      `insert into tags (id, label_en, label_th, sort_order) values ($1,$2,$3,$4)
+       on conflict (id) do update set label_en = excluded.label_en, label_th = excluded.label_th,
+         sort_order = excluded.sort_order`,
+      [t.id, t.label_en, t.label_th, t.sort_order]);
+  }
+  const n = async (sql: string, params: unknown[]) => Number((await c.query(sql, params)).rows[0].n);
+  const selectionsMoved = await n("select count(*)::int as n from profile_tags where tag_id = any($1::text[])", [oldIds]);
+  const linksMoved = await n("select count(*)::int as n from event_tags where tag_id = any($1::text[])", [oldIds]);
+  await c.query(
+    `insert into profile_tags (user_id, tag_id, direction)
+     select p.user_id, m.new_id, p.direction from profile_tags p
+     join unnest($1::text[], $2::text[]) as m(old_id, new_id) on m.old_id = p.tag_id
+     on conflict do nothing`, [oldIds, newIds]);
+  await c.query(
+    `insert into event_tags (event_id, tag_id)
+     select e.event_id, m.new_id from event_tags e
+     join unnest($1::text[], $2::text[]) as m(old_id, new_id) on m.old_id = e.tag_id
+     on conflict do nothing`, [oldIds, newIds]);
+  // Selections and links go before tags, so no foreign key is violated.
+  const selectionsDeleted = (await c.query("delete from profile_tags where not (tag_id = any($1::text[]))", [keepIds])).rowCount ?? 0;
+  const linksDeleted = (await c.query("delete from event_tags where not (tag_id = any($1::text[]))", [keepIds])).rowCount ?? 0;
+  const tagsRemoved = (await c.query("delete from tags where not (id = any($1::text[]))", [keepIds])).rowCount ?? 0;
   return {
-    id,
-    label_en: known?.label_en ?? id.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
-    // No Thai label invents itself; the draft file has real ones for most of these, and the
-    // remainder fall back to English rather than to guessed Thai.
-    label_th: known?.label_th ?? known?.label_en ?? id,
-    sort_order: 1000 + i * 10,
+    tagsRemoved, selectionsMoved, selectionsDropped: selectionsDeleted - selectionsMoved,
+    linksMoved, linksDropped: linksDeleted - linksMoved,
   };
 });
-if (additions.length) {
-  console.warn(`⚠ ${additions.length} tag id(s) are used by demo profiles but absent from the 35 Core tags:`);
-  for (const a of additions) console.warn(`    + ${a.id}  (${a.label_en})${draftById.has(a.id) ? "" : "   ← no draft entry, English label only"}`);
-  console.warn("  Inserted so matches resolve. Reconcile the two taxonomies before the event tags ship.");
-}
-
-const allTags = [...core, ...additions];
-for (const t of allTags) {
-  await q(
-    `insert into tags (id, label_en, label_th, sort_order) values ($1,$2,$3,$4)
-     on conflict (id) do update set label_en = excluded.label_en, label_th = excluded.label_th,
-       sort_order = excluded.sort_order`,
-    [t.id, t.label_en, t.label_th, t.sort_order]);
-}
-console.log(`✓ tags: ${core.length} core + ${additions.length} added = ${allTags.length}`);
+console.log(`✓ tags: ${allTags.length}; ${pruned.tagsRemoved} retired tag(s) removed`);
+console.log(`  selections: ${pruned.selectionsMoved} remapped, ${pruned.selectionsDropped} dropped; ` +
+  `event links: ${pruned.linksMoved} remapped, ${pruned.linksDropped} dropped`);
 
 // ── events referenced by the cast ─────────────────────────────────────────────────────────────
 
@@ -109,16 +136,10 @@ const newest = Date.now() - 1000;
 
 let created = 0;
 let skippedRefs = 0;
-const unknownTags = new Set<string>();
-const knownTagIds = new Set(allTags.map((t) => t.id));
 
 await tx(async (c) => {
   for (const [index, person] of ordered.entries()) {
     const email = person.email ?? `${person.id ?? person.ref}@demo.invalid`;
-    const tags = [...person.give, ...person.learn];
-    for (const t of tags) if (!knownTagIds.has(t)) unknownTags.add(t);
-    if (tags.some((t) => !knownTagIds.has(t))) continue;
-
     const user = await c.query(
       `insert into users (email, name) values ($1,$2)
        on conflict (email) do update set name = excluded.name returning id`,
@@ -165,10 +186,6 @@ await tx(async (c) => {
     created += 1;
   }
 });
-
-if (unknownTags.size) {
-  console.error(`✗ skipped profiles using unknown tags: ${[...unknownTags].join(", ")}`);
-}
 
 const counts = await q<{ profiles: number; demo: number; links: number; attendance: number }>(
   `select (select count(*) from profiles) profiles,
