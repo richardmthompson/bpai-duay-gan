@@ -9,6 +9,15 @@ import { Avatar, Button, CommunityBadge } from "@/components/ui";
 import { api } from "@/lib/api";
 import { mockControls } from "@/lib/api/mock";
 import type { Community } from "@/lib/contract";
+import { listDemoAccounts, redeemMagicLink, requestMagicLink, signInAsDemo } from "@/lib/session";
+
+/** Mock users carry no email; the real demo accounts do, and dev-login needs it. */
+interface DemoRow {
+  userId: string;
+  displayName: string;
+  community: Community;
+  email?: string;
+}
 
 export default function SignIn() {
   const { t, lang, me, ready, setPreSignInLang, refreshMe } = useApp();
@@ -16,10 +25,35 @@ export default function SignIn() {
   const [email, setEmail] = useState("");
   const [busy, setBusy] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [demo, setDemo] = useState<DemoRow[]>(
+    api.mode === "mock" ? (mockControls.demoUsers() as DemoRow[]) : [],
+  );
 
   useEffect(() => {
     if (ready && me) router.replace(me.onboardingComplete ? "/browse" : "/onboarding");
   }, [ready, me, router]);
+
+  // The emailed link lands back here as /sign-in?token=… — redeem it, then continue.
+  useEffect(() => {
+    if (api.mode !== "http") return;
+    const token = new URLSearchParams(window.location.search).get("token");
+    if (!token) return;
+    setBusy(true);
+    redeemMagicLink(token)
+      .then(() => {
+        window.history.replaceState({}, "", "/sign-in");
+        return after();
+      })
+      .catch((e: unknown) => setError(e instanceof Error ? e.message : "could not sign you in"))
+      .finally(() => setBusy(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (api.mode !== "http") return;
+    void listDemoAccounts().then(setDemo);
+  }, []);
 
   async function after() {
     const m = await refreshMe();
@@ -34,14 +68,17 @@ export default function SignIn() {
       mockControls.signInWithEmail(email, lang);
       await after();
     } else {
-      // Auth.js email provider. Wired in with the auth slice.
-      window.location.href = `/api/auth/signin?email=${encodeURIComponent(email)}`;
-      setSent(true);
+      try {
+        setError(null);
+        await requestMagicLink(email);
+        setSent(true);
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "could not send the link");
+      }
     }
     setBusy(false);
   }
 
-  const demo = api.mode === "mock" ? mockControls.demoUsers() : [];
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col gap-8 px-5 py-10">
@@ -76,16 +113,8 @@ export default function SignIn() {
           {t.signIn.submit}
         </Button>
         {sent && <p className="text-sm text-muted">{t.signIn.checkEmail}</p>}
+        {error && <p className="text-sm text-red-600">{error}</p>}
       </form>
-
-      {api.mode === "http" && (
-        <div className="flex flex-col gap-3">
-          <p className="text-center text-sm text-muted">{t.signIn.or}</p>
-          <Button variant="secondary" onClick={() => (window.location.href = "/api/auth/signin/google")}>
-            {t.signIn.google}
-          </Button>
-        </div>
-      )}
 
       {demo.length > 0 && (
         <section className="rounded-2xl border border-dashed border-line p-4">
@@ -97,7 +126,19 @@ export default function SignIn() {
                 <button
                   type="button"
                   onClick={async () => {
-                    mockControls.signInAs(u.userId);
+                    if (api.mode === "mock") {
+                      mockControls.signInAs(u.userId);
+                    } else if (u.email) {
+                      setBusy(true);
+                      setError(null);
+                      try {
+                        await signInAsDemo(u.email);
+                      } catch (e) {
+                        setError(e instanceof Error ? e.message : "could not sign in");
+                        setBusy(false);
+                        return;
+                      }
+                    }
                     await after();
                   }}
                   className="flex w-full items-center gap-3 rounded-xl bg-surface p-3 text-left"

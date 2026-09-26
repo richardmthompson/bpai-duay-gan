@@ -1,0 +1,28 @@
+# Install:  cp deploy/bpai-web.service /etc/systemd/system/ && systemctl daemon-reload && systemctl enable --now bpai-web
+#
+# Runs the standalone server, not `next start`: next.config.ts sets output: "standalone", and
+# `next start` refuses to run in that mode. deploy.sh copies .next/static and public/ into the
+# standalone bundle, which it needs but does not include.
+[Unit]
+Description=Bpai Duay Gan web (Next.js standalone)
+After=network-online.target bpai-api.service
+Wants=network-online.target
+Requires=bpai-api.service
+
+[Service]
+Type=simple
+WorkingDirectory=/srv/bpai/apps/web
+EnvironmentFile=/srv/bpai/.env
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOSTNAME=0.0.0.0
+ExecStart=/usr/bin/node .next/standalone/apps/web/server.js
+Restart=always
+RestartSec=2
+# Same knowing shortcut as bpai-api.service: root on a disposable box.
+User=root
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

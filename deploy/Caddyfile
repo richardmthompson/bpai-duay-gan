@@ -1,0 +1,28 @@
+# Bpai Duay Gan — Caddy config for the hackathon box (149.56.37.29).
+# Install to /etc/caddy/Caddyfile, then: caddy validate --config /etc/caddy/Caddyfile && systemctl reload caddy
+#
+# TLS is automatic, but only once bpai.drdos.shivamsaluja.com resolves to THIS server. The record
+# must be DNS-only in Cloudflare — proxied hides the origin from Let's Encrypt's HTTP-01 challenge.
+
+bpai.drdos.shivamsaluja.com {
+	encode zstd gzip
+
+	# Node api: REST and the WebSocket upgrade.
+	handle /v1/* {
+		reverse_proxy 127.0.0.1:4000
+	}
+	handle /ws {
+		reverse_proxy 127.0.0.1:4000
+	}
+
+	# The web app (apps/web) is next in the build order. Until it is running, answer plainly
+	# rather than showing the judges a 502.
+	handle {
+		reverse_proxy 127.0.0.1:3000 {
+			@down status 502 503 504
+			handle_response @down {
+				respond "Bpai Duay Gan: the api is live (try /v1/health); the web app is still being built." 200
+			}
+		}
+	}
+}
