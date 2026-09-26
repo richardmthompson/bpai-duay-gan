@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useApp } from "@/components/AppProvider";
+import { Bio } from "@/components/Bio";
 import { SafetyActions } from "@/components/SafetyActions";
 import { RequestForm } from "@/components/RequestForm";
 import { Avatar, Button, CommunityBadge, ErrorState, Loading, PageHeader, Sheet, TagChip, eventTitle, formatWhen } from "@/components/ui";
@@ -66,10 +67,7 @@ export default function Person() {
         <TagSection title={t.profile.learns} ids={u.learn} matched={matched} label={tagLabel} />
 
         {u.interestsText && (
-          <section>
-            <h2 className="mb-1 font-semibold">{t.profile.about}</h2>
-            <p className="whitespace-pre-line text-muted">{u.interestsText}</p>
-          </section>
+          <Bio heading={t.profile.about} original={u.interestsText} translated={u.interestsTextTranslated ?? null} />
         )}
 
         {u.goingEvents.length > 0 && (

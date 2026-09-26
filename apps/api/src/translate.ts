@@ -90,3 +90,35 @@ export async function translate(
     return { translated: null, note: null };
   }
 }
+
+/**
+ * A profile bio in the other language. Not a message, so no particle is chosen for the author and
+ * no cultural note comes back — and it is called at write time only (the seed pass, or a save),
+ * never while serving a card. Null means "could not translate"; the caller keeps the original.
+ */
+export async function translateProfileText(text: string, from: Lang, to: Lang): Promise<string | null> {
+  if (!client || from === to || !text.trim()) return null;
+  const prompt = [
+    `Translate this self-introduction from ${LANG_NAME[from]} into ${LANG_NAME[to]}.`,
+    `It is a profile in an app that pairs Thai locals with visitors in Chiang Mai, so keep place names, food names and street names exact.`,
+    `Keep it in the first person and in the person's own voice — the way they would say it — not a formal or literal translation.`,
+    `Reply with the translation alone, nothing else.`,
+    ``,
+    text,
+  ].join("\n");
+  try {
+    const res = await client.messages.create(
+      { model: MODEL, max_tokens: 1024, messages: [{ role: "user", content: prompt }] },
+      { timeout: TIMEOUT_MS },
+    );
+    const out = res.content
+      .filter((b): b is Anthropic.TextBlock => b.type === "text")
+      .map((b) => b.text)
+      .join("")
+      .trim();
+    return out || null;
+  } catch (err) {
+    console.error("[translate] bio failed:", err instanceof Error ? err.message : err);
+    return null;
+  }
+}

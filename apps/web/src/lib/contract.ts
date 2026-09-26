@@ -95,6 +95,8 @@ export interface MatchedTag {
 export interface Candidate extends PersonSummary {
   score: number;
   interestsText: string;
+  /** The same bio in the other language when we have it; null falls back to interestsText. */
+  interestsTextTranslated: string | null;
   give: string[];
   learn: string[];
   matchedTags: MatchedTag[];

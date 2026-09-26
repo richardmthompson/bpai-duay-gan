@@ -38,6 +38,12 @@ create table if not exists profiles (
   created_at          timestamptz not null default now()
 );
 
+-- The same bio in the other language, written when the bio itself is written (the seed pass, or
+-- a save from the Me screen) — never on read, because one Browse page is twenty cards and twenty
+-- model calls is not something a page load can pay. Null means "not translated yet", and the card
+-- falls back to the original rather than waiting.
+alter table profiles add column if not exists interests_text_translated text;
+
 -- Gender (issue #22), added after the table so existing databases pick it up on the next deploy.
 -- People set gender; the api writes politeness_register from it on every save (other and
 -- undisclosed both mean neutral). Null means unknown. The backfill fills in only rows that have
