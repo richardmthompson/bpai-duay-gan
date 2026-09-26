@@ -65,6 +65,14 @@ html,
 body {
   background: var(--bg);
   color: var(--ink);
+  /* A card that has been swiped out sits translated 560px inside the deck, and nothing between
+     it and the root clips it. Android Chrome then widens the document to fit — 1062px on a
+     412px phone — and renders the whole page zoomed out, which reads as a desktop site the
+     moment the request sheet opens. iOS just clips it silently, which is why this only showed
+     up on Android.
+     `clip`, not `hidden`: it clips without creating a scroll container, so the fixed bottom nav
+     and the sticky headers keep behaving. */
+  overflow-x: clip;
 }
 
 h1,
