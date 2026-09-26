@@ -24,7 +24,7 @@ export function BottomNav() {
     { href: "/me", key: "me", label: t.nav.me },
   ];
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur">
+    <nav className="fixed inset-x-0 bottom-0 z-20 border-t-2 border-line bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur">
       <ul className="mx-auto flex max-w-md">
         {items.map((it) => {
           const active = path === it.href || path.startsWith(`${it.href}/`) || (it.href === "/browse" && path.startsWith("/people"));
@@ -33,7 +33,7 @@ export function BottomNav() {
               <Link
                 href={it.href}
                 aria-current={active ? "page" : undefined}
-                className={cx("relative flex flex-col items-center gap-0.5 py-2 text-[11px]", active ? "text-brand" : "text-muted")}
+                className={cx("relative flex flex-col items-center gap-0.5 py-2 text-[11px]", active ? "text-accent" : "text-muted")}
               >
                 <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                   <path d={ICONS[it.key]} />

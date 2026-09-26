@@ -140,7 +140,7 @@ export default function Chat() {
     return (
       <div className="p-8 text-center">
         <p className="text-muted">{t.chat.unavailable}</p>
-        <Link href="/chats" className="mt-3 inline-block text-brand">
+        <Link href="/chats" className="mt-3 inline-block text-accent">
           ← {t.chats.title}
         </Link>
       </div>
@@ -189,12 +189,12 @@ export default function Chat() {
           }}
           placeholder={t.chat.placeholder}
           aria-label={t.chat.placeholder}
-          className="max-h-32 min-h-11 flex-1 resize-none rounded-2xl border border-line bg-bg px-4 py-2.5 text-base outline-none focus:border-brand"
+          className="max-h-32 min-h-11 flex-1 resize-none rounded-2xl border-2 border-line bg-surface px-4 py-2.5 text-base outline-none focus:border-accent"
         />
         <button
           type="submit"
           disabled={!draft.trim()}
-          className="min-h-11 rounded-2xl bg-brand px-4 font-medium text-brand-ink disabled:opacity-40"
+          className="min-h-11 rounded-2xl border-2 border-line bg-accent px-4 font-semibold text-accent-ink shadow-hard-sm disabled:opacity-40"
         >
           {t.chat.send}
         </button>
@@ -234,7 +234,7 @@ function MessageBubble({ m, mine, readerLang }: { m: Bubble; mine: boolean; read
         aria-label={canFlip ? (flipped ? t.chat.showTranslation : t.chat.showOriginal) : undefined}
         className={cx(
           "max-w-[80%] rounded-2xl px-4 py-2 text-left text-base whitespace-pre-wrap",
-          mine ? "rounded-br-md bg-brand text-brand-ink" : "rounded-bl-md bg-surface border border-line",
+          mine ? "rounded-br-md border-2 border-line bg-brand text-brand-ink" : "rounded-bl-md border-2 border-line bg-surface",
           needsTranslation && !translated && "opacity-70",
           m.sendFailed && "border-2 border-danger",
         )}

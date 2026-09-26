@@ -26,20 +26,20 @@ export default function Events() {
       <ul className="flex flex-col gap-3 p-4">
         {list.data?.map((e) => (
           <li key={e.id}>
-            <div className="overflow-hidden rounded-2xl border border-line bg-surface">
-              <Link href={`/events/${e.id}`} className="block active:bg-surface-2">
-              {e.imageUrl && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={e.imageUrl} alt="" className="h-36 w-full object-cover" />
-              )}
-              <div className="p-4">
-                <p className="text-sm font-medium text-brand">{formatWhen(e.startsAt, lang)}</p>
-                <p className="mt-0.5 text-lg font-semibold leading-snug">{eventTitle(e, lang)}</p>
-                <p className="text-sm text-muted">{e.venueName}</p>
-              </div>
+            <div className="overflow-hidden rounded-2xl border-2 border-line bg-event text-event-ink shadow-hard">
+              <Link href={`/events/${e.id}`} className="block active:bg-brand-soft">
+                {e.imageUrl && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={e.imageUrl} alt="" className="h-36 w-full border-b-2 border-line object-cover" />
+                )}
+                <div className="p-4">
+                  <p className="text-sm font-bold text-accent">{formatWhen(e.startsAt, lang)}</p>
+                  <p className="mt-0.5 text-lg font-semibold leading-snug">{eventTitle(e, lang)}</p>
+                  <p className="text-sm text-event-ink/80">{e.venueName}</p>
+                </div>
               </Link>
               <div className="flex items-center justify-between gap-2 px-4 pb-4">
-                <span className="text-sm text-muted">{t.events.goingCount(e.goingCount)}</span>
+                <span className="text-sm text-event-ink/80">{t.events.goingCount(e.goingCount)}</span>
                 <GoingButton eventId={e.id} going={e.going} onChange={(g) => setGoing(e.id, g)} />
               </div>
             </div>

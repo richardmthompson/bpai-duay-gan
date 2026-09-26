@@ -89,7 +89,7 @@ export function SafetyActions({
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               placeholder={t.profile.reportPlaceholder}
-              className="mb-3 w-full rounded-xl border border-line bg-bg p-3 text-base outline-none focus:border-brand"
+              className="mb-3 w-full rounded-xl border-2 border-line bg-bg p-3 text-base outline-none focus:border-brand"
             />
             <div className="flex gap-2">
               <Button variant="secondary" className="flex-1" onClick={() => setSheet(null)}>

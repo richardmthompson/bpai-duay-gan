@@ -107,7 +107,7 @@ export default function SignIn() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder={t.signIn.emailPlaceholder}
-          className="min-h-12 rounded-xl border border-line bg-surface px-4 text-base outline-none focus:border-brand"
+          className="min-h-12 rounded-xl border-2 border-line bg-surface px-4 text-base outline-none focus:border-brand"
         />
         <Button type="submit" disabled={busy}>
           {t.signIn.submit}
@@ -117,7 +117,7 @@ export default function SignIn() {
       </form>
 
       {demo.length > 0 && (
-        <section className="rounded-2xl border border-dashed border-line p-4">
+        <section className="rounded-2xl border-2 border-dashed border-line p-4">
           <h2 className="font-semibold">{t.signIn.demoTitle}</h2>
           <p className="mb-3 text-sm text-muted">{t.signIn.demoHint}</p>
           <ul className="flex flex-col gap-2">
@@ -141,7 +141,7 @@ export default function SignIn() {
                     }
                     await after();
                   }}
-                  className="flex w-full items-center gap-3 rounded-xl bg-surface p-3 text-left"
+                  className="flex w-full items-center gap-3 rounded-xl border-2 border-line bg-surface p-3 text-left shadow-hard-sm"
                 >
                   <Avatar name={u.displayName} community={u.community} size={40} />
                   <span className="flex-1 font-medium">{u.displayName}</span>

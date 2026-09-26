@@ -11,7 +11,7 @@ export function Toasts() {
       {toasts.map((x) => {
         const body = <span className="block px-4 py-3 text-sm font-medium">{x.text}</span>;
         return (
-          <div key={x.id} role="status" className="pointer-events-auto w-full max-w-md rounded-xl bg-ink text-bg shadow-lg">
+          <div key={x.id} role="status" className="pointer-events-auto w-full max-w-md rounded-xl border-2 border-line bg-ink text-bg shadow-hard-sm">
             {x.href ? (
               <Link href={x.href} onClick={() => dismissToast(x.id)}>
                 {body}

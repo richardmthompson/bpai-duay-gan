@@ -50,8 +50,8 @@ export function RequestForm({
                 aria-checked={eventId === (e?.id ?? null)}
                 onClick={() => setEventId(e?.id ?? null)}
                 className={cx(
-                  "rounded-xl border-2 p-3 text-left text-sm",
-                  eventId === (e?.id ?? null) ? "border-brand bg-brand-soft" : "border-line",
+                  "rounded-xl border-2 border-line p-3 text-left text-sm shadow-hard-sm",
+                  eventId === (e?.id ?? null) ? "bg-brand-soft" : "bg-surface",
                 )}
               >
                 {e ? (
@@ -73,7 +73,7 @@ export function RequestForm({
         value={note}
         onChange={(e) => setNote(e.target.value)}
         placeholder={t.profile.notePlaceholder}
-        className="mb-3 w-full rounded-xl border border-line bg-bg p-3 text-base outline-none focus:border-brand"
+        className="mb-3 w-full rounded-xl border-2 border-line bg-bg p-3 text-base outline-none focus:border-brand"
       />
       {error && <p className="mb-2 text-sm text-danger">{t.common.somethingWrong}</p>}
       <div className="flex gap-2">

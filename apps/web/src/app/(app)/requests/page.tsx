@@ -41,7 +41,7 @@ export default function Requests() {
   return (
     <>
       <PageHeader title={t.requests.title} />
-      <div role="tablist" className="mx-4 mt-3 grid grid-cols-2 rounded-xl bg-surface-2 p-1">
+      <div role="tablist" className="mx-4 mt-3 grid grid-cols-2 gap-1 rounded-xl border-2 border-line bg-surface-2 p-1">
         {(["incoming", "outgoing"] as const).map((k) => {
           const pending = (list.data ?? []).filter((r) => r.direction === k && r.status === "pending").length;
           return (
@@ -50,10 +50,10 @@ export default function Requests() {
               role="tab"
               aria-selected={tab === k}
               onClick={() => setTab(k)}
-              className={cx("min-h-10 rounded-lg text-sm font-medium", tab === k ? "bg-surface shadow-sm" : "text-muted")}
+              className={cx("min-h-10 rounded-lg border-2 text-sm font-medium", tab === k ? "border-line bg-surface shadow-hard-sm" : "border-transparent text-muted")}
             >
               {k === "incoming" ? t.requests.incoming : t.requests.outgoing}
-              {pending > 0 && <span className="ml-1 text-brand">({pending})</span>}
+              {pending > 0 && <span className="ml-1 text-accent">({pending})</span>}
             </button>
           );
         })}
@@ -96,7 +96,7 @@ function RequestRow({ r, onChanged }: { r: MatchRequest; onChanged: () => void }
     r.status === "accepted" ? t.requests.accepted : r.status === "declined" ? t.requests.declined : t.requests.pending;
 
   return (
-    <div className="rounded-2xl border border-line bg-surface p-4">
+    <div className="rounded-2xl border-2 border-line bg-surface p-4 shadow-hard">
       <Link href={`/people/${r.other.userId}`} className="flex items-center gap-3">
         <Avatar name={r.other.displayName} community={r.other.community} url={r.other.avatarUrl} />
         <div className="min-w-0 flex-1">
@@ -105,7 +105,7 @@ function RequestRow({ r, onChanged }: { r: MatchRequest; onChanged: () => void }
         </div>
       </Link>
       {r.event && (
-        <p className="mt-3 rounded-xl bg-brand-soft px-3 py-2 text-sm">
+        <p className="mt-3 rounded-xl border-2 border-line bg-event px-3 py-2 text-sm text-event-ink">
           <span aria-hidden>📅 </span>
           {t.requests.becauseEvent}: <span className="font-medium">{eventTitle(r.event, lang)}</span>
         </p>

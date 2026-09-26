@@ -46,7 +46,7 @@ export default function MePage() {
         {editing ? (
           <EditProfile onDone={() => setEditing(false)} />
         ) : (
-          <section className="flex flex-col gap-4 rounded-2xl border border-line bg-surface p-4">
+          <section className="flex flex-col gap-4 rounded-2xl border-2 border-line bg-surface p-4 shadow-hard">
             <TagRow title={t.profile.gives} ids={me.give} label={tagLabel} />
             <TagRow title={t.profile.learns} ids={me.learn} label={tagLabel} />
             {me.interestsText && <p className="whitespace-pre-line text-sm text-muted">{me.interestsText}</p>}
@@ -65,7 +65,7 @@ export default function MePage() {
           </Row>
           {me.speaksLanguage === "en" && (
             <Row label={t.me.register}>
-              <div className="inline-flex rounded-full border border-line bg-surface p-1 text-sm">
+              <div className="inline-flex rounded-full border-2 border-line bg-surface p-1 text-sm shadow-hard-sm">
                 {(
                   [
                     ["male", "ครับ"],
@@ -93,7 +93,7 @@ export default function MePage() {
         </Button>
 
         {api.mode === "mock" && (
-          <section className="flex flex-col gap-2 rounded-2xl border border-dashed border-line p-4">
+          <section className="flex flex-col gap-2 rounded-2xl border-2 border-dashed border-line p-4">
             <p className="text-sm text-muted">{t.signIn.demoHint}</p>
             <Button variant="secondary" onClick={signOut}>
               {t.me.demoSwitch}
@@ -155,12 +155,12 @@ function EditProfile({ onDone }: { onDone: () => void }) {
   }
 
   return (
-    <section className="flex flex-col gap-4 rounded-2xl border border-line bg-surface p-4">
+    <section className="flex flex-col gap-4 rounded-2xl border-2 border-line bg-surface p-4 shadow-hard">
       <input
         value={name}
         maxLength={40}
         onChange={(e) => setName(e.target.value)}
-        className="min-h-11 rounded-xl border border-line bg-bg px-3 text-base outline-none focus:border-brand"
+        className="min-h-11 rounded-xl border-2 border-line bg-bg px-3 text-base outline-none focus:border-brand"
       />
       <div>
         <p className="mb-2 font-medium">{t.onboarding.giveTitle}</p>
@@ -176,7 +176,7 @@ function EditProfile({ onDone }: { onDone: () => void }) {
         value={interests}
         onChange={(e) => setInterests(e.target.value)}
         placeholder={t.onboarding.interestsPlaceholder}
-        className="rounded-xl border border-line bg-bg p-3 text-base outline-none focus:border-brand"
+        className="rounded-xl border-2 border-line bg-bg p-3 text-base outline-none focus:border-brand"
       />
       <div className="flex gap-2">
         <Button variant="secondary" className="flex-1" onClick={onDone}>
