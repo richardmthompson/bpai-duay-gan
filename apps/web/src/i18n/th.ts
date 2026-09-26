@@ -154,7 +154,7 @@ export const th: Strings = {
     goingCount: (n: number) => `${n} คนจะไป`,
     details: "รายละเอียด",
     empty: "ยังไม่มีกิจกรรม",
-    whoIsGoing: "ใครจากอีกกลุ่มจะไปบ้าง",
+    whoIsGoing: "คนที่จะไป",
     nobodyGoing: "ยังไม่มีใคร ไปเป็นคนแรกสิ",
     free: "ฟรี",
   },

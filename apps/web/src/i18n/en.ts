@@ -152,7 +152,7 @@ export const en = {
     goingCount: (n: number) => (n === 1 ? "1 person going" : `${n} people going`),
     details: "Details",
     empty: "No events yet.",
-    whoIsGoing: "Who's going from the other community",
+    whoIsGoing: "People Going",
     nobodyGoing: "Nobody yet. Be the first.",
     free: "Free",
   },

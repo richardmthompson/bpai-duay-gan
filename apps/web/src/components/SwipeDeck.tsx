@@ -130,9 +130,6 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
 
   return (
     <div className="px-4 pb-4">
-      <p className="mb-2 text-center text-xs text-muted">
-        {index + 1} / {items.length} · {t.browse.swipeHint}
-      </p>
       {firstZero >= 0 && index >= firstZero && (
         <p className="mb-2 text-center text-xs font-medium text-muted">— {t.browse.noOverlapDivider} —</p>
       )}
