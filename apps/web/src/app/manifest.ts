@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "ไปด้วยกัน Bpai Duay Gan",
+    name: "ไปด้วยกัน Bpai Dûay Gan",
     short_name: "ไปด้วยกัน",
     description: "Thai locals and foreigners in Chiang Mai, trading what they know and chatting in their own languages.",
     start_url: "/",

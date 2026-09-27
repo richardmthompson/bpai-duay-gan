@@ -1,4 +1,4 @@
-# Bpai Duay Gan — Caddy config for the hackathon box (149.56.37.29).
+# Bpai Dûay Gan — Caddy config for the hackathon box (149.56.37.29).
 # Install to /etc/caddy/Caddyfile, then: caddy validate --config /etc/caddy/Caddyfile && systemctl reload caddy
 #
 # TLS is automatic, but only once bpai.drdos.shivamsaluja.com resolves to THIS server. The record
@@ -21,7 +21,7 @@ bpai.drdos.shivamsaluja.com {
 		reverse_proxy 127.0.0.1:3000 {
 			@down status 502 503 504
 			handle_response @down {
-				respond "Bpai Duay Gan: the api is live (try /v1/health); the web app is still being built." 200
+				respond "Bpai Dûay Gan: the api is live (try /v1/health); the web app is still being built." 200
 			}
 		}
 	}

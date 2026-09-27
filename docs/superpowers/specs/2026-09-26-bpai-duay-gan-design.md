@@ -1,5 +1,5 @@
 ---
-feature: Bpai Duay Gan — locals and nomads matching on skills and events
+feature: Bpai Dûay Gan — locals and nomads matching on skills and events
 date: 2026-09-26
 status: shipped (see the banner below — parts of this plan were overtaken on the night)
 session: nw-doorway (Shivam, role 1)
@@ -19,7 +19,7 @@ supersedes: /root/DESIGN-BRIEF-bpai-duay-gan.md.md (Richard's /grill-me brief)
 >   card. That is Challenge 01's "cultural confidence" idea, made visible.
 > - Live at **https://bpai.drdos.shivamsaluja.com**.
 
-# Design — Bpai Duay Gan (ไปด้วยกัน)
+# Design — Bpai Dûay Gan (ไปด้วยกัน)
 
 A Chiang Mai PWA that pairs Thai locals with nomads and expats on **events and skill swaps**,
 with chat that translates across the language line. Built by six for the Claude Community

@@ -1,6 +1,6 @@
 // Every visible string. th.ts must carry the same keys; the type enforces it.
 export const en = {
-  appName: "Bpai Duay Gan",
+  appName: "Bpai Dûay Gan",
   tagline: "Go together. Meet the other half of Chiang Mai.",
 
   common: {
@@ -202,7 +202,7 @@ export const en = {
 
   install: {
     title: "Install the app",
-    lead: "Put Bpai Duay Gan on your home screen. It opens full screen and is there when you want it — no app store, nothing to download.",
+    lead: "Put Bpai Dûay Gan on your home screen. It opens full screen and is there when you want it — no app store, nothing to download.",
     cta: "Install the app",
     promptPending: "If nothing happens, your browser is not offering the install prompt yet. Use the steps below.",
     installedTitle: "It is installed",

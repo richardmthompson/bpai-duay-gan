@@ -1,4 +1,4 @@
-# ไปด้วยกัน — Bpai Duay Gan
+# ไปด้วยกัน — Bpai Dûay Gan
 
 *"Go together."* A Chiang Mai app that pairs Thai locals with nomads and expats so nobody has to walk into an event alone, and so both sides have something to give.
 

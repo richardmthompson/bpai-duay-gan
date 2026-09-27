@@ -4,7 +4,7 @@
 # `next start` refuses to run in that mode. deploy.sh copies .next/static and public/ into the
 # standalone bundle, which it needs but does not include.
 [Unit]
-Description=Bpai Duay Gan web (Next.js standalone)
+Description=Bpai Dûay Gan web (Next.js standalone)
 After=network-online.target bpai-api.service
 Wants=network-online.target
 Requires=bpai-api.service

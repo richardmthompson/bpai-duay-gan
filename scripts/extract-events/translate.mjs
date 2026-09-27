@@ -4,7 +4,7 @@ import Anthropic from "@anthropic-ai/sdk";
 
 const MODEL = process.env.EVENTS_MODEL || "claude-opus-5";
 
-const SYSTEM = `You write event listings for Bpai Duay Gan, a Chiang Mai app that connects Thai locals and foreigners. Every event is shown in Thai and in English.
+const SYSTEM = `You write event listings for Bpai Dûay Gan, a Chiang Mai app that connects Thai locals and foreigners. Every event is shown in Thai and in English.
 
 From the organizer's announcement, write:
 - title_en: the event's own title, lightly cleaned (no emoji, no shouting caps).

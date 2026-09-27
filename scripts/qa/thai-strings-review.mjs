@@ -58,7 +58,7 @@ for (const p of readJson("scripts/seed/demo-people/profiles.json") ?? []) {
 console.log(`reviewing ${items.length} Thai strings (${[...new Set(items.map((i) => i.kind))].join(", ")})`);
 
 const BATCH = { "ui": 12, "tag": 16, "event-title": 10, "event-desc": 4, "cast-intro": 5, "roster-intro": 5 };
-const PROMPT = (batch) => `You are reviewing Thai copy written by hand for "Bpai Duay Gan", a Chiang Mai app that pairs Thai locals with visitors. Judges and users will read this.
+const PROMPT = (batch) => `You are reviewing Thai copy written by hand for "Bpai Dûay Gan", a Chiang Mai app that pairs Thai locals with visitors. Judges and users will read this.
 
 For EACH item judge the Thai:
 - correct? (grammar, spelling, particles, no mangled words)

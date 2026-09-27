@@ -232,7 +232,7 @@ const PAGE = `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bpai Duay Gan — tag board</title>
+<title>Bpai Dûay Gan — tag board</title>
 <style>
   :root { --bg:#faf7f2; --card:#fff; --ink:#1f1b16; --muted:#6f675c; --line:#e7e0d5; --accent:#c2410c; --local:#0f766e; --foreigner:#7c3aed; --either:#6b7280; }
   * { box-sizing: border-box; }
@@ -294,7 +294,7 @@ const PAGE = `<!doctype html>
 <body>
 <nav class="nav"><a href="/" class="on">🏷️ Tags</a><a href="/profiles">🙂 Profiles</a></nav>
 <header>
-  <h1>ไปด้วยกัน · Bpai Duay Gan — tag board</h1>
+  <h1>ไปด้วยกัน · Bpai Dûay Gan — tag board</h1>
   <p>Every Give / Learn tag in the merged list (our draft plus the 85-tag taxonomy, deduplicated), plus tag ideas from anyone. Click a tag to leave a note: a comment, a Thai label fix, a rename, a merge, or a vote to remove it.</p>
 </header>
 <div class="bar">
@@ -616,7 +616,7 @@ const PROFILES_PAGE = `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bpai Duay Gan — demo profiles</title>
+<title>Bpai Dûay Gan — demo profiles</title>
 <style>
   :root { --bg:#faf7f2; --card:#fff; --ink:#1f1b16; --muted:#6f675c; --line:#e7e0d5; --accent:#c2410c; --local:#0f766e; --foreigner:#7c3aed; }
   * { box-sizing:border-box; }
@@ -658,7 +658,7 @@ const PROFILES_PAGE = `<!doctype html>
 <body>
 <nav class="nav"><a href="/">🏷️ Tags</a><a href="/profiles" class="on">🙂 Profiles</a></nav>
 <header>
-  <h1>ไปด้วยกัน · Bpai Duay Gan — demo profiles</h1>
+  <h1>ไปด้วยกัน · Bpai Dûay Gan — demo profiles</h1>
   <p>100 made-up people for the demo: 50 Thai locals and 50 foreigners, each with what they can give and what they want to learn. Portraits are AI-generated.</p>
 </header>
 <div class="bar">

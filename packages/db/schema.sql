@@ -1,4 +1,4 @@
--- Bpai Duay Gan — schema. Idempotent: safe to run repeatedly.
+-- Bpai Dûay Gan — schema. Idempotent: safe to run repeatedly.
 -- Column names for events/tags/event_tags match scripts/seed/*.sql exactly; those files load
 -- straight in without edits. Field naming for messages/requests follows the team's web contract
 -- (apps/web/src/lib/contract.ts), which is the first written statement of CONTRACT.md we have.
