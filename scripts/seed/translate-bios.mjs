@@ -8,12 +8,16 @@
  *
  *   cd /srv/bpai && set -a && . ./.env && set +a && node scripts/seed/translate-bios.mjs
  *
+ * `--all` re-translates everyone, which is what a change to the prompt needs; without it only the
+ * bios that have no translation yet are done.
+ *
  * Needs ANTHROPIC_API_KEY (the same one the app uses). Without it, the script says so and stops.
  */
 import { q } from "@bpai/db";
 import { translateProfileText } from "../../apps/api/src/translate.ts";
 
 const CONCURRENCY = 4;   // polite to the api; 124 bios take about a minute
+const all = process.argv.includes("--all");
 
 if (!process.env.ANTHROPIC_API_KEY) {
   console.error("✗ ANTHROPIC_API_KEY is unset — nothing to translate with");
@@ -23,10 +27,10 @@ if (!process.env.ANTHROPIC_API_KEY) {
 const rows = await q(
   `select user_id, display_name, interests_text, speaks_language
      from profiles
-    where interests_text <> '' and interests_text_translated is null
+    where interests_text <> '' ${all ? "" : "and interests_text_translated is null"}
     order by demo_account desc, display_name`);
 
-console.log(`translating ${rows.length} bio(s), ${CONCURRENCY} at a time`);
+console.log(`translating ${rows.length} bio(s)${all ? " (--all)" : ""}, ${CONCURRENCY} at a time`);
 
 let done = 0;
 let failed = 0;
