@@ -37,8 +37,10 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
   // the card, not the link: a still tap on an event tag navigates from here instead.
   const pressedLink = useRef<string | null>(null);
   const asked = useRef(new Set<string>());
-  // A right swipe opens the request sheet and leaves the deck parked on the swiped card, veiled:
-  // the next profile may not show behind the sheet, so the deck only moves on when the sheet closes.
+  // A like (right swipe, Meet, ArrowRight/Enter) opens the request sheet and parks the deck on the
+  // liked card: flown out, veiled and locked, so the next profile never shows behind the sheet. A
+  // send moves the deck on (sheetSent); closing without sending brings the card back (sheetCancelled).
+  // Both clear it first, so whichever comes second finds nothing parked and does nothing.
   const parked = useRef(false);
 
   const current = items[index];
@@ -108,7 +110,7 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
       }
       veil(1);
       if (dir === "right") {
-        // the veil stays up and the deck stays locked until the sheet closes (closeSheet)
+        // the veil stays up and the deck stays locked until the sheet closes (sheetSent / sheetCancelled)
         parked.current = true;
         setAskFor(person);
       } else window.setTimeout(advance, 170);
@@ -116,12 +118,23 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
     [items, index, advance],
   );
 
-  // Sent or cancelled, the swiped profile is done with: move on by exactly one, and only now.
-  const closeSheet = () => {
+  // Sent: the liked profile is done with, so move on by exactly one, and only now.
+  const sheetSent = () => {
     setAskFor(null);
     if (!parked.current) return;
     parked.current = false;
     advance();
+  };
+
+  // Cancel, Escape or a backdrop tap: nothing was sent and nothing was skipped, so the same card
+  // springs back to the centre, unveiled and unlocked, ready to be dragged, liked or skipped again.
+  // After a send the deck is no longer parked, so a close that follows brings nothing back.
+  const sheetCancelled = () => {
+    setAskFor(null);
+    if (!parked.current) return;
+    parked.current = false;
+    drag.current = { x: 0, y: 0, dx: 0, dy: 0, down: false, locked: false };
+    springBack();
   };
 
   // A gesture only counts as a swipe when it went sideways -- vertically the profile scrolls.
@@ -266,7 +279,7 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
 
       <Sheet
         open={askFor !== null}
-        onClose={closeSheet}
+        onClose={sheetCancelled}
         title={askFor ? t.profile.requestTitle(askFor.displayName) : ""}
       >
         {askFor && (
@@ -276,10 +289,10 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
               ...askFor.sharedEvents,
               ...(profiles[askFor.userId]?.goingEvents ?? []).filter((e) => !askFor.sharedEvents.some((s) => s.id === e.id)),
             ]}
-            onCancel={closeSheet}
+            onCancel={sheetCancelled}
             onSent={() => {
               setSentTo((s) => [...s, askFor.userId]);
-              closeSheet();
+              sheetSent();
             }}
           />
         )}
