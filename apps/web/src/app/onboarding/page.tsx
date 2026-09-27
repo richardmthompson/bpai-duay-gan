@@ -1,13 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useApp } from "@/components/AppProvider";
 import { LangToggle } from "@/components/LangToggle";
 import { GenderPicker } from "@/components/GenderPicker";
 import { TagPicker } from "@/components/TagPicker";
-import { Button, Loading, cx } from "@/components/ui";
+import { Button, Emblem, Loading, cx } from "@/components/ui";
 import { api } from "@/lib/api";
 import type { Community, Gender, Lang, Me } from "@/lib/contract";
 
@@ -92,7 +91,7 @@ function Wizard({ me }: { me: Me }) {
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-6">
       <div className="mb-6 flex items-center justify-between">
         <span className="flex items-center gap-2 text-sm text-muted">
-          <Image src="/emblem.png" alt="" width={32} height={32} />
+          <Emblem size={28} />
           {o.stepOf(idx + 1, steps.length)}
         </span>
         <div className="h-1.5 w-32 overflow-hidden rounded-full bg-surface-2">
