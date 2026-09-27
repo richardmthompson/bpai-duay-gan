@@ -46,6 +46,9 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
   // has moved the card since it started, so a drop scheduled by an older return never unveils a
   // card that is being dragged again, or one that has flown out behind the sheet.
   const motion = useRef(0);
+  // True while the request sheet's send is in flight. The sheet cannot be dismissed then: a cancel
+  // that won the race would bring the card back while the request still went through.
+  const sending = useRef(false);
 
   const current = items[index];
 
@@ -149,7 +152,10 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
   // Cancel, Escape or a backdrop tap: nothing was sent and nothing was skipped, so the same card
   // springs back to the centre, unlocked (and unveiled once it is back), ready to be dragged, liked or skipped again.
   // After a send the deck is no longer parked, so a close that follows brings nothing back.
+  // While a send is in flight nothing closes the sheet; if the send fails the card stays parked
+  // with the error shown, and Cancel, Escape and the backdrop work again.
   const sheetCancelled = () => {
+    if (sending.current) return;
     setAskFor(null);
     if (!parked.current) return;
     parked.current = false;
@@ -311,6 +317,9 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
               ...(profiles[askFor.userId]?.goingEvents ?? []).filter((e) => !askFor.sharedEvents.some((s) => s.id === e.id)),
             ]}
             onCancel={sheetCancelled}
+            onSendingChange={(s) => {
+              sending.current = s;
+            }}
             onSent={() => {
               setSentTo((s) => [...s, askFor.userId]);
               sheetSent();
