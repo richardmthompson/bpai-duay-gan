@@ -10,9 +10,9 @@ const display = Unbounded({ variable: "--font-display-latin", subsets: ["latin"]
 const thai = Kanit({ variable: "--font-sans-thai", subsets: ["thai", "latin"], weight: ["400", "500", "600", "700"] });
 
 export const metadata: Metadata = {
-  title: "ไปด้วยกัน Bpai Duay Gan",
+  title: "ไปด้วยกัน Bpai Dûay Gan",
   description: "Meet the other half of Chiang Mai: Thai locals and foreigners trading what they know, chatting in their own languages.",
-  applicationName: "Bpai Duay Gan",
+  applicationName: "Bpai Dûay Gan",
   appleWebApp: { capable: true, title: "ไปด้วยกัน", statusBarStyle: "default" },
   icons: { apple: "/apple-touch-icon.png" },
 };

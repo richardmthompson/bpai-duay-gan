@@ -25,7 +25,7 @@ export async function sendMagicLink(email: string, url: string): Promise<{ sent:
       from: process.env.EMAIL_FROM ?? process.env.SMTP_USER,
       to: email,
       subject: "ไปด้วยกัน — your sign-in link",
-      text: `Open this link to sign in to Bpai Duay Gan:\n\n${url}\n\nIt works once and expires in 20 minutes.`,
+      text: `Open this link to sign in to Bpai Dûay Gan:\n\n${url}\n\nIt works once and expires in 20 minutes.`,
     });
     return { sent: true };
   } catch (err) {

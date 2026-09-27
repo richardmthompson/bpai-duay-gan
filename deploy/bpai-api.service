@@ -2,7 +2,7 @@
 # Secrets live in /srv/bpai/.env (chmod 600). The unit never restarts into a missing env file:
 # systemd fails loudly instead, which is what we want on a demo box.
 [Unit]
-Description=Bpai Duay Gan api (HTTP + WebSocket)
+Description=Bpai Dûay Gan api (HTTP + WebSocket)
 After=network-online.target postgresql.service
 Wants=network-online.target
 Requires=postgresql.service
