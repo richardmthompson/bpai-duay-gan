@@ -11,6 +11,10 @@ Built at the Claude Community Hackathon, Chiang Mai, 26–27 September 2026.
 - **Skill & Sabai swaps.** Everyone registers what they can give and what they want to learn. Locals offer Kham Mueang basics, street food knowledge, help with bureaucracy. Foreigners offer English conversation, tech, remote-work know-how. Matches run both ways.
 - **Chat across the language line.** Each person writes in their own language. Translation adapts for politeness and cultural context, so English arrives as friendly Thai and Thai arrives as natural English.
 
+## Pitch
+
+The hackathon presentation, with speaker notes: [docs/presentation/bpai-duay-gan-pitch.pptx](docs/presentation/bpai-duay-gan-pitch.pptx).
+
 ## Status
 
 Hackathon build in progress. Architecture and setup instructions land here as the team agrees them.
