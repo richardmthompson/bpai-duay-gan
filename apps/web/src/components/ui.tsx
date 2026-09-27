@@ -148,13 +148,17 @@ export function Button({
   );
 }
 
-/** The app's mark: the woven logo with "BDG" under it, in the wordmark's dark green. Decorative. */
+/** The app's mark with the app's hard shadow, so it stands off the sand background. Decorative. */
 export function Emblem({ size }: { size: number }) {
   return (
-    <span aria-hidden className="flex shrink-0 flex-col items-center gap-0.5">
-      <Image src="/emblem-bdg.png" alt="" width={size} height={size} />
-      <span className="font-display text-[9px] font-bold leading-none tracking-[0.14em] text-[#0C5341]">BDG</span>
-    </span>
+    <Image
+      src="/emblem-mark.png"
+      alt=""
+      width={size}
+      height={size}
+      aria-hidden
+      className="shrink-0 drop-shadow-[2px_2px_0_var(--line)]"
+    />
   );
 }
 
@@ -168,7 +172,7 @@ export function PageHeader({ title, subtitle, back }: { title: string; subtitle?
         </Link>
       )}
       <div className="flex items-center gap-3">
-        {!back && <Emblem size={32} />}
+        {!back && <Emblem size={40} />}
         <div className="min-w-0">
           <h1 className="text-xl font-semibold">{title}</h1>
           {subtitle && <p className="text-sm text-muted">{subtitle}</p>}

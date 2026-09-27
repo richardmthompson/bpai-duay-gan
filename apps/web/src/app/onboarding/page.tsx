@@ -91,7 +91,7 @@ function Wizard({ me }: { me: Me }) {
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-6">
       <div className="mb-6 flex items-center justify-between">
         <span className="flex items-center gap-2 text-sm text-muted">
-          <Emblem size={28} />
+          <Emblem size={34} />
           {o.stepOf(idx + 1, steps.length)}
         </span>
         <div className="h-1.5 w-32 overflow-hidden rounded-full bg-surface-2">
