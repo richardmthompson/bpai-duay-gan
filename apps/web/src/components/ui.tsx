@@ -148,6 +148,16 @@ export function Button({
   );
 }
 
+/** The app's mark: the woven logo with "BDG" under it, in the wordmark's dark green. Decorative. */
+export function Emblem({ size }: { size: number }) {
+  return (
+    <span aria-hidden className="flex shrink-0 flex-col items-center gap-0.5">
+      <Image src="/emblem-bdg.png" alt="" width={size} height={size} />
+      <span className="font-display text-[9px] font-bold leading-none tracking-[0.14em] text-[#0C5341]">BDG</span>
+    </span>
+  );
+}
+
 export function PageHeader({ title, subtitle, back }: { title: string; subtitle?: string; back?: string }) {
   const { t } = useApp();
   return (
@@ -158,7 +168,7 @@ export function PageHeader({ title, subtitle, back }: { title: string; subtitle?
         </Link>
       )}
       <div className="flex items-center gap-3">
-        {!back && <Image src="/emblem.png" alt="" width={36} height={36} className="shrink-0" />}
+        {!back && <Emblem size={32} />}
         <div className="min-w-0">
           <h1 className="text-xl font-semibold">{title}</h1>
           {subtitle && <p className="text-sm text-muted">{subtitle}</p>}
