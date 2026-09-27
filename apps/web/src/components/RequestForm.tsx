@@ -5,17 +5,25 @@ import { useApp } from "./AppProvider";
 import { Button, cx, eventTitle, formatWhen } from "./ui";
 import { ApiError, api } from "@/lib/api";
 
-/** Ask to match: pick the event that brings you together, add an optional note, send. */
+/**
+ * Ask to match: pick the event that brings you together, add an optional note, send.
+ *
+ * A parent that passes onSendingChange is told when a send starts and ends, and Cancel is disabled
+ * while it is in flight, so the parent can hold its own dismissal too (see SwipeDeck). Without it
+ * the form behaves as it always has.
+ */
 export function RequestForm({
   userId,
   events,
   onSent,
   onCancel,
+  onSendingChange,
 }: {
   userId: string;
   events: { id: string; titleEn: string; titleTh: string; startsAt: string }[];
   onSent: () => void;
   onCancel: () => void;
+  onSendingChange?: (sending: boolean) => void;
 }) {
   const { t, lang } = useApp();
   const [eventId, setEventId] = useState<string | null>(events[0]?.id ?? null);
@@ -26,6 +34,7 @@ export function RequestForm({
   async function send() {
     setBusy(true);
     setError(null);
+    onSendingChange?.(true);
     try {
       await api.sendRequest({ toUserId: userId, eventId, note: note.trim() || null });
       onSent();
@@ -40,6 +49,7 @@ export function RequestForm({
       );
     } finally {
       setBusy(false);
+      onSendingChange?.(false);
     }
   }
 
@@ -84,7 +94,7 @@ export function RequestForm({
       />
       {error && <p className="mb-2 text-sm text-danger">{error}</p>}
       <div className="flex gap-2">
-        <Button variant="secondary" className="flex-1" onClick={onCancel}>
+        <Button variant="secondary" className="flex-1" onClick={onCancel} disabled={busy && onSendingChange !== undefined}>
           {t.common.cancel}
         </Button>
         <Button className="flex-[2]" onClick={send} disabled={busy}>
