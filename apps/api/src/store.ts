@@ -3,6 +3,7 @@
  * apps/web/src/lib/contract.ts — which is the authoritative statement of the contract.
  */
 import { one, q, tx } from "@bpai/db";
+import { translateProfileText } from "./translate.ts";
 
 export type Lang = "th" | "en";
 export type Community = "local" | "foreigner";
@@ -45,6 +46,8 @@ export interface MatchedTag { tagId: string; side: "theyGive" | "youGive" }
 
 export interface Candidate extends PersonSummary {
   score: number; interestsText: string; give: string[]; learn: string[];
+  /** The same bio in the other language, when we have it. Null falls back to interestsText. */
+  interestsTextTranslated: string | null;
   matchedTags: MatchedTag[]; sharedEvents: EventSummary[];
 }
 
@@ -107,7 +110,7 @@ interface EventRow {
   going?: boolean; going_count?: string | number;
 }
 interface CandidateRow extends PersonRow {
-  interests_text: string; created_at: Date;
+  interests_text: string; interests_text_translated: string | null; created_at: Date;
 }
 interface MessageRow {
   id: string; match_id: string; sender_id: string; client_msg_id: string | null;
@@ -261,9 +264,33 @@ export async function putMe(userId: string, update: Record<string, unknown>): Pr
     throw httpError("invalid", "nothing to save");
   }
 
+  // The bio's copy in the other language is written here, once, rather than while serving a card:
+  // one Browse page is twenty cards, and twenty model calls is not a page load anyone can pay for.
+  // Deliberately not awaited — a save should not wait three seconds on a translator, and a card
+  // that arrives before this lands just shows the original.
+  if (typeof fields.interestsText === "string") {
+    void refreshTranslatedBio(userId).catch(() => {});
+  }
+
   const me = await getMe(userId);
   if (!me) throw httpError("internal", "profile vanished after save");
   return me;
+}
+
+/**
+ * Fills interests_text_translated for one profile, in the direction its author does not write.
+ * Best effort throughout: anything that fails leaves the column null and the reader sees the
+ * original. Used by a save and by scripts/seed/translate-bios.mjs.
+ */
+export async function refreshTranslatedBio(userId: string): Promise<string | null> {
+  const row = await one<{ interests_text: string; speaks_language: Lang }>(
+    "select interests_text, speaks_language from profiles where user_id = $1", [userId]);
+  if (!row || !row.interests_text.trim()) return null;
+  const to: Lang = row.speaks_language === "th" ? "en" : "th";
+  const translated = await translateProfileText(row.interests_text, row.speaks_language, to);
+  if (!translated) return null;
+  await q("update profiles set interests_text_translated = $2 where user_id = $1", [userId, translated]);
+  return translated;
 }
 
 /**
@@ -370,6 +397,7 @@ async function scoreCandidates(viewerId: string, rows: CandidateRow[]): Promise<
       ...toPerson(row),
       score: sharedEvents.length * 100 + matchedTags.length * 10,
       interestsText: row.interests_text,
+      interestsTextTranslated: row.interests_text_translated,
       give, learn, matchedTags, sharedEvents,
     };
     return {
@@ -399,7 +427,8 @@ export async function browse(viewerId: string, cursor: string | null): Promise<P
   if (!viewer) return { items: [], nextCursor: null };
 
   const rows = await q<CandidateRow>(
-    `select p.user_id, p.display_name, p.avatar_url, p.community, p.interests_text, p.created_at
+    `select p.user_id, p.display_name, p.avatar_url, p.community, p.interests_text,
+              p.interests_text_translated, p.created_at
      from profiles p
      where p.community <> $2 and p.onboarding_complete and p.user_id <> $1
        and p.user_id not in (
@@ -446,7 +475,8 @@ export async function relationship(viewerId: string, otherId: string): Promise<R
 
 export async function getPublicProfile(viewerId: string, userId: string): Promise<PublicProfile | null> {
   const row = await one<CandidateRow>(
-    `select p.user_id, p.display_name, p.avatar_url, p.community, p.interests_text, p.created_at
+    `select p.user_id, p.display_name, p.avatar_url, p.community, p.interests_text,
+              p.interests_text_translated, p.created_at
      from profiles p where p.user_id = $1`, [userId]);
   if (!row) return null;
 

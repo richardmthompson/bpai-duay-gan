@@ -260,6 +260,8 @@ function candidate(s: State, me: MockUser, other: MockUser): Candidate {
     ...summary(other),
     score: sharedEvents.length * WEIGHTS.sharedEvent + matchedTags.length * WEIGHTS.tag,
     interestsText: other.interestsText,
+    // No translator sits behind the mock, so a card there always reads the original.
+    interestsTextTranslated: null,
     give: other.give,
     learn: other.learn,
     matchedTags,

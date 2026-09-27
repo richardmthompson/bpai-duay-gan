@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Candidate, PublicProfile } from "@/lib/contract";
 import { api } from "@/lib/api";
+import { Bio } from "./Bio";
 import { RequestForm } from "./RequestForm";
 import { useApp } from "./AppProvider";
 import { cx, CommunityBadge, eventTitle, formatWhen, mediaUrl, Sheet, TagChip } from "./ui";
@@ -372,10 +373,7 @@ function CardBody({
         <TagSection title={t.profile.learns} ids={c.learn} matched={matched} label={tagLabel} />
 
         {c.interestsText && (
-          <section>
-            <h3 className="mb-1 font-semibold">{t.profile.about}</h3>
-            <p className="whitespace-pre-line text-sm text-muted">{c.interestsText}</p>
-          </section>
+          <Bio heading={t.profile.about} original={c.interestsText} translated={c.interestsTextTranslated ?? null} />
         )}
 
         {full && full.goingEvents.length > 0 && (
