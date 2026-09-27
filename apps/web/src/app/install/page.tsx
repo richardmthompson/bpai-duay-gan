@@ -70,8 +70,8 @@ export default function Install() {
       </div>
 
       <div className="flex flex-col items-center text-center">
-        <div className="rounded-3xl p-2 dark:bg-white/95">
-          <Image src="/logo.png" alt="Bpai Duay Gan · ไปด้วยกัน" width={640} height={563} priority className="h-auto w-52" />
+        <div className="p-2">
+          <Image src={lang === "th" ? "/logo-woven-th.png" : "/logo-woven.png"} alt={lang === "th" ? "ไปด้วยกัน · Bpai Dûay Gan" : "Bpai Dûay Gan · ไปด้วยกัน"} width={808} height={821} priority className="h-auto w-52" />
         </div>
         <h1 className="mt-4 text-2xl font-bold">
           {standalone ? t.install.inAppTitle : t.install.title}
