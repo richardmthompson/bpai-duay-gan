@@ -11,7 +11,7 @@
       "description_th": "แฮกกาธอน 2 วันที่นักพัฒนา นักออกแบบ และคนที่เข้าใจปัญหาในพื้นที่ มาสร้างเครื่องมือเพื่อชุมชนร่วมกับ Cosmo Local และเทศบาลนครเชียงใหม่\nทีมละ 4–5 คนใช้ Claude สร้างผลงานภายในวันเดียว แล้วนำเสนอต่อกรรมการ ทุกผลงานเปิดซอร์สบน GitHub และส่งต่อให้ภาคีนำไปใช้ต่อ\nภาษาอังกฤษพอคุยได้ก็พอ\n• ฟรี แต่ต้องสมัครและผ่านการคัดเลือกก่อน\n• ผู้จัดตั้งใจรับคนที่ไม่ใช่สายเทคด้วย ความเข้าใจปัญหาในพื้นที่คือสิ่งที่มีค่าที่สุดในห้อง\n• ติดตามรอบถัดไปได้ที่หน้า Luma ของงาน",
       "starts_at": "2026-09-26T17:00:00+07:00",
       "ends_at": "2026-09-27T15:00:00+07:00",
-      "venue_name": "Shared after you're accepted",
+      "venue_name": "Venue shared with accepted applicants",
       "address": "Mueang Chiang Mai, Chiang Mai",
       "price_text": "Free (application required)",
       "image_url": "https://images.lumacdn.com/api-uploads/8b/285aa513-cdcf-4ac3-aba7-1a6327e2732b.png"
@@ -52,7 +52,7 @@
       "source_url": "https://www.meetup.com/chiang-mai-professionals-expats-and-digital-nomads/events/316634361/",
       "title_en": "Sunday Brunch by Nomads Chiang Mai",
       "title_th": "บรันช์วันอาทิตย์ของชุมชนโนแมด",
-      "description_en": "A relaxed brunch that deliberately puts locals, expats and newcomers at the same table.\nNo agenda, no presentations. Eat and talk, sometimes light, sometimes deep. A host welcomes everyone.\nConversational English is enough.\n• 50 baht to join, and you order your own food and drinks\n• The organizer says clearly that locals are welcome\n• Fine to come alone; the host will introduce you around",
+      "description_en": "A relaxed brunch that deliberately puts locals, expats and newcomers at the same table.\nNo agenda, no presentations. Eat and talk, sometimes light, sometimes deep. A host welcomes everyone.\nConversational English is enough.\n• 50 baht to join, and you order your own food and drinks\n• Locals are explicitly welcome.\n• Fine to come alone; the host will introduce you around",
       "description_th": "บรันช์สบาย ๆ ที่ตั้งใจรวมคนท้องถิ่น ชาวต่างชาติ และคนย้ายมาใหม่ไว้ในโต๊ะเดียวกัน\nไม่มีวาระ ไม่มีการพรีเซนต์ นั่งกิน นั่งคุย บางทีคุยเล่น บางทีคุยลึก มีโฮสต์คอยต้อนรับ\nภาษาอังกฤษพอคุยได้ก็พอ\n• ค่าร่วมงาน 50 บาท และต้องสั่งอาหารหรือเครื่องดื่มเอง\n• ผู้จัดเขียนไว้ชัดว่าเปิดรับคนท้องถิ่นด้วย\n• มาคนเดียวได้ โฮสต์จะช่วยแนะนำให้รู้จักคนอื่น",
       "starts_at": "2026-09-27T11:30:00+07:00",
       "ends_at": "2026-09-27T13:30:00+07:00",
@@ -82,13 +82,13 @@
       "source_url": "https://www.meetup.com/be-fxcking-real-chiang-mai/events/316646729/",
       "title_en": "Be Real: say what you never tell anyone",
       "title_th": "Be Real วงเล่าเรื่องจริงที่ไม่เคยบอกใคร",
-      "description_en": "A small circle for people who want to talk about what's really going on (loneliness, a stuck business, habits they want to break) without judgement.\nIn a small group, take turns sharing what's happening in your life while others listen without rushing to fix it. It ends with each person committing to one brave move.\nFluent English needed.\n• The event's name says locals are welcome\n• Deep personal sharing, in English\n• The price isn't stated; check the event page first",
+      "description_en": "A small circle for people who want to talk about what's really going on (loneliness, a stuck business, habits they want to break) without judgement.\nIn a small group, take turns sharing what's happening in your life while others listen without rushing to fix it. It ends with each person committing to one brave move.\nFluent English needed.\n• Locals are welcome here.\n• Deep personal sharing, in English\n• The price isn't stated; check the event page first",
       "description_th": "วงเล็กสำหรับคนที่อยากคุยเรื่องจริงในใจ ทั้งความเหงา งานที่ติดขัด หรือนิสัยที่อยากเลิก โดยไม่มีใครตัดสิน\nนั่งเป็นกลุ่มเล็ก ผลัดกันเล่าสิ่งที่เกิดขึ้นกับตัวเอง คนอื่นตั้งใจฟังโดยไม่รีบแนะนำ ปิดท้ายด้วยการตั้งใจทำเรื่องกล้า ๆ หนึ่งอย่าง\nต้องคุยภาษาอังกฤษได้คล่อง\n• ชื่องานเขียนไว้เลยว่าเปิดรับคนท้องถิ่น\n• เป็นการเล่าเรื่องส่วนตัวลึก ๆ เป็นภาษาอังกฤษ\n• ประกาศไม่ระบุค่าเข้า เช็กที่หน้างานก่อนไป",
       "starts_at": "2026-09-27T14:00:00+07:00",
       "ends_at": "2026-09-27T15:30:00+07:00",
       "venue_name": "Spice Garden",
       "address": "Spice Garden Moonmuang Soi 5 Chiang Mai",
-      "price_text": "Not stated",
+      "price_text": null,
       "image_url": "https://secure-content.meetupstatic.com/images/classic-events/536194738/676x380.jpg"
     },
     {
@@ -103,7 +103,7 @@
       "ends_at": "2026-09-27T18:00:00+07:00",
       "venue_name": "Chiang Mai Railway Station park (parking area)",
       "address": "Chiang Mai Railway Station",
-      "price_text": "Not clearly stated",
+      "price_text": null,
       "image_url": "https://secure-content.meetupstatic.com/images/classic-events/535800186/676x380.jpg"
     },
     {
@@ -127,13 +127,13 @@
       "source_url": "https://www.meetup.com/beyond-small-talk-chiang-mai/events/316454663/",
       "title_en": "Sunday Sunset Walk & Connect at CMU",
       "title_th": "เดินชมพระอาทิตย์ตกใน มช. แล้วทำความรู้จักกัน",
-      "description_en": "A walk around Chiang Mai University at golden hour, talking with people from many countries.\nWalk and talk beyond small talk. The organizer wants locals and newcomers to genuinely get to know each other.\nConversational English is enough.\n• The organizer says clearly that locals are welcome\n• Wear comfortable walking shoes\n• Check the meeting point on the event page before you go",
+      "description_en": "A walk around Chiang Mai University at golden hour, talking with people from many countries.\nWalk and talk beyond small talk. The organizer wants locals and newcomers to genuinely get to know each other.\nConversational English is enough.\n• Locals are explicitly welcome.\n• Wear comfortable walking shoes\n• The meeting point is on the event page.",
       "description_th": "เดินเล่นรอบมหาวิทยาลัยเชียงใหม่ช่วงแดดสีทอง พร้อมคุยกับคนจากหลายประเทศ\nเดินไปคุยไปแบบลึกกว่าการทักทายทั่วไป ผู้จัดตั้งใจให้คนท้องถิ่นกับคนย้ายมาใหม่ได้รู้จักกันจริง ๆ\nภาษาอังกฤษพอคุยได้ก็พอ\n• ผู้จัดเขียนไว้ชัดว่าเปิดรับคนท้องถิ่นด้วย\n• ใส่รองเท้าที่เดินสบาย\n• ดูจุดนัดพบในหน้างานก่อนไป",
       "starts_at": "2026-09-27T17:00:00+07:00",
       "ends_at": "2026-09-27T19:00:00+07:00",
       "venue_name": "Chiang Mai University (meeting point on the event page)",
       "address": "Chiang Mai University",
-      "price_text": "Not stated",
+      "price_text": null,
       "image_url": "https://secure-content.meetupstatic.com/images/classic-events/534830098/676x380.jpg"
     },
     {
@@ -157,13 +157,13 @@
       "source_url": "https://www.meetup.com/hiit-cnx/events/316479586/",
       "title_en": "HIIT Circuit Training & Social Chat",
       "title_th": "เวิร์กเอาต์ HIIT แล้วนั่งคุยกันต่อ",
-      "description_en": "A high-intensity circuit workout for all levels, then a relaxed chat to cool down.\nCircuit training with easier versions for beginners, followed by a chat to swap fitness tips.\nLittle English needed.\n• Price not stated\n• Bring workout clothes, water and a towel\n• Little talking during the workout; just follow the moves\n• Every Tuesday and Friday",
+      "description_en": "A high-intensity circuit workout for all levels, then a relaxed chat to cool down.\nCircuit training with easier versions for beginners, followed by a chat to swap fitness tips.\nLittle English needed.\n• Bring workout clothes, water and a towel\n• Little talking during the workout; just follow the moves\n• Every Tuesday and Friday",
       "description_th": "ออกกำลังกายแบบเซอร์กิตเข้มข้น ทุกระดับทำได้ แล้วคูลดาวน์ด้วยการนั่งคุยสบาย ๆ\nเทรนแบบวงจร มีท่าดัดแปลงให้คนเพิ่งเริ่ม จากนั้นนั่งคุยแลกทิปส์ออกกำลังกายกัน\nใช้ภาษาอังกฤษน้อย\n• ประกาศไม่ระบุค่าใช้จ่าย\n• เตรียมชุดออกกำลังกาย น้ำ และผ้าขนหนู\n• ช่วงออกกำลังแทบไม่ต้องพูด ดูท่าแล้วทำตามได้\n• มีทุกวันอังคารและวันศุกร์",
       "starts_at": "2026-09-29T11:00:00+07:00",
       "ends_at": "2026-09-29T13:00:00+07:00",
       "venue_name": "Decathlon, Central Festival",
       "address": "Decathlon Central Festival Chiang Mai",
-      "price_text": "Not stated",
+      "price_text": null,
       "image_url": "https://secure-content.meetupstatic.com/images/classic-events/534060221/676x380.jpg"
     },
     {
@@ -232,13 +232,13 @@
       "source_url": "https://www.meetup.com/coding-in-bangkok/events/316497365/",
       "title_en": "AI for Business Weekly",
       "title_th": "AI สำหรับธุรกิจ พบกันทุกสัปดาห์",
-      "description_en": "Business owners and managers swap real experience of using AI for automation, content and decision-making.\nTools and strategies for using AI to grow sales and work smarter, practical rather than theoretical.\nConversational English is enough.\n• No technical background needed\n• Price not stated\n• Good for business owners who want to start using AI",
+      "description_en": "Business owners and managers swap real experience of using AI for automation, content and decision-making.\nTools and strategies for using AI to grow sales and work smarter, practical rather than theoretical.\nConversational English is enough.\n• No technical background needed\n• Good for business owners who want to start using AI",
       "description_th": "เจ้าของกิจการและผู้จัดการมาแลกประสบการณ์ใช้ AI จริงในงาน ทั้งระบบอัตโนมัติ คอนเทนต์ และการตัดสินใจ\nคุยเรื่องเครื่องมือและกลยุทธ์ใช้ AI เพิ่มยอดขายและประสิทธิภาพ เน้นใช้ได้จริงมากกว่าทฤษฎี\nภาษาอังกฤษพอคุยได้ก็พอ\n• ไม่ต้องมีพื้นฐานเทคนิค\n• ประกาศไม่ระบุค่าใช้จ่าย\n• เหมาะกับเจ้าของกิจการที่อยากเริ่มใช้ AI",
       "starts_at": "2026-09-30T18:00:00+07:00",
       "ends_at": "2026-09-30T20:00:00+07:00",
       "venue_name": "4Seas Nimman",
       "address": "4Seas Nimman Soi 15 Chiang Mai",
-      "price_text": "Not stated",
+      "price_text": null,
       "image_url": "https://secure-content.meetupstatic.com/images/classic-events/529453736/676x380.jpg"
     },
     {
@@ -247,13 +247,13 @@
       "source_url": "https://www.meetup.com/nimman-circle/events/316704740/",
       "title_en": "Bring-a-Book Reading Club",
       "title_th": "ชวนกันมานั่งอ่านหนังสือเงียบ ๆ",
-      "description_en": "Bring any book and read together, without distractions.\nA quick intro about what you're reading, an hour of quiet reading, a short share, then chat as you like.\nLittle English needed.\n• Any language is fine: bring a book in your own language\n• No talking at all during the reading hour\n• Check the venue on the event page before you go",
+      "description_en": "Bring any book and read together, without distractions.\nA quick intro about what you're reading, an hour of quiet reading, a short share, then chat as you like.\nLittle English needed.\n• Any language is fine: bring a book in your own language\n• No talking at all during the reading hour",
       "description_th": "พกหนังสือเล่มไหนก็ได้มานั่งอ่านด้วยกัน โดยไม่มีอะไรมารบกวน\nแนะนำตัวสั้น ๆ ว่ากำลังอ่านอะไร อ่านเงียบ ๆ หนึ่งชั่วโมง เล่าให้กันฟังนิดหน่อย แล้วคุยต่อตามสบาย\nใช้ภาษาอังกฤษน้อย\n• เอาหนังสือภาษาไทยมาอ่านก็ได้\n• ช่วงอ่านไม่ต้องพูดเลย\n• ดูสถานที่ในหน้างานก่อนไป",
       "starts_at": "2026-10-01T09:30:00+07:00",
       "ends_at": "2026-10-01T11:30:00+07:00",
-      "venue_name": "See the event page",
+      "venue_name": "Nimman, Chiang Mai",
       "address": "Nimman, Chiang Mai",
-      "price_text": "Not stated",
+      "price_text": null,
       "image_url": "https://secure-content.meetupstatic.com/images/classic-events/536264947/676x380.jpg"
     },
     {
@@ -262,13 +262,13 @@
       "source_url": "https://www.meetup.com/beyond-small-talk-chiang-mai/events/316526284/",
       "title_en": "Has Your Life Already Happened?",
       "title_th": "วงคุยปรัชญา: ชีวิตเราเกิดขึ้นไปหมดแล้วหรือยัง",
-      "description_en": "A conversation about time: if the future already exists, what is the present?\nA philosophy-and-science discussion where everyone takes turns sharing views.\nFluent English needed.\n• Fluent English needed\n• Price not stated\n• For people who enjoy abstract debates",
+      "description_en": "A conversation about time: if the future already exists, what is the present?\nA philosophy-and-science discussion where everyone takes turns sharing views.\nFluent English needed.\n• Fluent English needed\n• For people who enjoy abstract debates",
       "description_th": "ชวนคิดเรื่องเวลา ถ้าอนาคตมีอยู่แล้ว สิ่งที่เราเรียกว่าปัจจุบันคืออะไร\nวงสนทนาเชิงปรัชญาและวิทยาศาสตร์ ผลัดกันแสดงความเห็นในกลุ่ม\nต้องคุยภาษาอังกฤษได้คล่อง\n• ต้องใช้ภาษาอังกฤษคล่อง\n• ประกาศไม่ระบุค่าใช้จ่าย\n• เหมาะกับคนชอบถกเรื่องนามธรรม",
       "starts_at": "2026-10-01T18:00:00+07:00",
       "ends_at": "2026-10-01T20:00:00+07:00",
       "venue_name": "Spice Garden",
       "address": "Spice Garden Moonmuang Soi 5 Chiang Mai",
-      "price_text": "Not stated",
+      "price_text": null,
       "image_url": "https://secure-content.meetupstatic.com/images/classic-events/536100248/676x380.jpg"
     },
     {
@@ -292,13 +292,13 @@
       "source_url": "https://www.meetup.com/hiit-cnx/events/316523730/",
       "title_en": "HIIT Circuit Training & Social Chat",
       "title_th": "เวิร์กเอาต์ HIIT แล้วนั่งคุยกันต่อ",
-      "description_en": "A high-intensity circuit workout for all levels, then a relaxed chat to cool down.\nCircuit training with easier versions for beginners, followed by a chat to swap fitness tips.\nLittle English needed.\n• Price not stated\n• Bring workout clothes, water and a towel\n• Little talking during the workout; just follow the moves",
+      "description_en": "A high-intensity circuit workout for all levels, then a relaxed chat to cool down.\nCircuit training with easier versions for beginners, followed by a chat to swap fitness tips.\nLittle English needed.\n• Bring workout clothes, water and a towel\n• Little talking during the workout; just follow the moves",
       "description_th": "ออกกำลังกายแบบเซอร์กิตเข้มข้น ทุกระดับทำได้ แล้วคูลดาวน์ด้วยการนั่งคุยสบาย ๆ\nเทรนแบบวงจร มีท่าดัดแปลงให้คนเพิ่งเริ่ม จากนั้นนั่งคุยแลกทิปส์ออกกำลังกายกัน\nใช้ภาษาอังกฤษน้อย\n• ประกาศไม่ระบุค่าใช้จ่าย\n• เตรียมชุดออกกำลังกาย น้ำ และผ้าขนหนู\n• ช่วงออกกำลังแทบไม่ต้องพูด ดูท่าแล้วทำตามได้",
       "starts_at": "2026-10-02T11:00:00+07:00",
       "ends_at": "2026-10-02T13:00:00+07:00",
       "venue_name": "Decathlon, Central Festival",
       "address": "Decathlon Central Festival Chiang Mai",
-      "price_text": "Not stated",
+      "price_text": null,
       "image_url": "https://secure-content.meetupstatic.com/images/classic-events/534060221/676x380.jpg"
     },
     {
@@ -337,13 +337,13 @@
       "source_url": "https://www.meetup.com/attika-studio-chiangmai/events/316238241/",
       "title_en": "Nomad Friday Social",
       "title_th": "Nomad Friday Social นั่งชิลคืนวันศุกร์",
-      "description_en": "Comfy corners and good drinks; the organizer promises that if you come alone you'll still find someone to talk to.\nHang out with regulars and new faces. Work clothes are fine; nobody cares how you're dressed.\nConversational English is enough.\n• Drop in any time between 7 and 11 pm\n• It's on the 3rd floor\n• Entry price not stated",
+      "description_en": "Comfy corners and good drinks; the organizer promises that if you come alone you'll still find someone to talk to.\nHang out with regulars and new faces. Work clothes are fine; nobody cares how you're dressed.\nConversational English is enough.\n• Drop in any time between 7 and 11 pm\n• It's on the 3rd floor\n• Entry ",
       "description_th": "มุมนั่งนุ่ม ๆ เครื่องดื่มดี ๆ ผู้จัดบอกว่ามาคนเดียวก็มีคนคุยด้วยแน่นอน\nนั่งคุยกับหน้าเก่าและเพื่อนใหม่ ใส่ชุดทำงานมาก็ได้ ไม่มีใครสนใจเรื่องการแต่งตัว\nภาษาอังกฤษพอคุยได้ก็พอ\n• มาช่วงไหนก็ได้ระหว่างหนึ่งทุ่มถึงห้าทุ่ม\n• ร้านอยู่ชั้น 3\n• ประกาศไม่ระบุค่าเข้า",
       "starts_at": "2026-10-02T19:00:00+07:00",
       "ends_at": "2026-10-02T23:00:00+07:00",
       "venue_name": "attika studio Café & Workshop (3rd floor)",
       "address": "attika studio 63 Tha Phae Road Chiang Mai",
-      "price_text": "Not stated",
+      "price_text": null,
       "image_url": "https://secure-content.meetupstatic.com/images/classic-events/536204669/676x380.jpg"
     },
     {
@@ -352,13 +352,13 @@
       "source_url": "https://culturalcrossroadsasia.org/event/tales-my-ancestors-taught-me/",
       "title_en": "Tales My Ancestors Taught Me: Akha songs and stories",
       "title_th": "Tales My Ancestors Taught Me ฟังเพลงและเรื่องเล่าของชาวอาข่า",
-      "description_en": "An afternoon of traditional Akha songs, stories and martial arts, performed by master Akha musicians Athu Pochear, Miju Manpo and Mawleu Jupoh.\nIt opens the Melodies and Motifs in the Mountains exhibition at Chiang Mai City Craft Space.\nLittle English needed.\n• Price not stated on the organizer's page\n• One hour, 4 to 5 pm\n• On Tha Phae Road, an easy walk from the Old City",
+      "description_en": "An afternoon of traditional Akha songs, stories and martial arts, performed by master Akha musicians Athu Pochear, Miju Manpo and Mawleu Jupoh.\nIt opens the Melodies and Motifs in the Mountains exhibition at Chiang Mai City Craft Space.\nLittle English needed.\n•  on the organizer's page\n• One hour, 4 to 5 pm\n• On Tha Phae Road, an easy walk from the Old City",
       "description_th": "บ่ายหนึ่งของเพลง เรื่องเล่า และศิลปะการต่อสู้แบบดั้งเดิมของชาวอาข่า แสดงโดยครูนักดนตรีชาวอาข่า Athu Pochear, Miju Manpo และ Mawleu Jupoh\nเป็นงานเปิดนิทรรศการ Melodies and Motifs in the Mountains ที่ Chiang Mai City Craft Space\nใช้ภาษาอังกฤษน้อย\n• หน้าเว็บผู้จัดไม่ระบุค่าเข้า\n• หนึ่งชั่วโมง 16:00–17:00 น.\n• อยู่บนถนนท่าแพ เดินจากคูเมืองได้สบาย",
       "starts_at": "2026-10-03T16:00:00+07:00",
       "ends_at": "2026-10-03T17:00:00+07:00",
       "venue_name": "Chiang Mai City Craft Space",
       "address": "280 Tha Phae Road, Chang Moi, Chiang Mai 50300",
-      "price_text": "Not stated",
+      "price_text": null,
       "image_url": "https://culturalcrossroadsasia.org/wp-content/uploads/2026/09/Tales-Ancestors-Concert-cover-1024x683.png"
     }
   ]

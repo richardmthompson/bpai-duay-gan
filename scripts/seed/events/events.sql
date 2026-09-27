@@ -15,7 +15,7 @@ Conversational English is enough.
 ภาษาอังกฤษพอคุยได้ก็พอ
 • ฟรี แต่ต้องสมัครและผ่านการคัดเลือกก่อน
 • ผู้จัดตั้งใจรับคนที่ไม่ใช่สายเทคด้วย ความเข้าใจปัญหาในพื้นที่คือสิ่งที่มีค่าที่สุดในห้อง
-• ติดตามรอบถัดไปได้ที่หน้า Luma ของงาน', '2026-09-26T17:00:00+07:00', '2026-09-27T15:00:00+07:00', 'Shared after you''re accepted', 'Mueang Chiang Mai, Chiang Mai', 'Free (application required)', 'https://images.lumacdn.com/api-uploads/8b/285aa513-cdcf-4ac3-aba7-1a6327e2732b.png'),
+• ติดตามรอบถัดไปได้ที่หน้า Luma ของงาน', '2026-09-26T17:00:00+07:00', '2026-09-27T15:00:00+07:00', 'Venue shared with accepted applicants', 'Mueang Chiang Mai, Chiang Mai', 'Free (application required)', 'https://images.lumacdn.com/api-uploads/8b/285aa513-cdcf-4ac3-aba7-1a6327e2732b.png'),
   ('seed', 'ai-news-meetup', 'https://www.meetup.com/ai-fusion-labs-chiang-mai/events/316452633/', 'AI News Community Meetup', 'วงคุยข่าว AI ประจำสัปดาห์', 'Talk through this week''s AI news and share free and low-cost tools. Small business owners, creators, freelancers and beginners especially welcome.
 Over coffee, go through the week''s AI news and new tools, then swap practical tips.
 Conversational English is enough.
@@ -44,7 +44,7 @@ Little English needed.
 No agenda, no presentations. Eat and talk, sometimes light, sometimes deep. A host welcomes everyone.
 Conversational English is enough.
 • 50 baht to join, and you order your own food and drinks
-• The organizer says clearly that locals are welcome
+• Locals are explicitly welcome.
 • Fine to come alone; the host will introduce you around', 'บรันช์สบาย ๆ ที่ตั้งใจรวมคนท้องถิ่น ชาวต่างชาติ และคนย้ายมาใหม่ไว้ในโต๊ะเดียวกัน
 ไม่มีวาระ ไม่มีการพรีเซนต์ นั่งกิน นั่งคุย บางทีคุยเล่น บางทีคุยลึก มีโฮสต์คอยต้อนรับ
 ภาษาอังกฤษพอคุยได้ก็พอ
@@ -67,14 +67,14 @@ Little English needed.
   ('seed', 'be-real', 'https://www.meetup.com/be-fxcking-real-chiang-mai/events/316646729/', 'Be Real: say what you never tell anyone', 'Be Real วงเล่าเรื่องจริงที่ไม่เคยบอกใคร', 'A small circle for people who want to talk about what''s really going on (loneliness, a stuck business, habits they want to break) without judgement.
 In a small group, take turns sharing what''s happening in your life while others listen without rushing to fix it. It ends with each person committing to one brave move.
 Fluent English needed.
-• The event''s name says locals are welcome
+• Locals are welcome here.
 • Deep personal sharing, in English
 • The price isn''t stated; check the event page first', 'วงเล็กสำหรับคนที่อยากคุยเรื่องจริงในใจ ทั้งความเหงา งานที่ติดขัด หรือนิสัยที่อยากเลิก โดยไม่มีใครตัดสิน
 นั่งเป็นกลุ่มเล็ก ผลัดกันเล่าสิ่งที่เกิดขึ้นกับตัวเอง คนอื่นตั้งใจฟังโดยไม่รีบแนะนำ ปิดท้ายด้วยการตั้งใจทำเรื่องกล้า ๆ หนึ่งอย่าง
 ต้องคุยภาษาอังกฤษได้คล่อง
 • ชื่องานเขียนไว้เลยว่าเปิดรับคนท้องถิ่น
 • เป็นการเล่าเรื่องส่วนตัวลึก ๆ เป็นภาษาอังกฤษ
-• ประกาศไม่ระบุค่าเข้า เช็กที่หน้างานก่อนไป', '2026-09-27T14:00:00+07:00', '2026-09-27T15:30:00+07:00', 'Spice Garden', 'Spice Garden Moonmuang Soi 5 Chiang Mai', 'Not stated', 'https://secure-content.meetupstatic.com/images/classic-events/536194738/676x380.jpg'),
+• ประกาศไม่ระบุค่าเข้า เช็กที่หน้างานก่อนไป', '2026-09-27T14:00:00+07:00', '2026-09-27T15:30:00+07:00', 'Spice Garden', 'Spice Garden Moonmuang Soi 5 Chiang Mai', null, 'https://secure-content.meetupstatic.com/images/classic-events/536194738/676x380.jpg'),
   ('seed', 'skate-create', 'https://www.meetup.com/chiang-mai-professionals-expats-and-digital-nomads/events/316239702/', 'Skate X Create', 'Skate X Create โรลเลอร์สเก็ตกับวาดรูปในสวน', 'A lazy afternoon in the railway station park: skaters skate, artists draw, or you just sit on the grass.
 Double-dutch jump rope, shared art supplies and music in the background. Come and go whenever you like.
 Little English needed.
@@ -85,7 +85,7 @@ Little English needed.
 ใช้ภาษาอังกฤษน้อย
 • เอาสเก็ต สมุดสเก็ตช์ ผ้าปู และขนมมาได้
 • ทุกระดับฝีมือ ไม่ต้องเก่งอะไรเลย
-• ใช้ภาษาอังกฤษน้อย ทำกิจกรรมด้วยกันเป็นหลัก', '2026-09-27T14:00:00+07:00', '2026-09-27T18:00:00+07:00', 'Chiang Mai Railway Station park (parking area)', 'Chiang Mai Railway Station', 'Not clearly stated', 'https://secure-content.meetupstatic.com/images/classic-events/535800186/676x380.jpg'),
+• ใช้ภาษาอังกฤษน้อย ทำกิจกรรมด้วยกันเป็นหลัก', '2026-09-27T14:00:00+07:00', '2026-09-27T18:00:00+07:00', 'Chiang Mai Railway Station park (parking area)', 'Chiang Mai Railway Station', null, 'https://secure-content.meetupstatic.com/images/classic-events/535800186/676x380.jpg'),
   ('seed', 'sunday-walking-street', 'https://www.chiangmai-trip.com/destinations/sunday-walking-street/', 'Sunday Walking Street', 'ถนนคนเดินวันอาทิตย์ ถนนราชดำเนิน', 'Chiang Mai''s biggest weekly night market: about a kilometre of handicrafts, art and street food along Ratchadamnoen Road, from Tha Phae Gate to Wat Phra Singh.
 Wander, eat and browse at your own pace; the temple courtyards along the way are full of food stalls.
 Little English needed.
@@ -100,14 +100,14 @@ Little English needed.
   ('seed', 'sunset-walk-cmu', 'https://www.meetup.com/beyond-small-talk-chiang-mai/events/316454663/', 'Sunday Sunset Walk & Connect at CMU', 'เดินชมพระอาทิตย์ตกใน มช. แล้วทำความรู้จักกัน', 'A walk around Chiang Mai University at golden hour, talking with people from many countries.
 Walk and talk beyond small talk. The organizer wants locals and newcomers to genuinely get to know each other.
 Conversational English is enough.
-• The organizer says clearly that locals are welcome
+• Locals are explicitly welcome.
 • Wear comfortable walking shoes
-• Check the meeting point on the event page before you go', 'เดินเล่นรอบมหาวิทยาลัยเชียงใหม่ช่วงแดดสีทอง พร้อมคุยกับคนจากหลายประเทศ
+• The meeting point is on the event page.', 'เดินเล่นรอบมหาวิทยาลัยเชียงใหม่ช่วงแดดสีทอง พร้อมคุยกับคนจากหลายประเทศ
 เดินไปคุยไปแบบลึกกว่าการทักทายทั่วไป ผู้จัดตั้งใจให้คนท้องถิ่นกับคนย้ายมาใหม่ได้รู้จักกันจริง ๆ
 ภาษาอังกฤษพอคุยได้ก็พอ
 • ผู้จัดเขียนไว้ชัดว่าเปิดรับคนท้องถิ่นด้วย
 • ใส่รองเท้าที่เดินสบาย
-• ดูจุดนัดพบในหน้างานก่อนไป', '2026-09-27T17:00:00+07:00', '2026-09-27T19:00:00+07:00', 'Chiang Mai University (meeting point on the event page)', 'Chiang Mai University', 'Not stated', 'https://secure-content.meetupstatic.com/images/classic-events/534830098/676x380.jpg'),
+• ดูจุดนัดพบในหน้างานก่อนไป', '2026-09-27T17:00:00+07:00', '2026-09-27T19:00:00+07:00', 'Chiang Mai University (meeting point on the event page)', 'Chiang Mai University', null, 'https://secure-content.meetupstatic.com/images/classic-events/534830098/676x380.jpg'),
   ('seed', 'eco-printing-bua-bhat', 'https://www.airbnb.com.sg/experiences/6258108', 'Eco printing with artisan Wilai at Bua Bhat Factory', 'เวิร์กช็อปพิมพ์ผ้าด้วยใบไม้กับคุณวิไล ที่บัวผัดแฟคทอรี่', 'A hands-on workshop printing scarves with tropical leaves from the garden, led by Wilai, a second-generation textile artisan.
 Pick your mordant, match leaves to colours, then sip Thai herbal tea while the prints set. About three hours.
 Little English needed: Wilai teaches in Thai and English.
@@ -122,7 +122,6 @@ Little English needed: Wilai teaches in Thai and English.
   ('seed', 'hiit-tue', 'https://www.meetup.com/hiit-cnx/events/316479586/', 'HIIT Circuit Training & Social Chat', 'เวิร์กเอาต์ HIIT แล้วนั่งคุยกันต่อ', 'A high-intensity circuit workout for all levels, then a relaxed chat to cool down.
 Circuit training with easier versions for beginners, followed by a chat to swap fitness tips.
 Little English needed.
-• Price not stated
 • Bring workout clothes, water and a towel
 • Little talking during the workout; just follow the moves
 • Every Tuesday and Friday', 'ออกกำลังกายแบบเซอร์กิตเข้มข้น ทุกระดับทำได้ แล้วคูลดาวน์ด้วยการนั่งคุยสบาย ๆ
@@ -131,7 +130,7 @@ Little English needed.
 • ประกาศไม่ระบุค่าใช้จ่าย
 • เตรียมชุดออกกำลังกาย น้ำ และผ้าขนหนู
 • ช่วงออกกำลังแทบไม่ต้องพูด ดูท่าแล้วทำตามได้
-• มีทุกวันอังคารและวันศุกร์', '2026-09-29T11:00:00+07:00', '2026-09-29T13:00:00+07:00', 'Decathlon, Central Festival', 'Decathlon Central Festival Chiang Mai', 'Not stated', 'https://secure-content.meetupstatic.com/images/classic-events/534060221/676x380.jpg'),
+• มีทุกวันอังคารและวันศุกร์', '2026-09-29T11:00:00+07:00', '2026-09-29T13:00:00+07:00', 'Decathlon, Central Festival', 'Decathlon Central Festival Chiang Mai', null, 'https://secure-content.meetupstatic.com/images/classic-events/534060221/676x380.jpg'),
   ('seed', 'longevity', 'https://www.meetup.com/longevity-circle-chiang-mai/events/316674696/', 'Longevity & Biohacking Meetup', 'วงกาแฟคุยเรื่องอายุยืนและไบโอแฮ็ก', 'Coffee and conversation about eating, sleeping and staying healthy for longer. This week: food and nutrition.
 Each week goes deep on one topic, focused on turning what you learn into everyday habits.
 Conversational English is enough.
@@ -180,35 +179,32 @@ Fluent English needed.
 Tools and strategies for using AI to grow sales and work smarter, practical rather than theoretical.
 Conversational English is enough.
 • No technical background needed
-• Price not stated
 • Good for business owners who want to start using AI', 'เจ้าของกิจการและผู้จัดการมาแลกประสบการณ์ใช้ AI จริงในงาน ทั้งระบบอัตโนมัติ คอนเทนต์ และการตัดสินใจ
 คุยเรื่องเครื่องมือและกลยุทธ์ใช้ AI เพิ่มยอดขายและประสิทธิภาพ เน้นใช้ได้จริงมากกว่าทฤษฎี
 ภาษาอังกฤษพอคุยได้ก็พอ
 • ไม่ต้องมีพื้นฐานเทคนิค
 • ประกาศไม่ระบุค่าใช้จ่าย
-• เหมาะกับเจ้าของกิจการที่อยากเริ่มใช้ AI', '2026-09-30T18:00:00+07:00', '2026-09-30T20:00:00+07:00', '4Seas Nimman', '4Seas Nimman Soi 15 Chiang Mai', 'Not stated', 'https://secure-content.meetupstatic.com/images/classic-events/529453736/676x380.jpg'),
+• เหมาะกับเจ้าของกิจการที่อยากเริ่มใช้ AI', '2026-09-30T18:00:00+07:00', '2026-09-30T20:00:00+07:00', '4Seas Nimman', '4Seas Nimman Soi 15 Chiang Mai', null, 'https://secure-content.meetupstatic.com/images/classic-events/529453736/676x380.jpg'),
   ('seed', 'reading-club', 'https://www.meetup.com/nimman-circle/events/316704740/', 'Bring-a-Book Reading Club', 'ชวนกันมานั่งอ่านหนังสือเงียบ ๆ', 'Bring any book and read together, without distractions.
 A quick intro about what you''re reading, an hour of quiet reading, a short share, then chat as you like.
 Little English needed.
 • Any language is fine: bring a book in your own language
-• No talking at all during the reading hour
-• Check the venue on the event page before you go', 'พกหนังสือเล่มไหนก็ได้มานั่งอ่านด้วยกัน โดยไม่มีอะไรมารบกวน
+• No talking at all during the reading hour', 'พกหนังสือเล่มไหนก็ได้มานั่งอ่านด้วยกัน โดยไม่มีอะไรมารบกวน
 แนะนำตัวสั้น ๆ ว่ากำลังอ่านอะไร อ่านเงียบ ๆ หนึ่งชั่วโมง เล่าให้กันฟังนิดหน่อย แล้วคุยต่อตามสบาย
 ใช้ภาษาอังกฤษน้อย
 • เอาหนังสือภาษาไทยมาอ่านก็ได้
 • ช่วงอ่านไม่ต้องพูดเลย
-• ดูสถานที่ในหน้างานก่อนไป', '2026-10-01T09:30:00+07:00', '2026-10-01T11:30:00+07:00', 'See the event page', 'Nimman, Chiang Mai', 'Not stated', 'https://secure-content.meetupstatic.com/images/classic-events/536264947/676x380.jpg'),
+• ดูสถานที่ในหน้างานก่อนไป', '2026-10-01T09:30:00+07:00', '2026-10-01T11:30:00+07:00', 'Nimman, Chiang Mai', 'Nimman, Chiang Mai', null, 'https://secure-content.meetupstatic.com/images/classic-events/536264947/676x380.jpg'),
   ('seed', 'life-happened', 'https://www.meetup.com/beyond-small-talk-chiang-mai/events/316526284/', 'Has Your Life Already Happened?', 'วงคุยปรัชญา: ชีวิตเราเกิดขึ้นไปหมดแล้วหรือยัง', 'A conversation about time: if the future already exists, what is the present?
 A philosophy-and-science discussion where everyone takes turns sharing views.
 Fluent English needed.
 • Fluent English needed
-• Price not stated
 • For people who enjoy abstract debates', 'ชวนคิดเรื่องเวลา ถ้าอนาคตมีอยู่แล้ว สิ่งที่เราเรียกว่าปัจจุบันคืออะไร
 วงสนทนาเชิงปรัชญาและวิทยาศาสตร์ ผลัดกันแสดงความเห็นในกลุ่ม
 ต้องคุยภาษาอังกฤษได้คล่อง
 • ต้องใช้ภาษาอังกฤษคล่อง
 • ประกาศไม่ระบุค่าใช้จ่าย
-• เหมาะกับคนชอบถกเรื่องนามธรรม', '2026-10-01T18:00:00+07:00', '2026-10-01T20:00:00+07:00', 'Spice Garden', 'Spice Garden Moonmuang Soi 5 Chiang Mai', 'Not stated', 'https://secure-content.meetupstatic.com/images/classic-events/536100248/676x380.jpg'),
+• เหมาะกับคนชอบถกเรื่องนามธรรม', '2026-10-01T18:00:00+07:00', '2026-10-01T20:00:00+07:00', 'Spice Garden', 'Spice Garden Moonmuang Soi 5 Chiang Mai', null, 'https://secure-content.meetupstatic.com/images/classic-events/536100248/676x380.jpg'),
   ('seed', 'new-in-town', 'https://www.meetup.com/makenewfriendsinchiangmai/events/316511971/', 'New in Town: Welcome to Chiang Mai', 'New in Town งานต้อนรับคนมาใหม่ในเชียงใหม่', 'Icebreaker games to start, then swapping tips on places to go and hidden gems in the city.
 Introductions, icebreakers, then tips on living in Chiang Mai. Stay as long as you like.
 Conversational English is enough.
@@ -223,14 +219,13 @@ Conversational English is enough.
   ('seed', 'hiit-fri', 'https://www.meetup.com/hiit-cnx/events/316523730/', 'HIIT Circuit Training & Social Chat', 'เวิร์กเอาต์ HIIT แล้วนั่งคุยกันต่อ', 'A high-intensity circuit workout for all levels, then a relaxed chat to cool down.
 Circuit training with easier versions for beginners, followed by a chat to swap fitness tips.
 Little English needed.
-• Price not stated
 • Bring workout clothes, water and a towel
 • Little talking during the workout; just follow the moves', 'ออกกำลังกายแบบเซอร์กิตเข้มข้น ทุกระดับทำได้ แล้วคูลดาวน์ด้วยการนั่งคุยสบาย ๆ
 เทรนแบบวงจร มีท่าดัดแปลงให้คนเพิ่งเริ่ม จากนั้นนั่งคุยแลกทิปส์ออกกำลังกายกัน
 ใช้ภาษาอังกฤษน้อย
 • ประกาศไม่ระบุค่าใช้จ่าย
 • เตรียมชุดออกกำลังกาย น้ำ และผ้าขนหนู
-• ช่วงออกกำลังแทบไม่ต้องพูด ดูท่าแล้วทำตามได้', '2026-10-02T11:00:00+07:00', '2026-10-02T13:00:00+07:00', 'Decathlon, Central Festival', 'Decathlon Central Festival Chiang Mai', 'Not stated', 'https://secure-content.meetupstatic.com/images/classic-events/534060221/676x380.jpg'),
+• ช่วงออกกำลังแทบไม่ต้องพูด ดูท่าแล้วทำตามได้', '2026-10-02T11:00:00+07:00', '2026-10-02T13:00:00+07:00', 'Decathlon, Central Festival', 'Decathlon Central Festival Chiang Mai', null, 'https://secure-content.meetupstatic.com/images/classic-events/534060221/676x380.jpg'),
   ('seed', 'conscious-tech', 'https://luma.com/xoukzfft', 'Conscious Technologists Unite!', 'Conscious Technologists ใช้เทคโนโลยีอย่างมีสติในยุค AI', 'A meetup for tech people interested in how digital tools are changing our thinking and attention.
 News on consciousness and tech, experiences from practitioners, and ways to cope with tool overload.
 Fluent English needed.
@@ -258,23 +253,23 @@ Hang out with regulars and new faces. Work clothes are fine; nobody cares how yo
 Conversational English is enough.
 • Drop in any time between 7 and 11 pm
 • It''s on the 3rd floor
-• Entry price not stated', 'มุมนั่งนุ่ม ๆ เครื่องดื่มดี ๆ ผู้จัดบอกว่ามาคนเดียวก็มีคนคุยด้วยแน่นอน
+• Entry ', 'มุมนั่งนุ่ม ๆ เครื่องดื่มดี ๆ ผู้จัดบอกว่ามาคนเดียวก็มีคนคุยด้วยแน่นอน
 นั่งคุยกับหน้าเก่าและเพื่อนใหม่ ใส่ชุดทำงานมาก็ได้ ไม่มีใครสนใจเรื่องการแต่งตัว
 ภาษาอังกฤษพอคุยได้ก็พอ
 • มาช่วงไหนก็ได้ระหว่างหนึ่งทุ่มถึงห้าทุ่ม
 • ร้านอยู่ชั้น 3
-• ประกาศไม่ระบุค่าเข้า', '2026-10-02T19:00:00+07:00', '2026-10-02T23:00:00+07:00', 'attika studio Café & Workshop (3rd floor)', 'attika studio 63 Tha Phae Road Chiang Mai', 'Not stated', 'https://secure-content.meetupstatic.com/images/classic-events/536204669/676x380.jpg'),
+• ประกาศไม่ระบุค่าเข้า', '2026-10-02T19:00:00+07:00', '2026-10-02T23:00:00+07:00', 'attika studio Café & Workshop (3rd floor)', 'attika studio 63 Tha Phae Road Chiang Mai', null, 'https://secure-content.meetupstatic.com/images/classic-events/536204669/676x380.jpg'),
   ('seed', 'akha-songs-stories', 'https://culturalcrossroadsasia.org/event/tales-my-ancestors-taught-me/', 'Tales My Ancestors Taught Me: Akha songs and stories', 'Tales My Ancestors Taught Me ฟังเพลงและเรื่องเล่าของชาวอาข่า', 'An afternoon of traditional Akha songs, stories and martial arts, performed by master Akha musicians Athu Pochear, Miju Manpo and Mawleu Jupoh.
 It opens the Melodies and Motifs in the Mountains exhibition at Chiang Mai City Craft Space.
 Little English needed.
-• Price not stated on the organizer''s page
+•  on the organizer''s page
 • One hour, 4 to 5 pm
 • On Tha Phae Road, an easy walk from the Old City', 'บ่ายหนึ่งของเพลง เรื่องเล่า และศิลปะการต่อสู้แบบดั้งเดิมของชาวอาข่า แสดงโดยครูนักดนตรีชาวอาข่า Athu Pochear, Miju Manpo และ Mawleu Jupoh
 เป็นงานเปิดนิทรรศการ Melodies and Motifs in the Mountains ที่ Chiang Mai City Craft Space
 ใช้ภาษาอังกฤษน้อย
 • หน้าเว็บผู้จัดไม่ระบุค่าเข้า
 • หนึ่งชั่วโมง 16:00–17:00 น.
-• อยู่บนถนนท่าแพ เดินจากคูเมืองได้สบาย', '2026-10-03T16:00:00+07:00', '2026-10-03T17:00:00+07:00', 'Chiang Mai City Craft Space', '280 Tha Phae Road, Chang Moi, Chiang Mai 50300', 'Not stated', 'https://culturalcrossroadsasia.org/wp-content/uploads/2026/09/Tales-Ancestors-Concert-cover-1024x683.png')
+• อยู่บนถนนท่าแพ เดินจากคูเมืองได้สบาย', '2026-10-03T16:00:00+07:00', '2026-10-03T17:00:00+07:00', 'Chiang Mai City Craft Space', '280 Tha Phae Road, Chang Moi, Chiang Mai 50300', null, 'https://culturalcrossroadsasia.org/wp-content/uploads/2026/09/Tales-Ancestors-Concert-cover-1024x683.png')
 on conflict (source, external_id) where external_id is not null do update set
   source_url = excluded.source_url,
   title_en = excluded.title_en,
