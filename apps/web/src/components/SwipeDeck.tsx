@@ -42,6 +42,10 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
   // send moves the deck on (sheetSent); closing without sending brings the card back (sheetCancelled).
   // Both clear it first, so whichever comes second finds nothing parked and does nothing.
   const parked = useRef(false);
+  // Bumped by every spring-back, new drag and commit. A spring-back only lowers the veil if nothing
+  // has moved the card since it started, so a drop scheduled by an older return never unveils a
+  // card that is being dragged again, or one that has flown out behind the sheet.
+  const motion = useRef(0);
 
   const current = items[index];
 
@@ -77,15 +81,30 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
     veil(dx !== 0 ? 1 : 0);
   };
 
+  // The card is still displaced while it travels back, so the veil holds until the return has
+  // finished (transitionend, or the fallback if that never fires) and only then drops.
   const springBack = () => {
     const el = card.current;
+    const token = ++motion.current;
+    const unveil = () => {
+      if (motion.current === token) veil(0);
+    };
     if (el) {
       el.style.transition = "transform 200ms ease";
       el.style.transform = "translate(0px, 0px) rotate(0deg)";
-    }
+      const onEnd = (e: TransitionEvent) => {
+        if (e.target !== el || e.propertyName !== "transform") return;
+        el.removeEventListener("transitionend", onEnd);
+        unveil();
+      };
+      el.addEventListener("transitionend", onEnd);
+      window.setTimeout(() => {
+        el.removeEventListener("transitionend", onEnd);
+        unveil();
+      }, 250);
+    } else unveil();
     if (meet.current) meet.current.style.opacity = "0";
     if (skip.current) skip.current.style.opacity = "0";
-    veil(0);
     drag.current.dx = 0;
     drag.current.dy = 0;
   };
@@ -102,6 +121,7 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
       const person = items[index];
       if (!person || drag.current.locked) return;
       drag.current.locked = true;
+      motion.current++;
       const el = card.current;
       const dy = drag.current.dy;
       if (el) {
@@ -127,7 +147,7 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
   };
 
   // Cancel, Escape or a backdrop tap: nothing was sent and nothing was skipped, so the same card
-  // springs back to the centre, unveiled and unlocked, ready to be dragged, liked or skipped again.
+  // springs back to the centre, unlocked (and unveiled once it is back), ready to be dragged, liked or skipped again.
   // After a send the deck is no longer parked, so a close that follows brings nothing back.
   const sheetCancelled = () => {
     setAskFor(null);
@@ -194,6 +214,7 @@ export function SwipeDeck({ items, onNeedMore }: { items: Candidate[]; onNeedMor
                         // best-effort: the drag works without capture too
                       }
                       (e.currentTarget as HTMLElement).style.transition = "none";
+                      motion.current++;
                       drag.current = { x: e.clientX, y: e.clientY, dx: 0, dy: 0, down: true, locked: false };
                       pressedLink.current = (e.target as Element).closest("a[data-tap-link]")?.getAttribute("href") ?? null;
                     }
