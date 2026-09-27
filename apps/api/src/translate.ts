@@ -102,6 +102,12 @@ export async function translateProfileText(text: string, from: Lang, to: Lang): 
     `Translate this self-introduction from ${LANG_NAME[from]} into ${LANG_NAME[to]}.`,
     `It is a profile in an app that pairs Thai locals with visitors in Chiang Mai, so keep place names, food names and street names exact.`,
     `Keep it in the first person and in the person's own voice — the way they would say it — not a formal or literal translation.`,
+    // These are the person's own words about themselves. A bio that adds a greeting they
+    // did not write, or a feeling they did not claim, has put words in their mouth.
+    `Say exactly as much as they said, and add nothing: no greeting, no sign-off, no feeling, habit or detail that is not already in the text.`,
+    // The seed writes a header line as "role - area"; translating it the other way round
+    // quietly changes what the line is.
+    `If the first line is a short header like "Pastry chef - Old City", translate it as the same kind of header, keeping the same order.`,
     `Reply with the translation alone, nothing else.`,
     ``,
     text,
