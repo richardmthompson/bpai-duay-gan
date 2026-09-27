@@ -29,6 +29,9 @@ export default function SignIn() {
   const [demo, setDemo] = useState<DemoRow[]>(
     api.mode === "mock" ? (mockControls.demoUsers() as DemoRow[]) : [],
   );
+  // The demo cast stays off the normal sign-in page. /sign-in?demo shows it, for signing in as
+  // the cast on stage; the server's ALLOW_DEV_LOGIN still decides whether dev login works at all.
+  const [showDemo, setShowDemo] = useState(false);
 
   useEffect(() => {
     if (ready && me) router.replace(me.onboardingComplete ? "/browse" : "/onboarding");
@@ -51,8 +54,9 @@ export default function SignIn() {
   }, []);
 
   useEffect(() => {
-    if (api.mode !== "http") return;
-    void listDemoAccounts().then(setDemo);
+    if (!new URLSearchParams(window.location.search).has("demo")) return;
+    void Promise.resolve().then(() => setShowDemo(true));
+    if (api.mode === "http") void listDemoAccounts().then(setDemo);
   }, []);
 
   async function after() {
@@ -116,7 +120,7 @@ export default function SignIn() {
         {error && <p className="text-sm text-red-600">{error}</p>}
       </form>
 
-      {demo.length > 0 && (
+      {showDemo && demo.length > 0 && (
         <section className="rounded-2xl border-2 border-dashed border-line p-4">
           <h2 className="font-semibold">{t.signIn.demoTitle}</h2>
           <p className="mb-3 text-sm text-muted">{t.signIn.demoHint}</p>
