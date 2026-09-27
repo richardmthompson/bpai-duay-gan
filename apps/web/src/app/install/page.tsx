@@ -6,6 +6,8 @@ import { useCallback, useEffect, useState } from "react";
 import { useApp } from "@/components/AppProvider";
 import { LangToggle } from "@/components/LangToggle";
 import { Button } from "@/components/ui";
+import { api } from "@/lib/api";
+import type { Lang } from "@/lib/contract";
 
 /** Chrome's install event is not in the DOM types. */
 interface InstallPrompt extends Event {
@@ -19,7 +21,7 @@ interface InstallPrompt extends Event {
  * offers, and hands the real prompt to Chrome when it is available.
  */
 export default function Install() {
-  const { t, lang, setPreSignInLang } = useApp();
+  const { t, lang, me, setMe, setPreSignInLang } = useApp();
   const [prompt, setPrompt] = useState<InstallPrompt | null>(null);
   const [installed, setInstalled] = useState(false);
   const [standalone, setStandalone] = useState(false);
@@ -49,6 +51,17 @@ export default function Install() {
     };
   }, []);
 
+  // The app shows a signed-in person's own language, so for them the switch changes that setting,
+  // the same one the Me screen's switch saves. Signed out, it only changes the pre-sign-in choice (#54).
+  async function chooseLanguage(l: Lang) {
+    setPreSignInLang(l);
+    if (!me) return;
+    setMe({ ...me, interfaceLanguage: l });
+    try {
+      setMe(await api.putMe({ interfaceLanguage: l }));
+    } catch {}
+  }
+
   const install = useCallback(async () => {
     if (!prompt) return;
     await prompt.prompt();
@@ -66,7 +79,7 @@ export default function Install() {
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col gap-6 px-5 py-10">
       <div className="flex justify-end">
-        <LangToggle value={lang} onChange={setPreSignInLang} />
+        <LangToggle value={lang} onChange={chooseLanguage} />
       </div>
 
       <div className="flex flex-col items-center text-center">
